@@ -1,7 +1,7 @@
 # パスワードを忘れたとき: a link to set a new password, sent to the account's confirmed email.
 class PasswordsController < ApplicationController
   allow_unauthenticated_access
-  before_action :set_user_by_token, only: %i[edit update]
+  before_action :set_user_by_token, only: :update
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_password_path, alert: t("errors.rate_limited") }
 
   def new
@@ -34,7 +34,10 @@ class PasswordsController < ApplicationController
 
   private
     def set_user_by_token
+      # As typle-r's /reset-password: the form opens for any link, and a link that cannot be used says so when sent.
       @user = User.find_by_token_for(:password_reset, params[:token])
-      redirect_to new_password_path, alert: t("passwords.invalid_link") unless @user
+      return if @user
+      @invalid = true
+      render :edit, status: :unprocessable_entity
     end
 end

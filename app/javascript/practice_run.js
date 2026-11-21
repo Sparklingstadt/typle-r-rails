@@ -266,7 +266,7 @@ export function renderResult(controller, run, outcome) {
     </li>`
   }).join("")
   controller.resultMissedTarget.innerHTML = rows
-    ? `<section class="flex flex-col"><h3 class="mb-2 text-base font-bold">${escapeHtml(r.missed.title)}</h3><ul class="divide-y border-y">${rows}</ul></section>`
+    ? `<section aria-labelledby="result-missed-heading" class="flex flex-col"><h3 id="result-missed-heading" class="mb-2 text-base font-bold">${escapeHtml(r.missed.title)}</h3><ul class="divide-y border-y">${rows}</ul></section>`
     : `<p class="text-sm text-muted-foreground">${escapeHtml(r.missed.none)}</p>`
   if (!outcome.saved && !outcome.failed) controller.resultTarget.querySelector("[data-autofocus]")?.focus({ preventScroll: true })
 }

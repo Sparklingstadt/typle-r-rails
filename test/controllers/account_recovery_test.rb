@@ -18,7 +18,11 @@ class AccountRecoveryTest < ActionDispatch::IntegrationTest
     assert_redirected_to home_path, "signed in with the new password, as typle-r does"
     assert @user.reload.authenticate("brand-new-pass")
     get edit_password_path(token:)
-    assert_redirected_to new_password_path, "the link works once"
+    assert_response :success, "the form opens for any link, as typle-r's"
+    put password_path(token:), params: { password: "another-new-pass" }
+    assert_response :unprocessable_entity
+    assert_select "[role=alert]", "このリンクは使えません。期限が切れたか、すでに使われています。"
+    assert_not @user.reload.authenticate("another-new-pass"), "the link works once"
   end
 
   test "an unknown ID gets the same answer and no mail" do

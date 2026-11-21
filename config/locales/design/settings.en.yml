@@ -205,7 +205,7 @@ en:
             condition: When signed in
         email:
           title: How we use email addresses
-          text: When you create an account, you may give an email address. It is used only to confirm the address, to reset your password and to remind you of your ID. It is never used for advertising or newsletters, and never passed on to anyone.
+          text: "When you sign up with an ID and a password, we keep your email address. It is used only to send mail for confirming the address, resetting the password and telling you your ID. It is never used for ads or announcements and is not passed to anyone else."
         version:
           title: Version and development
           tech: Built with

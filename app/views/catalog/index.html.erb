@@ -1,5 +1,6 @@
 <%# typle-r's 公式パック (/packs/catalog): the official packs, those that fit the user's interests first. %>
-<% interests = current_user ? current_user.interest_ids : [] %>
+<%# A first visit has no workspace yet: it has typle-r's default interests (every one), as a new workspace does. %>
+<% interests = current_user ? current_user.interest_ids : Interests::DEFAULT %>
 <% owned_packs = current_user ? current_user.packs.where.not(catalog_id: nil).index_by(&:catalog_id) : {} %>
 <% split = interests.any? && @category.nil? %>
 <% matching, others = split ? @packs.partition { |pack| Interests.matches?(pack, interests) } : [@packs, []] %>
@@ -8,9 +9,7 @@
   <%= page_header(t("catalog.index.title"), t("design.lists.catalog.description")) do %>
     <%= render "layouts/application/page_storage_badge" %>
   <% end %>
-  <% if current_user %>
-    <%= link_button packs_path, variant: :ghost, class: "mb-3 -ml-2 text-muted-foreground" do %><%= icon("arrow-left") %><%= t("design.lists.catalog.back") %><% end %>
-  <% end %>
+  <%= link_button packs_path, variant: :ghost, class: "mb-3 -ml-2 text-muted-foreground" do %><%= icon("arrow-left") %><%= t("design.lists.catalog.back") %><% end %>
 
 
   <% if !split %>

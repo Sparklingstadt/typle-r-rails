@@ -37,8 +37,13 @@ export default class extends Controller {
       .then(ok => { if (ok) { this.saving = true; Turbo.visit(event.detail.url) } })
   }
 
+  // What a save would send: the words in their order and the list's own fields (name, pack, handwriting), as typle-r's
+  // unsaved warning compares the whole draft.
   snapshot() {
-    return JSON.stringify(this.rowTargets.map(row => ["display", "input", "inputType", "annotation"].map(role => this.field(row, role).value)))
+    const rows = this.rowTargets.map(row => ["display", "input", "inputType", "annotation"].map(role => this.field(row, role).value))
+    const form = this.element.closest("form") ?? this.element.querySelector("form")
+    const fields = form ? [...new FormData(form)].filter(([name, value]) => name !== "authenticity_token" && !name.includes("[words_rows]") && typeof value === "string") : []
+    return JSON.stringify([rows, fields])
   }
 
   field(row, role) { return row.querySelector(`[data-role="${role}"]`) }

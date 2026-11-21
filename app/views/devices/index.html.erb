@@ -142,7 +142,7 @@
                                    usage ? settings_t("devices.deleteRecords", count: usage[:count]) : settings_t("devices.deleteNoRecords"),
                                    (settings_t("devices.deleteCurrent") if key == current_key)].compact.join) %>
               <div class="col-start-2 row-span-2 row-start-1 -mr-2 flex items-center sm:col-start-4 sm:row-span-1 sm:mr-0">
-                <%= link_to devices_path(edit: device.id), class: button_classes(variant: :ghost, size: "icon-lg", class: "size-10 text-muted-foreground"),
+                <%= tag.button type: "button", data: { visit_url: devices_path(edit: device.id) }, class: button_classes(variant: :ghost, size: "icon-lg", class: "size-10 text-muted-foreground"),
                       "aria-label": settings_t("devices.editLabel", name:), title: settings_t("devices.edit") do %><%= icon(:pencil) %><% end %>
                 <%= button_to device_path(device), method: :delete, form_class: "contents", form: { data: confirm },
                       class: button_classes(variant: :ghost, size: "icon-lg", class: "size-10 text-muted-foreground hover:bg-destructive/10 hover:text-destructive dark:hover:bg-destructive/20"),

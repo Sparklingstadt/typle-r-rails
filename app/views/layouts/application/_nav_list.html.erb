@@ -1,4 +1,6 @@
 <%
+  # typle-r's nav.links names (its keys where this app's differ).
+  nav_keys = { packs: :edit, new_pack: :create }
   groups = [
     [nil, [[:home, home_path, :house]]],
     [:practice, [[:play, play_path, :keyboard], [:records, practice_records_path, :history], [:rankings, rankings_path, :trophy]]],
@@ -24,7 +26,7 @@
   }
   nav_item = ->(name, path, icon_name, external = false) {
     current = !external && current_section.(path)
-    tag.li(link_to(safe_join([icon(icon_name), tag.span(t("layouts.application.#{name}"), class: "min-w-0 truncate")]), path,
+    tag.li(link_to(safe_join([icon(icon_name), tag.span(tt("nav.links.#{nav_keys.fetch(name, name)}"), class: "min-w-0 truncate")]), path,
       class: item_class.(current), "aria-current": (current ? "page" : nil)))
   }
 %>

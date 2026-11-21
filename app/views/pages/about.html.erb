@@ -60,11 +60,21 @@
 
     <section aria-labelledby="version-heading" class="space-y-3">
       <h2 id="version-heading" class="text-base font-bold"><%= settings_t("about.version.title") %></h2>
-      <p class="max-w-2xl text-sm text-muted-foreground"><%= t("pages.about.lead", version: Rails.version) %></p>
       <dl class="divide-y rounded-xl border bg-card text-sm">
+        <div class="grid gap-1 px-4 py-3 sm:grid-cols-[10rem_1fr] sm:gap-4">
+          <dt class="text-muted-foreground"><%= tt("about.version.version") %></dt>
+          <dd class="tabular-nums">v<%= Typle::VERSION %></dd>
+        </div>
         <div class="grid gap-1 px-4 py-3 sm:grid-cols-[10rem_1fr] sm:gap-4">
           <dt class="text-muted-foreground"><%= settings_t("about.version.tech") %></dt>
           <dd>Ruby <%= RUBY_VERSION %> · Rails <%= Rails.version %> · SQLite · Hotwire（Turbo・Stimulus）· importmap · Propshaft · Tailwind CSS · onnxruntime-web</dd>
+        </div>
+        <div class="grid gap-1 px-4 py-3 sm:grid-cols-[10rem_1fr] sm:gap-4">
+          <dt class="text-muted-foreground"><%= tt("about.version.source") %></dt>
+          <dd class="space-y-1">
+            <a href="https://github.com/Sparklingstadt/typle-r-rails" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-medium underline underline-offset-3 hover:text-muted-foreground">GitHub<span class="sr-only"><%= tt("about.version.newTab") %></span><%= icon("external-link", class: "size-3.5") %></a>
+            <p class="text-muted-foreground"><%= tt("about.version.public") %></p>
+          </dd>
         </div>
         <div class="grid gap-1 px-4 py-3 sm:grid-cols-[10rem_1fr] sm:gap-4">
           <dt class="text-muted-foreground"><%= settings_t("about.version.licenses") %></dt>

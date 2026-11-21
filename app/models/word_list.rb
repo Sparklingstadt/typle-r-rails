@@ -26,14 +26,21 @@ class WordList < ApplicationRecord
 
   delegate :editable?, :followed?, to: :pack
 
-  # The pack name with the level, as the list is shown outside its pack: "Vimコマンド（初級）".
-  def full_name = level.present? && pack.name != name ? "#{pack.name} › #{level}" : name
+  # typle-r's viewLists: a list is named with its pack (its group) when the pack has two or more lists or the list has a
+  # level, and then by its level (levelName) when it has one.
+  def grouped? = level.present? || pack.list_count >= 2
+
+  # The pack name with the list's part, as the list is shown outside its pack: "Vimコマンド（2） › 初級".
+  def full_name = grouped? ? "#{pack.name} › #{level.presence || name}" : name
 
   # The pack and the list's own part of its name, as typle-r's practiceName: [nil, name] for a list on its own.
-  def name_parts = level.present? && pack.name != name ? [pack.name, level] : [nil, name]
+  def name_parts = grouped? ? [pack.name, level.presence || name] : [nil, name]
 
-  # The tags of a followed official list (own lists have none).
-  def tags = origin_list_id ? (OfficialCatalog.find_list(origin_list_id)&.last&.tags || []) : []
+  # The pack's category and tags are its lists' (typle-r's viewLists); the list's own are kept for a pack without them.
+  def category = pack&.read_attribute(:category).presence || self[:category]
+
+  # A pack's tags, or those of a followed official list.
+  def tags = pack&.read_attribute(:tags).presence || (origin_list_id ? (OfficialCatalog.find_list(origin_list_id)&.last&.tags || []) : [])
 
   # Replaces the words with the rows of a text area: one word per line, "表示<TAB>入力<TAB>注釈" or comma-separated.
   # The input defaults to the display when it is left out.

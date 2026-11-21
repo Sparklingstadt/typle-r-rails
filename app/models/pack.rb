@@ -30,6 +30,9 @@ class Pack < ApplicationRecord
   def category = self[:category].presence || word_lists.map(&:category).compact_blank.first
   def tags = self[:tags].presence || word_lists.flat_map(&:tags).uniq
 
+  # How many lists the pack has, counted once (a list's name depends on it).
+  def list_count = @list_count ||= word_lists.size
+
   def last_practiced_at = word_lists.flat_map(&:practice_records).map(&:practiced_at).max
 
   # The text the packs page searches: pack and list names, labels and words (typle-r searches words too).
