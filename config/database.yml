@@ -21,12 +21,9 @@ test:
   # TEST_DB lets several test runs work at once without sharing one file.
   database: <%= ENV.fetch("TEST_DB", "storage/test.sqlite3") %>
 
-# SQLite3 write its data on the local filesystem, as such it requires
-# persistent disks. If you are deploying to a managed service, you should
-# make sure it provides disk persistence, as many don't.
-#
-# Similarly, if you deploy your application as a Docker container, you must
-# ensure the database is located in a persisted volume.
+# Production runs on PostgreSQL (Render's Postgres): DATABASE_URL is its Internal Database URL.
 production:
-  <<: *default
-  database: <%= ENV.fetch("SQLITE_PATH", "storage/production.sqlite3") %>
+  adapter: postgresql
+  encoding: unicode
+  max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV["DATABASE_URL"] %>
