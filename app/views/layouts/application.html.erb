@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" class="font-sans scroll-pt-18">
+  <head>
+    <%# As typle-r: "Page | Typle", the sign-in pages by their name alone, and the landing page's own title. %>
+    <title><%= content_for?(:bare_title) ? yield(:bare_title) : content_for?(:title) ? "#{yield(:title)} | Typle" : tt("metadata.title") %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <% if content_for?(:noindex) || (signed_in? && !current_page?(root_path)) %><meta name="robots" content="noindex, follow"><% end %>
+    <%# Runs before the first paint, as typle-r's THEME_BOOTSTRAP_SCRIPT: the .dark class from the stored choice or the OS. %>
+    <script>
+      (() => {
+        let preference = "system"
+        try { const stored = localStorage.getItem("typle-r:theme:v1"); if (stored === "light" || stored === "dark") preference = stored } catch {}
+        const root = document.documentElement
+        root.dataset.themePreference = preference
+        root.classList.toggle("dark", preference === "dark" || (preference === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches))
+      })()
+    </script>
+    <%= yield :head %>
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap">
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-muted/40 font-sans text-foreground antialiased" data-controller="drawer">
+    <%= render "layouts/application/navbar" %>
+    <div class="flex min-h-[calc(100dvh-3.5rem)]">
+      <div id="sidebar" class="sticky top-14 hidden h-[calc(100dvh-3.5rem)] w-60 shrink-0 overflow-y-auto border-r bg-background p-3 xl:block">
+        <%= render "layouts/application/nav_list" %>
+      </div>
+      <div id="main-content" tabindex="-1" class="min-w-0 flex-1 outline-none">
+        <%# A save's notice is typle-r's toast (layouts/application/_toasts); a refusal stays at the top, as an error. %>
+        <%# Pages with a header show it under the header (UiHelper#page_alert); the others, here. %>
+        <% if alert.present? && !@page_alert_shown %>
+          <div class="mx-auto w-full max-w-6xl px-4 pt-4 sm:px-6 lg:px-8"><%= page_alert %></div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+    <%= render "layouts/application/drawer" %>
+    <%= render "layouts/application/toasts" %>
+    <%= render "layouts/application/confirm_dialog" %>
+  </body>
+</html>

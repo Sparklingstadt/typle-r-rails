@@ -1,0 +1,20 @@
+# The guide's own texts, where typle-r's guide (typle.guide.*) describes something this app does differently.
+en:
+  design:
+    guide:
+      practice:
+        flow:
+          p6: "Turn on “Type from memory” at the top to practice with the answer hidden. The note is shown, and the answer appears as one “＿” per character still to type. The next words and the full word list are not shown. “Show answer” (<keys>Shift+Enter</keys>) reveals it, and the word counts as missed. These runs are saved as “Recall” and compared separately from normal runs. It cannot be switched during a run."
+        choose:
+          p1: "Click “Pack › List” at the top to switch the list you practice; the lists there are grouped by pack. You can also pick one from the list on the right (below on smartphones), which can be searched by pack name, list name, difficulty, category or tag. In a pack with several lists, open the pack and choose a list by its difficulty or name."
+        writing:
+          p2: "Look at the word shown and write it in the field with your OS’s handwriting input (the Windows handwriting panel, the handwriting keyboard of an Android tablet, an IME’s handwriting, and so on). Korean lists can also be written on the app’s handwriting pad."
+          p4: "Handwriting records are compared apart from normal and recall records; on the best-records screen you switch between Normal, Recall and Handwriting. They count towards this week’s runs, practice time and streak on the home screen, but accuracy, trends and the next lists compare typing records only. Handwriting cannot be combined with “Type from memory”."
+      records:
+        home:
+          text: "Once you have at least one record, <home>Home</home> shows this week’s practice count, your practice streak, average accuracy, and practice time, which list to practice next, and how seconds per word and accuracy have changed for each list. Weeks start on Monday."
+      storage:
+        browser:
+          p2: "Data is saved on the server, tied to this browser by a cookie, and is not synced with other devices or browsers."
+        warning:
+          p1: "If you clear this browser’s cookies, the data saved in this browser can no longer be opened. You can back up important lists with “Export CSV”."

@@ -1,0 +1,29 @@
+<% content_for :bare_title, tt("account.signIn") %>
+<%= page_main(width: :narrow) do %>
+  <header class="mb-6 space-y-1">
+    <h1 class="text-2xl font-bold"><%= t(".title") %></h1>
+  </header>
+  <div class="max-w-sm space-y-6">
+    <%= form_with url: session_path, class: "space-y-4", data: { controller: "filled", action: "input->filled#update change->filled#update" } do |f| %>
+      <%= settings_field settings_t("auth.fields.loginId"), id: "login-id" do |id| %>
+        <%= f.text_field :login_id, id:, required: true, autofocus: !@refused, autocomplete: "username", autocapitalize: "none", spellcheck: false, value: params[:login_id], class: settings_input_classes %>
+      <% end %>
+      <%= settings_field settings_t("auth.fields.password"), id: "password" do |id| %>
+        <%= f.password_field :password, id:, required: true, autofocus: @refused, autocomplete: "current-password", maxlength: 72, class: settings_input_classes %>
+      <% end %>
+      <%= f.button settings_t("auth.signIn.submit"), type: "submit", class: button_classes(size: :lg), data: { filled_target: "submit" } %>
+    <% end %>
+    <% if @refused %><%= form_message(tt("auth.signIn.refused"), kind: :error) %><% end %>
+    <ul class="space-y-1 text-sm">
+      <li><%= link_to settings_t("auth.signIn.signUp"), new_registration_path, class: SettingsDesignHelper::SETTINGS_LINK %></li>
+      <li><%= link_to settings_t("auth.signIn.forgotPassword"), new_password_path, class: SettingsDesignHelper::SETTINGS_LINK %></li>
+      <li><%= link_to settings_t("auth.signIn.forgotId"), new_login_id_reminder_path, class: SettingsDesignHelper::SETTINGS_LINK %></li>
+    </ul>
+    <% if GithubLogin.enabled? %>
+      <div class="space-y-3 border-t pt-6">
+        <p class="text-sm text-muted-foreground"><%= settings_t("auth.signIn.or") %></p>
+        <%= form_button settings_t("auth.signInWithGitHub"), "/auth/github", method: :post, size: :lg, variant: :outline, icon: "log-in", data: { turbo: false } %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

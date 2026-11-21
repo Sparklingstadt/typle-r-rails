@@ -1,0 +1,212 @@
+---
+zh-Hant:
+  design:
+    records:
+      history:
+        title: 練習紀錄
+        intro: 依時間由新到舊顯示所有練習。各清單的前幾名請在<rankings>最佳紀錄</rankings>中查看，變化趨勢請在<home>首頁</home>查看。
+        filter:
+          pack: 包
+          all_packs: 所有包
+          list: 清單
+          all_lists: 所有清單
+          device: 裝置
+          all_devices: 所有裝置
+          clear: 清除篩選
+          count: "%{count} 筆"
+          filtered_count: "%{matched} 筆 / 共 %{count} 筆"
+        filter_menu:
+          label: 依%{name}篩選（目前：%{current}）
+          all: 全部
+          count: "%{count} 次"
+        columns:
+          time: 時間
+          device_words: 裝置・單字數
+          list_device: 清單・裝置
+          duration: 用時
+          accuracy: 正確率
+          per_word: 每個單字
+          mistakes: 錯誤
+        day:
+          heading: "%{relative} · %{date}"
+          summary: "%{count} 次 · %{duration}"
+        recall_badge: 回憶
+        more: 顯示更多（剩餘 %{count} 筆）
+        note: 單字數與裝置名稱為練習當時的資訊。
+        note_missing: "「—」表示未記錄的項目（例如舊版本儲存的紀錄）。"
+        row:
+          best: 最佳
+          best_title: 此清單的最佳紀錄（在目前單字數的紀錄中，依正確率由高到低、正確率相同時依用時由短到長排名第一）
+          words: "%{count} 個單字"
+          seconds: "%{value} 秒"
+          duration: 用時
+          accuracy: 正確率
+          low_accuracy: 正確率低於 %{limit}%
+          per_word: 每個單字
+          per_word_unit: 秒/字
+          mistakes: 錯誤
+          delete: 刪除
+          delete_label: 刪除%{name}（%{date} %{time}）的紀錄
+        delete:
+          title: 要刪除這筆練習紀錄嗎？
+          description: 將刪除「%{name}」的 1 筆紀錄。
+          done: 已刪除「%{name}」的練習紀錄（%{date} %{time}）。
+          list: 清單
+          when: 日期時間・裝置
+          result: 結果
+          accuracy: 正確率 %{value}
+          mistakes: 錯誤 %{value}
+          best_next: 這是此清單的最佳紀錄。刪除後，最佳紀錄將變為 %{time}（%{accuracy}）。
+          best_last: 這是此清單的最佳紀錄。刪除後，此清單將沒有任何紀錄。
+        empty:
+          title: 還沒有練習紀錄
+          description: 在「開始練習」中把清單輸入到最後，用時、正確率、錯誤和使用的裝置就會記錄在這裡。
+          practice: 開始練習
+        filtered_empty:
+          list_title: "「%{name}」還沒有紀錄"
+          list_description: 練習後，紀錄會顯示在這裡。
+          title: 沒有符合條件的紀錄
+          description: 請變更清單或裝置條件。
+          practice_list: 練習此清單
+        summary:
+          words: "%{count} 個單字"
+          runs: 練習 %{count} 次
+          last: 最近 %{day}
+          best: 最佳（%{mode}）
+          rankings: 最佳紀錄
+          practice: 開始練習
+        mode_writing: Handwriting
+      rankings:
+        title: 最佳紀錄
+        intro: 每個單字清單的個人最佳。選擇清單後，會顯示前幾名的紀錄與用時的變化趨勢。
+        reload: 重新載入
+        filter:
+          device: 裝置
+          all_devices: 所有裝置
+          deleted: "%{name}（已刪除）"
+        mode:
+          label: 練習模式
+          normal: 一般
+          recall: 回憶
+          writing: Handwriting
+        order:
+          label: 排名依據
+          accuracy: 正確率<wide>優先</wide>
+          speed: 速度<wide>優先</wide>
+        order_notes:
+          accuracy: 依正確率由高到低，正確率相同時依速度由快到慢
+          speed: 依速度由快到慢，用時相同時依正確率由高到低
+        lists: 單字清單
+        empty:
+          title: 還沒有最佳紀錄
+          description: 把單字清單輸入到最後，各清單的個人最佳、前幾名紀錄與用時趨勢就會顯示在這裡。
+          practice: 開始練習
+          create: 建立單字包
+        list:
+          search: 搜尋清單
+          clear_search: 清除搜尋
+          no_device_records: 此裝置沒有紀錄的清單（%{count}）
+          no_records: 還沒有紀錄的清單（%{count}）
+          words: "%{count} 個單字"
+          no_match: 沒有與「%{query}」相符的清單。
+          last_practiced: 最近練習
+          best: 個人最佳
+          improved: 刷新
+          improved_title: 最近 %{count} 天內刷新了個人最佳
+          runs: "%{count} 次"
+          sort_label: 排序：%{sort}
+          sorts:
+            recent: 依最近練習
+            name: 依名稱
+            count: 依紀錄數
+          pack_practiced: 已練習 %{practiced}/%{lists}
+          pack_improved: 刷新 %{count}
+          pack_join: "・"
+          pack_lists: "%{pack}・%{count} 個清單"
+        detail:
+          back: 清單一覽
+          words: "%{count} 個單字"
+          records: 紀錄 %{count} 次
+          last_practiced: 最近練習 %{day}
+          view_records: 查看紀錄
+          practice: 練習此清單
+          not_practised:
+            title: 還沒有練習
+            description: 輸入到最後後，此清單的個人最佳與前幾名紀錄會顯示在這裡。
+          no_device_records:
+            title: 沒有在「%{device}」上練習的紀錄
+            description: 此清單在其他裝置上有 %{count} 筆紀錄。
+            show_all: 顯示所有裝置的紀錄
+          top:
+            title: 前幾名紀錄
+            accuracy: 正確率優先
+            speed: 速度優先
+            shown: "%{shown} / %{count} 筆"
+            show_top: 僅顯示前 %{count} 筆
+            show_all: 全部顯示（%{count} 筆）
+            old_accuracy: 正確率為「—」的紀錄是開始記錄正確率之前的舊紀錄。依正確率排名時會排在最後。
+          stats:
+            best: 個人最佳
+            best_note: "%{accuracy} · %{day}"
+            no_accuracy: 無正確率
+            recent_average: 最近 %{count} 次平均
+            gap: 與最佳相差 +%{value} 秒
+            same_as_best: 與最佳相同
+            average_accuracy: 平均正確率
+            recent_runs: 最近 %{count} 次
+            runs: 練習次數
+            runs_value: "%{count}<unit>次</unit>"
+            all_word_counts: 所有單字數
+            current_words: 目前 %{count} 個單字的練習
+          trend:
+            title: 用時趨勢
+            recent: 最近 %{count} 次
+            label: "%{name} 的用時趨勢"
+            need_two: 練習 2 次以上後顯示趨勢。
+          others:
+            old: 沒有單字數的舊紀錄 %{count} 筆
+            words: "%{words} 個單字的紀錄 %{count} 筆"
+            separator: "、"
+            fallback: 由於沒有目前 %{count} 個單字的練習紀錄，依單字數不同的紀錄（%{detail}）進行排名。
+            included: 已包含單字數與目前不同的紀錄（%{detail}）。單字數不同時，用時無法直接比較。
+            excluded: "<strong>單字數與目前不同的 %{count} 筆紀錄未列入排名。</strong>例如編輯清單之前的紀錄（%{detail}）。"
+            exclude: 不包含
+            include: 包含並顯示
+        top:
+          label: "%{name} 的前幾名紀錄"
+          rank: 名次
+          time: 用時
+          accuracy: 正確率
+          mistakes: 錯誤
+          device: 裝置
+          date: 日期時間
+          rank_number: 第 %{rank} 名
+          deleted: 已刪除
+          deleted_suffix: "（已刪除）"
+          other_words: 單字數與目前不同的紀錄
+          words: "%{count} 個單字"
+          unknown_words: "? 個單字"
+          old_accuracy: 開始記錄正確率之前的舊紀錄
+      format:
+        today: 今天
+        yesterday: 昨天
+        date_with_weekday: "%{date}（%{weekday}）"
+        units:
+          hours: 小時
+          minutes: 分
+          seconds: 秒
+        default_device: 預設
+        no_device: 未記錄
+        no_device_recorded: 未記錄裝置
+        device_with_layout: "%{name}（%{layout}）"
+      chart:
+        label: "%{label}（用左右方向鍵查看每次的數值）"
+        date: 日期時間
+        value: 數值
+      extra:
+        weekdays: 週日,週一,週二,週三,週四,週五,週六
+        months: 1月,2月,3月,4月,5月,6月,7月,8月,9月,10月,11月,12月
+        month_day: "%{month}月%{day}日"
+        year_month_day: "%{year}年%{month}月%{day}日"
+        numeric_date: "%{year}/%{month}/%{day}"
+        short_date: "%{month}/%{day}"

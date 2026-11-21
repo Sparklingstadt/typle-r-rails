@@ -1,0 +1,181 @@
+---
+ru:
+  design:
+    practice:
+      starter:
+        title: С чего начнём?
+        description: Наборов пока нет. Выберите официальный набор — вы подпишетесь на него и сразу начнёте тренировку. Отписаться можно позже.
+        first: 'Первый список: %{list}'
+        start: Начать с этого набора
+        more_html: "%{catalog_open}Другие официальные наборы%{close} / %{create_open}Создать свой набор%{close}"
+      stats:
+        label: Текущая тренировка
+        elapsed: Время
+        speed: Скорость
+        speed_unit: зн./мин
+        accuracy: Точность
+        mistakes: Ошибки
+        word_speed_unit: сл./мин
+      progress:
+        label: Прогресс по словам
+        value:
+          one: "%{current} / %{count} слово"
+          few: "%{current} / %{count} слова"
+          many: "%{current} / %{count} слов"
+          other: "%{current} / %{count} слова"
+      feedback:
+        mismatch: Символ %{position} не совпадает. Наберите правильный символ.
+        composing: Текст, который ещё набирается через IME, проверяется после подтверждения
+        restart: Начать заново
+      header:
+        switch_list: 'Сменить список слов (текущий: %{name})'
+        word_count:
+          one: "%{count} слово"
+          few: "%{count} слова"
+          many: "%{count} слов"
+          other: "%{count} слова"
+        restart: Начать заново
+        restart_title: Начать заново (Esc)
+        restart_short: Заново
+        live_stats: Показывать текущие показатели
+        aside: Показывать боковую панель (списки слов)
+      word:
+        type_this: Введите
+        resume: Щёлкните или нажмите любую клавишу, чтобы продолжить
+        input_label: Введите показанный текст
+        simple_keys: Упрощённый ввод
+        simple_keys_all: Вся таблица
+      recall:
+        toggle: Набор по памяти
+        reveal: Показать ответ
+        no_hint: Подсказки нет
+        result_heading: Набор по памяти
+      upcoming:
+        next: Далее
+        last: Это последнее слово
+        more: и ещё %{count}
+        show_all: Показать все слова
+        all_words: Все слова
+        done: "(готово)"
+        current: "(вводится)"
+        pending: "(не введено)"
+      aside:
+        label: Списки слов
+        lists: Списки слов
+        create: Новый набор
+        best: Лучшие результаты
+        best_order: Сначала по точности, при равенстве — по скорости
+        best_order_at_count: Сначала по точности, при равенстве — по скорости · только при текущем числе слов (%{count})
+        all_best: Все лучшие результаты
+        filter: Фильтр списков слов по названию, категории или тегу
+      result:
+        label: Результат тренировки
+        title: Отличная работа!
+        new_best: Новый личный рекорд
+        completed: 'Тренировка завершена: %{name}'
+        time: Время
+        seconds: с
+        accuracy: Точность
+        mistakes: 'Ошибок: %{count}'
+        speed: Скорость
+        speed_unit: зн./мин
+        correct:
+          one: "%{count} символ"
+          few: "%{count} символа"
+          many: "%{count} символов"
+          other: "%{count} символа"
+        words: Слова
+        word_unit:
+          one: слово
+          few: слова
+          many: слов
+          other: слова
+        first_at_count: Первый результат при текущем числе слов (%{count})
+        first_for_list: Первый результат для этого списка
+        faster: На %{seconds} с быстрее лучшего
+        best_by_accuracy: Лучший результат по точности
+        behind: 'Лучший: %{time} с · %{accuracy}%'
+        behind_no_accuracy: 'Лучший: %{time} с · точность не записана'
+        save_failed: Не удалось сохранить результат. Он по-прежнему показан на этом экране. Проверьте подключение и повторите попытку.
+        retry: Повторить сохранение
+        saved: Результат сохранён в истории тренировок. Это %{rank}-е место в этом списке.
+        saving: Сохранение результата…
+        again: Ещё раз
+        choose_list: Выбрать другой список
+        view_records: Открыть историю
+        word_speed_unit: сл./мин
+        correct_words:
+          one: "%{count} слово"
+          few: "%{count} слова"
+          many: "%{count} слов"
+          other: "%{count} слова"
+        mistakes_words: 'Ошибок: %{count}'
+        share_on_x: Поделиться в X
+        share_text: Я набрал(а) «%{name}» за %{time} с с точностью %{accuracy}% в Typle
+        review_note: Повторение ошибочных слов не записывается.
+        review_note_weak: Это повторение не записывается. Слова, набранные без ошибок, больше не считаются трудными.
+        reviewing:
+          one: Повторение %{count} слова с ошибкой (не записывается)
+          few: Повторение %{count} слов с ошибками (не записывается)
+          many: Повторение %{count} слов с ошибками (не записывается)
+          other: Повторение %{count} слова с ошибками (не записывается)
+        missed:
+          tile: Слова с ошибками
+          of: "/ %{count}"
+          title: Слова с ошибками
+          none: Слов с ошибками нет.
+          typed: Набрано %{typed} на %{position}-м символе
+          wrote: Написано «%{typed}»
+          revealed: Ответ показан
+          skipped: Пропущено
+          space: Пробел
+          count:
+            one: "%{count} раз"
+            few: "%{count} раза"
+            many: "%{count} раз"
+            other: "%{count} раза"
+          review:
+            one: Повторить %{count} слово с ошибкой
+            few: Повторить %{count} слова с ошибками
+            many: Повторить %{count} слов с ошибками
+            other: Повторить %{count} слова с ошибками
+        reviewing_weak:
+          one: Повторение %{count} трудного слова (не записывается)
+          few: Повторение %{count} трудных слов (не записывается)
+          many: Повторение %{count} трудных слов (не записывается)
+          other: Повторение %{count} трудных слов (не записывается)
+      best:
+        label: Лучшие результаты, топ-5
+        rank: Место
+        time: Время
+        accuracy: Точность
+        device: Устройство
+        seconds: "%{time} с"
+        no_accuracy: Не записано
+        current: Этот результат
+        empty: Результатов пока нет. Пройдите список до конца, и здесь появятся пять лучших.
+      mode_label: Режим практики
+      mode_typing: Набор
+      mode_writing: Handwriting
+      writing_judge: Проверить
+      writing_skip: Пропустить
+      writing_read: Распознано как «%{text}»
+      writing_input: Пишите здесь от руки
+      writing_input_method: Способ письма
+      writing_input_pad: Панель для письма
+      writing_input_field: Поле ввода
+      writing_pad: Панель для рукописного ввода
+      writing_pad_hint: Пишите здесь
+      writing_pad_loading: Подготовка распознавания почерка…
+      writing_pad_failed: Не удалось загрузить распознавание почерка.
+      writing_pad_retry: Повторить
+      writing_pad_undo: Отменить штрих
+      writing_pad_clear: Стереть
+      writing_pad_reading: 'Распознано: %{text}'
+      device_menu:
+        label: 'Устройство: %{device}'
+        locked: Во время тренировки устройство изменить нельзя
+        change: Изменить устройство
+        unselected: 'Устройство: не выбрано'
+        heading: Устройство (можно изменить только до начала тренировки)
+        manage: Управление устройствами

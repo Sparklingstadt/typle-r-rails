@@ -1,0 +1,192 @@
+---
+zh-Hans:
+  design:
+    home:
+      home:
+        welcome:
+          title: 用自己的单词，练习打字。
+          text: 可以先用官方单词包开始练习，也可以创建一个想要记住的单词列表。
+          lists: 单词列表 %{count} 个
+          practices: 已完成练习 %{count} 次
+          nav_label: 开始使用
+          play: 开始练习
+          create: 创建单词列表
+          records: 查看记录
+        storage: 无需登录即可使用全部练习和编辑功能。单词列表、练习记录和设备会保存在此浏览器中。登录（GitHub 或 ID 与密码）后，将切换到另一个保存位置——账号，并可在设备之间同步。浏览器中的数据不会自动迁移。
+        storage_account: 你已登录，单词列表、练习记录和设备会保存到账户中，并与登录同一账户的其他设备和浏览器同步。它们与未登录时保存在此浏览器中的数据分开保存。
+        links_guide: 使用方法
+        links_about: 关于 Typle
+        links: "%{guide} ／ %{about}"
+      dashboard:
+        title: 练习概况
+        source_guest: 根据保存在此浏览器中的记录统计。
+        source_account: 根据保存在账号中的记录统计。
+        start: 开始
+        practice: 开始练习
+        create: 创建单词列表
+        week:
+          title: 本周总结
+          description: "%{start}至%{end}的记录。增减是与上周同一星期几、同一时刻之前的记录相比。"
+          count: 本周练习
+          count_unit: 次
+          streak: 连续练习
+          streak_unit: 天
+          accuracy: 平均正确率（最近 %{count} 次）
+          time: 本周练习时间
+          practised_today: 今天已练习
+          streak_next: 今天练习即为第 %{day} 天
+          no_comparison: 还没有可比较的记录
+          no_accuracy: 没有包含正确率的记录
+          times: "%{count} 次"
+          same_as_last_week: 与上周相同
+          more_than_last_week: 比上周多 %{value}
+          less_than_last_week: 比上周少 %{value}
+        change:
+          same_recent_none_previous_latest: 与上一次记录相同
+          same_recent_none_previous_other: 与之前 %{previousCount} 次相同
+          same_recent_latest_previous_latest: 最新记录与上一次记录相同
+          same_recent_latest_previous_other: 最新记录与之前 %{previousCount} 次相同
+          same_recent_other_previous_latest: 最近 %{recentCount} 次的平均与上一次记录相同
+          same_recent_other_previous_other: 最近 %{recentCount} 次的平均与之前 %{previousCount} 次相同
+          different_recent_none_previous_latest: 比上一次记录%{difference}
+          different_recent_none_previous_other: 比之前 %{previousCount} 次%{difference}
+          different_recent_latest_previous_latest: 最新记录比上一次记录%{difference}
+          different_recent_latest_previous_other: 最新记录比之前 %{previousCount} 次%{difference}
+          different_recent_other_previous_latest: 最近 %{recentCount} 次的平均比上一次记录%{difference}
+          different_recent_other_previous_other: 最近 %{recentCount} 次的平均比之前 %{previousCount} 次%{difference}
+          seconds_direction_up: 慢 %{value} 秒
+          seconds_direction_other: 快 %{value} 秒
+          points_direction_up: 高 %{value}pt
+          points_direction_other: 低 %{value}pt
+        next:
+          title: 接下来练习的列表
+          description: 最多显示 3 个列表：尚未练习的、%{days} 天以上未练习的，以及最近正确率低于 %{accuracy}% 的列表。
+          all_practised: 所有列表最近都练习过了。
+          words: "%{count} 个单词"
+          last_practiced: 最近练习 %{day}
+          no_records: 无记录
+          new: 还没有练习
+          stale: 已 %{days} 天未练习
+          low_accuracy: 最近 %{count} 次的正确率 %{accuracy}%
+          practice_list: 练习 %{name}
+          practice: 开始练习
+        trends:
+          title: 各列表的趋势
+          description: 显示最近 20 次以内的每个单词秒数（越低越快）和正确率。由于用时按单词数平均，编辑列表前后的记录也能相互比较。
+          summary: "%{count} 次 · 最近练习 %{day}"
+          need_two: 记录达到 2 次以上后显示趋势。
+          practice_list: 练习 %{name}
+          practice: 开始练习
+          speed: 每个单词的秒数
+          accuracy: 正确率
+          seconds: "%{value} 秒"
+          percent: "%{value}%"
+          latest_number: "%{value}"
+          latest: 最新 %{number}
+          no_chart: 包含此项的记录达到 2 次以上后显示。
+          best: 最佳记录：正确率 %{accuracy}・%{time} 秒（%{day}）
+          not_recorded: 未记录
+        chart:
+          label: "%{label}（用左右方向键查看每次的数值）"
+          date: 日期时间
+          value: 数值
+        continue:
+          label: 继续练习
+          meta: "%{count} 个词 · 上次练习 %{day}"
+          best: 最佳：准确率 %{accuracy}，%{time} 秒
+          not_recorded: 未记录
+          samples: 开头的单词
+          more: 另有 %{count} 个词
+          practice: 练习
+          practice_list: 练习 %{name}
+          other: 选择其他列表
+        weak:
+          title: 薄弱单词
+          description: 按列表显示最近 %{runs} 次练习（不含 Handwriting）中打错的词，打错次数多的在前。只练薄弱单词时没有打错的词，会从这里移除。
+          none: 还没有薄弱单词。练习中打错的词会显示在这里。
+          words_of: "%{name} 的薄弱单词"
+          runs: "%{count} 次"
+          more: 另有 %{count} 个词
+          practice: 只练习 %{count} 个薄弱单词
+          practice_list: 只练习 %{name} 的 %{count} 个薄弱单词
+      landing:
+        hero:
+          eyebrow: 免费，无需登录
+          title: 打字记住你想学的词。
+          lead: Typle 是一款可以用自己的单词列表或官方单词包练习的打字应用。无论是编程命令和语法，还是外语单词，都能边打边记。
+          play: 无需登录，开始练习
+          catalog: 查看官方单词包
+          home: 前往首页
+        packs:
+          title: 官方单词包
+          lead: 关注 %{total} 个官方列表中的任意一个，即可马上开始练习。
+          programming:
+            title: 编程
+            count: "%{count} 个列表"
+            text: Go、Java、Kotlin、TypeScript 等语言的语法，Linux、Vim、AWS CLI 等工具的命令，以及 PostgreSQL 的错误代码。
+          languages:
+            title: 语言
+            count: "%{count} 个列表"
+            text: 中文（HSK 五级、六级）、韩语、英语、法语、德语、西班牙语、俄语和捷克语的单词与句型。中文和韩语还可以用手写练习。
+        features:
+          title: 可以做什么
+          own:
+            title: 用自己的单词列表练习
+            text: 添加想记住的单词并进行练习。显示的单词和要输入的字符可以不同，也可以从 CSV 文件导入。
+          recall:
+            title: 凭记忆打字
+            text: 隐藏答案、以备注作为提示的模式，可以检验自己是否真的记住了每个单词。
+          records:
+            title: 用记录确认进步
+            text: 每次都会记录速度、正确率和错误数，可以通过个人最佳和变化趋势回顾自己的进步。
+        storage:
+          title: 数据保存在哪里
+          text: 无需登录即可使用全部功能。数据保存在此浏览器中，登录（GitHub 或 ID 与密码）后可以在多台设备之间同步。
+          more_guide: 使用方法
+          more_about: 关于 Typle
+          more: "%{guide} ／ %{about}"
+        try:
+          badge: 在这里试打
+          progress: "%{name} · %{current} / %{total} 个词"
+          label: 输入
+          hint: 输入上面的词即可进入下一个。在这里输入的内容不会被记录。
+          done: 已输入 %{count} 个词。继续用这个单词包练习，就会留下记录。
+          continue: 继续用这个单词包练习
+          starting: 正在准备…
+      format:
+        today: 今天
+        yesterday: 昨天
+        date_with_weekday: "%{date}（%{weekday}）"
+        units:
+          hours: 小时
+          minutes: 分
+          seconds: 秒
+        time:
+          one: "%{value}%{unit}"
+          two: "%{first}%{firstUnit}%{second}%{secondUnit}"
+        month_names:
+        -
+        - 1月
+        - 2月
+        - 3月
+        - 4月
+        - 5月
+        - 6月
+        - 7月
+        - 8月
+        - 9月
+        - 10月
+        - 11月
+        - 12月
+        weekday_names:
+        - 周日
+        - 周一
+        - 周二
+        - 周三
+        - 周四
+        - 周五
+        - 周六
+        month_day: "%{month}月%{day}日"
+        year_month_day: "%{year}年%{month}月%{day}日"
+        short_date: "%{month}/%{day}"
+        short_date_time: "%{month}/%{day} %{hh}:%{minute}"

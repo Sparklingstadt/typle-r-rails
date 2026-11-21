@@ -1,0 +1,508 @@
+zh-Hans:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "输入有误：%{errors}"
+    models:
+      user: 用户
+      pack: 词包
+      word_list: 列表
+      device: 设备
+    attributes:
+      user:
+        login_id: ID
+        email: 邮箱地址
+        password: 密码
+        password_confirmation: 确认密码
+      pack:
+        name: 词包名称
+      word_list:
+        name: 列表名称
+        writing_language: 手写语言
+      device:
+        name: 设备名称
+        layout: 键盘布局/备注
+      practice_record:
+        mode: 模式
+  errors:
+    format: "%{attribute}%{message}"
+    rate_limited: 请稍后再试。
+    messages:
+      blank: 不能为空
+      taken: 已被使用
+      too_short: 至少需要 %{count} 个字符
+      too_long: 不能超过 %{count} 个字符
+      invalid: 无效
+      confirmation: 不一致
+      inclusion: 不在可选范围内
+      not_a_number: 必须是数字
+      not_an_integer: 必须是整数
+      greater_than: 必须大于 %{count}
+      greater_than_or_equal_to: 必须大于或等于 %{count}
+      less_than_or_equal_to: 必须小于或等于 %{count}
+      wrong_length: 必须是 %{count} 个字符
+      required: 为必填项
+      password_too_long: 不能超过 72 字节
+      login_id_format: 只能使用半角字母、数字和 _ . -
+      taken_device: 与“%{name}”相同
+      device_limit: 最多可登记 %{count} 台设备。
+      wrong_current_password: 当前密码不正确。
+      words_required: 请至少输入一个单词。
+      word_fields_required: "第 %{line} 行：显示和输入不能为空。"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      short_date_time: "%Y/%m/%d %H:%M"
+  date:
+    formats:
+      default: "%Y/%m/%d"
+  format:
+    seconds: "%{value}秒"
+    minutes_seconds: "%{minutes}分%{seconds}秒"
+    minutes: "%{count}分钟"
+    hours_minutes: "%{hours}小时%{minutes}分钟"
+  modes:
+    normal: 普通
+    recall: 回想
+    writing: Handwriting
+  languages:
+    en: 英语
+    ja: 日语
+    zh-Hans: 中文（简体）
+    zh-Hant: 中文（繁体）
+    ko: 韩语
+    fr: 法语
+    de: 德语
+    es: 西班牙语
+    ru: 俄语
+    cs: 捷克语
+  forms:
+    save: 保存
+    cancel: 取消
+  words:
+    display: 显示
+    input: 输入
+    annotation: 注释
+    index:
+      title: 单词一览
+      search: 搜索
+      placeholder: 按单词、输入或注释搜索
+      count: "%{count} 个单词"
+      capped: （仅显示前 300 个单词）
+      list: 列表
+  devices:
+    default_name: 默认
+    none: 未选择
+    unrecorded: 未记录
+    index:
+      title: 设备
+      lead: 登记练习时使用的键盘或电脑后，记录中会保留所用的设备。更改设备名称或备注不会影响以往的记录。
+      this_browser: 此浏览器使用的设备
+      use: 使用的设备
+      name: 设备名称
+      layout: 键盘布局/备注
+      layout_placeholder: 例：JIS、US、改键
+      runs: 练习次数
+      last: 最后练习日期
+      built_in: 内置
+      edit: 编辑
+      delete: 删除
+      delete_confirm: 要删除设备“%{name}”吗？记录不会被删除。
+      add: 添加设备
+      use_new: 在此浏览器中使用新添加的设备（当前为默认或未选择时）
+    create:
+      added: 已添加设备“%{name}”。
+    update:
+      saved: 设备已保存。
+    destroy:
+      deleted: 已删除设备“%{name}”。
+  dashboard:
+    never: 尚未练习
+    idle: "已 %{count} 天未练习"
+    low_accuracy: 最近正确率 %{accuracy}%
+  layouts:
+    application:
+      default_title: Typle — 边打边记的单词本
+      skip: 跳到正文
+      menu: 菜单
+      storage_account: 保存到账号
+      storage_browser: 保存在此浏览器
+      theme: 主题
+      theme_light: 浅色
+      theme_dark: 深色
+      theme_system: 跟随系统
+      sign_in: 登录
+      sign_up: 注册
+      sign_out: 退出登录
+      home: 首页
+      practice: 练习
+      play: 开始练习
+      records: 练习记录
+      rankings: 最佳记录
+      lists: 单词列表
+      packs: 单词包
+      words: 单词一览
+      catalog: 官方词包
+      new_pack: 创建词包
+      settings: 设置
+      general: 通用
+      input: 输入
+      interests: 兴趣
+      devices: 设备
+      account: 账号
+      guide: 使用说明
+      about: 关于 Typle
+  pages:
+    landing:
+      heading: 边打边记的单词本
+      lead: 一边在键盘上实际输入，一边记住命令、语法和外语单词。你可以创建自己的单词列表，也可以从 %{count} 个官方词包开始。
+      start: 无需登录，开始练习
+      catalog: 浏览官方词包
+      home: 前往首页
+      try: 在这里试着打一个词
+      packs: 官方词包
+      list_count: "%{count} 个列表"
+      and_more: " 等"
+      feature_lists: 自己的单词列表
+      feature_lists_text: 每个单词由显示、输入、注释三部分组成。也支持 CSV 导入和导出。
+      feature_recall: 回想输入与手写
+      feature_recall_text: 隐藏单词、只看注释来输入，或照着范本手写抄写来记忆。
+      feature_records: 记录
+      feature_records_text: 在首页查看每个列表的最佳记录、薄弱单词和本周总结。
+      storage: 不登录时，数据保存在此浏览器中。登录后数据保存到账号（不会自动复制）。
+      guide: 使用说明
+      about: 关于 Typle
+    about:
+      title: 关于 Typle
+      lead: Typle 是一款通过打字来记忆命令和外语单词的单词本。它是将用 Next.js 开发的 typle-r 用 Ruby on Rails %{version} 重写的版本。
+      storage: 数据保存位置
+      browser: 此浏览器
+      account: 账号
+      where: 保存位置
+      browser_where: 与此浏览器关联的服务器数据（通过 Cookie 识别）
+      account_where: 账号数据
+      sync: 其他设备
+      browser_sync: 不同步
+      account_sync: 登录后数据相同
+      lost: 何时丢失
+      browser_lost: 清除浏览器 Cookie 时
+      account_lost: 删除账号时
+      now: 当前保存位置：%{storage}
+      tech: 使用的技术
+      licenses: 许可证
+      licenses_text: 手写板使用了以下软件和模型。
+    guide:
+      title: 使用说明
+      step1: 练习
+      step2: 创建单词列表
+      step3: 查看最佳记录
+      toc: 目录
+      practice:
+        heading: 练习
+        body:
+          - 在“开始练习”中选择列表，在输入框中输入显示的单词。按下第一个键开始计时，输入最后一个字符时停止。离开输入框会暂停。
+          - “回想”模式会隐藏单词，只看注释来输入。想不起来时可以用“查看答案”（Shift+Enter）显示。
+          - 设置了手写语言的列表可以选择“Handwriting”。看着范本，用操作系统的手写输入抄写。韩语列表还可以在应用的手写板上书写。
+      lists:
+        heading: 创建单词列表
+        body:
+          - 用“创建词包”建立词包，再添加列表。每行一个单词，用制表符或逗号分隔“显示、输入、注释”。
+          - 关注官方词包后，它会加入你的词包。内容保持官方版本，无法编辑。
+      results:
+        heading: 查看结果和记录
+        body:
+          - 练习结束后，结果页会显示用时、正确率和打错的单词。最佳记录只比较当前单词数下的记录，先比正确率，再比用时。
+          - 在首页可以继续上次的练习，查看薄弱单词和本周总结。
+      devices:
+        heading: 登记设备
+        body:
+          - 在“设备”中登记所用键盘，并在练习页面选择，记录中就会保留设备信息。
+      storage:
+        heading: 保存位置与数据
+        body:
+          - 未登录时，数据保存在此浏览器中。登录后保存到账号，退出登录后切回浏览器的数据。两份数据不会自动复制。
+      keys:
+        heading: 键盘操作
+        body:
+          - Esc：从头开始 / Shift+Enter：查看答案（回想）/ Enter：判定（Handwriting）/ ⌘Z・Ctrl+Z：撤销一笔（手写板）
+  home:
+    show:
+      title: 首页
+      practice: 开始练习
+      empty: 还没有记录。从官方词包开始练习，或创建自己的词包吧。
+      catalog: 浏览官方词包
+      create: 创建词包
+      continue: 继续练习
+      last_practised: 最后练习 %{date}
+      more_words: 等 %{count} 个单词
+      choose_other: 选择其他列表
+      week: 本周总结
+      runs: 练习次数
+      runs_value: "%{count} 次"
+      streak: 连续练习
+      days: "%{count} 天"
+      recent_accuracy: 最近 10 次的正确率
+      practice_time: 练习时间
+      week_note: 增减为与上周同一星期、同一时刻之前的比较。
+      weak: 薄弱单词
+      times: "%{count} 次"
+      weak_practice: 只练习 %{count} 个薄弱单词
+      next: 接下来练习的列表
+  practice:
+    messages:
+      time: 用时
+      accuracy: 正确率
+      mistakes: 失误
+      seconds: 秒
+      missed_words: 打错的单词
+      weak_done: 薄弱单词复习完成（不计入记录）。
+      not_saved: 未关注的官方词包练习不会被记录。
+      save_failed: 无法保存记录。
+      read_as: 识别为“%{text}”
+      reading: 当前识别：%{text}
+      pad_loading: 正在加载手写板…
+      pad_failed: 无法加载手写板。
+    show:
+      title: 练习
+      word_count: "%{count} 个单词"
+      weak_note: 仅薄弱单词（不记录）
+      official_note: 未关注的官方列表（不记录）
+      list: 列表
+      device: 设备
+      mode: 模式
+      best: 最佳 %{accuracy} / %{time}
+      time: 时间
+      mistakes: 失误
+      accuracy: 正确率
+      input: 输入
+      paused: 已暂停 — 点击输入框即可继续
+      reveal: 查看答案（Shift+Enter）
+      restart: 从头开始（Esc）
+      input_method: 输入方式
+      pad: 手写板
+      field: 输入框
+      write_here: 在此书写
+      os_input_note: 用操作系统的手写输入（手写面板、手写键盘）抄写范本。
+      undo: 撤销一笔（⌘Z）
+      clear: 清除
+      reload_pad: 重新加载
+      check: 判定（Enter）
+      skip: 跳过
+      no_weak_words: 没有薄弱单词。
+    result:
+      result: 结果
+      again: 再来一次
+      full_list: 练习整个列表
+      sign_up: 注册后在其他设备上使用
+    starters:
+      heading: 开始练习吧
+      lead: 还没有词包。从官方词包开始，或创建自己的词包吧。
+      more: 浏览其他官方词包
+      create: 创建自己的词包
+  practice_records:
+    index:
+      title: 练习记录
+      list: 列表
+      all: 全部
+      best: "%{mode}的最佳："
+      empty: 还没有记录。
+      date: 日期时间
+      mode: 模式
+      time: 时间
+      accuracy: 正确率
+      mistakes: 失误
+      device: 设备
+      best_badge: 最佳
+      delete: 删除
+      delete_confirm: 要删除这条记录吗？
+    show:
+      title: 结果
+      time: 用时
+      accuracy: 正确率
+      mistakes: 失误
+      missed_count: 打错的单词
+      first: 这是该单词数下的第一条记录。
+      best_faster: 刷新最佳！比之前的最佳快了 %{difference}。
+      best_cleaner: 刷新最佳！虽然比之前的最佳慢了 %{difference}，但更加准确。
+      behind: "第 %{rank} 名。最佳为 %{accuracy} / %{time}。"
+      missed: 打错的单词
+      no_missed: 没有打错的单词。
+      again: 再来一次
+      weak_practice: 只练习薄弱单词
+      records: 练习记录
+    destroy:
+      deleted: 记录已删除。
+  rankings:
+    index:
+      title: 最佳记录
+      note: 比较当前单词数下的记录，先比正确率，再比用时。
+      empty: 此模式还没有记录。
+      count: "%{count} 条记录"
+      practice: 开始练习
+  packs:
+    read_only: 官方词包无法编辑。
+    index:
+      title: 单词包
+      create: 创建词包
+      catalog: 寻找官方词包
+      empty: 还没有词包。
+      official: 官方词包
+      own: 我的词包
+      runs: "练习 %{count} 次"
+      practice: 开始练习
+      import: 从 CSV 导入
+      import_note: 每行一个单词，按“显示, 输入, 注释”的顺序。省略输入时与显示相同。文件名将作为词包和列表的名称。
+      import_button: 导入
+    show:
+      add_list: 添加列表
+      rename: 重命名
+      official_page: 官方词包页面
+      delete: 删除词包
+      delete_confirm: 将删除“%{name}”及其列表和记录。确定吗？
+      edit: 编辑
+      delete_list: 删除
+      delete_list_confirm: 要删除列表“%{name}”及其记录吗？
+    new:
+      title: 创建词包
+    edit:
+      title: 重命名词包
+    create:
+      created: 词包已创建。来创建第一个列表吧。
+    update:
+      saved: 词包已保存。
+    destroy:
+      deleted: 已删除“%{name}”。
+    import:
+      no_file: 请选择文件。
+      default_name: 导入的列表
+      imported: "已导入 %{count} 个单词。"
+      failed: "无法导入：%{reason}"
+      not_utf8: 请选择 UTF-8 编码的文件。
+  word_lists:
+    form:
+      level: 级别（可选。例：初级）
+      words: 单词（每行一个。用制表符或逗号分隔显示、输入、注释）
+      placeholder: "ls\tls\t列出文件\npwd\tpwd\t当前目录"
+      words_note: 省略输入时与显示相同。更改单词数后，最佳记录只比较当前单词数下的记录。
+      writing: 用于手写练习（Typle Handwriting）
+      writing_off: 不使用
+      writing_note: 选择语言后，可以用 Handwriting 练习此列表。韩语还可以在应用的手写板上书写。
+    new:
+      title: 创建列表
+    edit:
+      title: 编辑列表
+    create:
+      created: 已创建列表“%{name}”。
+    update:
+      saved: 列表已保存。
+    destroy:
+      deleted: 已删除列表“%{name}”。
+  catalog:
+    card:
+      size: "%{lists} 个列表 · %{words} 个单词"
+      start: 用这个词包开始
+      followed: 已关注
+    index:
+      title: 官方词包
+      lead: "共 %{count} 个词包。关注后会加入你的词包并保留记录（内容保持官方版本，无法编辑）。符合你兴趣的词包排在前面。"
+      categories: 分类
+      all: 全部
+    show:
+      practice: 开始练习
+      open_own: 在我的词包中查看
+      unfollow: 取消关注
+      unfollow_confirm: 取消关注后，此词包的记录也会被删除。确定吗？
+      follow_and_practice: 用这个词包练习
+      follow: 关注
+      try: 不关注直接练习
+      more_words: 等 %{count} 个单词
+    follow:
+      followed: 已关注“%{name}”。
+    unfollow:
+      unfollowed: 已取消关注（记录也已删除）。
+  interests:
+    show:
+      title: 兴趣
+      lead: 选择感兴趣的内容后，符合的官方词包会排在前面。可以在下方列表中批量关注。
+      note: 只选择分类时，该分类下的所有词包都会匹配。
+      packs: 符合兴趣的官方词包（%{count}）
+      no_packs: 没有符合的词包。
+      unfollow_note: 取消勾选的词包将被取消关注，其记录也会被删除。
+      apply: 应用关注
+      apply_confirm: 取消勾选的词包的记录将被删除。确定吗？
+    update:
+      saved: 兴趣已保存。
+    packs:
+      saved: 关注已应用。
+  settings:
+    show:
+      title: 输入
+      ignore_accents: 特殊字符简易输入
+      ignore_accents_note: 可以用不带符号的字母（a、n、c）输入 á、ñ、č 等，用拉丁字母输入俄语西里尔字母（привет → privet、ш → sh），用 ss 输入 ß，用 ? 输入 ¿。
+      ignore_case: 不区分大小写
+      ignore_case_note: 将 A 和 a、É 和 é 视为同一字符。
+    update:
+      saved: 设置已保存。
+    general:
+      title: 通用
+      language: 显示语言
+      language_note: 所选语言会在此浏览器中保存一年。单词列表和记录的内容不会被翻译。
+      theme: 主题
+      theme_note: 用顶部的 ☀（浅色）、☾（深色）、◐（跟随系统）切换。所选主题保存在此浏览器中。
+  sessions:
+    new:
+      title: 登录
+      password: 密码
+      submit: 登录
+      github: 使用 GitHub 登录
+      forgot_id: 忘记 ID
+      forgot_password: 忘记密码
+      no_account: 还没有账号？
+      sign_up: 立即注册
+      guest_note: 登录后会切换到账号的数据。此浏览器的数据会保留，退出登录后即可恢复。
+    create:
+      failed: ID 或密码不正确。
+    destroy:
+      signed_out: 已退出登录，已切回此浏览器的数据。
+  registrations:
+    new:
+      title: 创建账号
+      login_id: ID（半角字母、数字和 _ . -，3〜32 个字符）
+      email: 邮箱地址（可选。忘记密码或 ID 时使用）
+      password: 密码（至少 8 个字符）
+      submit: 注册
+      have_account: 已有账号？
+      separate_note: 此浏览器的数据不会复制到新账号。
+    create:
+      created: 账号已创建。
+  passwords:
+    invalid_link: 链接无效或已过期。请重试。
+    new:
+      title: 忘记密码
+      lead: 我们会向账号已验证的邮箱地址发送重设密码的链接。
+      submit: 发送链接
+    create:
+      sent: 如果该邮箱地址已注册，我们已发送重设密码的链接。
+    edit:
+      title: 新密码
+      submit: 设置密码
+    update:
+      saved: 密码已设置。请登录。
+  login_id_reminders:
+    new:
+      title: 忘记 ID
+      lead: 我们会向账号已验证的邮箱地址发送 ID。
+      submit: 发送 ID
+    create:
+      sent: 如果该邮箱地址已注册，我们已发送 ID。
+  email_confirmations:
+    show:
+      confirmed: 邮箱地址已验证。
+      invalid: 链接无效或已过期。
+  omniauth_callbacks:
+    github:
+      taken: 此 GitHub 账号已与其他账号关联。
+      linked: 已关联 GitHub（%{login}）。
+      signed_in: 已使用 GitHub（%{login}）登录。
+    failure:
+      failed: 无法使用 GitHub 登录。

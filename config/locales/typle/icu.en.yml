@@ -1,0 +1,34 @@
+# typle-r's messages with more than one plural or a select, kept in their ICU form (IcuMessage).
+en:
+  typle:
+    dashboard:
+      change:
+        same: '__icu:{recent, select, none {Same as } latest {Latest run: same as
+          } other {Average of last {recentCount}: same as }}{previous, select, latest
+          {the run before} other {the previous {previousCount}}}'
+        different: '__icu:{recent, select, none {} latest {Latest run: } other {Average
+          of last {recentCount}: }}{difference} vs. {previous, select, latest {the
+          run before} other {the previous {previousCount}}}'
+        seconds: __icu:{direction, select, up {{value} s slower} other {{value} s
+          faster}}
+        points: __icu:{direction, select, up {+{value} pts} other {−{value} pts}}
+    devices:
+      deleteDescription: __icu:{removal} {records}{current, select, yes { The device
+        this browser uses for practice will go back to “Default”.} other {}}
+    interests:
+      packs:
+        done: '__icu:{followed, plural, =0 {} one {Followed # pack. } other {Followed
+          # packs. }}{unfollowed, plural, =0 {} one {Unfollowed # pack.} other {Unfollowed
+          # packs.}}'
+    officialPack:
+      stats: __icu:{lists, plural, one {# list} other {# lists}} · {words, plural,
+        one {# item} other {# items}}
+    practice:
+      result:
+        saved: __icu:Saved to your practice history. This run ranks {rank, selectordinal,
+          one {#st} two {#nd} few {#rd} other {#th}} for this list.
+    wordLists:
+      delete:
+        packDescription: __icu:This also deletes {lists, plural, one {# list} other
+          {# lists}} and {records, plural, one {# practice record} other {# practice
+          records}}.

@@ -1,0 +1,22 @@
+---
+en:
+  design:
+    common:
+      pack_stats:
+        lists:
+          one: "%{count} list"
+          other: "%{count} lists"
+        words:
+          one: "%{count} item"
+          other: "%{count} items"
+        stats: "%{lists} · %{words}"
+      about:
+        browser_p1: Saved on the server, tied to this browser
+        browser_p2: Not synced with other devices or browsers
+        browser_p3: Lost if this browser's cookies are deleted
+      auth:
+        password_hint: 10–72 characters. It can't be the same as your ID.
+  errors:
+    messages:
+      same_as_login_id: can't be the same as your ID
+      too_many_words: A list can contain up to 1,000 words.

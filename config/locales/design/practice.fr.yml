@@ -1,0 +1,171 @@
+---
+fr:
+  design:
+    practice:
+      starter:
+        title: Par quoi voulez-vous commencer ?
+        description: Aucun pack pour l’instant. Choisissez un pack officiel pour le suivre et commencer tout de suite. Vous pourrez ne plus le suivre plus tard.
+        first: 'Première liste : %{list}'
+        start: Commencer avec ce pack
+        more_html: "%{catalog_open}Voir les autres packs officiels%{close} / %{create_open}Créer votre propre pack%{close}"
+      stats:
+        label: Session en cours
+        elapsed: Écoulé
+        speed: Vitesse
+        speed_unit: frappes/min
+        accuracy: Précision
+        mistakes: Erreurs
+        word_speed_unit: mots/min
+      progress:
+        label: Progression des mots
+        value:
+          one: "%{current} / %{count} mot"
+          other: "%{current} / %{count} mots"
+      feedback:
+        mismatch: Le caractère %{position} ne correspond pas. Tapez le bon caractère.
+        composing: Le texte en cours de composition sera vérifié une fois validé
+        restart: Recommencer
+      header:
+        switch_list: 'Changer de liste de mots (actuelle : %{name})'
+        word_count:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        restart: Recommencer
+        restart_title: Recommencer (Esc)
+        restart_short: Recommencer
+        live_stats: Afficher les statistiques en direct
+        aside: Afficher le panneau latéral (listes de mots)
+      word:
+        type_this: À saisir
+        resume: Cliquez ou appuyez sur une touche pour reprendre
+        input_label: Saisissez le texte affiché
+        simple_keys: Saisie simplifiée
+        simple_keys_all: Tableau complet
+      recall:
+        toggle: Taper de mémoire
+        reveal: Voir la réponse
+        no_hint: Aucun indice
+        result_heading: Tapé de mémoire
+      upcoming:
+        next: À suivre
+        last: C’est le dernier mot
+        more: et %{count} de plus
+        show_all: Afficher tous les mots
+        all_words: Tous les mots
+        done: "(terminé)"
+        current: "(en cours)"
+        pending: "(à saisir)"
+      aside:
+        label: Listes de mots
+        lists: Listes de mots
+        create: Nouveau pack
+        best: Meilleurs résultats
+        best_order: Par précision décroissante, puis par vitesse
+        best_order_at_count:
+          one: Par précision décroissante, puis par vitesse · résultats à %{count} mot uniquement
+          other: Par précision décroissante, puis par vitesse · résultats à %{count} mots uniquement
+        all_best: Tous les meilleurs résultats
+        filter: Filtrer les listes de mots par nom, catégorie ou étiquette
+      result:
+        label: Résultat de l’entraînement
+        title: Bien joué !
+        new_best: Nouveau record personnel
+        completed: 'Entraînement terminé : %{name}'
+        time: Temps
+        seconds: s
+        accuracy: Précision
+        mistakes:
+          one: "%{count} erreur"
+          other: "%{count} erreurs"
+        speed: Vitesse
+        speed_unit: frappes/min
+        correct:
+          one: "%{count} caractère"
+          other: "%{count} caractères"
+        words: Mots
+        word_unit:
+          one: mot
+          other: mots
+        first_at_count:
+          one: Premier résultat à %{count} mot
+          other: Premier résultat à %{count} mots
+        first_for_list: Premier résultat pour cette liste
+        faster: "−%{seconds} s par rapport au meilleur"
+        best_by_accuracy: Meilleur résultat grâce à la précision
+        behind: 'Meilleur : %{time} s · %{accuracy} %'
+        behind_no_accuracy: 'Meilleur : %{time} s · précision non enregistrée'
+        save_failed: Impossible d’enregistrer le résultat. Il reste affiché sur cet écran. Vérifiez votre connexion, puis réessayez.
+        retry: Réessayer l’enregistrement
+        saved: Résultat enregistré dans l’historique. Il se classe %{rank} pour cette liste.
+        saving: Enregistrement du résultat…
+        again: Encore
+        choose_list: Choisir une autre liste
+        view_records: Voir l’historique
+        word_speed_unit: mots/min
+        correct_words:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        mistakes_words:
+          one: "%{count} erreur"
+          other: "%{count} erreurs"
+        share_on_x: Partager sur X
+        share_text: J’ai tapé « %{name} » en %{time} s avec %{accuracy} % de précision sur Typle
+        review_note: Les révisions des mots manqués ne sont pas enregistrées.
+        review_note_weak: Cette révision n’est pas enregistrée. Les mots saisis sans erreur ne sont plus des mots difficiles.
+        reviewing:
+          one: Révision de %{count} mot manqué (non enregistrée)
+          other: Révision de %{count} mots manqués (non enregistrée)
+        missed:
+          tile: Mots manqués
+          of: "/ %{count}"
+          title: Mots manqués
+          none: Aucun mot manqué.
+          typed: "%{typed} tapé au caractère %{position}"
+          wrote: "« %{typed} » écrit"
+          revealed: Réponse affichée
+          skipped: Passé
+          space: Espace
+          count:
+            one: "%{count} fois"
+            other: "%{count} fois"
+          review:
+            one: Réviser le mot manqué
+            other: Réviser les %{count} mots manqués
+        reviewing_weak:
+          one: Révision de %{count} mot difficile (non enregistrée)
+          other: Révision de %{count} mots difficiles (non enregistrée)
+      best:
+        label: Top 5 des meilleurs résultats
+        rank: Rang
+        time: Temps
+        accuracy: Précision
+        device: Appareil
+        seconds: "%{time} s"
+        no_accuracy: Non enregistrée
+        current: Ce résultat
+        empty: Aucun résultat pour l’instant. Terminez une session pour voir ici vos 5 meilleurs résultats.
+      mode_label: Mode d’entraînement
+      mode_typing: Frappe
+      mode_writing: Handwriting
+      writing_judge: Vérifier
+      writing_skip: Passer
+      writing_read: Lu comme « %{text} »
+      writing_input: Écrivez ici à la main
+      writing_input_method: Mode d’écriture
+      writing_input_pad: Zone d’écriture
+      writing_input_field: Champ de texte
+      writing_pad: Zone d’écriture manuscrite
+      writing_pad_hint: Écrivez ici
+      writing_pad_loading: Préparation de la reconnaissance de l’écriture…
+      writing_pad_failed: Impossible de charger la reconnaissance de l’écriture.
+      writing_pad_retry: Réessayer
+      writing_pad_undo: Annuler le trait
+      writing_pad_clear: Effacer
+      writing_pad_reading: 'Lu : %{text}'
+      device_menu:
+        label: 'Appareil : %{device}'
+        locked: Impossible de changer d’appareil pendant l’entraînement
+        change: Changer d’appareil
+        unselected: 'Appareil : non sélectionné'
+        heading: Appareil (modifiable uniquement avant de commencer)
+        manage: Gérer les appareils

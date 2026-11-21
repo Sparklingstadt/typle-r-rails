@@ -1,0 +1,550 @@
+fr:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "La validation a échoué : %{errors}"
+    models:
+      user: Utilisateur
+      pack: Pack
+      word_list: Liste
+      device: Appareil
+    attributes:
+      user:
+        login_id: ID
+        email: Adresse e-mail
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
+      pack:
+        name: Nom du pack
+      word_list:
+        name: Nom de la liste
+        writing_language: Langue d'écriture manuscrite
+      device:
+        name: Nom de l'appareil
+        layout: Disposition / notes
+      practice_record:
+        mode: Mode
+  errors:
+    format: "%{attribute} %{message}"
+    rate_limited: Veuillez réessayer dans un moment.
+    messages:
+      blank: doit être rempli(e)
+      taken: est déjà utilisé(e)
+      too_short:
+        one: est trop court (au moins %{count} caractère)
+        other: est trop court (au moins %{count} caractères)
+      too_long:
+        one: est trop long (pas plus de %{count} caractère)
+        other: est trop long (pas plus de %{count} caractères)
+      invalid: n'est pas valide
+      confirmation: ne concorde pas
+      inclusion: n'est pas inclus(e) dans la liste
+      not_a_number: n'est pas un nombre
+      not_an_integer: doit être un nombre entier
+      greater_than: doit être supérieur à %{count}
+      greater_than_or_equal_to: doit être supérieur ou égal à %{count}
+      less_than_or_equal_to: doit être inférieur ou égal à %{count}
+      wrong_length:
+        one: ne fait pas la bonne longueur (doit comporter %{count} caractère)
+        other: ne fait pas la bonne longueur (doit comporter %{count} caractères)
+      required: est obligatoire
+      password_too_long: ne doit pas dépasser 72 octets
+      login_id_format: ne peut contenir que des lettres, des chiffres et _ . -
+      taken_device: est identique à « %{name} »
+      device_limit:
+        one: Vous pouvez enregistrer jusqu'à %{count} appareil.
+        other: Vous pouvez enregistrer jusqu'à %{count} appareils.
+      wrong_current_password: Le mot de passe actuel est incorrect.
+      words_required: Saisissez au moins un mot.
+      word_fields_required: "Ligne %{line} : l'affichage et la saisie ne peuvent pas être vides."
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      short_date_time: "%d/%m/%Y %H:%M"
+  date:
+    formats:
+      default: "%d/%m/%Y"
+  format:
+    seconds: "%{value} s"
+    minutes_seconds: "%{minutes} min %{seconds} s"
+    minutes:
+      one: "%{count} min"
+      other: "%{count} min"
+    hours_minutes: "%{hours} h %{minutes} min"
+  modes:
+    normal: Normal
+    recall: Rappel
+    writing: Handwriting
+  languages:
+    en: Anglais
+    ja: Japonais
+    zh-Hans: Chinois (simplifié)
+    zh-Hant: Chinois (traditionnel)
+    ko: Coréen
+    fr: Français
+    de: Allemand
+    es: Espagnol
+    ru: Russe
+    cs: Tchèque
+  forms:
+    save: Enregistrer
+    cancel: Annuler
+  words:
+    display: Affichage
+    input: Saisie
+    annotation: Note
+    index:
+      title: Tous les mots
+      search: Rechercher
+      placeholder: Rechercher dans les mots, saisies et notes
+      count:
+        one: "%{count} mot"
+        other: "%{count} mots"
+      capped: (300 premiers mots affichés)
+      list: Liste
+  devices:
+    default_name: Par défaut
+    none: Aucun
+    unrecorded: Non enregistré
+    index:
+      title: Appareils
+      lead: Enregistrez les claviers et ordinateurs sur lesquels vous vous entraînez, et vos résultats indiqueront l'appareil utilisé. Renommer un appareil ou modifier ses notes ne change pas les résultats passés.
+      this_browser: Appareil utilisé dans ce navigateur
+      use: Appareil utilisé
+      name: Nom de l'appareil
+      layout: Disposition / notes
+      layout_placeholder: "ex. : AZERTY, US, touches inversées"
+      runs: Sessions
+      last: Dernier entraînement
+      built_in: Intégré
+      edit: Modifier
+      delete: Supprimer
+      delete_confirm: Supprimer l'appareil « %{name} » ? Les résultats seront conservés.
+      add: Ajouter un appareil
+      use_new: Utiliser le nouvel appareil dans ce navigateur (s'il utilise actuellement l'appareil par défaut ou aucun)
+    create:
+      added: Appareil « %{name} » ajouté.
+    update:
+      saved: Appareil enregistré.
+    destroy:
+      deleted: Appareil « %{name} » supprimé.
+  dashboard:
+    never: Pas encore d'entraînement
+    idle:
+      one: Pas d'entraînement depuis %{count} jour
+      other: Pas d'entraînement depuis %{count} jours
+    low_accuracy: Précision récente %{accuracy} %
+  layouts:
+    application:
+      default_title: Typle — apprendre des mots en les tapant
+      skip: Aller au contenu
+      menu: Menu
+      storage_account: Enregistré dans votre compte
+      storage_browser: Enregistré dans ce navigateur
+      theme: Thème
+      theme_light: Clair
+      theme_dark: Sombre
+      theme_system: Système
+      sign_in: Se connecter
+      sign_up: S'inscrire
+      sign_out: Se déconnecter
+      home: Accueil
+      practice: Entraînement
+      play: S'entraîner
+      records: Historique
+      rankings: Meilleurs résultats
+      lists: Listes de mots
+      packs: Packs de mots
+      words: Tous les mots
+      catalog: Packs officiels
+      new_pack: Créer un pack
+      settings: Paramètres
+      general: Général
+      input: Saisie
+      interests: Centres d'intérêt
+      devices: Appareils
+      account: Compte
+      guide: Mode d'emploi
+      about: À propos de Typle
+  pages:
+    landing:
+      heading: Apprenez des mots en les tapant
+      lead:
+        one: Mémorisez commandes, syntaxe et mots étrangers en les tapant réellement au clavier. Créez vos propres listes de mots, ou commencez avec notre %{count} pack officiel.
+        other: Mémorisez commandes, syntaxe et mots étrangers en les tapant réellement au clavier. Créez vos propres listes de mots, ou commencez avec l'un des %{count} packs officiels.
+      start: S'entraîner sans se connecter
+      catalog: Voir les packs officiels
+      home: Aller à l'accueil
+      try: Essayez de taper un mot ici
+      packs: Packs officiels
+      list_count:
+        one: "%{count} liste"
+        other: "%{count} listes"
+      and_more: " et plus"
+      feature_lists: Vos propres listes de mots
+      feature_lists_text: Chaque mot comporte un affichage, une saisie et une note. Import et export en CSV possibles.
+      feature_recall: Rappel et écriture manuscrite
+      feature_recall_text: Masquez le mot et tapez-le à partir de la note seule, ou recopiez un modèle à la main.
+      feature_records: Résultats
+      feature_records_text: Consultez sur l'accueil votre meilleur résultat par liste, vos mots difficiles et le bilan de la semaine.
+      storage: Sans connexion, vos données sont enregistrées dans ce navigateur. Une fois connecté, elles sont enregistrées dans votre compte (rien n'est copié automatiquement).
+      guide: Mode d'emploi
+      about: À propos de Typle
+    about:
+      title: À propos de Typle
+      lead: Typle est un carnet de vocabulaire pour mémoriser des commandes et des mots étrangers en les tapant. C'est une réécriture en Ruby on Rails %{version} de typle-r, développé avec Next.js.
+      storage: Où sont stockées vos données
+      browser: Ce navigateur
+      account: Compte
+      where: Emplacement
+      browser_where: Données sur le serveur liées à ce navigateur (identifié par un cookie)
+      account_where: Données de votre compte
+      sync: Autres appareils
+      browser_sync: Non synchronisées
+      account_sync: Mêmes données une fois connecté
+      lost: Perdues si
+      browser_lost: Vous effacez les cookies du navigateur
+      account_lost: Vous supprimez votre compte
+      now: "Emplacement actuel : %{storage}"
+      tech: Technologies utilisées
+      licenses: Licences
+      licenses_text: Le pavé d'écriture manuscrite utilise les logiciels et modèles suivants.
+    guide:
+      title: Mode d'emploi
+      step1: S'entraîner
+      step2: Créer des listes de mots
+      step3: Voir les meilleurs résultats
+      toc: Sommaire
+      practice:
+        heading: S'entraîner
+        body:
+          - Choisissez une liste dans « S'entraîner » et tapez le mot affiché dans le champ de saisie. Le chronomètre démarre à la première touche et s'arrête au dernier caractère. Quitter le champ de saisie le met en pause.
+          - En mode « Rappel », le mot est masqué et vous le tapez à partir de la note seule. En cas de blocage, utilisez « Voir la réponse » (Shift+Enter).
+          - Les listes avec une langue d'écriture manuscrite peuvent être travaillées en « Handwriting ». Recopiez le modèle avec la saisie manuscrite de votre système. Les listes en coréen peuvent aussi être écrites sur le pavé manuscrit de l'application.
+      lists:
+        heading: Créer des listes de mots
+        body:
+          - Créez un pack avec « Créer un pack », puis ajoutez-y des listes. Un mot par ligne, en séparant affichage, saisie et note par des tabulations ou des virgules.
+          - Suivre un pack officiel l'ajoute à vos packs. Son contenu reste officiel et ne peut pas être modifié.
+      results:
+        heading: Voir les résultats
+        body:
+          - À la fin, l'écran de résultats affiche le temps, la précision et les mots manqués. Les meilleurs résultats comparent les sessions au nombre de mots actuel, par précision puis par temps.
+          - Sur l'accueil, vous pouvez reprendre là où vous vous étiez arrêté et consulter vos mots difficiles et le bilan de la semaine.
+      devices:
+        heading: Enregistrer des appareils
+        body:
+          - Enregistrez vos claviers dans « Appareils » et choisissez-en un sur l'écran d'entraînement pour que vos résultats indiquent l'appareil utilisé.
+      storage:
+        heading: Stockage et données
+        body:
+          - Sans connexion, vos données sont enregistrées dans ce navigateur. Une fois connecté, elles sont enregistrées dans votre compte ; en vous déconnectant, vous retrouvez les données du navigateur. Les deux ne sont jamais copiées automatiquement.
+      keys:
+        heading: Raccourcis clavier
+        body:
+          - "Esc : recommencer / Shift+Enter : voir la réponse (Rappel) / Enter : valider (Handwriting) / ⌘Z ou Ctrl+Z : annuler un trait (pavé manuscrit)"
+  home:
+    show:
+      title: Accueil
+      practice: S'entraîner
+      empty: Aucun résultat pour l'instant. Commencez avec un pack officiel ou créez le vôtre.
+      catalog: Voir les packs officiels
+      create: Créer un pack
+      continue: Reprendre
+      last_practised: Dernier entraînement %{date}
+      more_words:
+        one: et %{count} autre mot
+        other: et %{count} autres mots
+      choose_other: Choisir une autre liste
+      week: Cette semaine
+      runs: Sessions
+      runs_value:
+        one: "%{count} session"
+        other: "%{count} sessions"
+      streak: Série
+      days:
+        one: "%{count} jour"
+        other: "%{count} jours"
+      recent_accuracy: Précision (10 dernières sessions)
+      practice_time: Temps d'entraînement
+      week_note: Les variations sont comparées à la semaine dernière, jusqu'au même jour et à la même heure.
+      weak: Mots difficiles
+      times:
+        one: "%{count} fois"
+        other: "%{count} fois"
+      weak_practice:
+        one: Travailler uniquement votre %{count} mot difficile
+        other: Travailler uniquement vos %{count} mots difficiles
+      next: Listes à travailler ensuite
+  practice:
+    messages:
+      time: Temps
+      accuracy: Précision
+      mistakes: Erreurs
+      seconds: s
+      missed_words: Mots manqués
+      weak_done: Révision des mots difficiles terminée (non enregistrée).
+      not_saved: Les entraînements sur des packs officiels non suivis ne sont pas enregistrés.
+      save_failed: Impossible d'enregistrer le résultat.
+      read_as: Lu comme « %{text} »
+      reading: "Lecture actuelle : %{text}"
+      pad_loading: Chargement du pavé manuscrit…
+      pad_failed: Impossible de charger le pavé manuscrit.
+    show:
+      title: S'entraîner
+      word_count:
+        one: "%{count} mot"
+        other: "%{count} mots"
+      weak_note: Mots difficiles uniquement (non enregistré)
+      official_note: Liste officielle non suivie (non enregistré)
+      list: Liste
+      device: Appareil
+      mode: Mode
+      best: Record %{accuracy} / %{time}
+      time: Temps
+      mistakes: Erreurs
+      accuracy: Précision
+      input: Saisie
+      paused: En pause — cliquez sur le champ de saisie pour reprendre
+      reveal: Voir la réponse (Shift+Enter)
+      restart: Recommencer (Esc)
+      input_method: Méthode de saisie
+      pad: Pavé manuscrit
+      field: Champ de saisie
+      write_here: Écrivez ici
+      os_input_note: Recopiez le modèle avec la saisie manuscrite de votre système (panneau ou clavier manuscrit).
+      undo: Annuler un trait (⌘Z)
+      clear: Effacer
+      reload_pad: Recharger
+      check: Valider (Enter)
+      skip: Passer
+      no_weak_words: Aucun mot difficile.
+    result:
+      result: Résultat
+      again: Recommencer
+      full_list: Travailler toute la liste
+      sign_up: S'inscrire pour l'utiliser sur d'autres appareils
+    starters:
+      heading: Commençons l'entraînement
+      lead: Vous n'avez pas encore de pack. Commencez avec un pack officiel ou créez le vôtre.
+      more: Voir d'autres packs officiels
+      create: Créer votre propre pack
+  practice_records:
+    index:
+      title: Historique
+      list: Liste
+      all: Tout
+      best: "Record en %{mode} :"
+      empty: Aucun résultat pour l'instant.
+      date: Date
+      mode: Mode
+      time: Temps
+      accuracy: Précision
+      mistakes: Erreurs
+      device: Appareil
+      best_badge: Record
+      delete: Supprimer
+      delete_confirm: Supprimer ce résultat ?
+    show:
+      title: Résultat
+      time: Temps
+      accuracy: Précision
+      mistakes: Erreurs
+      missed_count: Mots manqués
+      first: Premier résultat avec ce nombre de mots.
+      best_faster: Nouveau record ! %{difference} plus rapide que votre record précédent.
+      best_cleaner: Nouveau record ! %{difference} plus lent que votre record précédent, mais plus précis.
+      behind: "%{rank}e place. Votre record est %{accuracy} / %{time}."
+      missed: Mots manqués
+      no_missed: Aucun mot manqué.
+      again: Recommencer
+      weak_practice: Travailler uniquement les mots difficiles
+      records: Historique
+    destroy:
+      deleted: Résultat supprimé.
+  rankings:
+    index:
+      title: Meilleurs résultats
+      note: Résultats au nombre de mots actuel, comparés par précision puis par temps.
+      empty: Aucun résultat dans ce mode pour l'instant.
+      count:
+        one: "%{count} résultat"
+        other: "%{count} résultats"
+      practice: S'entraîner
+  packs:
+    read_only: Les packs officiels ne peuvent pas être modifiés.
+    index:
+      title: Packs de mots
+      create: Créer un pack
+      catalog: Trouver des packs officiels
+      empty: Aucun pack pour l'instant.
+      official: Packs officiels
+      own: Vos packs
+      runs:
+        one: "%{count} session"
+        other: "%{count} sessions"
+      practice: S'entraîner
+      import: Importer un CSV
+      import_note: Un mot par ligne, sous la forme « affichage, saisie, note ». Si la saisie est omise, elle reprend l'affichage. Le nom du fichier devient le nom du pack et de la liste.
+      import_button: Importer
+    show:
+      add_list: Ajouter une liste
+      rename: Renommer
+      official_page: Page du pack officiel
+      delete: Supprimer le pack
+      delete_confirm: Supprimer « %{name} » avec ses listes et ses résultats. Êtes-vous sûr ?
+      edit: Modifier
+      delete_list: Supprimer
+      delete_list_confirm: Supprimer la liste « %{name} » avec ses résultats ?
+    new:
+      title: Créer un pack
+    edit:
+      title: Renommer le pack
+    create:
+      created: Pack créé. Créez maintenant votre première liste.
+    update:
+      saved: Pack enregistré.
+    destroy:
+      deleted: "« %{name} » supprimé."
+    import:
+      no_file: Veuillez choisir un fichier.
+      default_name: Liste importée
+      imported:
+        one: "%{count} mot importé."
+        other: "%{count} mots importés."
+      failed: "Import impossible : %{reason}"
+      not_utf8: Veuillez choisir un fichier UTF-8.
+  word_lists:
+    form:
+      level: "Niveau (facultatif, ex. : Débutant)"
+      words: Mots (un par ligne ; séparez affichage, saisie et note par des tabulations ou des virgules)
+      placeholder: "ls\tls\tLister les fichiers\npwd\tpwd\tRépertoire courant"
+      words_note: Si la saisie est omise, elle reprend l'affichage. Si vous changez le nombre de mots, les records ne comparent que les sessions au nouveau nombre de mots.
+      writing: Utiliser pour l'écriture manuscrite (Typle Handwriting)
+      writing_off: Ne pas utiliser
+      writing_note: Choisissez une langue pour travailler cette liste en Handwriting. Le coréen peut aussi être écrit sur le pavé manuscrit de l'application.
+    new:
+      title: Créer une liste
+    edit:
+      title: Modifier la liste
+    create:
+      created: Liste « %{name} » créée.
+    update:
+      saved: Liste enregistrée.
+    destroy:
+      deleted: Liste « %{name} » supprimée.
+  catalog:
+    card:
+      size: "Listes : %{lists} · Mots : %{words}"
+      start: Commencer avec ce pack
+      followed: Suivi
+    index:
+      title: Packs officiels
+      lead:
+        one: "%{count} pack. Suivre un pack l'ajoute à vos packs et conserve vos résultats (son contenu reste officiel et non modifiable). Les packs correspondant à vos centres d'intérêt apparaissent en premier."
+        other: "%{count} packs. Suivre un pack l'ajoute à vos packs et conserve vos résultats (son contenu reste officiel et non modifiable). Les packs correspondant à vos centres d'intérêt apparaissent en premier."
+      categories: Catégories
+      all: Tout
+    show:
+      practice: S'entraîner
+      open_own: Voir dans vos packs
+      unfollow: Ne plus suivre
+      unfollow_confirm: Ne plus suivre ce pack supprime aussi ses résultats. Êtes-vous sûr ?
+      follow_and_practice: S'entraîner avec ce pack
+      follow: Suivre
+      try: S'entraîner sans suivre
+      more_words:
+        one: et %{count} autre mot
+        other: et %{count} autres mots
+    follow:
+      followed: Vous suivez « %{name} ».
+    unfollow:
+      unfollowed: Vous ne suivez plus ce pack (résultats supprimés).
+  interests:
+    show:
+      title: Centres d'intérêt
+      lead: Choisissez vos centres d'intérêt et les packs officiels correspondants apparaîtront en premier. Vous pouvez en suivre plusieurs d'un coup dans la liste ci-dessous.
+      note: Choisir uniquement une catégorie inclut tous ses packs.
+      packs:
+        one: Pack officiel correspondant à vos centres d'intérêt (%{count})
+        other: Packs officiels correspondant à vos centres d'intérêt (%{count})
+      no_packs: Aucun pack correspondant.
+      unfollow_note: Les packs décochés ne seront plus suivis et leurs résultats seront supprimés.
+      apply: Appliquer les suivis
+      apply_confirm: Les résultats des packs décochés seront supprimés. Êtes-vous sûr ?
+    update:
+      saved: Centres d'intérêt enregistrés.
+    packs:
+      saved: Suivis appliqués.
+  settings:
+    show:
+      title: Saisie
+      ignore_accents: Saisie simplifiée des caractères spéciaux
+      ignore_accents_note: Tapez á, ñ, č, etc. sans accents (a, n, c), le cyrillique russe en lettres latines (привет → privet, ш → sh), ß en ss et ¿ en ?.
+      ignore_case: Ignorer la casse
+      ignore_case_note: Considère A et a, É et é comme le même caractère.
+    update:
+      saved: Paramètres enregistrés.
+    general:
+      title: Général
+      language: Langue d'affichage
+      language_note: La langue choisie est enregistrée dans ce navigateur pendant un an. Le contenu des listes et des résultats n'est pas traduit.
+      theme: Thème
+      theme_note: Changez avec ☀ (clair), ☾ (sombre) et ◐ (système) en haut. Votre choix est enregistré dans ce navigateur.
+  sessions:
+    new:
+      title: Connexion
+      password: Mot de passe
+      submit: Se connecter
+      github: Se connecter avec GitHub
+      forgot_id: ID oublié
+      forgot_password: Mot de passe oublié
+      no_account: Pas encore de compte ?
+      sign_up: S'inscrire
+      guest_note: En vous connectant, vous passez aux données de votre compte. Les données de ce navigateur sont conservées et reviennent à la déconnexion.
+    create:
+      failed: ID ou mot de passe incorrect.
+    destroy:
+      signed_out: Déconnecté. Vous retrouvez les données de ce navigateur.
+  registrations:
+    new:
+      title: Créer un compte
+      login_id: ID (lettres, chiffres, _ . - ; 3 à 32 caractères)
+      email: Adresse e-mail (facultative ; utilisée en cas d'oubli du mot de passe ou de l'ID)
+      password: Mot de passe (8 caractères minimum)
+      submit: S'inscrire
+      have_account: Déjà inscrit ?
+      separate_note: Les données de ce navigateur ne seront pas copiées dans le nouveau compte.
+    create:
+      created: Compte créé.
+  passwords:
+    invalid_link: Le lien est invalide ou a expiré. Veuillez réessayer.
+    new:
+      title: Mot de passe oublié
+      lead: Nous enverrons un lien de réinitialisation à l'adresse e-mail confirmée de votre compte.
+      submit: Envoyer le lien
+    create:
+      sent: Si cette adresse e-mail est enregistrée, un lien de réinitialisation a été envoyé.
+    edit:
+      title: Nouveau mot de passe
+      submit: Définir le mot de passe
+    update:
+      saved: Mot de passe défini. Veuillez vous connecter.
+  login_id_reminders:
+    new:
+      title: ID oublié
+      lead: Nous enverrons votre ID à l'adresse e-mail confirmée de votre compte.
+      submit: Envoyer l'ID
+    create:
+      sent: Si cette adresse e-mail est enregistrée, votre ID a été envoyé.
+  email_confirmations:
+    show:
+      confirmed: Adresse e-mail confirmée.
+      invalid: Le lien est invalide ou a expiré.
+  omniauth_callbacks:
+    github:
+      taken: Ce compte GitHub est lié à un autre compte.
+      linked: Lié à GitHub (%{login}).
+      signed_in: Connecté avec GitHub (%{login}).
+    failure:
+      failed: Impossible de se connecter avec GitHub.

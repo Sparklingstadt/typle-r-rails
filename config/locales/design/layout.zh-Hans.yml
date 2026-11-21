@@ -1,0 +1,43 @@
+---
+zh-Hans:
+  layouts:
+    application:
+      top_bar: 顶栏
+      open_menu: 打开菜单
+      close_menu: 关闭菜单
+      main_navigation: 主导航
+      help: 帮助
+      github: GitHub
+      storage_label: 保存位置：
+      storage_account_detail: 保存到账号，并在登录的设备之间同步。
+      storage_browser_detail: 由于未登录，数据只保存在此浏览器中。
+      storage_account: 保存到账号
+      storage_browser: 保存在此浏览器
+      theme_label: 深色模式
+      to_light: 切换到浅色模式
+      to_dark: 切换到深色模式
+      theme_save_failed: 无法保存设置，仅在此页面内切换。
+      account_menu: 账号菜单
+      manage_devices: 管理设备
+      signed_in_with_github: 已通过 GitHub 登录
+      signed_in_with_password: 已使用 ID 登录
+      sign_in: 登录
+      sign_out: 退出登录
+      skip: 跳到正文
+      menu: 菜单
+      home: 首页
+      play: 开始练习
+      records: 练习记录
+      rankings: 最佳记录
+      packs: 单词包
+      words: 单词一览
+      new_pack: 创建包
+      general: 通用
+      input: 输入
+      interests: 兴趣
+      devices: 设备
+      guide: 使用方法
+      about: 关于 Typle
+      practice: 练习
+      lists: 单词列表
+      settings: 设置

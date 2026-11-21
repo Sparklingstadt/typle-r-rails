@@ -1,0 +1,260 @@
+---
+fr:
+  design:
+    records:
+      history:
+        title: Historique
+        intro: Vos entraînements, du plus récent au plus ancien. Les meilleurs résultats de chaque liste sont dans <rankings>Meilleurs résultats</rankings>, et votre progression sur l’<home>Accueil</home>.
+        filter:
+          pack: Pack
+          all_packs: Tous les packs
+          list: Liste
+          all_lists: Toutes les listes
+          device: Appareil
+          all_devices: Tous les appareils
+          clear: Effacer les filtres
+          count:
+            one: "%{count} résultat"
+            other: "%{count} résultats"
+          filtered_count:
+            one: "%{matched} sur %{count} résultat"
+            other: "%{matched} sur %{count} résultats"
+        filter_menu:
+          label: 'Filtre : %{name} (actuel : %{current})'
+          all: Tout
+          count: "%{count} fois"
+        columns:
+          time: Heure
+          device_words: Appareil · mots
+          list_device: Liste · appareil
+          duration: Temps
+          accuracy: Précision
+          per_word: Par mot
+          mistakes: Erreurs
+        day:
+          heading: "%{relative} · %{date}"
+          summary:
+            one: "%{count} entraînement · %{duration}"
+            other: "%{count} entraînements · %{duration}"
+        recall_badge: De mémoire
+        more: Afficher plus (%{count} restants)
+        note: Le nombre de mots et le nom de l’appareil sont ceux du moment de l’entraînement.
+        note_missing: "« — » indique une valeur non enregistrée (par exemple, pour les résultats enregistrés par une version précédente)."
+        row:
+          best: Meilleur
+          best_title: 'Meilleur résultat de cette liste (premier parmi les résultats au nombre de mots actuel : précision la plus élevée, puis temps le plus court)'
+          words:
+            one: "%{count} mot"
+            other: "%{count} mots"
+          seconds: "%{value} s"
+          duration: Temps
+          accuracy: Précision
+          low_accuracy: Précision inférieure à %{limit} %
+          per_word: Par mot
+          per_word_unit: s/mot
+          mistakes: Erreurs
+          delete: Supprimer
+          delete_label: Supprimer le résultat de %{name} (%{date} %{time})
+        delete:
+          title: Supprimer ce résultat ?
+          description: Un résultat de « %{name} » sera supprimé.
+          done: Le résultat de « %{name} » (%{date} %{time}) a été supprimé.
+          list: Liste
+          when: Date, heure et appareil
+          result: Résultat
+          accuracy: Précision %{value}
+          mistakes: Erreurs %{value}
+          best_next: C’est le meilleur résultat de la liste. Après suppression, le meilleur sera %{time} (%{accuracy}).
+          best_last: C’est le meilleur résultat de la liste. Après suppression, la liste n’aura plus aucun résultat.
+        empty:
+          title: Aucun résultat pour l’instant
+          description: 'Tapez une liste jusqu’au bout dans « S’entraîner » : le temps, la précision, les erreurs et l’appareil utilisé seront conservés ici.'
+          practice: S’entraîner
+        filtered_empty:
+          list_title: Aucun résultat pour « %{name} » pour l’instant
+          list_description: Vos résultats apparaîtront ici après un entraînement.
+          title: Aucun résultat ne correspond aux filtres
+          description: Essayez une autre liste ou un autre appareil.
+          practice_list: S’entraîner sur cette liste
+        summary:
+          words:
+            one: "%{count} mot"
+            other: "%{count} mots"
+          runs:
+            one: "%{count} entraînement"
+            other: "%{count} entraînements"
+          last: 'Dernier : %{day}'
+          best: Meilleur (%{mode})
+          rankings: Meilleurs résultats
+          practice: S’entraîner
+        mode_writing: Handwriting
+      rankings:
+        title: Meilleurs résultats
+        intro: Votre record personnel pour chaque liste de mots. Choisissez une liste pour voir ses meilleurs résultats et l’évolution du temps.
+        reload: Recharger
+        filter:
+          device: Appareil
+          all_devices: Tous les appareils
+          deleted: "%{name} (supprimé)"
+        mode:
+          label: Mode d’entraînement
+          normal: Normal
+          recall: De mémoire
+          writing: Handwriting
+        order:
+          label: Critère de classement
+          accuracy: Précision<wide> d’abord</wide>
+          speed: Vitesse<wide> d’abord</wide>
+        order_notes:
+          accuracy: Précision la plus élevée d’abord ; à égalité, le plus rapide
+          speed: Le plus rapide d’abord ; à temps égal, la précision la plus élevée
+        lists: Listes de mots
+        empty:
+          title: Aucun meilleur résultat pour l’instant
+          description: 'Tapez une liste de mots jusqu’au bout : le record personnel, les meilleurs résultats et l’évolution du temps de chaque liste apparaîtront ici.'
+          practice: S’entraîner
+          create: Créer un pack de mots
+        list:
+          search: Rechercher une liste
+          clear_search: Effacer la recherche
+          no_device_records: Listes sans résultat sur cet appareil (%{count})
+          no_records: Listes sans résultat pour l’instant (%{count})
+          words:
+            one: "%{count} mot"
+            other: "%{count} mots"
+          no_match: Aucune liste ne correspond à « %{query} ».
+          last_practiced: Dernier entraînement
+          best: Record personnel
+          improved: Record
+          improved_title:
+            one: Record personnel battu au cours du dernier jour
+            other: Record personnel battu au cours des %{count} derniers jours
+          runs: "%{count} fois"
+          sort_label: 'Tri : %{sort}'
+          sorts:
+            recent: Entraînement récent
+            name: Nom
+            count: Nombre de résultats
+          pack_practiced: "%{practiced}/%{lists} entraînées"
+          pack_improved:
+            one: "%{count} record"
+            other: "%{count} records"
+          pack_join: " · "
+          pack_lists:
+            one: "%{pack} · %{count} liste"
+            other: "%{pack} · %{count} listes"
+        detail:
+          back: Toutes les listes
+          words:
+            one: "%{count} mot"
+            other: "%{count} mots"
+          records:
+            one: "%{count} résultat"
+            other: "%{count} résultats"
+          last_practiced: 'Dernier entraînement : %{day}'
+          view_records: Voir les résultats
+          practice: S’entraîner sur cette liste
+          not_practised:
+            title: Pas encore d’entraînement
+            description: 'Tapez cette liste jusqu’au bout : son record personnel et ses meilleurs résultats apparaîtront ici.'
+          no_device_records:
+            title: Aucun résultat sur « %{device} »
+            description:
+              one: Cette liste a %{count} résultat sur d’autres appareils.
+              other: Cette liste a %{count} résultats sur d’autres appareils.
+            show_all: Afficher les résultats de tous les appareils
+          top:
+            title: Meilleurs résultats
+            accuracy: Précision d’abord
+            speed: Vitesse d’abord
+            shown:
+              one: "%{shown} / %{count} résultat"
+              other: "%{shown} / %{count} résultats"
+            show_top: Afficher seulement les %{count} premiers
+            show_all: Tout afficher (%{count})
+            old_accuracy: Les résultats avec « — » en précision sont anciens, enregistrés avant que la précision ne soit mesurée. Ils sont classés en dernier lorsque la précision prime.
+          stats:
+            best: Record personnel
+            best_note: "%{accuracy} · %{day}"
+            no_accuracy: Pas de précision
+            recent_average:
+              one: Dernier résultat
+              other: Moyenne des %{count} derniers
+            gap: "+%{value} s par rapport au record"
+            same_as_best: Égal au record
+            average_accuracy: Précision moyenne
+            recent_runs:
+              one: Dernier résultat
+              other: "%{count} derniers résultats"
+            runs: Entraînements
+            runs_value:
+              one: "%{count} <unit>fois</unit>"
+              other: "%{count} <unit>fois</unit>"
+            all_word_counts: Tous les nombres de mots
+            current_words:
+              one: Avec le %{count} mot actuel
+              other: Avec les %{count} mots actuels
+          trend:
+            title: Évolution du temps
+            recent:
+              one: dernier résultat
+              other: "%{count} derniers résultats"
+            label: Évolution du temps de %{name}
+            need_two: L’évolution s’affiche après au moins deux entraînements.
+          others:
+            old:
+              one: "%{count} ancien résultat sans nombre de mots"
+              other: "%{count} anciens résultats sans nombre de mots"
+            words:
+              one: "%{count} résultat à %{words} mots"
+              other: "%{count} résultats à %{words} mots"
+            separator: ", "
+            fallback:
+              one: 'Aucun résultat avec le %{count} mot actuel : le classement utilise les résultats à un autre nombre de mots (%{detail}).'
+              other: 'Aucun résultat avec les %{count} mots actuels : le classement utilise les résultats à un autre nombre de mots (%{detail}).'
+            included: Les résultats à un autre nombre de mots (%{detail}) sont inclus. Avec un nombre de mots différent, les temps ne sont pas directement comparables.
+            excluded:
+              one: "<strong>%{count} résultat à un autre nombre de mots n’est pas classé.</strong> Il s’agit par exemple de résultats antérieurs à la modification de la liste (%{detail})."
+              other: "<strong>%{count} résultats à un autre nombre de mots ne sont pas classés.</strong> Il s’agit par exemple de résultats antérieurs à la modification de la liste (%{detail})."
+            exclude: Exclure
+            include: Inclure
+        top:
+          label: Meilleurs résultats de %{name}
+          rank: Rang
+          time: Temps
+          accuracy: Précision
+          mistakes: Erreurs
+          device: Appareil
+          date: Date
+          rank_number: Rang %{rank}
+          deleted: Supprimé
+          deleted_suffix: " (supprimé)"
+          other_words: Résultat à un autre nombre de mots
+          words:
+            one: "%{count} mot"
+            other: "%{count} mots"
+          unknown_words: "? mots"
+          old_accuracy: Ancien résultat, enregistré avant que la précision ne soit mesurée
+      format:
+        today: Aujourd’hui
+        yesterday: Hier
+        date_with_weekday: "%{weekday} %{date}"
+        units:
+          hours: h
+          minutes: min
+          seconds: s
+        default_device: Par défaut
+        no_device: Non enregistré
+        no_device_recorded: Aucun appareil enregistré
+        device_with_layout: "%{name} (%{layout})"
+      chart:
+        label: "%{label} (flèches gauche et droite pour lire chaque valeur)"
+        date: Date
+        value: Valeur
+      extra:
+        weekdays: dim.,lun.,mar.,mer.,jeu.,ven.,sam.
+        months: janv.,févr.,mars,avr.,mai,juin,juil.,août,sept.,oct.,nov.,déc.
+        month_day: "%{day} %{month_name}"
+        year_month_day: "%{day} %{month_name} %{year}"
+        numeric_date: "%{day}/%{month}/%{year}"
+        short_date: "%{day}/%{month}"

@@ -1,0 +1,165 @@
+ru:
+  design:
+    lists:
+      format:
+        today: Сегодня
+        yesterday: Вчера
+        month_day: "%d.%m"
+        year_month_day: "%d.%m.%Y"
+      labels:
+        category: Категория
+        tag: Тег
+      form:
+        cancel: Отмена
+      page:
+        description: Создавайте и редактируйте наборы слов для тренировок. Экспортируйте список в CSV, чтобы импортировать его в другом браузере или аккаунте.
+        catalog: Официальные наборы
+        create_title: Создание списка слов
+        edit_title: Редактирование списка слов
+      manager:
+        heading: Сохранённые наборы
+        count:
+          one: "%{count} набор"
+          few: "%{count} набора"
+          many: "%{count} наборов"
+          other: "%{count} набора"
+        create: Создать набор
+        create_pack: Новый набор
+        import_file: Импортировать из файла
+        csv_note: При экспорте в CSV сохраняются отображаемые слова, вводимый текст и примечания (история тренировок не включается). Файл можно загрузить кнопкой «Импортировать из файла» на экране наборов слов.
+      pack:
+        lists:
+          one: "%{count} список"
+          few: "%{count} списка"
+          many: "%{count} списков"
+          other: "%{count} списка"
+        practiced: тренировано %{practiced}/%{lists}
+        word_count:
+          one: "%{count} слово"
+          few: "%{count} слова"
+          many: "%{count} слов"
+          other: "%{count} слова"
+        practice: Тренировка
+        open: Открыть
+        lists_of: "Списки: %{name}"
+        more_actions: Другие действия
+        more_for: "Действия с набором: %{name}"
+        edit: Изменить набор
+        add_list: Добавить список
+        delete: Удалить
+      row:
+        examples: "Примеры слов:"
+        separator: ", "
+        more: "%{words} и ещё %{rest}"
+        word_count:
+          one: "%{count} слово"
+          few: "%{count} слова"
+          many: "%{count} слов"
+          other: "%{count} слова"
+        not_practiced: Ещё не было тренировок
+        practiced:
+          one: "%{count} тренировка · последняя: %{day}"
+          few: "%{count} тренировки · последняя: %{day}"
+          many: "%{count} тренировок · последняя: %{day}"
+          other: "%{count} тренировки · последняя: %{day}"
+        practice: Тренироваться
+        practice_list: "Тренироваться: %{name}"
+        edit: Изменить
+        edit_list: Изменить %{name}
+        more_actions: Другие действия
+        more_for: "Другие действия: %{name}"
+        practice_this: Тренироваться с этим списком
+        records: История тренировок
+        record_count: "%{count}"
+        export: Экспорт CSV
+        delete: Удалить
+      empty:
+        title: Списков слов пока нет
+        description: Добавьте слова для тренировки и текст, который нужно ввести как правильный ответ. Их также можно импортировать из файла CSV.
+        pack_title: Наборов слов пока нет
+        pack_description: Наборов пока нет. Подпишитесь на официальный набор или создайте новый.
+        catalog_link: Подписаться на официальный набор
+      follow:
+        badge: Официальный
+        unfollow: Отписаться
+      catalog:
+        description: "Готовые наборы. Подпишитесь на набор, чтобы использовать официальное содержимое: оно обновляется автоматически. Редактировать его нельзя, но можно дублировать и получить свой набор."
+        back: К наборам
+        open: Открыть
+        follow: Подписаться
+        follow_pack: Подписаться на %{name}
+        following: Вы подписаны
+        unfollow_pack: Отписаться от %{name}
+        matching: Наборы по вашим интересам
+        others: Другие наборы
+        no_matching: Наборов по вашим интересам пока нет
+        change_interests: Изменить интересы
+      official:
+        title: "Тренировка набора: %{name}"
+        stats: "%{lists} · %{words}"
+        stats_lists:
+          one: "%{count} список"
+          few: "%{count} списка"
+          many: "%{count} списков"
+          other: "%{count} списка"
+        stats_words:
+          one: "%{count} элемент"
+          few: "%{count} элемента"
+          many: "%{count} элементов"
+          other: "%{count} элемента"
+        practice: Тренироваться на этом наборе
+        catalog: Другие официальные наборы
+        free: Бесплатно и без входа. Кнопка подписывает вас на набор и сразу начинает тренировку.
+        words_heading: Что входит в набор
+        input: Что набирать
+        note: Значение и пояснения
+        details: Подробнее
+      starter:
+        first: "Первый список: %{list}"
+      pack_editor:
+        create_title: Создание набора
+        create_description: Введите название набора. После создания добавьте в него списки слов.
+        edit_title: Изменение набора
+        edit_description: Измените название набора.
+        info: Данные набора
+        name: Название набора
+        name_help: Показывается в списке наборов и при выборе набора для тренировки.
+      editor:
+        back: Наборы слов
+        description: Добавьте слова, которые показываются при наборе, и текст, который нужно ввести как правильный ответ.
+        basics: Основные сведения
+        adding_to: Список будет добавлен в набор «%{name}».
+        name: Название списка
+        name_help: Показывается на экране тренировки и в списках слов.
+        levels: Сложность (необязательно)
+        level_placeholder: например, Начальный
+        levels_help: "Нужна, чтобы на экране тренировки выбирать списки набора, например: Начальный."
+        writing_toggle: Использовать для рукописной практики (Typle Handwriting)
+        writing_toggle_help: Позволяет тренироваться с этим списком, пиша от руки. Язык нужен для распознавания рукописного текста.
+        writing_language: Язык распознавания
+        words: Слова
+        word_total_badge:
+          one: "%{count} слово"
+          few: "%{count} слова"
+          many: "%{count} слов"
+          other: "%{count} слова"
+        display: Отображаемое слово
+        input: Вводимый текст
+        input_hint: Пусто — как отображаемое
+        annotation_optional: Примечание (необязательно)
+        error_count:
+          one: "%{count} ошибка"
+          few: "%{count} ошибки"
+          many: "%{count} ошибок"
+          other: "%{count} ошибки"
+        word_total:
+          one: "· %{count} слово"
+          few: "· %{count} слова"
+          many: "· %{count} слов"
+          other: "· %{count} слова"
+        save: Сохранить
+      words:
+        description: Ищите слова сохранённых списков по вводимому тексту, отображаемому слову или примечанию.
+        all: Все слова
+        number: Номер
+        no_match: Нет слов, соответствующих «%{query}».

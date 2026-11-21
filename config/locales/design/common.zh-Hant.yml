@@ -1,0 +1,18 @@
+---
+zh-Hant:
+  design:
+    common:
+      pack_stats:
+        lists: "%{count} 個清單"
+        words: "%{count} 項"
+        stats: "%{lists} · %{words}"
+      about:
+        browser_p1: 與此瀏覽器關聯，儲存在伺服器上
+        browser_p2: 不會與其他裝置或瀏覽器同步
+        browser_p3: 刪除此瀏覽器的 Cookie 後將無法使用
+      auth:
+        password_hint: 10～72 個字元。不能與 ID 相同。
+  errors:
+    messages:
+      same_as_login_id: 不能與 ID 相同
+      too_many_words: 每個清單最多 1,000 個單字。

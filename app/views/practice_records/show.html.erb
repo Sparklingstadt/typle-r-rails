@@ -1,0 +1,106 @@
+<% content_for :title, t(".title") %>
+<%# A saved run, as typle-r's practice card shows it when a run is over: PracticeResult and MissedWords. %>
+<% writing = @record.writing? %>
+<% kind = @comparison[:kind] %>
+<% best = kind == :best %>
+<% faster = best && @comparison[:difference].negative? %>
+<% note = case kind
+          when :best then faster ? t("design.practice.result.faster", seconds: practice_design_seconds(-@comparison[:difference])) : t("design.practice.result.best_by_accuracy")
+          when :behind then t("design.practice.result.behind", time: practice_design_seconds(@comparison[:best].seconds), accuracy: accuracy_number(@comparison[:best].accuracy))
+          else @list.practice_records.any? { |r| r.mode == @record.mode && r.id != @record.id } ? t("design.practice.result.first_at_count", count: @record.word_count) : t("design.practice.result.first_for_list")
+          end %>
+<% correct = practice_design_correct(@record, @list) %>
+<% speed = practice_design_speed(@record, correct) %>
+<% tiles = [
+     { term: t("design.practice.result.time"), value: practice_design_seconds(@record.seconds), unit: t("design.practice.result.seconds"), note:, good: best, icon: ("trending-down" if faster) },
+     { term: t("design.practice.result.accuracy"), value: accuracy_number(@record.accuracy), unit: "%",
+       note: t(writing ? "design.practice.result.mistakes_words" : "design.practice.result.mistakes", count: @record.mistakes) },
+     { term: t("design.practice.result.speed"), value: speed || "—", unit: t(writing ? "design.practice.result.word_speed_unit" : "design.practice.result.speed_unit"),
+       note: t(writing ? "design.practice.result.correct_words" : "design.practice.result.correct", count: correct) },
+     { term: t("design.practice.result.missed.tile"), value: @record.missed.size, unit: t("design.practice.result.missed.of", count: @record.word_count), note: @record.device_label, icon: "keyboard" }
+   ] %>
+<main class="mx-auto my-6 w-11/12 max-w-7xl pb-12 sm:my-8">
+  <div class="grid min-w-0 gap-6">
+    <%= card(class: "min-w-0 gap-0 py-0 text-base") do %>
+      <div class="flex h-14 items-center gap-1.5 border-b px-2 sm:h-16 sm:gap-3 sm:px-3">
+        <div class="flex h-10 min-w-0 items-center gap-2 px-1.5 text-muted-foreground sm:px-2.5">
+          <%= icon("list", class: "hidden size-4 shrink-0 sm:block") %>
+          <h1 class="truncate text-[15px] font-bold text-foreground sm:text-base"><%= practice_name(@list) %></h1>
+          <span class="hidden shrink-0 text-[13px] sm:inline"><%= t("design.practice.header.word_count", count: @record.word_count) %></span>
+        </div>
+        <span class="flex-1"></span>
+        <span class="inline-flex h-8 max-w-28 shrink-0 items-center gap-1.5 rounded-full border bg-background px-2.5 text-[13px] text-muted-foreground sm:max-w-52 dark:bg-input/30">
+          <%= icon("keyboard", class: "size-3.5 shrink-0") %><span class="truncate"><%= @record.device_label %></span><%= icon("lock", class: "size-3 shrink-0") %>
+        </span>
+      </div>
+      <div class="flex items-center gap-3 px-4 pt-3 text-sm font-medium tabular-nums sm:px-6 sm:pt-4">
+        <div role="progressbar" aria-label="<%= t("design.practice.progress.label") %>" aria-valuemin="0" aria-valuemax="<%= @record.word_count %>" aria-valuenow="<%= @record.word_count %>" class="h-1.5 flex-1 overflow-hidden rounded-full bg-muted">
+          <div class="h-full w-full rounded-full bg-primary"></div>
+        </div>
+        <span aria-hidden="true"><%= t("design.practice.progress.value", current: @record.word_count, count: @record.word_count) %></span>
+      </div>
+
+      <section aria-label="<%= t("design.practice.result.label") %>" class="flex flex-1 flex-col gap-4 px-4 pt-5 pb-5 sm:gap-5 sm:px-6 sm:pt-7 sm:pb-6">
+        <div class="flex flex-wrap items-center gap-3">
+          <h2 class="text-[22px] font-bold sm:text-[26px]"><%= t("design.practice.result.title") %></h2>
+          <% if writing %>
+            <span class="inline-flex h-7 items-center gap-1.5 rounded-full border px-2.5 text-[13px] font-medium"><%= icon("pen-line", class: "size-3.5") %><%= t("design.practice.mode_writing") %></span>
+          <% elsif @record.recall? %>
+            <span class="inline-flex h-7 items-center gap-1.5 rounded-full bg-primary/10 px-2.5 text-[13px] font-bold text-primary"><%= icon("brain", class: "size-3.5") %><%= t("design.practice.recall.result_heading") %></span>
+          <% end %>
+          <% if best %>
+            <span class="inline-flex h-7 items-center gap-1.5 rounded-full bg-amber-100 px-2.5 text-[13px] font-bold text-amber-800 dark:bg-amber-950 dark:text-amber-300"><%= icon("trophy", class: "size-3.5") %><%= t("design.practice.result.new_best") %></span>
+          <% end %>
+        </div>
+        <p class="sr-only"><%= t("design.practice.result.completed", name: @list.full_name) %></p>
+        <dl class="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4">
+          <% tiles.each do |tile| %>
+            <div class="grid min-w-0 content-start gap-0.5 rounded-xl border px-3 py-3 sm:px-4 sm:py-3.5">
+              <dt class="text-xs text-muted-foreground"><%= tile[:term] %></dt>
+              <dd class="text-2xl font-medium tabular-nums sm:text-[28px]"><%= tile[:value] %><span class="ml-0.5 text-sm font-normal text-muted-foreground"><%= tile[:unit] %></span></dd>
+              <dd class="<%= cn("flex min-w-0 items-center gap-1 text-xs text-muted-foreground [overflow-wrap:anywhere]", ("font-medium text-green-700 dark:text-green-400" if tile[:good])) %>">
+                <% if tile[:icon] %><%= icon(tile[:icon], class: "size-3 shrink-0") %><% end %>
+                <span class="min-w-0"><%= tile[:note] %></span>
+              </dd>
+            </div>
+          <% end %>
+        </dl>
+        <p role="status" class="flex items-center gap-2 text-[13px] text-green-700 dark:text-green-400">
+          <%= icon("circle-check", class: "size-3.5") %><%= t("design.practice.result.saved", rank: practice_design_ordinal(@comparison[:rank])) %>
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <%= link_button play_path(list: @list.id, mode: @record.mode), class: "grow sm:grow-0", "aria-keyshortcuts": "Enter", autofocus: true do %>
+            <%= icon("rotate-ccw") %><%= t("design.practice.result.again") %><%= kbd("Enter") %>
+          <% end %>
+          <% if @record.missed.any? && !writing %>
+            <%= link_button play_path(list: @list.id, review: "weak"), variant: :outline, class: "grow sm:grow-0" do %><%= icon("list-restart") %><%= t(".weak_practice") %><% end %>
+          <% end %>
+          <%= link_button play_path(list: @list.id), variant: :outline, class: "grow sm:grow-0" do %><%= t("design.practice.result.choose_list") %><% end %>
+          <%= link_button practice_records_path(list: @list.id), variant: :ghost do %><%= t("design.practice.result.view_records") %><%= icon("arrow-right") %><% end %>
+        </div>
+
+        <%# MissedWords %>
+        <% if @record.missed.any? %>
+          <section aria-labelledby="missed-title" class="flex flex-col">
+            <h3 id="missed-title" class="mb-2 text-base font-bold"><%= t("design.practice.result.missed.title") %></h3>
+            <ul class="divide-y border-y">
+              <% @record.missed.each do |item| %>
+                <% word = @list.words.find { |w| w.input == item["word"] } %>
+                <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-1 py-3 sm:grid-cols-[minmax(0,14rem)_minmax(0,1fr)_3.5rem]">
+                  <p lang="und" class="min-w-0 font-mono text-lg break-words">
+                    <% if word && word.display != word.input %><span class="mr-2 font-sans"><%= word.display %></span><% end %><%= item["word"] unless writing && word && word.display != word.input %>
+                  </p>
+                  <p class="min-w-0 text-sm break-words text-muted-foreground max-sm:col-span-2 max-sm:row-start-2"><%= word&.annotation %></p>
+                  <p class="text-right text-sm font-bold text-red-700 tabular-nums max-sm:col-start-2 max-sm:row-start-1 dark:text-red-400"><%= t("design.practice.result.missed.count", count: item["count"]) %></p>
+                </li>
+              <% end %>
+            </ul>
+          </section>
+        <% else %>
+          <p class="text-sm text-muted-foreground"><%= t("design.practice.result.missed.none") %></p>
+        <% end %>
+      </section>
+    <% end %>
+    <%= render "practice/best_records", list: @list, mode: @record.mode, highlight: @record %>
+  </div>
+</main>

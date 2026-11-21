@@ -1,0 +1,18 @@
+# typle-r's messages with more than one plural or a select, kept in their ICU form (IcuMessage).
+zh-Hant:
+  typle:
+    dashboard:
+      change:
+        same: __icu:{recent, select, none {與} latest {最新紀錄與} other {最近 {recentCount}
+          次的平均與}}{previous, select, latest {上一次紀錄} other {之前 {previousCount} 次}}相同
+        different: __icu:{recent, select, none {} latest {最新紀錄} other {最近 {recentCount}
+          次的平均}}比{previous, select, latest {上一次紀錄} other {之前 {previousCount} 次}}{difference}
+        seconds: __icu:{direction, select, up {慢 {value} 秒} other {快 {value} 秒}}
+        points: __icu:{direction, select, up {高 {value}pt} other {低 {value}pt}}
+    devices:
+      deleteDescription: __icu:{removal}{records}{current, select, yes {此瀏覽器練習時使用的裝置將恢復為「預設」。}
+        other {}}
+    interests:
+      packs:
+        done: '__icu:{followed, plural, =0 {} other {已追蹤 # 個包。}}{unfollowed, plural,
+          =0 {} other {已取消追蹤 # 個包。}}'

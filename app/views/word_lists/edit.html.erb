@@ -1,0 +1,6 @@
+<% content_for :title, t("packs.index.title") %>
+<% records = @list.practice_records %>
+<%= page_main(width: :medium, class: "pb-0") do %>
+  <%= render "form", pack: @pack, list: @list, title: t("design.lists.page.edit_title"),
+        description: "#{t("design.lists.row.word_count", count: @list.words.size)} · #{lists_practice_text(records)}" %>
+<% end %>

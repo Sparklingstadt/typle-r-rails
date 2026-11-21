@@ -1,0 +1,253 @@
+---
+zh-Hans:
+  design:
+    settings:
+      input:
+        title: 输入
+        description: 练习时输入文字的相关设置。
+        simpleSpecial:
+          heading: 特殊字符简易输入
+          description: 对于捷克语、西班牙语等中带有重音符、波浪符等符号的字母（如 í、ó、ñ、č），可以直接输入不带符号的字母（i、o、n、c）。直接输入带符号的字母同样算正确。 俄语西里尔字母也支持拉丁字母输入，例如 привет → privet、школа → shkola、я → ya。直接输入西里尔字母同样算正确。
+          label: 使用特殊字符简易输入
+          hint: 开启后，可以输入 á → a、č → c、ш → sh、я → ya。
+        ignoreCase:
+          heading: 不区分大小写
+          description: 将 A 和 a 这样的大写和小写字母视为同一个字母。无论是否按 Shift 键输入都算正确。
+          label: 不区分大小写
+          hint: 开启后，A、É 等大写字母输入 a、é 也算正确（反之亦然）。
+        simpleTable:
+          heading: 简易输入对照表
+          description: 开启特殊字符简易输入后，可以代替各个字母输入的按键。
+          latin: 带符号的拉丁字母
+          other: 其他符号
+          cyrillic: 西里尔字母（俄语）
+          letter: 字母
+          key: 输入的按键
+          capitals: 大写字母也同样适用（Á → A，Ш → Sh 或 SH）。
+        note: 此设置保存在当前的保存位置（账户，或此浏览器的数据）。
+      general:
+        title: 通用
+        description: 与 Typle 显示和登录相关的设置。
+        language:
+          heading: 显示语言
+          description: 选择界面显示的语言。单词列表的内容和练习记录不会改变。
+          note: 所选语言会保存在此浏览器中。
+          current: 使用中
+        languages:
+          ja: 日语
+          en: 英语
+          ru: 俄语
+          fr: 法语
+          zh-Hans: 简体中文
+          zh-Hant: 繁体中文
+      form:
+        cancel: 取消
+        save: 保存更改
+        add: 添加
+      interests:
+        title: 兴趣
+        description: 可以关注符合兴趣的官方包。官方包列表中也会优先显示它们。
+        parents:
+          language: 语言
+          programming: 编程
+        childrenLabel: "%{parent}：细分"
+        packs:
+          title: 符合兴趣的官方包
+          description: 点击“添加”会关注已打开开关的包。关闭已关注包的开关，会取消关注。勾选的包可以用下方的按钮一次性关注或取消关注。
+          pick: 选择兴趣后，符合的官方包会显示在这里。
+          none: 没有符合所选兴趣的官方包。
+          lists: 包含的单词列表
+          separator: "、"
+          switch: 关注 %{name}
+          select: 选择 %{name}
+          selectAll: 全选
+          selected: 已选择 %{count} 个
+          followSelected: 关注所选
+          unfollowSelected: 取消关注所选
+          add: 添加
+          confirmTitle: 包含取消关注
+          confirmDescription: 将取消关注%{names}。这些包的练习记录也会删除。
+        children:
+          language:
+            zh: 中文
+            ru: 俄语
+            ko: 韩语
+            en: 英语
+            es: 西班牙语
+            fr: 法语
+            de: 德语
+            cs: 捷克语
+          programming:
+            go: Go
+            kotlin: Kotlin
+            java: Java
+            typescript: TypeScript
+            php: PHP
+            ruby: Ruby
+            sql: SQL
+            linux: Linux
+            vim: Vim
+            test: 测试
+            node: Node.js
+            shell: Shell
+            cloud: 云
+        wordCount: "%{count}个单词"
+      devices:
+        title: 设备
+        description: 登记练习时使用的电脑和键盘。在“<link>开始练习</link>”中选择后，记录中会保留练习时使用的设备。
+        usage: 练习 %{count} 次 · 最近 %{day}
+        neverUsed: 尚未练习
+        listHeading: 已登记的设备
+        count: "%{count} 台"
+        add: 添加设备
+        limit: 最多可以登记 %{max} 台设备。删除不再使用的设备后即可添加。
+        inUse: 使用中
+        inUseDetail: 此浏览器练习时使用的设备
+        defaultDetail: 无需登记即可使用的设备。不能重命名或删除。
+        edit: 编辑
+        editLabel: 编辑 %{name}
+        delete: 删除
+        deleteLabel: 删除 %{name}
+        deleteTitle: 要删除设备“%{name}”吗？
+        deleteRemoval: 将从列表中删除“%{name}”。
+        deleteRecords: 在此设备上练习的 %{count} 次记录不会被删除，并保留练习时的设备名称。
+        deleteNoRecords: 没有在此设备上练习的记录。
+        empty:
+          title: 尚未登记任何设备
+          description: 在“开始练习”中选择已登记的设备后，记录中会保留练习时使用的设备，便于按设备比较记录。
+          example: 例：MacBook Air（JIS）、台式机＋HHKB（US）
+        current:
+          heading: 此浏览器练习时使用的设备
+          change: 更改
+          changeLabel: 更改此浏览器练习时使用的设备（当前：%{device}）
+          practice: 开始练习
+          noteSelected: 在“开始练习”中练习时，记录中会保留此设备。每个浏览器分别记住选择，因此可以为每台电脑分别选择。
+          noteUnselected: 未选择时，练习记录中不保留设备。每个浏览器分别记住选择，因此可以为每台电脑分别选择。
+        dialog:
+          addTitle: 添加设备
+          editTitle: 编辑设备
+          addDescription: 登记练习时使用的设备。
+          editDescription: 更改显示名称和键盘布局・备注。
+          name: 设备名称
+          namePlaceholder: 例：MacBook Air
+          nameHelp: 显示在练习页面的设备菜单和练习记录中。
+          layout: 键盘布局・备注
+          optional: "（可选）"
+          layoutPlaceholder: 例：JIS、US
+          layoutHelp: 写下键盘布局或设置的区别，比较记录时更容易分辨。
+          renameNote: 即使更改名称，以往的练习记录（%{count} 次）仍保留练习时的名称。
+          use: 设为此浏览器练习时使用的设备
+          useHelp: 在“开始练习”中练习时，记录中会保留此设备。
+        deleteCurrent: 此浏览器练习时使用的设备将恢复为“默认”。
+      auth:
+        fields:
+          loginId: ID
+          email: 电子邮件地址
+          password: 密码
+          currentPassword: 当前密码
+          newPassword: 新密码
+        backToSignIn: 前往登录
+        signIn:
+          submit: 登录
+          signUp: 注册新账户
+          forgotPassword: 忘记密码
+          forgotId: 忘记 ID
+          or: 也可以使用 GitHub 账户登录。
+        signUp:
+          title: 注册
+          description: 创建使用 ID 和密码登录的 Typle 账户。
+          submit: 注册
+          haveAccount: 已有账户？在此登录
+        forgotPassword:
+          title: 忘记密码
+        forgotId:
+          title: 忘记 ID
+        resetPassword:
+          title: 重设密码
+          submit: 设置
+        settings:
+          heading: 账户
+          verified: 已确认
+          unverified: 未确认
+          changePassword: 更改密码
+          changePasswordDescription: 需要当前密码。更改后，其他设备将退出登录。
+        signInWithGitHub: 使用 GitHub 登录
+      about:
+        title: 关于 Typle
+        intro: 一款可以用自己创建的单词列表进行练习的打字应用。添加喜欢的词语进行练习，并通过最佳记录回顾自己的进步。
+        play: 开始练习
+        guide: 使用方法
+        features:
+          title: 主要功能
+        storage:
+          title: 数据的保存位置
+          text: 登录是可选的。保存位置取决于是否已登录，两处的数据分开保存（不会自动迁移）。
+          more: 详细说明请参阅<link>使用方法中的“保存位置与数据”</link>。
+        places:
+          current: 当前保存位置
+          browser:
+            title: 此浏览器
+            condition: 未登录时
+          account:
+            title: 账号
+            condition: 登录时
+        email:
+          title: 电子邮件地址的使用
+          text: 注册账户时，可以选择填写电子邮件地址。它只用于确认地址、重设密码和告知 ID，不会用于广告或通知，也不会提供给他人。
+        version:
+          title: 版本与开发
+          tech: 使用的技术
+          licenses: 许可证
+      guide:
+        title: 使用方法
+        intro: 从如何开始练习，到单词列表的创建、记录的查看和数据的保存位置，这里都有说明。无需登录即可使用全部功能。
+        contentsLabel: 本页内容
+        contents:
+          practice: 开始练习
+          lists: 创建单词列表
+          records: 查看结果和记录
+          devices: 登记设备
+          storage: 保存位置与数据
+          shortcuts: 键盘操作
+        start:
+          title: 三步上手
+          follow:
+            title: 关注官方包
+            text: 关注 Go、Kotlin 等官方包后，它们会出现在你的包列表中，可以马上开始练习。
+            action: 官方包
+          create:
+            title: 创建自己的包
+            action: 创建包
+            text: 在“创建包”中创建包，添加单词列表，并输入想记住的单词。
+          review:
+            title: 回顾记录
+            action: 最佳记录
+            text: 输入到最后一个单词后，记录会自动保存，可以在各列表的最佳记录中回顾。
+        practice:
+          lead: 在<play>开始练习</play>中选择单词列表，然后输入显示的单词。
+        lists:
+          lead: 在<create>创建包</create>中创建新包，在<edit>单词包</edit>中编辑已保存的包和列表。
+        records:
+          lead: 完成练习后，记录会自动保存。
+        devices:
+          lead: 在<devices>设备</devices>中登记练习用的电脑或键盘后，记录中会保留是在哪台设备上练习的。
+        storage:
+          lead: 登录是可选的。数据的保存位置取决于是否已登录。
+          browser:
+            title: 保存在此浏览器
+            when: 未登录时
+          account:
+            title: 保存到账号
+            when: 登录后（GitHub 或 ID 与密码）
+        shortcuts:
+          lead: 无需鼠标即可操作的按键一览。
+          screens:
+            practice: 开始练习
+          actions:
+            restart: 从头重新开始
+            answer: 查看答案（回想）
+            check: 判定（Handwriting）
+            undo: 撤销一笔（手写板）
+        cta:
+          text: 准备好了，就马上开始练习吧。
+          action: 开始练习

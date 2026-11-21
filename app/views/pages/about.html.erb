@@ -1,0 +1,76 @@
+<% content_for :title, settings_t("about.title") %>
+<%= page_main(width: :narrow) do %>
+  <header class="mb-10 space-y-4">
+    <div class="space-y-1">
+      <h1 class="text-2xl font-bold"><%= settings_t("about.title") %></h1>
+      <p class="max-w-2xl text-sm text-muted-foreground"><%= settings_t("about.intro") %></p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <%= link_button play_path do %><%= icon(:keyboard) %><%= settings_t("about.play") %><% end %>
+      <%= link_button guide_path, variant: :outline do %><%= icon("book-open") %><%= settings_t("about.guide") %><% end %>
+    </div>
+  </header>
+
+  <div class="space-y-10">
+    <section aria-labelledby="features-heading" class="space-y-3">
+      <h2 id="features-heading" class="text-base font-bold"><%= settings_t("about.features.title") %></h2>
+      <ul class="grid gap-3 sm:grid-cols-3">
+        <% [[:create, new_pack_path, :plus], [:play, play_path, :keyboard], [:rankings, rankings_path, :trophy]].each do |key, path, icon_name| %>
+          <li class="relative flex gap-3 rounded-xl border bg-card p-4 pr-10 transition-colors has-[a:hover]:border-foreground/25 has-[a:focus-visible]:ring-3 has-[a:focus-visible]:ring-ring/50 sm:block sm:pr-4">
+            <span aria-hidden="true" class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-muted text-foreground sm:mb-3"><%= icon(icon_name) %></span>
+            <div class="min-w-0">
+              <h3 class="font-bold"><%= link_to tt("about.features.#{key}.title"), path, class: "outline-none after:absolute after:inset-0 after:rounded-xl" %></h3>
+              <p class="mt-1 text-sm text-muted-foreground"><%= tt("about.features.#{key}.description") %></p>
+            </div>
+            <%= icon("chevron-right", class: "absolute top-4 right-3 size-4 text-muted-foreground sm:top-6 sm:right-4") %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+
+    <section aria-labelledby="storage-heading" class="space-y-3">
+      <h2 id="storage-heading" class="text-base font-bold"><%= settings_t("about.storage.title") %></h2>
+      <p class="max-w-2xl text-sm text-muted-foreground"><%= settings_t("about.storage.text") %></p>
+      <ul class="grid gap-3 sm:grid-cols-2">
+        <% [["browser", "hard-drive", !signed_in?], ["account", :cloud, signed_in?]].each do |place, icon_name, active| %>
+          <li aria-current="<%= active ? "true" : nil %>" class="<%= cn("rounded-xl border bg-card p-4", active && "border-foreground/40 ring-1 ring-foreground/40") %>">
+            <div class="mb-3 flex items-start gap-3">
+              <span aria-hidden="true" class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-muted"><%= icon(icon_name) %></span>
+              <div class="min-w-0 flex-1">
+                <h3 class="font-bold"><%= settings_t("about.places.#{place}.title") %></h3>
+                <p class="text-xs text-muted-foreground"><%= settings_t("about.places.#{place}.condition") %></p>
+              </div>
+              <% if active %><span class="inline-flex h-6 shrink-0 items-center rounded-full bg-primary px-2.5 text-xs font-medium text-primary-foreground"><%= settings_t("about.places.current") %></span><% end %>
+            </div>
+            <ul class="space-y-1.5 text-sm">
+              <% %w[p1 p2 p3].each do |point| %>
+                <li class="flex gap-2"><span aria-hidden="true" class="mt-2 size-1.5 shrink-0 rounded-full bg-muted-foreground/70"></span><%= place == "browser" ? t("design.common.about.browser_#{point}") : tt("about.places.account.#{point}") %></li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+      <p class="text-sm"><%= settings_rich(settings_t("about.storage.more"), link: "#{guide_path}#storage", link_class: "underline underline-offset-3 hover:text-muted-foreground") %></p>
+    </section>
+
+    <section aria-labelledby="email-heading" class="space-y-3">
+      <h2 id="email-heading" class="text-base font-bold"><%= settings_t("about.email.title") %></h2>
+      <p class="max-w-2xl text-sm text-muted-foreground"><%= settings_t("about.email.text") %></p>
+    </section>
+
+    <section aria-labelledby="version-heading" class="space-y-3">
+      <h2 id="version-heading" class="text-base font-bold"><%= settings_t("about.version.title") %></h2>
+      <p class="max-w-2xl text-sm text-muted-foreground"><%= t("pages.about.lead", version: Rails.version) %></p>
+      <dl class="divide-y rounded-xl border bg-card text-sm">
+        <div class="grid gap-1 px-4 py-3 sm:grid-cols-[10rem_1fr] sm:gap-4">
+          <dt class="text-muted-foreground"><%= settings_t("about.version.tech") %></dt>
+          <dd>Ruby <%= RUBY_VERSION %> · Rails <%= Rails.version %> · SQLite · Hotwire（Turbo・Stimulus）· importmap · Propshaft · Tailwind CSS · onnxruntime-web</dd>
+        </div>
+        <div class="grid gap-1 px-4 py-3 sm:grid-cols-[10rem_1fr] sm:gap-4">
+          <dt class="text-muted-foreground"><%= settings_t("about.version.licenses") %></dt>
+          <dd><%= link_to tt("about.version.licensesLink"), licenses_path, class: "font-medium underline underline-offset-3 hover:text-muted-foreground" %></dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+<% end %>

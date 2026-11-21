@@ -1,0 +1,20 @@
+# typle-r's messages with more than one plural or a select, kept in their ICU form (IcuMessage).
+ja:
+  typle:
+    dashboard:
+      change:
+        same: __icu:{recent, select, none {} latest {最新の記録は、} other {直近{recentCount}回の平均は、}}{previous,
+          select, latest {その前の記録} other {その前の{previousCount}回}}と同じ
+        different: __icu:{recent, select, none {} latest {最新の記録は、} other {直近{recentCount}回の平均は、}}{previous,
+          select, latest {その前の記録} other {その前の{previousCount}回}}より {difference}
+        seconds: __icu:{direction, select, up {{value} 秒遅い} other {{value} 秒速い}}
+        points: __icu:{direction, select, up {+{value}pt} other {−{value}pt}}
+    devices:
+      deleteDescription: __icu:{removal}{records}{current, select, yes {このブラウザーで練習に使う端末は「デフォルト」に戻ります。}
+        other {}}
+    interests:
+      packs:
+        done: __icu:{followed, plural, =0 {} other {#個のパックをフォローしました。}}{unfollowed,
+          plural, =0 {} other {#個のパックのフォローを解除しました。}}
+    officialPack:
+      stats: __icu:{lists, plural, other {#リスト}}・{words, plural, other {#語}}

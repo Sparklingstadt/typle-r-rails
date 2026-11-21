@@ -1,0 +1,230 @@
+---
+en:
+  design:
+    home:
+      home:
+        welcome:
+          title: Typing practice with your own words.
+          text: Start practicing with an official pack, or create a list of the words you want to learn.
+          lists:
+            one: "%{count} word list"
+            other: "%{count} word lists"
+          practices:
+            one: "%{count} practice completed"
+            other: "%{count} practices completed"
+          nav_label: Get started
+          play: Practice
+          create: Create a word list
+          records: View records
+        storage: You can use every practice and editing feature without signing in. Word lists, practice history, and devices are saved in this browser. Signing in (with GitHub or an ID and password) switches to a separate storage location, your account, which syncs across devices. Data in the browser is not moved automatically.
+        storage_account: You are signed in, so your word lists, practice history, and devices are saved to your account and synced with other devices and browsers signed in to the same account. They are kept separately from data saved in this browser without signing in.
+        links_guide: How to use
+        links_about: About Typle
+        links: "%{guide} / %{about}"
+      dashboard:
+        title: Practice overview
+        source_guest: Totals are based on the records saved in this browser.
+        source_account: Totals are based on the records saved to your account.
+        start: Get started
+        practice: Practice
+        create: Create a word list
+        week:
+          title: This week
+          description: Records from %{start} to %{end}. Changes are compared with last week up to the same day and time.
+          count: Runs this week
+          count_unit:
+            one: run
+            other: runs
+          streak: Streak
+          streak_unit:
+            one: day
+            other: days
+          accuracy:
+            one: Accuracy (latest run)
+            other: Average accuracy (last %{count})
+          time: Practice time this week
+          practised_today: Practiced today
+          streak_next: Practice today for day %{day}
+          no_comparison: Nothing to compare with yet
+          no_accuracy: No records with accuracy
+          times:
+            one: "%{count} run"
+            other: "%{count} runs"
+          same_as_last_week: Same as last week
+          more_than_last_week: "%{value} more than last week"
+          less_than_last_week: "%{value} less than last week"
+        change:
+          same_recent_none_previous_latest: Same as the run before
+          same_recent_none_previous_other: Same as the previous %{previousCount}
+          same_recent_latest_previous_latest: 'Latest run: same as the run before'
+          same_recent_latest_previous_other: 'Latest run: same as the previous %{previousCount}'
+          same_recent_other_previous_latest: 'Average of last %{recentCount}: same as the run before'
+          same_recent_other_previous_other: 'Average of last %{recentCount}: same as the previous %{previousCount}'
+          different_recent_none_previous_latest: "%{difference} vs. the run before"
+          different_recent_none_previous_other: "%{difference} vs. the previous %{previousCount}"
+          different_recent_latest_previous_latest: 'Latest run: %{difference} vs. the run before'
+          different_recent_latest_previous_other: 'Latest run: %{difference} vs. the previous %{previousCount}'
+          different_recent_other_previous_latest: 'Average of last %{recentCount}: %{difference} vs. the run before'
+          different_recent_other_previous_other: 'Average of last %{recentCount}: %{difference} vs. the previous %{previousCount}'
+          seconds_direction_up: "%{value} s slower"
+          seconds_direction_other: "%{value} s faster"
+          points_direction_up: "+%{value} pts"
+          points_direction_other: "−%{value} pts"
+        next:
+          title: Lists to practice next
+          description: Shows up to 3 lists you have not practiced yet, have not practiced for %{days} days or more, or with recent accuracy below %{accuracy}%.
+          all_practised: You have practiced every list recently.
+          words:
+            one: "%{count} word"
+            other: "%{count} words"
+          last_practiced: Last practiced %{day}
+          no_records: No records
+          new: Not practiced yet
+          stale:
+            one: Not practiced for %{count} day
+            other: Not practiced for %{count} days
+          low_accuracy:
+            one: Latest accuracy %{accuracy}%
+            other: 'Accuracy over last %{count} runs: %{accuracy}%'
+          practice_list: Practice %{name}
+          practice: Practice
+        trends:
+          title: Trends by list
+          description: Seconds per word (lower is faster) and accuracy for up to the last 20 runs. Time is divided by the number of words, so runs before and after editing a list can be compared.
+          summary:
+            one: "%{count} run · Last practiced %{day}"
+            other: "%{count} runs · Last practiced %{day}"
+          need_two: The trend appears once there are at least two records.
+          practice_list: Practice %{name}
+          practice: Practice
+          speed: Seconds per word
+          accuracy: Accuracy
+          seconds: "%{value} s"
+          percent: "%{value}%"
+          latest_number: "%{value}"
+          latest: Latest %{number}
+          no_chart: Shown once at least two records include this value.
+          best: 'Best record: accuracy %{accuracy} · %{time} s (%{day})'
+          not_recorded: not recorded
+        chart:
+          label: "%{label} (use the arrow keys to read each run)"
+          date: Date
+          value: Value
+        continue:
+          label: Pick up where you left off
+          meta:
+            one: "%{count} word · Last practiced %{day}"
+            other: "%{count} words · Last practiced %{day}"
+          best: 'Best: %{accuracy} accuracy, %{time} s'
+          not_recorded: not recorded
+          samples: First words
+          more:
+            one: "%{count} more word"
+            other: "%{count} more words"
+          practice: Practice
+          practice_list: Practice %{name}
+          other: Choose another list
+        weak:
+          title: Weak words
+          description: For each list, the words missed in its last %{runs} runs (not counting Handwriting), most often missed first. Words you type without a mistake when practising only the weak words leave this list.
+          none: No weak words yet. Words you miss in practice show up here.
+          words_of: Weak words of %{name}
+          runs:
+            one: "%{count} run"
+            other: "%{count} runs"
+          more:
+            one: "%{count} more word"
+            other: "%{count} more words"
+          practice:
+            one: Practice the %{count} weak word
+            other: Practice the %{count} weak words
+          practice_list:
+            one: Practice the %{count} weak word of %{name}
+            other: Practice the %{count} weak words of %{name}
+      landing:
+        hero:
+          eyebrow: Free, no login needed
+          title: Learn the words you want by typing them.
+          lead: Typle is a typing app that lets you practice with your own word lists or official packs. Pick up programming commands and syntax, or words in another language, as you type.
+          play: Start practicing without logging in
+          catalog: Browse official packs
+          home: Go to Home
+        packs:
+          title: Official packs
+          lead: Follow any of %{total} official lists and start practicing right away.
+          programming:
+            title: Programming
+            count:
+              one: "%{count} list"
+              other: "%{count} lists"
+            text: Syntax for Go, Java, Kotlin, TypeScript and more, commands for Linux, Vim, the AWS CLI and more, and PostgreSQL error codes.
+          languages:
+            title: Languages
+            count:
+              one: "%{count} list"
+              other: "%{count} lists"
+            text: Words and phrases in Chinese (HSK levels 5 and 6), Korean, English, French, German, Spanish, Russian and Czech. Chinese and Korean can also be practiced by handwriting.
+        features:
+          title: What you can do
+          own:
+            title: Practice with your own word lists
+            text: Add the words you want to learn and practice them. The word shown and the characters typed can differ, and you can import from CSV files.
+          recall:
+            title: Type from memory
+            text: A mode that hides the answer and shows the note as a hint, so you can check whether you really remember each word.
+          records:
+            title: See your progress
+            text: Speed, accuracy and mistakes are recorded every time, so your personal bests and trends show how far you have come.
+        storage:
+          title: Where your data is kept
+          text: Every feature works without logging in. Your data is kept in this browser, and logging in (with GitHub or an ID and password) syncs it across devices.
+          more_guide: How to use
+          more_about: About Typle
+          more: "%{guide} / %{about}"
+        try:
+          badge: Try it here
+          progress: "%{name} · %{current} / %{total} words"
+          label: Type here
+          hint: Type the word above to move on to the next. Nothing typed here is recorded.
+          done:
+            one: "%{count} word typed. Carry on with this pack's practice, where your records are kept."
+            other: "%{count} words typed. Carry on with this pack's practice, where your records are kept."
+          continue: Keep practicing this pack
+          starting: Preparing…
+      format:
+        today: Today
+        yesterday: Yesterday
+        date_with_weekday: "%{weekday}, %{date}"
+        units:
+          hours: h
+          minutes: min
+          seconds: s
+        time:
+          one: "%{value} %{unit}"
+          two: "%{first} %{firstUnit} %{second} %{secondUnit}"
+        month_names:
+        -
+        - Jan
+        - Feb
+        - Mar
+        - Apr
+        - May
+        - Jun
+        - Jul
+        - Aug
+        - Sep
+        - Oct
+        - Nov
+        - Dec
+        weekday_names:
+        - Sun
+        - Mon
+        - Tue
+        - Wed
+        - Thu
+        - Fri
+        - Sat
+        month_day: "%{month_name} %{day}"
+        year_month_day: "%{month_name} %{day}, %{year}"
+        short_date: "%{month}/%{day}"
+        short_date_time: "%{month}/%{day}, %{hour12}:%{minute} %{ampm}"

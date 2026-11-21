@@ -1,0 +1,212 @@
+---
+zh-Hans:
+  design:
+    records:
+      history:
+        title: 练习记录
+        intro: 按时间从新到旧显示所有练习。各列表的前几名请在<rankings>最佳记录</rankings>中查看，变化趋势请在<home>首页</home>查看。
+        filter:
+          pack: 包
+          all_packs: 所有包
+          list: 列表
+          all_lists: 所有列表
+          device: 设备
+          all_devices: 所有设备
+          clear: 清除筛选
+          count: "%{count} 条"
+          filtered_count: "%{matched} 条 / 共 %{count} 条"
+        filter_menu:
+          label: 按%{name}筛选（当前：%{current}）
+          all: 全部
+          count: "%{count} 次"
+        columns:
+          time: 时间
+          device_words: 设备・单词数
+          list_device: 列表・设备
+          duration: 用时
+          accuracy: 正确率
+          per_word: 每个单词
+          mistakes: 错误
+        day:
+          heading: "%{relative} · %{date}"
+          summary: "%{count} 次 · %{duration}"
+        recall_badge: 回忆
+        more: 显示更多（剩余 %{count} 条）
+        note: 单词数和设备名称为练习当时的信息。
+        note_missing: "“—”表示未记录的项目（例如旧版本保存的记录）。"
+        row:
+          best: 最佳
+          best_title: 此列表的最佳记录（在当前单词数的记录中，按正确率从高到低、正确率相同时按用时从短到长排名第一）
+          words: "%{count} 个单词"
+          seconds: "%{value} 秒"
+          duration: 用时
+          accuracy: 正确率
+          low_accuracy: 正确率低于 %{limit}%
+          per_word: 每个单词
+          per_word_unit: 秒/词
+          mistakes: 错误
+          delete: 删除
+          delete_label: 删除%{name}（%{date} %{time}）的记录
+        delete:
+          title: 要删除这条练习记录吗？
+          description: 将删除“%{name}”的 1 条记录。
+          done: 已删除“%{name}”的练习记录（%{date} %{time}）。
+          list: 列表
+          when: 日期时间・设备
+          result: 结果
+          accuracy: 正确率 %{value}
+          mistakes: 错误 %{value}
+          best_next: 这是此列表的最佳记录。删除后，最佳记录将变为 %{time}（%{accuracy}）。
+          best_last: 这是此列表的最佳记录。删除后，此列表将没有任何记录。
+        empty:
+          title: 还没有练习记录
+          description: 在“开始练习”中把列表输入到最后，用时、正确率、错误和所用设备就会记录在这里。
+          practice: 开始练习
+        filtered_empty:
+          list_title: "“%{name}”还没有记录"
+          list_description: 练习后，记录会显示在这里。
+          title: 没有符合条件的记录
+          description: 请更改列表或设备条件。
+          practice_list: 练习此列表
+        summary:
+          words: "%{count} 个单词"
+          runs: 练习 %{count} 次
+          last: 最近 %{day}
+          best: 最佳（%{mode}）
+          rankings: 最佳记录
+          practice: 开始练习
+        mode_writing: Handwriting
+      rankings:
+        title: 最佳记录
+        intro: 每个单词列表的个人最佳。选择列表后，会显示前几名的记录和用时的变化趋势。
+        reload: 重新加载
+        filter:
+          device: 设备
+          all_devices: 所有设备
+          deleted: "%{name}（已删除）"
+        mode:
+          label: 练习模式
+          normal: 普通
+          recall: 回忆
+          writing: Handwriting
+        order:
+          label: 排名依据
+          accuracy: 正确率<wide>优先</wide>
+          speed: 速度<wide>优先</wide>
+        order_notes:
+          accuracy: 按正确率从高到低，正确率相同时按速度从快到慢
+          speed: 按速度从快到慢，用时相同时按正确率从高到低
+        lists: 单词列表
+        empty:
+          title: 还没有最佳记录
+          description: 把单词列表输入到最后，各列表的个人最佳、前几名记录和用时趋势就会显示在这里。
+          practice: 开始练习
+          create: 创建单词包
+        list:
+          search: 搜索列表
+          clear_search: 清除搜索
+          no_device_records: 此设备没有记录的列表（%{count}）
+          no_records: 还没有记录的列表（%{count}）
+          words: "%{count} 个单词"
+          no_match: 没有与“%{query}”匹配的列表。
+          last_practiced: 最近练习
+          best: 个人最佳
+          improved: 刷新
+          improved_title: 最近 %{count} 天内刷新了个人最佳
+          runs: "%{count} 次"
+          sort_label: 排序：%{sort}
+          sorts:
+            recent: 按最近练习
+            name: 按名称
+            count: 按记录数
+          pack_practiced: 已练习 %{practiced}/%{lists}
+          pack_improved: 刷新 %{count}
+          pack_join: "・"
+          pack_lists: "%{pack}・%{count} 个列表"
+        detail:
+          back: 列表一览
+          words: "%{count} 个单词"
+          records: 记录 %{count} 次
+          last_practiced: 最近练习 %{day}
+          view_records: 查看记录
+          practice: 练习此列表
+          not_practised:
+            title: 还没有练习
+            description: 输入到最后后，此列表的个人最佳和前几名记录会显示在这里。
+          no_device_records:
+            title: 没有在“%{device}”上练习的记录
+            description: 此列表在其他设备上有 %{count} 条记录。
+            show_all: 显示所有设备的记录
+          top:
+            title: 前几名记录
+            accuracy: 正确率优先
+            speed: 速度优先
+            shown: "%{shown} / %{count} 条"
+            show_top: 仅显示前 %{count} 条
+            show_all: 全部显示（%{count} 条）
+            old_accuracy: 正确率为“—”的记录是开始记录正确率之前的旧记录。按正确率排名时会排在最后。
+          stats:
+            best: 个人最佳
+            best_note: "%{accuracy} · %{day}"
+            no_accuracy: 无正确率
+            recent_average: 最近 %{count} 次平均
+            gap: 与最佳相差 +%{value} 秒
+            same_as_best: 与最佳相同
+            average_accuracy: 平均正确率
+            recent_runs: 最近 %{count} 次
+            runs: 练习次数
+            runs_value: "%{count}<unit>次</unit>"
+            all_word_counts: 所有单词数
+            current_words: 当前 %{count} 个单词的练习
+          trend:
+            title: 用时趋势
+            recent: 最近 %{count} 次
+            label: "%{name} 的用时趋势"
+            need_two: 练习 2 次以上后显示趋势。
+          others:
+            old: 没有单词数的旧记录 %{count} 条
+            words: "%{words} 个单词的记录 %{count} 条"
+            separator: "、"
+            fallback: 由于没有当前 %{count} 个单词的练习记录，按单词数不同的记录（%{detail}）进行排名。
+            included: 已包含单词数与当前不同的记录（%{detail}）。单词数不同时，用时无法直接比较。
+            excluded: "<strong>单词数与当前不同的 %{count} 条记录未计入排名。</strong>例如编辑列表之前的记录（%{detail}）。"
+            exclude: 不包含
+            include: 包含并显示
+        top:
+          label: "%{name} 的前几名记录"
+          rank: 名次
+          time: 用时
+          accuracy: 正确率
+          mistakes: 错误
+          device: 设备
+          date: 日期时间
+          rank_number: 第 %{rank} 名
+          deleted: 已删除
+          deleted_suffix: "（已删除）"
+          other_words: 单词数与当前不同的记录
+          words: "%{count} 个单词"
+          unknown_words: "? 个单词"
+          old_accuracy: 开始记录正确率之前的旧记录
+      format:
+        today: 今天
+        yesterday: 昨天
+        date_with_weekday: "%{date}（%{weekday}）"
+        units:
+          hours: 小时
+          minutes: 分
+          seconds: 秒
+        default_device: 默认
+        no_device: 未记录
+        no_device_recorded: 未记录设备
+        device_with_layout: "%{name}（%{layout}）"
+      chart:
+        label: "%{label}（用左右方向键查看每次的数值）"
+        date: 日期时间
+        value: 数值
+      extra:
+        weekdays: 周日,周一,周二,周三,周四,周五,周六
+        months: 1月,2月,3月,4月,5月,6月,7月,8月,9月,10月,11月,12月
+        month_day: "%{month}月%{day}日"
+        year_month_day: "%{year}年%{month}月%{day}日"
+        numeric_date: "%{year}/%{month}/%{day}"
+        short_date: "%{month}/%{day}"

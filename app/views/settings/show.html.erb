@@ -1,0 +1,89 @@
+<% content_for :title, settings_t("input.title") %>
+<%= page_main(width: :narrow) do %>
+  <%= page_header settings_t("input.title"), settings_t("input.description"), plain: true %>
+  <div class="space-y-6">
+    <% { ignore_accents: ["simpleSpecial", "case-sensitive"], ignore_case: ["ignoreCase", "case-upper"] }.each do |field, (setting, icon_name)| %>
+      <% id = "setting-#{field.to_s.dasherize}" %>
+      <%= settings_section(icon: icon_name, id:, title: settings_t("input.#{setting}.heading"), description: settings_t("input.#{setting}.description")) do %>
+        <%= form_with scope: :user, url: settings_path, method: :patch, data: { controller: "autosubmit" } do |f| %>
+          <div class="mt-4 flex items-center gap-3 rounded-lg border px-3 py-2.5 sm:ml-14">
+            <label for="<%= id %>-switch" class="min-w-0 flex-1 cursor-pointer">
+              <span class="block font-medium"><%= settings_t("input.#{setting}.label") %></span>
+              <span id="<%= id %>-hint" class="block text-xs text-muted-foreground"><%= settings_t("input.#{setting}.hint") %></span>
+            </label>
+            <%= f.check_box field, id: "#{id}-switch", role: "switch", class: UiHelper::SWITCH, checked: typing_settings[field],
+                  "aria-describedby": "#{id}-hint #{id}-description", data: { action: "change->autosubmit#submit" } %>
+          </div>
+          <noscript><div class="mt-3 sm:pl-14"><%= f.submit settings_t("form.save"), class: button_classes(variant: :outline, size: :sm) %></div></noscript>
+        <% end %>
+        <p role="status" aria-live="polite" class="mt-3 text-[13px] text-muted-foreground sm:pl-14"><%= tt("input.note") %></p>
+      <% end %>
+    <% end %>
+
+    <section aria-labelledby="simple-table-heading" class="<%= SettingsDesignHelper::SETTINGS_SECTION %>">
+      <div class="space-y-1">
+        <h2 id="simple-table-heading" class="font-bold"><%= settings_t("input.simpleTable.heading") %></h2>
+        <p class="text-sm text-muted-foreground"><%= settings_t("input.simpleTable.description") %></p>
+      </div>
+      <% head = "border-b bg-muted/50 text-xs text-muted-foreground" %>
+      <% cell = "px-4 py-2" %>
+      <% table_head = capture do %>
+        <thead class="<%= head %>">
+          <tr>
+            <th scope="col" class="<%= cell %> font-medium"><%= settings_t("input.simpleTable.letter") %></th>
+            <th scope="col" class="<%= cell %> font-medium"><%= settings_t("input.simpleTable.key") %></th>
+          </tr>
+        </thead>
+      <% end %>
+      <div class="mt-4 grid gap-4 lg:grid-cols-2">
+        <div class="space-y-4">
+          <div class="overflow-x-auto rounded-lg border">
+            <table class="w-full text-left text-sm">
+              <caption class="border-b px-4 py-2 text-left font-medium"><%= settings_t("input.simpleTable.latin") %></caption>
+              <%= table_head %>
+              <tbody>
+                <% settings_marked_groups.each do |base, letters| %>
+                  <tr class="border-b last:border-0">
+                    <td class="<%= cell %> text-base tracking-wide" lang="und"><%= letters.join(" ") %></td>
+                    <td class="<%= cell %>"><%= settings_key(base) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <div class="overflow-x-auto rounded-lg border">
+            <table class="w-full text-left text-sm">
+              <caption class="border-b px-4 py-2 text-left font-medium"><%= settings_t("input.simpleTable.other") %></caption>
+              <%= table_head %>
+              <tbody>
+                <tr class="border-b">
+                  <td class="<%= cell %> text-base" lang="de">ß</td>
+                  <td class="<%= cell %>"><%= settings_key("ss") %></td>
+                </tr>
+                <tr>
+                  <td class="<%= cell %> text-base" lang="es">¿</td>
+                  <td class="<%= cell %>"><%= settings_key("?") %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="self-start overflow-x-auto rounded-lg border">
+          <table class="w-full text-left text-sm">
+            <caption class="border-b px-4 py-2 text-left font-medium"><%= settings_t("input.simpleTable.cyrillic") %></caption>
+            <%= table_head %>
+            <tbody>
+              <% SettingsDesignHelper::SETTINGS_CYRILLIC_LATIN.each do |letter, latin| %>
+                <tr class="border-b last:border-0">
+                  <td class="<%= cell %> text-base" lang="ru"><%= letter %></td>
+                  <td class="<%= cell %>"><%= settings_key(latin) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="mt-3 text-[13px] text-muted-foreground"><%= settings_t("input.simpleTable.capitals") %></p>
+    </section>
+  </div>
+<% end %>

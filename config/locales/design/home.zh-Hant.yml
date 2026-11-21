@@ -1,0 +1,192 @@
+---
+zh-Hant:
+  design:
+    home:
+      home:
+        welcome:
+          title: 用自己的單字，練習打字。
+          text: 可以先用官方單字包開始練習，或建立一份想記住的單字清單。
+          lists: 單字清單 %{count} 份
+          practices: 已完成練習 %{count} 次
+          nav_label: 開始使用
+          play: 開始練習
+          create: 建立單字清單
+          records: 查看紀錄
+        storage: 不必登入即可使用所有練習與編輯功能。單字清單、練習紀錄與裝置會儲存在此瀏覽器中。登入（GitHub 或 ID 與密碼）後，會切換到另一個儲存位置，也就是帳號，並可在裝置之間同步。瀏覽器中的資料不會自動移轉。
+        storage_account: 您已登入，單字清單、練習紀錄與裝置會儲存在帳戶中，並與登入同一個帳戶的其他裝置和瀏覽器同步。這些資料與未登入時儲存在此瀏覽器中的資料分開保存。
+        links_guide: 使用說明
+        links_about: 關於 Typle
+        links: "%{guide} ／ %{about}"
+      dashboard:
+        title: 練習概況
+        source_guest: 根據儲存在此瀏覽器中的紀錄統計。
+        source_account: 根據儲存在帳號中的紀錄統計。
+        start: 開始
+        practice: 開始練習
+        create: 建立單字清單
+        week:
+          title: 本週摘要
+          description: "%{start}至%{end}的紀錄。增減是與上週同一星期幾、同一時刻之前的紀錄相比。"
+          count: 本週練習
+          count_unit: 次
+          streak: 連續練習
+          streak_unit: 天
+          accuracy: 平均正確率（最近 %{count} 次）
+          time: 本週練習時間
+          practised_today: 今天已練習
+          streak_next: 今天練習即為第 %{day} 天
+          no_comparison: 還沒有可比較的紀錄
+          no_accuracy: 沒有包含正確率的紀錄
+          times: "%{count} 次"
+          same_as_last_week: 與上週相同
+          more_than_last_week: 比上週多 %{value}
+          less_than_last_week: 比上週少 %{value}
+        change:
+          same_recent_none_previous_latest: 與上一次紀錄相同
+          same_recent_none_previous_other: 與之前 %{previousCount} 次相同
+          same_recent_latest_previous_latest: 最新紀錄與上一次紀錄相同
+          same_recent_latest_previous_other: 最新紀錄與之前 %{previousCount} 次相同
+          same_recent_other_previous_latest: 最近 %{recentCount} 次的平均與上一次紀錄相同
+          same_recent_other_previous_other: 最近 %{recentCount} 次的平均與之前 %{previousCount} 次相同
+          different_recent_none_previous_latest: 比上一次紀錄%{difference}
+          different_recent_none_previous_other: 比之前 %{previousCount} 次%{difference}
+          different_recent_latest_previous_latest: 最新紀錄比上一次紀錄%{difference}
+          different_recent_latest_previous_other: 最新紀錄比之前 %{previousCount} 次%{difference}
+          different_recent_other_previous_latest: 最近 %{recentCount} 次的平均比上一次紀錄%{difference}
+          different_recent_other_previous_other: 最近 %{recentCount} 次的平均比之前 %{previousCount} 次%{difference}
+          seconds_direction_up: 慢 %{value} 秒
+          seconds_direction_other: 快 %{value} 秒
+          points_direction_up: 高 %{value}pt
+          points_direction_other: 低 %{value}pt
+        next:
+          title: 接下來練習的清單
+          description: 最多顯示 3 個清單：尚未練習的、%{days} 天以上未練習的，以及最近正確率低於 %{accuracy}% 的清單。
+          all_practised: 所有清單最近都練習過了。
+          words: "%{count} 個單字"
+          last_practiced: 最近練習 %{day}
+          no_records: 無紀錄
+          new: 還沒有練習
+          stale: 已 %{days} 天未練習
+          low_accuracy: 最近 %{count} 次的正確率 %{accuracy}%
+          practice_list: 練習 %{name}
+          practice: 開始練習
+        trends:
+          title: 各清單的趨勢
+          description: 顯示最近 20 次以內的每個單字秒數（越低越快）與正確率。由於用時依單字數平均，編輯清單前後的紀錄也能互相比較。
+          summary: "%{count} 次 · 最近練習 %{day}"
+          need_two: 紀錄達到 2 次以上後顯示趨勢。
+          practice_list: 練習 %{name}
+          practice: 開始練習
+          speed: 每個單字的秒數
+          accuracy: 正確率
+          seconds: "%{value} 秒"
+          percent: "%{value}%"
+          latest_number: "%{value}"
+          latest: 最新 %{number}
+          no_chart: 包含此項的紀錄達到 2 次以上後顯示。
+          best: 最佳紀錄：正確率 %{accuracy}・%{time} 秒（%{day}）
+          not_recorded: 未記錄
+        chart:
+          label: "%{label}（用左右方向鍵查看每次的數值）"
+          date: 日期時間
+          value: 數值
+        continue:
+          label: 繼續練習
+          meta: "%{count} 個詞 · 上次練習 %{day}"
+          best: 最佳：準確率 %{accuracy}，%{time} 秒
+          not_recorded: 未記錄
+          samples: 開頭的單字
+          more: 另有 %{count} 個詞
+          practice: 練習
+          practice_list: 練習 %{name}
+          other: 選擇其他清單
+        weak:
+          title: 不熟的單字
+          description: 依清單顯示最近 %{runs} 次練習（不含 Handwriting）中打錯的詞，打錯次數多的在前。只練不熟的單字時沒有打錯的詞，會從這裡移除。
+          none: 還沒有不熟的單字。練習中打錯的詞會顯示在這裡。
+          words_of: "%{name} 不熟的單字"
+          runs: "%{count} 次"
+          more: 另有 %{count} 個詞
+          practice: 只練習 %{count} 個不熟的單字
+          practice_list: 只練習 %{name} 的 %{count} 個不熟的單字
+      landing:
+        hero:
+          eyebrow: 免費，無需登入
+          title: 打字記住你想學的詞。
+          lead: Typle 是一款可以用自己的單字清單或官方單字包練習的打字應用程式。無論是程式設計的指令和語法，還是外語單字，都能邊打邊記。
+          play: 無需登入，開始練習
+          catalog: 查看官方單字包
+          home: 前往首頁
+        packs:
+          title: 官方單字包
+          lead: 追蹤 %{total} 個官方清單中的任何一個，就能馬上開始練習。
+          programming:
+            title: 程式設計
+            count: "%{count} 個清單"
+            text: Go、Java、Kotlin、TypeScript 等語言的語法，Linux、Vim、AWS CLI 等工具的指令，以及 PostgreSQL 的錯誤代碼。
+          languages:
+            title: 語言
+            count: "%{count} 個清單"
+            text: 中文（HSK 五級、六級）、韓語、英語、法語、德語、西班牙語、俄語和捷克語的單字與句型。中文和韓語還可以用手寫練習。
+        features:
+          title: 可以做什麼
+          own:
+            title: 用自己的單字清單練習
+            text: 加入想記住的單字並進行練習。顯示的單字和要輸入的字元可以不同，也可以從 CSV 檔案匯入。
+          recall:
+            title: 憑記憶打字
+            text: 隱藏答案、以備註作為提示的模式，可以檢驗自己是否真的記住了每個單字。
+          records:
+            title: 用記錄確認進步
+            text: 每次都會記錄速度、正確率和錯誤數，可以透過個人最佳和變化趨勢回顧自己的進步。
+        storage:
+          title: 資料儲存在哪裡
+          text: 無需登入即可使用全部功能。資料儲存在此瀏覽器中，登入（GitHub 或 ID 與密碼）後可以在多台裝置之間同步。
+          more_guide: 使用方式
+          more_about: 關於 Typle
+          more: "%{guide} ／ %{about}"
+        try:
+          badge: 在這裡試打
+          progress: "%{name} · %{current} / %{total} 個詞"
+          label: 輸入
+          hint: 輸入上面的詞即可進入下一個。在這裡輸入的內容不會被記錄。
+          done: 已輸入 %{count} 個詞。繼續用這個單字包練習，就會留下記錄。
+          continue: 繼續用這個單字包練習
+          starting: 正在準備…
+      format:
+        today: 今天
+        yesterday: 昨天
+        date_with_weekday: "%{date}（%{weekday}）"
+        units:
+          hours: 小時
+          minutes: 分
+          seconds: 秒
+        time:
+          one: "%{value}%{unit}"
+          two: "%{first}%{firstUnit}%{second}%{secondUnit}"
+        month_names:
+        -
+        - 1月
+        - 2月
+        - 3月
+        - 4月
+        - 5月
+        - 6月
+        - 7月
+        - 8月
+        - 9月
+        - 10月
+        - 11月
+        - 12月
+        weekday_names:
+        - 週日
+        - 週一
+        - 週二
+        - 週三
+        - 週四
+        - 週五
+        - 週六
+        month_day: "%{month}月%{day}日"
+        year_month_day: "%{year}年%{month}月%{day}日"
+        short_date: "%{month}/%{day}"
+        short_date_time: "%{month}/%{day} %{period}%{hour12}:%{minute}"

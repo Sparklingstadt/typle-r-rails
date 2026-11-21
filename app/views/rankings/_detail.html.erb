@@ -1,0 +1,113 @@
+<%# typle-r RankingDetail: the open list's stats, time trend, top records and the runs at other word counts. %>
+<% now = Time.current %>
+<% list = ranking.list %>
+<% ranked = ranking.ranked %>
+<% practice = play_path(list: list.id, mode: @mode) %>
+<% mode_records = list.practice_records.select { |record| record.mode == @mode } %>
+<% last_practiced = mode_records.map(&:practiced_at).max %>
+<% device_name = @device && records_device_choices([@device], mark_deleted: true).first[1] %>
+<div class="flex flex-col gap-5 p-4 sm:p-6">
+  <%= link_button rankings_url.({ list: nil }), variant: :ghost, size: :sm, class: "-ml-2 self-start xl:hidden" do %><%= icon("arrow-left") %><%= records_t("rankings.detail.back") %><% end %>
+  <div class="flex flex-wrap items-start justify-between gap-3">
+    <div class="min-w-0 space-y-1">
+      <h2 id="ranking-title" tabindex="-1" class="text-xl font-bold outline-none [overflow-wrap:anywhere]"><%= practice_name(list) %></h2>
+      <p class="flex flex-wrap items-center gap-x-2 text-[13px] text-muted-foreground tabular-nums">
+        <span><%= records_t("rankings.detail.words", count: list.words.size) %></span><span aria-hidden="true">·</span><span><%= records_t("rankings.detail.records", count: mode_records.size) %></span>
+        <% if last_practiced %><span aria-hidden="true">·</span><span><%= records_t("rankings.detail.last_practiced", day: records_day(last_practiced, now)) %></span><% end %>
+      </p>
+    </div>
+    <div class="flex w-full gap-2 sm:w-auto">
+      <% if mode_records.any? %>
+        <%= link_button practice_records_path(list: list.id), variant: :ghost, size: :lg, class: "hidden sm:inline-flex" do %><%= records_t("rankings.detail.view_records") %><%= icon("arrow-right") %><% end %>
+      <% end %>
+      <%= link_button practice, size: :lg, class: "grow sm:grow-0" do %><%= icon(:keyboard) %><%= records_t("rankings.detail.practice") %><% end %>
+    </div>
+  </div>
+
+  <% if ranked.empty? %>
+    <div class="flex flex-col items-center gap-3 rounded-xl border border-dashed px-6 py-10 text-center">
+      <span class="grid size-11 place-items-center rounded-full bg-muted text-muted-foreground"><%= icon(:trophy, class: "size-5") %></span>
+      <% if @device.nil? || mode_records.empty? %>
+        <div class="space-y-1">
+          <h3 class="font-bold"><%= records_t("rankings.detail.not_practised.title") %></h3>
+          <p class="max-w-sm text-sm text-balance text-muted-foreground"><%= records_t("rankings.detail.not_practised.description") %></p>
+        </div>
+        <%= link_button practice, variant: :outline do %><%= icon(:keyboard) %><%= records_t("rankings.detail.practice") %><% end %>
+      <% else %>
+        <div class="space-y-1">
+          <h3 class="font-bold [overflow-wrap:anywhere]"><%= records_t("rankings.detail.no_device_records.title", device: device_name) %></h3>
+          <p class="max-w-sm text-sm text-balance text-muted-foreground"><%= records_t("rankings.detail.no_device_records.description", count: mode_records.size) %></p>
+        </div>
+        <%= link_button records_t("rankings.detail.no_device_records.show_all"), rankings_url.({ device: nil }), variant: :outline %>
+      <% end %>
+    </div>
+  <% else %>
+    <% best = ranking.best %>
+    <% recent = ranking.recent %>
+    <% gap = ranking.recent_seconds - best.seconds %>
+    <% unit = ->(chunks) { tag.span(chunks, class: "ml-px text-[0.8em] font-normal text-muted-foreground") } %>
+    <% tiles = [
+         [records_t("rankings.detail.stats.best"), records_time(best.seconds), records_t("rankings.detail.stats.best_note", accuracy: records_accuracy(best.accuracy), day: records_day(best.practiced_at, now)), true],
+         [records_t("rankings.detail.stats.recent_average", count: recent.size), records_time(ranking.recent_seconds),
+          gap > 0.005 ? records_t("rankings.detail.stats.gap", value: format("%.2f", gap)) : records_t("rankings.detail.stats.same_as_best"), false],
+         [records_t("rankings.detail.stats.average_accuracy"), "#{format("%.1f", ranking.recent_accuracy)}%", records_t("rankings.detail.stats.recent_runs", count: recent.size), false],
+         [records_t("rankings.detail.stats.runs"), records_rich("rankings.detail.stats.runs_value", { unit: }, count: ranked.size),
+          ranking.mixed? ? records_t("rankings.detail.stats.all_word_counts") : records_t("rankings.detail.stats.current_words", count: list.words.size), false]
+       ] %>
+    <dl class="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4">
+      <% tiles.each do |term, value, note, highlight| %>
+        <div class="<%= cn("grid min-w-0 content-start gap-0.5 rounded-xl border px-3 py-3 sm:px-4 sm:py-3.5", highlight && "border-amber-200 bg-amber-50/60 dark:border-amber-900 dark:bg-amber-950/30") %>">
+          <dt class="flex items-center gap-1 text-xs text-muted-foreground"><%= icon(:trophy, class: "size-3.5 text-amber-600 dark:text-amber-400") if highlight %><%= term %></dt>
+          <dd class="text-xl font-medium tabular-nums sm:text-2xl"><%= value %></dd>
+          <dd class="text-xs text-muted-foreground tabular-nums [overflow-wrap:anywhere]"><%= note %></dd>
+        </div>
+      <% end %>
+    </dl>
+
+    <% points = ranking.trend %>
+    <div class="space-y-2">
+      <h3 class="text-sm font-bold"><%= records_t("rankings.detail.trend.title") %> <span class="font-normal text-muted-foreground"><%= records_t("rankings.detail.trend.recent", count: points.size) %></span></h3>
+      <% if points.size > 1 %>
+        <%= render "rankings/trend_chart", points:, label: records_t("rankings.detail.trend.label", name: list.full_name) %>
+      <% else %>
+        <p class="rounded-lg bg-muted/50 px-3 py-4 text-sm text-muted-foreground"><%= records_t("rankings.detail.trend.need_two") %></p>
+      <% end %>
+    </div>
+
+    <% top = @show_all ? ranked : ranked.first(ListRanking::TOP) %>
+    <div class="space-y-2">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <h3 class="text-sm font-bold"><%= records_t("rankings.detail.top.title") %> <span class="font-normal text-muted-foreground"><%= records_t("rankings.detail.top.#{@order}") %><%= " · #{device_name}" if @device %></span></h3>
+        <span class="text-xs text-muted-foreground tabular-nums"><%= records_t("rankings.detail.top.shown", shown: top.size, count: ranked.size) %></span>
+      </div>
+      <p class="text-xs text-muted-foreground sm:hidden"><%= records_t("rankings.order_notes.#{@order}") %></p>
+      <%= render "rankings/top_records", records: top, list: %>
+      <% if ranked.size > ListRanking::TOP %>
+        <%= link_to rankings_url.({ list: list.id, all: (1 unless @show_all), others: (1 if @include_others) }), "aria-expanded": @show_all.to_s,
+              class: button_classes(variant: :ghost, size: :sm, class: "w-full text-muted-foreground") do %>
+          <%= @show_all ? records_t("rankings.detail.top.show_top", count: ListRanking::TOP) : records_t("rankings.detail.top.show_all", count: ranked.size) %><%= icon("chevron-down", class: cn("transition-transform motion-reduce:transition-none", @show_all && "rotate-180")) %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <% if ranking.others.any? %>
+      <% detail = ranking.other_counts.map { |words, count| records_t("rankings.detail.others.words", words:, count:) }.join(records_t("rankings.detail.others.separator")) %>
+      <div class="flex flex-wrap items-start gap-x-2.5 gap-y-2 rounded-lg border border-dashed bg-muted/40 px-3.5 py-3 text-[13px]">
+        <%= icon(:history, class: "mt-0.5 size-4 shrink-0 text-muted-foreground") %>
+        <p class="min-w-0 flex-1 basis-52 text-muted-foreground">
+          <% if ranking.fallback? %>
+            <%= records_t("rankings.detail.others.fallback", count: list.words.size, detail:) %>
+          <% elsif @include_others %>
+            <%= records_t("rankings.detail.others.included", detail:) %>
+          <% else %>
+            <%= records_rich("rankings.detail.others.excluded", { strong: ->(chunks) { tag.span(chunks, class: "font-medium text-foreground") } }, count: ranking.others.size, detail:) %>
+          <% end %>
+        </p>
+        <% unless ranking.fallback? %>
+          <%= link_button records_t(@include_others ? "rankings.detail.others.exclude" : "rankings.detail.others.include"),
+                rankings_url.({ list: list.id, others: (1 unless @include_others), all: (1 if @show_all) }), variant: :outline, size: :sm, class: "ml-6.5 shrink-0 sm:ml-0" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,125 @@
+zh-Hant:
+  design:
+    lists:
+      format:
+        today: 今天
+        yesterday: 昨天
+        month_day: "%-m月%-d日"
+        year_month_day: "%Y年%-m月%-d日"
+      labels:
+        category: 分類
+        tag: 標籤
+      form:
+        cancel: 取消
+      page:
+        description: 建立及編輯練習用的單字包。將清單匯出為 CSV 後，可在其他瀏覽器或帳號中匯入。
+        catalog: 官方包
+        create_title: 建立單字清單
+        edit_title: 編輯單字清單
+      manager:
+        heading: 已儲存的包
+        count: "%{count} 個"
+        create: 建立新包
+        create_pack: 建立新包
+        import_file: 從檔案匯入
+        csv_note: CSV 匯出會儲存顯示的單字、輸入的文字和補充說明（不含練習紀錄）。可在單字包畫面的「從檔案匯入」中使用。
+      pack:
+        lists: "%{count}個清單"
+        practiced: 已練習 %{practiced}/%{lists}
+        word_count: "%{count}個單字"
+        practice: 練習
+        open: 開啟
+        lists_of: "%{name} 的清單"
+        more_actions: 更多操作
+        more_for: "%{name} 包的操作"
+        edit: 編輯包
+        add_list: 新增清單
+        delete: 刪除
+      row:
+        examples: 單字範例
+        separator: 、
+        more: "%{words} 等，另有 %{rest} 個"
+        word_count: "%{count} 個單字"
+        not_practiced: 尚未練習
+        practiced: 練習 %{count} 次 · 最近：%{day}
+        practice: 練習
+        practice_list: 練習 %{name}
+        edit: 編輯
+        edit_list: 編輯 %{name}
+        more_actions: 更多操作
+        more_for: "%{name} 的更多操作"
+        practice_this: 練習此清單
+        records: 查看練習紀錄
+        record_count: "%{count} 筆"
+        export: 匯出 CSV
+        delete: 刪除
+      empty:
+        title: 還沒有單字清單
+        description: 登錄想練習的單字，以及作為正確答案輸入的文字。也可以從 CSV 檔案匯入。
+        pack_title: 還沒有單字包
+        pack_description: 還沒有單字包。請追蹤官方單字包，或建立新的單字包。
+        catalog_link: 追蹤官方單字包
+      follow:
+        badge: 官方
+        unfollow: 取消追蹤
+      catalog:
+        description: 預先準備好的單字包。追蹤後可直接使用官方內容，並自動隨官方更新。無法編輯，但可以複製成自己的單字包。
+        back: 返回包列表
+        open: 開啟
+        follow: 追蹤
+        follow_pack: 追蹤 %{name}
+        following: 追蹤中
+        unfollow_pack: 取消追蹤 %{name}
+        matching: 符合興趣的詞包
+        others: 其他詞包
+        no_matching: 目前沒有符合興趣的詞包
+        change_interests: 變更興趣
+      official:
+        title: "%{name}打字練習"
+        stats: "%{lists} · %{words}"
+        stats_lists: "%{count} 個清單"
+        stats_words: "%{count} 項"
+        practice: 用這個單字包練習
+        catalog: 查看其他官方單字包
+        free: 免費，無需登入。按下後會追蹤這個單字包並立即開始練習。
+        words_heading: 包含的內容
+        input: 要輸入的內容
+        note: 含義與說明
+        details: 查看詳情
+      starter:
+        first: 第一個清單：%{list}
+      pack_editor:
+        create_title: 建立包
+        create_description: 輸入包的名稱。建立後，再將單字清單新增到包中。
+        edit_title: 編輯包
+        edit_description: 變更包的名稱。
+        info: 包的資訊
+        name: 包名稱
+        name_help: 顯示在包清單中，以及選擇要練習的包時。
+      editor:
+        back: 單字包
+        description: 登錄打字時顯示的單字，以及作為正確答案輸入的文字。
+        basics: 基本資訊
+        adding_to: 將新增到包「%{name}」。
+        name: 單字清單名稱
+        name_help: 會顯示在練習畫面和單字清單中。
+        levels: 難度（選填）
+        level_placeholder: 例如：初級
+        levels_help: 在練習畫面中用於選擇包內的清單，例如：初級。
+        writing_toggle: 用於手寫練習（Typle Handwriting）
+        writing_toggle_help: 讓此清單可以用手寫來練習。辨識語言用於讀取手寫的文字。
+        writing_language: 辨識語言
+        words: 單字
+        word_total_badge: "%{count} 個單字"
+        display: 顯示的單字
+        input: 輸入的文字
+        input_hint: 留空則與顯示相同
+        annotation_optional: 補充說明（選填）
+        error_count: 有 %{count} 個錯誤
+        word_total: "· %{count} 個單字"
+        save: 儲存
+      words:
+        description: 依輸入的文字、顯示的單字或補充說明，搜尋已儲存單字清單中的單字。
+        all: 全部單字
+        number: 編號
+        no_match: 沒有符合「%{query}」的單字。

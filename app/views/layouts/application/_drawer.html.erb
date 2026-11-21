@@ -1,0 +1,12 @@
+<div id="drawer" class="xl:hidden" hidden data-drawer-target="drawer">
+  <div class="fixed inset-0 z-50 bg-black/40" data-action="click->drawer#close"></div>
+  <div role="dialog" aria-modal="true" aria-label="<%= t("layouts.application.menu") %>"
+    class="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] flex-col gap-2 overflow-y-auto bg-background px-3 pt-2 pb-3 shadow-xl outline-none" data-drawer-target="panel">
+    <div class="flex items-center justify-between gap-2">
+      <%= render "layouts/application/brand" %>
+      <button type="button" class="<%= button_classes(variant: :ghost, size: :icon, class: "size-10") %>" aria-label="<%= t("layouts.application.close_menu") %>" data-action="drawer#close"><%= icon(:x, class: "size-5") %></button>
+    </div>
+    <%= render "layouts/application/storage_badge", class: "self-start" %>
+    <div class="flex-1"><%= render "layouts/application/nav_list" %></div>
+  </div>
+</div>

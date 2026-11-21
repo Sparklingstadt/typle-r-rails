@@ -1,0 +1,8 @@
+<%# typle-r's app/shared/[id]: pack sharing ended in v2.49.0; a link handed out still opens and says so. %>
+<% content_for :bare_title, tt("metadata.sharedTitle") %>
+<%= page_main(width: :narrow) do %>
+  <div class="space-y-4">
+    <p role="status" class="text-lg font-bold"><%= tt("errors.sharedPackNotFound") %></p>
+    <%= link_button tt("wordLists.sharedPage.toPacks"), packs_path, variant: :outline %>
+  </div>
+<% end %>

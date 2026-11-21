@@ -1,0 +1,53 @@
+<%# typle-r's LabelFields: the category, chosen from those in use or created, and the tags, chosen or created in the same
+    way and shown as chips (label_picker_controller.js). %>
+<% labels = { create: tt("wordLists.editor.create", name: "%{name}"), noLabels: tt("wordLists.editor.noLabels"),
+              chooseCategory: tt("wordLists.editor.chooseCategory"), clearCategory: tt("wordLists.editor.clearCategory"),
+              addTag: tt("wordLists.editor.addTag"), tagsFull: tt("wordLists.editor.tagsFull", max: Pack::MAX_TAGS),
+              removeTag: tt("wordLists.editor.removeTag", tag: "%{tag}") } %>
+<% picker = "relative" %>
+<% trigger = button_classes(variant: :outline, class: "h-11 w-full justify-between px-3 font-normal") %>
+<% popover = "absolute top-full left-0 z-50 mt-1 flex w-full min-w-64 flex-col overflow-hidden rounded-lg bg-popover p-1 text-sm text-popover-foreground shadow-md ring-1 ring-foreground/10" %>
+<% search = "mx-1 mt-1 flex h-8 items-center gap-2 rounded-lg border border-input/30 bg-input/30 px-2 text-muted-foreground" %>
+<div class="grid gap-4 pt-2 sm:grid-cols-2">
+  <div class="space-y-2" data-controller="label-picker" data-label-picker-mode-value="single" data-label-picker-labels-value="<%= labels.to_json %>"
+       data-label-picker-suggestions-value="<%= suggestions[:categories].to_json %>" data-label-picker-chosen-value="<%= [pack[:category]].compact.to_json %>"
+       data-label-picker-name-value="pack[category]" data-label-picker-max-length-value="<%= Pack::MAX_CATEGORY %>">
+    <label for="pack-category" class="<%= label_classes %>"><%= tt("wordLists.editor.category") %></label>
+    <div class="<%= picker %>">
+      <button id="pack-category" type="button" role="combobox" aria-expanded="false" aria-describedby="pack-category-help" class="<%= trigger %>"
+              data-label-picker-target="trigger" data-action="label-picker#toggle">
+        <span class="truncate" data-label-picker-target="triggerText"></span><%= icon("chevrons-up-down", class: "text-muted-foreground") %>
+      </button>
+      <div class="<%= popover %>" data-label-picker-target="panel" hidden>
+        <label class="<%= search %>"><%= icon(:search, class: "size-4 shrink-0") %>
+          <input type="text" aria-label="<%= tt("wordLists.editor.searchCategory") %>" placeholder="<%= tt("wordLists.editor.categoryPlaceholder") %>" maxlength="<%= Pack::MAX_CATEGORY %>"
+                 class="min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground" data-label-picker-target="query" data-action="input->label-picker#render keydown->label-picker#keydown">
+        </label>
+        <div role="listbox" class="max-h-72 overflow-y-auto" data-label-picker-target="options"></div>
+      </div>
+    </div>
+    <div data-label-picker-target="inputs" hidden></div>
+    <p id="pack-category-help" class="text-xs text-muted-foreground"><%= tt("wordLists.editor.categoryHelp") %></p>
+  </div>
+  <div class="space-y-2" data-controller="label-picker" data-label-picker-mode-value="multi" data-label-picker-labels-value="<%= labels.to_json %>"
+       data-label-picker-suggestions-value="<%= suggestions[:tags].to_json %>" data-label-picker-chosen-value="<%= Array(pack[:tags]).to_json %>"
+       data-label-picker-name-value="pack[tags][]" data-label-picker-max-value="<%= Pack::MAX_TAGS %>" data-label-picker-max-length-value="<%= Pack::MAX_TAG %>">
+    <label for="pack-tags" class="<%= label_classes %>"><%= tt("wordLists.editor.tags") %></label>
+    <div class="<%= picker %>">
+      <button id="pack-tags" type="button" role="combobox" aria-expanded="false" aria-describedby="pack-tags-help" class="<%= trigger %>"
+              data-label-picker-target="trigger" data-action="label-picker#toggle">
+        <span class="truncate text-muted-foreground" data-label-picker-target="triggerText"></span><%= icon("chevrons-up-down", class: "text-muted-foreground") %>
+      </button>
+      <div class="<%= popover %>" data-label-picker-target="panel" hidden>
+        <label class="<%= search %>"><%= icon(:search, class: "size-4 shrink-0") %>
+          <input type="text" aria-label="<%= tt("wordLists.editor.searchTag") %>" placeholder="<%= tt("wordLists.editor.tagPlaceholder") %>" maxlength="<%= Pack::MAX_TAG %>"
+                 class="min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground" data-label-picker-target="query" data-action="input->label-picker#render keydown->label-picker#keydown">
+        </label>
+        <div role="listbox" aria-multiselectable="true" class="max-h-72 overflow-y-auto" data-label-picker-target="options"></div>
+      </div>
+    </div>
+    <ul aria-label="<%= tt("wordLists.editor.tagList") %>" class="flex flex-wrap gap-1.5" data-label-picker-target="chips"></ul>
+    <div data-label-picker-target="inputs" hidden></div>
+    <p id="pack-tags-help" class="text-xs text-muted-foreground"><%= tt("wordLists.editor.tagsHelp", max: Pack::MAX_TAGS) %></p>
+  </div>
+</div>

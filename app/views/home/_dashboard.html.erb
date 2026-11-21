@@ -1,0 +1,155 @@
+<%# typle-r's src/components/Dashboard/Dashboard.tsx and the sections it holds. %>
+<% now = Time.current %>
+<% continue_list = dashboard.continue_list %>
+<% week = dashboard.week %>
+<% section = lambda do |id, title, description, &body|
+     tag.section(class: "flex flex-col gap-4", "aria-labelledby": id) do
+       safe_join([tag.div(class: "space-y-1") { safe_join([tag.h2(title, id:, class: "text-xl"), tag.p(description, class: "text-sm text-muted-foreground")]) }, capture(&body)])
+     end
+   end %>
+<div class="flex flex-col gap-9 lg:gap-12">
+  <div class="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+    <div class="space-y-2">
+      <h1 class="text-2xl lg:text-3xl"><%= home_t("dashboard.title") %></h1>
+      <p class="text-sm text-muted-foreground"><%= home_t(current_user.guest? ? "dashboard.source_guest" : "dashboard.source_account") %></p>
+    </div>
+    <nav aria-label="<%= home_t("dashboard.start") %>" class="flex flex-wrap gap-3">
+      <%# With a list to go on with, its card holds the practice button. %>
+      <% unless continue_list %><%= link_button home_t("dashboard.practice"), play_path, icon: "keyboard" %><% end %>
+      <%= link_button home_t("dashboard.create"), new_pack_path, variant: :outline, icon: "plus" %>
+    </nav>
+  </div>
+
+  <% if continue_list %>
+    <% best = continue_list.best %>
+    <% last_practiced = dashboard.records.find { |r| r.word_list_id == continue_list.id }.practiced_at %>
+    <% rest = continue_list.words.size - 3 %>
+    <section aria-labelledby="continue-name">
+      <%= card(class: "gap-4 px-5 py-6 sm:px-7") do %>
+        <p class="text-[13px] font-bold text-primary"><%= home_t("dashboard.continue.label") %></p>
+        <div class="space-y-1.5">
+          <h2 id="continue-name" class="text-2xl font-bold break-words"><%= practice_name(continue_list) %></h2>
+          <p class="text-sm text-muted-foreground">
+            <%= home_t("dashboard.continue.meta", count: continue_list.words.size, day: home_day(last_practiced, now)) %>
+            <% if best %> · <%= home_t("dashboard.continue.best", accuracy: format_accuracy(best.accuracy), time: format("%.2f", best.seconds)) %><% end %>
+          </p>
+        </div>
+        <ul aria-label="<%= home_t("dashboard.continue.samples") %>" class="flex flex-wrap items-center gap-2">
+          <% continue_list.words.first(3).each do |word| %>
+            <li lang="und" class="max-w-full truncate rounded-lg border px-2.5 py-1 font-mono text-[15px]"><%= word.display %></li>
+          <% end %>
+          <% if rest.positive? %><li class="px-1 text-[13px] text-muted-foreground"><%= home_t("dashboard.continue.more", count: rest) %></li><% end %>
+        </ul>
+        <div class="flex flex-wrap items-center gap-3">
+          <%= link_button home_t("dashboard.continue.practice"), play_path(list: continue_list.id), size: :lg, icon: "keyboard",
+                aria: { label: home_t("dashboard.continue.practice_list", name: continue_list.full_name) } %>
+          <%= link_button home_t("dashboard.continue.other"), packs_path, variant: :link %>
+        </div>
+      <% end %>
+    </section>
+  <% end %>
+
+  <%= section.("week-heading", home_t("dashboard.week.title"),
+        home_t("dashboard.week.description", start: home_date_with_weekday(dashboard.week_start, now), end: home_date_with_weekday(dashboard.week_start + 6.days, now))) do %>
+    <% spaced = home_unit_space? %>
+    <% stat = lambda do |label, parts, delta|
+         tag.div(class: "flex flex-col gap-2 rounded-xl p-3 ring-1 ring-foreground/10 sm:p-4") do
+           safe_join([
+             tag.dt(label, class: "text-[13px] text-muted-foreground"),
+             tag.dd(class: "flex flex-wrap items-baseline gap-x-0.5") {
+               safe_join(parts.flat_map { |value, unit|
+                 [tag.span(value, class: "text-2xl font-semibold xl:text-3xl"), tag.span(unit, class: cn("mr-1 text-sm text-muted-foreground", ("ml-1" if spaced && unit != "%")))]
+               })
+             },
+             tag.dd(home_delta(**delta))
+           ])
+         end
+       end %>
+    <% times = ->(value) { home_t("dashboard.week.times", count: value) } %>
+    <dl class="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
+      <%= stat.(home_t("dashboard.week.count"), [[week[:runs].to_s, home_t("dashboard.week.count_unit", count: week[:runs])]],
+                home_week_delta(week[:runs], week[:runs_before], &times)) %>
+      <%= stat.(home_t("dashboard.week.streak"), [[week[:streak].to_s, home_t("dashboard.week.streak_unit", count: week[:streak])]],
+                week[:practiced_today] ? { icon: "check", good: true, text: home_t("dashboard.week.practised_today") }
+                                       : { icon: "keyboard", good: false, text: home_t("dashboard.week.streak_next", day: week[:streak] + 1) }) %>
+      <%= stat.(home_t("dashboard.week.accuracy", count: week[:accuracy] ? week[:accuracy_count] : 10),
+                week[:accuracy] ? [[format("%.1f", week[:accuracy]), "%"]] : [["—", ""]],
+                if week[:accuracy_change] then home_change_delta(week[:accuracy_change], :points, named_recent: false)
+                else { icon: "minus", good: false, text: home_t(week[:accuracy] ? "dashboard.week.no_comparison" : "dashboard.week.no_accuracy") } end) %>
+      <%= stat.(home_t("dashboard.week.time"), home_duration_parts(week[:seconds]),
+                home_week_delta(week[:seconds], week[:seconds_before]) { |value| home_duration(value) }) %>
+    </dl>
+  <% end %>
+
+  <%= section.("next-heading", home_t("dashboard.next.title"),
+        home_t("dashboard.next.description", days: Dashboard::STALE_DAYS, count: Dashboard::STALE_DAYS, accuracy: Dashboard::LOW_ACCURACY)) do %>
+    <% picks = dashboard.next_lists %>
+    <% if picks.empty? %>
+      <p class="rounded-xl p-4 text-sm ring-1 ring-foreground/10"><%= home_t("dashboard.next.all_practised") %></p>
+    <% else %>
+      <ul class="divide-y overflow-hidden rounded-xl ring-1 ring-foreground/10">
+        <% picks.each do |list, (reason, args)| %>
+          <% last = dashboard.last_normal_practice(list) %>
+          <% badge_icon, badge_text = case reason
+               when :never then ["sparkles", home_t("dashboard.next.new")]
+               when :idle then ["clock", home_t("dashboard.next.stale", days: args[:count], count: args[:count])]
+               else ["target", home_t("dashboard.next.low_accuracy", count: args[:count], accuracy: format("%.1f", args[:accuracy]))]
+               end %>
+          <li class="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 p-4 sm:px-5 md:grid-cols-[minmax(0,1fr)_auto_auto]">
+            <div class="min-w-0">
+              <p class="font-medium break-words"><%= practice_name(list) %></p>
+              <p class="text-[13px] text-muted-foreground"><%= home_t("dashboard.next.words", count: list.words.size) %> · <%= last ? home_t("dashboard.next.last_practiced", day: home_day(last, now)) : home_t("dashboard.next.no_records") %></p>
+            </div>
+            <%= ui_badge(variant: :outline, class: "col-span-2 justify-self-start md:col-span-1") do %><%= icon(badge_icon) %><%= badge_text %><% end %>
+            <%= link_button home_t("dashboard.next.practice"), play_path(list: list.id), variant: :outline, class: "col-start-2 row-start-1 md:col-start-3",
+                  aria: { label: home_t("dashboard.next.practice_list", name: list.full_name) } %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+
+  <%= section.("weak-heading", home_t("dashboard.weak.title"), home_t("dashboard.weak.description", runs: Dashboard::WEAK_RUNS)) do %>
+    <% weak = dashboard.weak_lists %>
+    <% if weak.empty? %>
+      <p class="rounded-xl p-4 text-sm ring-1 ring-foreground/10"><%= home_t("dashboard.weak.none") %></p>
+    <% else %>
+      <ul class="flex flex-col gap-4">
+        <% weak.each do |item| %>
+          <% total = item.words.size + item.more %>
+          <li class="flex flex-col gap-3 rounded-xl p-4 ring-1 ring-foreground/10 sm:px-5">
+            <p class="font-medium break-words"><%= practice_name(item.list) %></p>
+            <ul aria-label="<%= home_t("dashboard.weak.words_of", name: item.list.full_name) %>" class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              <% item.words.each do |weak_word| %>
+                <% word = item.list.words.find { |w| w.input == weak_word.word } %>
+                <% meaning = word.annotation.present? ? home_word_meaning(word.display, word.annotation) : "" %>
+                <li class="flex min-w-0 items-center justify-between gap-3 rounded-lg border px-3 py-2">
+                  <span class="min-w-0">
+                    <span lang="und" class="block truncate font-mono"><%= word.display == word.input ? word.input : "#{word.display} #{word.input}" %></span>
+                    <% if meaning.present? %><span class="block truncate text-[13px] text-muted-foreground"><%= meaning %></span><% end %>
+                  </span>
+                  <span class="shrink-0 text-[13px] font-bold text-red-700 tabular-nums dark:text-red-400"><%= home_t("dashboard.weak.runs", count: weak_word.runs) %></span>
+                </li>
+              <% end %>
+            </ul>
+            <% if item.more.positive? %><p class="text-[13px] text-muted-foreground"><%= home_t("dashboard.weak.more", count: item.more) %></p><% end %>
+            <div>
+              <%= link_button play_path(list: item.list.id, review: "weak"), variant: :outline,
+                    aria: { label: home_t("dashboard.weak.practice_list", name: item.list.full_name, count: total) } do %>
+                <%= icon("list-restart") %><%= home_t("dashboard.weak.practice", count: total) %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+
+  <%= section.("trends-heading", home_t("dashboard.trends.title"), home_t("dashboard.trends.description")) do %>
+    <div class="grid items-start gap-4 xl:grid-cols-2">
+      <% dashboard.list_trends.each do |trend| %>
+        <%= render "home/trend", trend:, now: %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

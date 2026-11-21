@@ -1,0 +1,35 @@
+<%# PracticeResult, drawn in place when a run ends (practice_run.js fills the tiles, the note and the missed words). %>
+<section aria-label="<%= tt("practice.result.label") %>" class="flex flex-1 flex-col gap-4 px-4 pt-5 pb-5 sm:gap-5 sm:px-6 sm:pt-7 sm:pb-6" data-<%= controller %>-target="result" hidden>
+  <template data-icon-template="trending-down"><%= icon("trending-down", class: "size-3 shrink-0") %></template>
+  <template data-icon-template="keyboard"><%= icon("keyboard", class: "size-3 shrink-0") %></template>
+  <template data-icon-template="circle-check"><%= icon("circle-check", class: "size-3.5") %></template>
+  <template data-icon-template="trophy"><%= icon("trophy", class: "size-3.5") %></template>
+  <%# typle-r's ErrorAlert with its action: the run could not be saved, and the button saves it again. %>
+  <template data-save-failed-template>
+    <div data-slot="alert" role="alert" class="<%= alert_classes(:destructive, "border-destructive/40 bg-destructive/5") %>"><%= icon("circle-alert") %><div data-slot="alert-description" class="text-sm text-balance text-muted-foreground md:text-pretty flex flex-wrap items-center gap-x-3 gap-y-2"><span class="min-w-0 flex-1 basis-64" data-save-failed-text></span><button type="button" data-retry class="<%= button_classes(variant: :outline, size: :lg) %>"></button></div></div>
+  </template>
+  <div class="flex flex-wrap items-center gap-3" data-result-badges>
+    <h2 class="text-[22px] font-bold sm:text-[26px]"><%= tt("practice.result.title") %></h2>
+    <% if mode == "writing" %>
+      <span class="inline-flex h-7 items-center gap-1.5 rounded-full border px-2.5 text-[13px] font-medium"><%= icon("pen-line", class: "size-3.5") %><%= tt("practice.modeWriting") %></span>
+    <% elsif mode == "recall" %>
+      <span class="inline-flex h-7 items-center gap-1.5 rounded-full bg-primary/10 px-2.5 text-[13px] font-bold text-primary"><%= icon("brain", class: "size-3.5") %><%= tt("practice.recall.resultHeading") %></span>
+    <% end %>
+  </div>
+  <p class="sr-only"><%= tt("practice.result.completed", name: @list_name) %></p>
+  <div class="contents" data-<%= controller %>-target="resultBody"></div>
+  <div class="flex flex-wrap gap-2">
+    <button type="button" data-slot="button" data-variant="default" class="<%= button_classes(class: "grow sm:grow-0") %>" data-action="<%= controller %>#restart" data-autofocus aria-keyshortcuts="Enter">
+      <%= icon("rotate-ccw") %><%= tt("practice.result.again") %><%= kbd("Enter") %>
+    </button>
+    <button type="button" class="<%= button_classes(variant: :outline, class: "grow sm:grow-0") %>" data-action="<%= controller %>#reviewMissed" data-review-missed hidden>
+      <%= icon("list-restart") %>
+    </button>
+    <button type="button" class="<%= button_classes(variant: :outline, class: "grow sm:grow-0") %>" data-action="<%= controller %>#chooseList"><%= tt("practice.result.chooseList") %></button>
+    <%= link_button practice_records_path, variant: :ghost do %><%= tt("practice.result.viewRecords") %><%= icon("arrow-right") %><% end %>
+    <a class="<%= button_classes(variant: :ghost) %>" target="_blank" rel="noopener noreferrer" data-share data-name="<%= @list_name %>" hidden>
+      <%= icon("share-2") %><%= tt("practice.result.shareOnX") %>
+    </a>
+  </div>
+  <div class="contents" data-<%= controller %>-target="resultMissed"></div>
+</section>

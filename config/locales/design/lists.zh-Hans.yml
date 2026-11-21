@@ -1,0 +1,125 @@
+zh-Hans:
+  design:
+    lists:
+      format:
+        today: 今天
+        yesterday: 昨天
+        month_day: "%-m月%-d日"
+        year_month_day: "%Y年%-m月%-d日"
+      labels:
+        category: 分类
+        tag: 标签
+      form:
+        cancel: 取消
+      page:
+        description: 创建和编辑用于练习的单词包。将列表导出为 CSV 后，可在其他浏览器或账号中导入。
+        catalog: 官方包
+        create_title: 创建单词列表
+        edit_title: 编辑单词列表
+      manager:
+        heading: 已保存的包
+        count: "%{count} 个"
+        create: 创建新包
+        create_pack: 新建包
+        import_file: 从文件导入
+        csv_note: CSV 导出会保存显示的单词、输入的文字和备注（不含练习记录）。可在单词包界面的“从文件导入”中使用。
+      pack:
+        lists: "%{count}个列表"
+        practiced: 已练习 %{practiced}/%{lists}
+        word_count: "%{count}个单词"
+        practice: 练习
+        open: 打开
+        lists_of: "%{name} 的列表"
+        more_actions: 更多操作
+        more_for: "%{name} 包的操作"
+        edit: 编辑包
+        add_list: 添加列表
+        delete: 删除
+      row:
+        examples: 单词示例
+        separator: 、
+        more: "%{words} 等，另有 %{rest} 个"
+        word_count: "%{count} 个单词"
+        not_practiced: 尚未练习
+        practiced: 练习 %{count} 次 · 最近：%{day}
+        practice: 练习
+        practice_list: 练习 %{name}
+        edit: 编辑
+        edit_list: 编辑 %{name}
+        more_actions: 更多操作
+        more_for: "%{name} 的更多操作"
+        practice_this: 练习此列表
+        records: 查看练习记录
+        record_count: "%{count} 条"
+        export: 导出 CSV
+        delete: 删除
+      empty:
+        title: 还没有单词列表
+        description: 登记想要练习的单词，以及作为正确答案输入的文字。也可以从 CSV 文件导入。
+        pack_title: 还没有单词包
+        pack_description: 还没有单词包。请关注官方单词包，或创建新的单词包。
+        catalog_link: 关注官方单词包
+      follow:
+        badge: 官方
+        unfollow: 取消关注
+      catalog:
+        description: 预先准备好的单词包。关注后可直接使用官方内容，并自动随官方更新。无法编辑，但可以复制成自己的单词包。
+        back: 返回包列表
+        open: 打开
+        follow: 关注
+        follow_pack: 关注 %{name}
+        following: 已关注
+        unfollow_pack: 取消关注 %{name}
+        matching: 符合兴趣的词包
+        others: 其他词包
+        no_matching: 暂时没有符合兴趣的词包
+        change_interests: 更改兴趣
+      official:
+        title: "%{name}打字练习"
+        stats: "%{lists} · %{words}"
+        stats_lists: "%{count} 个列表"
+        stats_words: "%{count} 项"
+        practice: 用这个单词包练习
+        catalog: 查看其他官方单词包
+        free: 免费，无需登录。按下后会关注这个单词包并立即开始练习。
+        words_heading: 包含的内容
+        input: 要输入的内容
+        note: 含义与说明
+        details: 查看详情
+      starter:
+        first: 第一个列表：%{list}
+      pack_editor:
+        create_title: 创建包
+        create_description: 输入包的名称。创建后，再向包中添加单词列表。
+        edit_title: 编辑包
+        edit_description: 更改包的名称。
+        info: 包的信息
+        name: 包名称
+        name_help: 显示在包列表中，以及选择要练习的包时。
+      editor:
+        back: 单词包
+        description: 登记打字时显示的单词，以及作为正确答案输入的文字。
+        basics: 基本信息
+        adding_to: 将添加到包“%{name}”。
+        name: 单词列表名称
+        name_help: 显示在练习界面和单词列表中。
+        levels: 难度（可选）
+        level_placeholder: 例如：初级
+        levels_help: 在练习界面中用于选择包内的列表，例如：初级。
+        writing_toggle: 用于手写练习（Typle Handwriting）
+        writing_toggle_help: 让此列表可以用手写来练习。识别语言用于读取手写的文字。
+        writing_language: 识别语言
+        words: 单词
+        word_total_badge: "%{count} 个单词"
+        display: 显示的单词
+        input: 输入的文字
+        input_hint: 留空则与显示相同
+        annotation_optional: 备注（可选）
+        error_count: 有 %{count} 处错误
+        word_total: "· %{count} 个单词"
+        save: 保存
+      words:
+        description: 按输入的文字、显示的单词或备注，搜索已保存单词列表中的单词。
+        all: 全部单词
+        number: 编号
+        no_match: 没有与“%{query}”匹配的单词。

@@ -1,0 +1,45 @@
+---
+en:
+  layouts:
+    application:
+      top_bar: Top bar
+      open_menu: Open menu
+      close_menu: Close menu
+      main_navigation: Main navigation
+      help: Help
+      github: GitHub
+      storage_label: 'Saved to: '
+      storage_account_detail: Saved to your account and synced across the devices
+        you sign in on.
+      storage_browser_detail: You are not signed in, so data is saved only in this
+        browser.
+      storage_account: Saved to your account
+      storage_browser: Saved in this browser
+      theme_label: Dark mode
+      to_light: Switch to light mode
+      to_dark: Switch to dark mode
+      theme_save_failed: The setting cannot be saved, so it only applies to this page.
+      account_menu: Account menu
+      manage_devices: Manage devices
+      signed_in_with_github: Signed in with GitHub
+      signed_in_with_password: Signed in with an ID
+      sign_in: Sign in
+      sign_out: Sign out
+      skip: Skip to content
+      menu: Menu
+      home: Home
+      play: Practice
+      records: Practice history
+      rankings: Best records
+      packs: Word packs
+      words: Browse words
+      new_pack: Create a pack
+      general: General
+      input: Input
+      interests: Interests
+      devices: Devices
+      guide: How to use
+      about: About Typle
+      practice: Practice
+      lists: Word lists
+      settings: Settings

@@ -1,0 +1,35 @@
+<%# typle-r's 公式パック (/packs/catalog): the official packs, those that fit the user's interests first. %>
+<% interests = current_user ? current_user.interest_ids : [] %>
+<% owned_packs = current_user ? current_user.packs.where.not(catalog_id: nil).index_by(&:catalog_id) : {} %>
+<% split = interests.any? && @category.nil? %>
+<% matching, others = split ? @packs.partition { |pack| Interests.matches?(pack, interests) } : [@packs, []] %>
+<% entries = ->(packs, heading) { tag.ul(render(partial: "catalog/row", collection: packs, as: :pack, locals: { owned_packs:, heading: }), class: UiHelper::CARD_LIST) } %>
+<%= page_main(width: :medium) do %>
+  <%= page_header(t("catalog.index.title"), t("design.lists.catalog.description")) do %>
+    <%= render "layouts/application/page_storage_badge" %>
+  <% end %>
+  <% if current_user %>
+    <%= link_button packs_path, variant: :ghost, class: "mb-3 -ml-2 text-muted-foreground" do %><%= icon("arrow-left") %><%= t("design.lists.catalog.back") %><% end %>
+  <% end %>
+
+
+  <% if !split %>
+    <%= entries.call(@packs, :h2) %>
+  <% else %>
+    <div class="space-y-8">
+      <section aria-labelledby="catalog-matching" class="space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h2 id="catalog-matching" class="text-base font-bold"><%= t("design.lists.catalog.matching") %></h2>
+          <%= link_to t("design.lists.catalog.change_interests"), interests_path, class: "text-sm underline underline-offset-3 hover:text-foreground" %>
+        </div>
+        <% if matching.any? %><%= entries.call(matching, :h3) %><% else %><%= empty_note(t("design.lists.catalog.no_matching")) %><% end %>
+      </section>
+      <% if others.any? %>
+        <section aria-labelledby="catalog-others" class="space-y-3">
+          <h2 id="catalog-others" class="text-base font-bold"><%= t("design.lists.catalog.others") %></h2>
+          <%= entries.call(others, :h3) %>
+        </section>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,145 @@
+---
+zh-Hant:
+  design:
+    practice:
+      starter:
+        title: 想從哪個開始練習？
+        description: 還沒有單字包。選擇一個官方單字包，就會追蹤它並立即開始練習。之後可以取消追蹤。
+        first: 第一個清單：%{list}
+        start: 從這個單字包開始
+        more_html: "%{catalog_open}查看其他官方單字包%{close} ／ %{create_open}建立自己的單字包%{close}"
+      stats:
+        label: 本次練習數據
+        elapsed: 用時
+        speed: 速度
+        speed_unit: 鍵/分
+        accuracy: 正確率
+        mistakes: 錯誤
+        word_speed_unit: 詞/分
+      progress:
+        label: 單字進度
+        value: "%{current} / %{count} 個單字"
+      feedback:
+        mismatch: 第 %{position} 個字元不一致。請輸入正確的字元。
+        composing: 輸入法中尚未確認的文字，確認後才會判定
+        restart: 從頭開始
+      header:
+        switch_list: 切換單字清單（目前：%{name}）
+        word_count: "%{count} 個單字"
+        restart: 從頭開始
+        restart_title: 從頭開始（Esc）
+        restart_short: 重來
+        live_stats: 顯示本次練習數據
+        aside: 顯示側邊欄（單字列表）
+      word:
+        type_this: 需輸入
+        resume: 點擊或按任意鍵繼續
+        input_label: 輸入顯示的文字
+        simple_keys: 簡易輸入
+        simple_keys_all: 完整對照表
+      recall:
+        toggle: 憑記憶輸入
+        reveal: 查看答案
+        no_hint: 沒有提示
+        result_heading: 憑記憶輸入
+      upcoming:
+        next: 接下來
+        last: 這是最後一個單字
+        more: 還有 %{count} 個
+        show_all: 顯示所有單字
+        all_words: 所有單字
+        done: "（已完成）"
+        current: "（輸入中）"
+        pending: "（未輸入）"
+      aside:
+        label: 單字清單
+        lists: 單字清單
+        create: 建立新包
+        best: 最佳紀錄
+        best_order: 依正確率由高到低，相同時依速度由快到慢
+        best_order_at_count: 依正確率由高到低，相同時依速度由快到慢 · 僅目前 %{count} 個單字的紀錄
+        all_best: 所有最佳紀錄
+        filter: 依名稱、分類或標籤篩選單字清單
+      result:
+        label: 練習結果
+        title: 辛苦了！
+        new_best: 刷新個人最佳
+        completed: 練習完成：%{name}
+        time: 用時
+        seconds: 秒
+        accuracy: 正確率
+        mistakes: 錯誤 %{count} 個字元
+        speed: 速度
+        speed_unit: 鍵/分
+        correct: "%{count} 個字元"
+        words: 單字
+        word_unit: 個
+        first_at_count: 目前 %{count} 個單字的第一筆紀錄
+        first_for_list: 此清單的第一筆紀錄
+        faster: 比最佳快 %{seconds} 秒
+        best_by_accuracy: 憑正確率刷新最佳
+        behind: 最佳為 %{time} 秒 · %{accuracy}%
+        behind_no_accuracy: 最佳為 %{time} 秒 · 未記錄正確率
+        save_failed: 無法儲存紀錄。結果仍保留在此畫面上。請檢查網路連線後再試一次。
+        retry: 重新儲存紀錄
+        saved: 已儲存練習紀錄。在此清單中排名第 %{rank} 名。
+        saving: 正在儲存紀錄…
+        again: 再來一次
+        choose_list: 選擇其他清單
+        view_records: 查看紀錄
+        word_speed_unit: 詞/分
+        correct_words: "%{count} 個詞"
+        mistakes_words: 錯誤 %{count} 個詞
+        share_on_x: 分享到 X
+        share_text: 我在 Typle 上以 %{time} 秒、%{accuracy}% 的正確率打完了「%{name}」
+        review_note: 複習打錯的詞不會記錄。
+        review_note_weak: 這次複習不會記錄。沒有打錯的詞不再算作不熟的單字。
+        reviewing: 複習打錯的 %{count} 個詞（不記錄）
+        missed:
+          tile: 打錯的詞
+          of: "/ %{count} 個詞"
+          title: 打錯的詞
+          none: 沒有打錯的詞。
+          typed: 第 %{position} 個字元打成了 %{typed}
+          wrote: 寫成了「%{typed}」
+          revealed: 看了答案
+          skipped: 略過
+          space: 空白鍵
+          count: "%{count} 次"
+          review: 只練習打錯的 %{count} 個詞
+        reviewing_weak: 複習 %{count} 個不熟的單字（不記錄）
+      best:
+        label: 最佳紀錄前 5 名
+        rank: 名次
+        time: 用時
+        accuracy: 正確率
+        device: 裝置
+        seconds: "%{time} 秒"
+        no_accuracy: 未記錄
+        current: 本次紀錄
+        empty: 還沒有紀錄。完成一次練習後，這裡會顯示前 5 名。
+      mode_label: 練習方式
+      mode_typing: 打字
+      mode_writing: Handwriting
+      writing_judge: 判定
+      writing_skip: 跳過
+      writing_read: 辨識為「%{text}」
+      writing_input: 在此手寫輸入
+      writing_input_method: 書寫方式
+      writing_input_pad: 手寫板
+      writing_input_field: 輸入框
+      writing_pad: 手寫板
+      writing_pad_hint: 在這裡書寫
+      writing_pad_loading: 正在準備手寫辨識…
+      writing_pad_failed: 無法載入手寫辨識。
+      writing_pad_retry: 重試
+      writing_pad_undo: 復原一筆
+      writing_pad_clear: 清除
+      writing_pad_reading: 目前辨識：%{text}
+      device_menu:
+        label: 使用裝置：%{device}
+        locked: 練習中無法變更裝置
+        change: 變更使用裝置
+        unselected: 裝置：未選擇
+        heading: 使用裝置（僅能在開始練習前變更）
+        manage: 管理裝置

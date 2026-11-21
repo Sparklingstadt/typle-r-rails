@@ -1,0 +1,124 @@
+<%# typle-r's 単語パック (/edit): the packs, each opening to show its lists. %>
+<%= page_main(width: :medium) do %>
+  <%= page_header(t("packs.index.title"), t("design.lists.page.description")) do %>
+    <div class="flex items-center gap-2">
+      <%= link_button catalog_index_path, variant: :outline do %><%= icon(:library) %><%= t("design.lists.page.catalog") %><% end %>
+      <%= render "layouts/application/page_storage_badge" %>
+    </div>
+  <% end %>
+
+  <% import = capture do %>
+    <%= form_with url: import_packs_path, multipart: true, class: "contents", data: { controller: "autosubmit" } do |f| %>
+      <label class="<%= button_classes(variant: :outline, class: "cursor-pointer has-[:focus-visible]:border-ring has-[:focus-visible]:ring-3 has-[:focus-visible]:ring-ring/50") %>">
+        <%= icon(:upload) %><%= t("design.lists.manager.import_file") %>
+        <%= f.file_field :file, accept: ".json,application/json", class: "sr-only", data: { action: "change->autosubmit#submit" } %>
+      </label>
+    <% end %>
+  <% end %>
+
+  <% if @packs.empty? %>
+    <%= empty_state(class: "py-10 sm:py-14") do %>
+      <%= empty_state_icon("list-plus") %>
+      <div class="space-y-1.5">
+        <h2 id="empty-heading" class="font-bold"><%= t("design.lists.empty.pack_title") %></h2>
+        <p class="max-w-md text-sm text-balance text-muted-foreground"><%= t("design.lists.empty.pack_description") %></p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-2">
+        <%= link_button catalog_index_path do %><%= icon(:library) %><%= t("design.lists.empty.catalog_link") %><% end %>
+        <%= link_button create_list_path, variant: :outline do %><%= icon(:plus) %><%= tt("wordLists.manager.createList") %><% end %>
+        <%= import %>
+      </div>
+    <% end %>
+  <% else %>
+    <% own = @packs.reject(&:followed?).sum { |pack| pack.word_lists.size } %>
+    <% followed = @packs.count(&:followed?) %>
+    <% limit_title = tt("wordLists.manager.limitTitle", max: 150, followedMax: 200) %>
+    <% categories = @packs.map(&:category).compact.tally %>
+    <% uncategorized = @packs.count { |pack| pack.category.blank? } %>
+    <% tags = @packs.flat_map(&:tags).tally %>
+    <% trigger = "inline-flex h-10 max-w-full shrink-0 cursor-pointer list-none items-center gap-1.5 rounded-lg border bg-background px-3 text-sm outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 aria-expanded:bg-muted dark:bg-input/30 [&::-webkit-details-marker]:hidden" %>
+    <% menu = cn(UiHelper::MENU_CONTENT, "absolute top-full left-0 mt-1.5 max-h-96 w-60 overflow-y-auto") %>
+    <% item = UiHelper::MENU_INSET_ITEM %>
+    <section aria-labelledby="list-heading" class="space-y-3" data-controller="packs-filter"
+      data-packs-filter-count-value="<%= tt_forms("wordLists.manager.count") %>" data-packs-filter-filtered-value="<%= tt_forms("wordLists.manager.countFiltered") %>"
+      data-packs-filter-all-categories-value="<%= tt("wordLists.filter.allCategories") %>" data-packs-filter-no-category-value="<%= tt("wordLists.filter.noCategory") %>"
+      data-packs-filter-all-tags-value="<%= tt("wordLists.filter.allTags") %>" data-packs-filter-separator-value="<%= tt("wordLists.filter.separator") %>">
+      <div class="flex min-h-11 flex-wrap items-center gap-x-2 gap-y-2">
+        <h2 id="list-heading" tabindex="-1" class="text-base font-bold outline-none"><%= tt("wordLists.manager.heading") %></h2>
+        <%= ui_badge(tt("wordLists.manager.ownCount", count: own, max: 150), variant: :secondary, class: "tabular-nums", title: limit_title) %>
+        <%= ui_badge(tt("wordLists.manager.followedCount", count: followed, max: 200), variant: :secondary, class: "tabular-nums", title: limit_title) %>
+        <div class="ml-auto flex"><%= import %></div>
+        <%= link_button new_pack_path, variant: :outline do %><%= icon(:plus) %><%= tt("wordLists.manager.createPack") %><% end %>
+        <%= link_button create_list_path do %><%= icon(:plus) %><%= tt("wordLists.manager.createList") %><% end %>
+      </div>
+      <%# ListToolbar: search, category, tags, order and the count. %>
+      <div class="flex flex-wrap items-center gap-2">
+        <label class="relative min-w-0 flex-1 basis-60 sm:max-w-sm">
+          <span class="sr-only"><%= tt("wordLists.manager.search") %></span>
+          <%= icon(:search, class: "pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground") %>
+          <input type="search" placeholder="<%= tt("wordLists.manager.search") %>" data-packs-filter-target="query" data-action="input->packs-filter#apply"
+            class="h-10 w-full rounded-lg border border-input bg-background pr-9 pl-9 text-sm outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 dark:bg-input/30 [&::-webkit-search-cancel-button]:hidden">
+        </label>
+        <% if categories.any? %>
+          <details class="relative" data-controller="dropdown">
+            <summary class="<%= trigger %>" data-packs-filter-target="categoryTrigger">
+              <%= icon(:folder, class: "size-4 shrink-0 text-muted-foreground") %><span class="truncate" data-packs-filter-target="categoryText"><%= tt("wordLists.filter.allCategories") %></span>
+              <%= icon("chevron-down", class: "size-3.5 shrink-0 text-muted-foreground") %>
+            </summary>
+            <div class="<%= menu %>" role="radiogroup">
+              <% [["", tt("wordLists.filter.allCategories"), nil], *categories.map { |name, count| ["category:#{name}", name, count] }, *(uncategorized.positive? ? [["none", tt("wordLists.filter.noCategory"), uncategorized]] : [])].each do |value, text, count| %>
+                <label class="<%= item %>">
+                  <input type="radio" name="pack-category" value="<%= value %>" class="peer sr-only" <%= "checked" if value.empty? %> data-action="packs-filter#apply" data-packs-filter-target="category" data-text="<%= text %>">
+                  <%= menu_check(peer: true) %>
+                  <span class="min-w-0 [overflow-wrap:anywhere]"><%= text %></span><% if count %><span class="ml-auto pl-2 text-xs text-muted-foreground tabular-nums"><%= count %></span><% end %>
+                </label>
+              <% end %>
+            </div>
+          </details>
+        <% end %>
+        <% if tags.any? %>
+          <details class="relative" data-controller="dropdown">
+            <summary class="<%= trigger %>" data-packs-filter-target="tagsTrigger">
+              <%= icon(:tag, class: "size-4 shrink-0 text-muted-foreground") %><span class="truncate" data-packs-filter-target="tagsText"><%= tt("wordLists.filter.allTags") %></span>
+              <%= icon("chevron-down", class: "size-3.5 shrink-0 text-muted-foreground") %>
+            </summary>
+            <div class="<%= menu %>">
+              <p class="px-3 py-1.5 text-xs text-muted-foreground"><%= tt("wordLists.filter.tagsHint") %></p>
+              <% tags.each do |name, count| %>
+                <label class="<%= item %>">
+                  <input type="checkbox" value="<%= name %>" class="peer sr-only" data-action="packs-filter#apply" data-packs-filter-target="tag">
+                  <%= menu_check(peer: true) %>
+                  <span class="min-w-0 [overflow-wrap:anywhere]"><%= name %></span><span class="ml-auto pl-2 text-xs text-muted-foreground tabular-nums"><%= count %></span>
+                </label>
+              <% end %>
+            </div>
+          </details>
+        <% end %>
+        <details class="relative" data-controller="dropdown">
+          <summary class="inline-flex h-10 shrink-0 cursor-pointer list-none items-center gap-1.5 rounded-lg border bg-background px-3 text-sm outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 aria-expanded:bg-muted dark:bg-input/30 [&::-webkit-details-marker]:hidden"
+            aria-label="<%= tt("wordLists.order.current", order: tt("wordLists.order.#{@order}")) %>">
+            <span class="text-muted-foreground"><%= tt("wordLists.order.label") %></span><%= tt("wordLists.order.#{@order}") %><%= icon("chevron-down", class: "size-3.5 text-muted-foreground") %>
+          </summary>
+          <div class="<%= cn(menu, "w-48") %>">
+            <% %w[added practiced name words].each do |order| %>
+              <%= link_to packs_path(order: (order unless order == "added")), class: item, "aria-current": (order == @order ? "true" : nil) do %>
+                <% if order == @order %><%= menu_check %><% end %>
+                <%= tt("wordLists.order.#{order}") %>
+              <% end %>
+            <% end %>
+          </div>
+        </details>
+        <button type="button" class="<%= button_classes(variant: :ghost, size: :lg, class: "text-muted-foreground") %>" data-packs-filter-target="clear" data-action="packs-filter#clear" hidden><%= tt("wordLists.filter.clear") %></button>
+        <p aria-live="polite" class="ml-auto text-sm text-muted-foreground tabular-nums" data-packs-filter-target="count"><%= tt("wordLists.manager.count", total: @packs.size) %></p>
+      </div>
+      <ul class="<%= cn(UiHelper::CARD_LIST, "overflow-visible") %>" data-packs-filter-target="list">
+        <%= render partial: "packs/pack_row", collection: @packs, as: :pack %>
+      </ul>
+      <div class="flex flex-col items-start gap-3 rounded-xl border border-dashed bg-card px-5 py-6" data-packs-filter-target="empty" hidden>
+        <p class="text-sm text-muted-foreground [overflow-wrap:anywhere]"><%= tt("wordLists.filter.noMatch") %></p>
+        <button type="button" class="<%= button_classes(variant: :outline) %>" data-action="packs-filter#clear"><%= tt("wordLists.filter.clearAll") %></button>
+      </div>
+      <p class="text-xs text-muted-foreground"><%= tt("wordLists.manager.csvNote") %></p>
+    </section>
+  <% end %>
+<% end %>

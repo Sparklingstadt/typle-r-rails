@@ -1,0 +1,28 @@
+<%# ListsSection. Points that differ here are the app's own (design.guide.lists.*). %>
+<%= guide_section("lists", :list, guide_t("contents.lists"), guide_rich(guide_t("lists.lead"))) do %>
+  <%= guide_topic(guide_t("lists.packs.title")) do %>
+    <%= guide_points(guide_t("lists.packs.p1"), guide_t("lists.packs.p2"), guide_t("lists.packs.p3"), guide_t("lists.packs.p4")) %>
+  <% end %>
+  <%= guide_topic(guide_t("lists.files.title")) do %>
+    <%= guide_points(guide_t("lists.files.p1"), guide_t("lists.files.p2"), guide_t("lists.files.p3"), guide_t("lists.files.p4")) %>
+  <% end %>
+  <%= guide_topic(guide_t("lists.interests.title")) do %>
+    <%= guide_points(guide_rich(guide_t("lists.interests.p1")), guide_t("lists.interests.p2"), guide_t("lists.interests.p3"), guide_t("lists.interests.p4")) %>
+  <% end %>
+  <%= guide_topic(guide_t("lists.share.title")) do %>
+    <%= guide_points(guide_t("lists.share.p1"), guide_t("lists.share.p2")) %>
+  <% end %>
+  <%= guide_topic(guide_t("lists.input.title")) do %>
+    <%= guide_points(guide_t("lists.input.p1"), guide_t("lists.input.p2"), guide_rich(guide_t("lists.input.p3")), guide_rich(guide_t("lists.input.p4"))) %>
+  <% end %>
+  <%= guide_topic(guide_t("lists.cannotSave.title")) do %>
+    <%= guide_points(guide_t("lists.cannotSave.p1"), guide_t("lists.cannotSave.p2"), guide_t("lists.cannotSave.p3"), guide_rich(guide_t("lists.cannotSave.p4"))) %>
+  <% end %>
+  <%= guide_topic(guide_t("lists.manage.title")) do %>
+    <%= guide_points(guide_rich(guide_t("lists.manage.p1")), guide_t("lists.manage.p2"), guide_t("lists.manage.p3")) %>
+  <% end %>
+  <%= guide_topic(guide_t("lists.csv.title")) do %>
+    <%= guide_points(guide_t("lists.csv.p1"), guide_t("lists.csv.p2"), guide_t("lists.csv.p3")) %>
+    <pre aria-label="<%= guide_t("lists.csv.exampleLabel") %>" class="mt-3 overflow-x-auto rounded-lg bg-muted px-4 py-3 font-mono text-[13px] leading-6"><%= guide_t("lists.csv.example") %></pre>
+  <% end %>
+<% end %>

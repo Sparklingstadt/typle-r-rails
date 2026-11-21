@@ -1,0 +1,256 @@
+<% content_for :title, tt("nav.links.play") %>
+<% base = @list ? { list: @list.id } : { official: params[:official] } %>
+<% save = @list && !@weak %>
+<% writing = @mode == "writing" %>
+<% controller = writing ? "writing" : "practice" %>
+<% stats = [["timer", t("design.practice.stats.elapsed"), "time", nil],
+            ["gauge", t("design.practice.stats.speed"), "speed", t(writing ? "design.practice.stats.word_speed_unit" : "design.practice.stats.speed_unit")],
+            ["target", t("design.practice.stats.accuracy"), "accuracy", nil],
+            ["x", t("design.practice.stats.mistakes"), "mistakes", nil]] %>
+<% toolbar_button = "inline-flex size-8 shrink-0 items-center justify-center" %>
+<%# The side panel and the live stats are remembered per browser with typle-r's keys; set before the page is drawn. %>
+<script>
+  (() => {
+    const root = document.documentElement
+    try {
+      root.dataset.playAside = localStorage.getItem("typle-r:play-aside") === "collapsed" ? "collapsed" : "open"
+      root.dataset.liveStats = localStorage.getItem("typle-r:live-stats") === "hidden" ? "hidden" : "shown"
+    } catch {}
+  })()
+</script>
+<main class="mx-auto my-6 w-11/12 max-w-7xl pb-12 sm:my-8" data-controller="play-layout">
+  <div class="<%= cn("grid items-start gap-6", @lists.present? && "practice-layout lg:grid-cols-[minmax(0,1fr)_20rem]") %>">
+  <div class="grid min-w-0 gap-6">
+    <%# A finger straying off the handwriting pad would otherwise start selecting the text around it. %>
+    <%= card(tag_name: :section, class: "group min-w-0 gap-0 py-0 text-base has-[[data-writing-target=padArea]:not([hidden])]:select-none",
+          "aria-label": @list_name, data: {
+            controller:,
+            "#{controller}-words-value": @words.to_json,
+            "#{controller}-options-value": typing_options.to_json,
+            "#{controller}-messages-value": practice_design_messages.merge(listName: (practice_name_text(@list) if @list)).to_json,
+            "#{controller}-mode-value": (@mode unless writing),
+            "#{controller}-language-value": (@writing_language if writing),
+            "#{controller}-weak-url-value": (weak_review_word_list_path(@list) if @list && @weak),
+            "#{controller}-save-url-value": (practice_records_path if save),
+            "#{controller}-list-id-value": (@list.id if save),
+            # The list's runs of this mode, so the result compares a run at once, before it is saved (typle-r's comparison).
+            "#{controller}-records-value": (@list.practice_records.select { |record| record.mode == (writing ? "writing" : @mode) }
+                                              .map { |record| [record.seconds.round(3), record.accuracy.to_f, record.word_count] }.to_json if save)
+          }.compact) do %>
+      <%# PracticeHeader %>
+      <div class="flex h-14 items-center gap-1.5 border-b px-2 sm:h-16 sm:gap-3 sm:px-3">
+        <% if @lists %>
+          <%# The list's name opens typle-r's ListPickerDialog. %>
+          <div class="contents" data-controller="list-picker" data-list-picker-return-focus-value="#practice-field">
+            <button type="button" aria-haspopup="dialog" aria-label="<%= t("design.practice.header.switch_list", name: @list_name) %>" data-action="list-picker#open" data-list-picker-target="trigger"
+              class="flex h-10 min-w-0 items-center gap-2 rounded-lg px-1.5 text-muted-foreground outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 sm:px-2.5">
+              <%= icon("list", class: "hidden size-4 shrink-0 sm:block") %>
+              <span class="truncate text-[15px] font-bold text-foreground sm:text-base"><%= practice_name(@list) %></span>
+              <span class="hidden shrink-0 text-[13px] sm:inline"><%= t("design.practice.header.word_count", count: @words.size) %></span>
+              <%= icon("chevrons-up-down", class: "size-4 shrink-0") %>
+            </button>
+            <%= render "aside", lists: @lists, selected: @list, mode: @mode, id: "practice-picker", heading: tt("practice.picker.candidates"), search_label: tt("practice.picker.filter"),
+                  dialog: { title: tt("practice.picker.title"), description: tt("practice.picker.description") } %>
+          </div>
+        <% else %>
+          <div class="flex h-10 min-w-0 items-center gap-2 px-1.5 text-muted-foreground sm:px-2.5">
+            <%= icon("list", class: "hidden size-4 shrink-0 sm:block") %>
+            <span class="truncate text-[15px] font-bold text-foreground sm:text-base"><%= @list_name %></span>
+            <span class="hidden shrink-0 text-[13px] sm:inline"><%= t("design.practice.header.word_count", count: @words.size) %></span>
+          </div>
+        <% end %>
+        <span class="flex-1"></span>
+        <% if @list %>
+          <% device_label = @device.none? ? t("design.practice.device_menu.unselected") : @device.options.find { |_, key| key == @device.key }&.first %>
+          <%# typle-r's DeviceMenu: a menu of the devices to choose from, with a way to manage them; locked while a run is on. %>
+          <details class="relative shrink-0" data-controller="dropdown" data-practice-menu>
+            <summary data-lock-while-running class="inline-flex h-8 max-w-28 shrink-0 list-none items-center gap-1.5 rounded-full border bg-background px-2.5 text-[13px] outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 sm:max-w-52 dark:bg-input/30 [&::-webkit-details-marker]:hidden in-data-[running=true]:pointer-events-none in-data-[running=true]:cursor-default in-data-[running=true]:text-muted-foreground in-data-[running=true]:hover:bg-background"
+                     aria-label="<%= t("design.practice.device_menu.label", device: device_label) %>" title="<%= t("design.practice.device_menu.change") %>">
+              <%= icon("keyboard", class: "size-3.5 shrink-0") %>
+              <span class="truncate" data-device-label><%= device_label %></span>
+              <%= icon("chevron-down", class: "size-3.5 shrink-0 in-data-[running=true]:hidden") %><%= icon("lock", class: "hidden size-3 shrink-0 in-data-[running=true]:block") %>
+            </summary>
+            <div role="menu" data-slot="dropdown-menu-content" class="absolute top-full right-0 z-50 mt-1.5 w-64 rounded-lg border bg-popover p-1 text-popover-foreground shadow-md">
+              <p data-slot="dropdown-menu-label" class="px-2 pt-1.5 pb-1 text-xs text-muted-foreground"><%= t("design.practice.device_menu.heading") %></p>
+              <%= form_with url: choose_devices_path, role: "group" do |f| %>
+                <% @device.options.each do |label, key| %>
+                  <% chosen = key == @device.key %>
+                  <button type="submit" name="key" value="<%= key %>" role="menuitemradio" aria-checked="<%= chosen %>" data-lock-while-running
+                          class="relative flex w-full cursor-pointer items-center gap-2 rounded-md py-2 pr-3 pl-8 text-left text-sm outline-none hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground">
+                    <% if chosen %><span class="absolute left-2.5 inline-flex"><%= icon(:check, class: "size-4") %></span><% end %>
+                    <span class="truncate"><%= label %></span>
+                  </button>
+                <% end %>
+              <% end %>
+              <div role="separator" data-slot="dropdown-menu-separator" class="my-1 h-px bg-border"></div>
+              <%= link_to devices_path, role: "menuitem", class: "relative flex cursor-pointer items-center gap-2 rounded-md py-2 pr-3 pl-8 text-sm outline-none hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground" do %>
+                <%= icon(:monitor, class: "absolute left-2.5 size-4") %><%= t("design.practice.device_menu.manage") %>
+              <% end %>
+            </div>
+          </details>
+        <% end %>
+        <%# Handwriting never combines with recall, so the recall switch is hidden while writing. %>
+        <% unless writing %>
+          <%= link_to play_path(base.merge(mode: (@mode == "recall" ? nil : "recall")).compact), class: button_classes(variant: :ghost, size: :lg, class: "shrink-0 px-2 sm:px-2.5 in-data-[running=true]:pointer-events-none in-data-[running=true]:opacity-50"),
+                "aria-pressed": (@mode == "recall").to_s, title: t("design.practice.recall.toggle"), "aria-label": t("design.practice.recall.toggle") do %>
+            <%= icon("brain") %><span class="hidden xl:inline"><%= t("design.practice.recall.toggle") %></span>
+          <% end %>
+        <% end %>
+        <%# Hiding the live stats only changes the display: timing, saving and the result stay the same. %>
+        <button type="button" class="<%= button_classes(variant: :ghost, size: :"icon-lg", class: "shrink-0") %>" data-play-layout-target="statsButton" data-action="play-layout#toggleStats"
+          aria-pressed="true" aria-label="<%= tt("practice.header.liveStats") %>" title="<%= tt("practice.header.liveStats") %>">
+          <%= icon(:eye, class: "in-[[data-live-stats=hidden]]:hidden") %><%= icon("eye-off", class: "hidden in-[[data-live-stats=hidden]]:block") %>
+        </button>
+        <% if @lists.present? %>
+          <%# Only wide screens put the panel beside the card; below that it follows the card and stays shown. %>
+          <button type="button" class="<%= button_classes(variant: :ghost, size: :"icon-lg", class: "hidden shrink-0 lg:inline-flex") %>" data-play-layout-target="asideButton" data-action="play-layout#toggleAside"
+            aria-pressed="true" aria-controls="practice-aside" aria-label="<%= tt("practice.header.aside") %>" title="<%= tt("practice.header.aside") %>">
+            <%= icon("panel-right-close", class: "in-[[data-play-aside=collapsed]]:hidden") %><%= icon("panel-right-open", class: "hidden in-[[data-play-aside=collapsed]]:block") %>
+          </button>
+        <% end %>
+        <button type="button" class="<%= button_classes(variant: :ghost, size: :lg, class: "shrink-0 px-2 sm:px-2.5") %>" data-action="<%= controller %>#restart"
+          aria-label="<%= t("design.practice.header.restart") %>" aria-keyshortcuts="Escape" title="<%= t("design.practice.header.restart_title") %>">
+          <%= icon("rotate-ccw") %><span class="hidden sm:inline"><%= t("design.practice.header.restart_short") %></span><%= kbd("Esc", class: "hidden sm:inline-flex") %>
+        </button>
+      </div>
+
+      <%# Only a list marked for writing offers the choice. %>
+      <% if @writing_language %>
+        <div class="flex justify-center border-b px-4 py-2">
+          <div role="group" aria-label="<%= t("design.practice.mode_label") %>" class="<%= PracticeDesignHelper::PRACTICE_DESIGN_TOGGLE %>">
+            <%= link_to t("design.practice.mode_typing"), play_path(base), class: PracticeDesignHelper::PRACTICE_DESIGN_TOGGLE_ITEM, "aria-pressed": (!writing).to_s,
+                  data: { practice_switch: writing ? "mode" : "noop", switch_name: tt("practice.modeTyping") } %>
+            <%= link_to t("design.practice.mode_writing"), play_path(base.merge(mode: "writing")), class: PracticeDesignHelper::PRACTICE_DESIGN_TOGGLE_ITEM, "aria-pressed": writing.to_s,
+                  data: { practice_switch: writing ? "noop" : "mode", switch_name: tt("practice.modeWriting") } %>
+          </div>
+        </div>
+      <% end %>
+      <% if @weak %>
+        <p role="status" class="border-b bg-muted/50 px-4 py-2 text-center text-[13px] text-muted-foreground sm:px-6"><%= t("design.practice.result.reviewing_weak", count: @words.size) %></p>
+      <% elsif !@list %>
+        <p role="status" class="border-b bg-muted/50 px-4 py-2 text-center text-[13px] text-muted-foreground sm:px-6"><%= t("practice.show.official_note") %></p>
+      <% end %>
+      <%# 間違えた N 語のおさらい: shown while the words missed in the last run are practised again (not recorded). %>
+      <p role="status" class="border-b bg-muted/50 px-4 py-2 text-center text-[13px] text-muted-foreground sm:px-6" data-review-status hidden></p>
+
+      <%# PracticeProgress %>
+      <div class="flex items-center gap-3 px-4 pt-3 text-sm font-medium tabular-nums sm:px-6 sm:pt-4">
+        <div role="progressbar" aria-label="<%= t("design.practice.progress.label") %>" aria-valuemin="0" aria-valuemax="<%= @words.size %>" class="h-1.5 flex-1 overflow-hidden rounded-full bg-muted">
+          <div class="h-full w-0 rounded-full bg-primary transition-[width] motion-reduce:transition-none" data-<%= controller %>-target="bar"></div>
+        </div>
+        <span data-<%= controller %>-target="progress"></span>
+      </div>
+
+      <% if writing %>
+        <div data-writing-target="board" class="flex flex-1 flex-col">
+          <div lang="<%= @writing_language %>" class="flex min-h-44 flex-1 flex-col items-center justify-center gap-3 px-4 pt-6 pb-2 text-center sm:min-h-52 sm:gap-3.5 sm:px-6 sm:pt-11">
+            <p class="max-w-full text-base break-words text-foreground empty:hidden" data-writing-target="annotation"></p>
+            <p class="<%= practice_design_text_class(@words.first&.dig(:display)) %>" data-writing-target="display"></p>
+          </div>
+          <div class="flex flex-col items-center gap-2.5 px-4 pt-2 pb-4 sm:px-6 sm:pb-5">
+            <div role="group" aria-label="<%= t("design.practice.writing_input_method") %>" class="<%= PracticeDesignHelper::PRACTICE_DESIGN_TOGGLE %>" data-writing-target="inputSwitch" hidden>
+              <button type="button" class="<%= PracticeDesignHelper::PRACTICE_DESIGN_TOGGLE_ITEM %>" data-action="writing#chooseInput" data-writing-input-param="pad"><%= t("design.practice.writing_input_pad") %></button>
+              <button type="button" class="<%= PracticeDesignHelper::PRACTICE_DESIGN_TOGGLE_ITEM %>" data-action="writing#chooseInput" data-writing-input-param="field"><%= t("design.practice.writing_input_field") %></button>
+            </div>
+            <div class="flex w-full max-w-xl flex-wrap items-center justify-center gap-2" data-writing-target="fieldArea">
+              <input id="writing-field" type="text" lang="<%= @writing_language %>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                aria-label="<%= t("design.practice.writing_input") %>" placeholder="<%= t("design.practice.writing_input") %>" aria-describedby="writing-feedback" data-writing-target="field"
+                class="h-12 min-w-0 flex-1 basis-60 rounded-lg border bg-background px-3 text-center text-xl outline-none placeholder:text-base placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 dark:bg-input/30"
+                data-action="input->writing#fieldInput keydown->writing#fieldKey compositionstart->writing#compositionStart compositionend->writing#compositionEnd blur->writing#blur focus->writing#focus">
+              <button type="button" data-slot="button" data-variant="default" class="<%= button_classes(size: :lg, class: "h-12") %>" data-action="writing#check" aria-label="<%= t("design.practice.writing_judge") %>" aria-keyshortcuts="Enter">
+                <%= t("design.practice.writing_judge") %><%= kbd("Enter", class: "hidden sm:inline-flex") %>
+              </button>
+              <button type="button" class="<%= button_classes(variant: :outline, size: :lg, class: "h-12") %>" data-action="writing#skip"><%= icon("skip-forward") %><%= t("design.practice.writing_skip") %></button>
+            </div>
+            <div class="flex w-full max-w-xl flex-col gap-2" data-writing-target="padArea" hidden>
+              <div class="relative rounded-lg bg-background dark:bg-input/30">
+                <div aria-hidden="true" class="pointer-events-none absolute inset-x-4 top-1/2 border-t border-dashed border-border"></div>
+                <canvas role="img" aria-label="<%= t("design.practice.writing_pad") %>" data-writing-target="canvas"
+                  class="relative block h-44 w-full touch-none rounded-lg border text-foreground select-none sm:h-52"
+                  data-action="pointerdown->writing#down pointermove->writing#move pointerup->writing#up pointercancel->writing#up contextmenu->writing#preventMenu"></canvas>
+                <p aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-3 text-center text-sm text-muted-foreground" data-writing-target="padHint" hidden><%= t("design.practice.writing_pad_hint") %></p>
+                <div role="status" class="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-lg bg-background/80 px-4 text-center text-sm text-muted-foreground" data-writing-target="padStatus" hidden>
+                  <span data-writing-target="padStatusText"></span>
+                  <button type="button" class="<%= button_classes(variant: :outline, size: :sm) %>" data-writing-target="reload" data-action="writing#loadPad" hidden><%= t("design.practice.writing_pad_retry") %></button>
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center justify-center gap-2">
+                <button type="button" class="<%= button_classes(variant: :outline, size: :lg, class: "h-12") %>" data-action="writing#undo"><%= icon("undo-2") %><%= t("design.practice.writing_pad_undo") %></button>
+                <button type="button" class="<%= button_classes(variant: :outline, size: :lg, class: "h-12") %>" data-action="writing#clearPad"><%= icon("eraser") %><%= t("design.practice.writing_pad_clear") %></button>
+                <button type="button" data-slot="button" data-variant="default" class="<%= button_classes(size: :lg, class: "h-12") %>" data-action="writing#check" aria-label="<%= t("design.practice.writing_judge") %>" aria-keyshortcuts="Enter">
+                  <%= t("design.practice.writing_judge") %><%= kbd("Enter", class: "hidden sm:inline-flex") %>
+                </button>
+                <button type="button" class="<%= button_classes(variant: :outline, size: :lg, class: "h-12") %>" data-action="writing#skip"><%= icon("skip-forward") %><%= t("design.practice.writing_skip") %></button>
+              </div>
+            </div>
+            <%# typle-r's WritingPractice: what was read, or what went wrong, or else the Esc hint; one at a time. %>
+            <p id="writing-feedback" aria-live="polite" class="group/feedback flex min-h-5 flex-wrap items-center justify-center text-xs text-muted-foreground">
+              <span class="inline-flex items-center gap-1.5 text-[13px] font-medium text-destructive has-[>span:empty]:hidden"><%= icon("circle-alert", class: "size-4 shrink-0") %><span data-writing-target="feedback"></span></span>
+              <span class="text-[13px] empty:hidden" data-writing-target="reading"></span>
+              <span class="hidden items-center gap-1.5 sm:inline-flex group-has-[[data-writing-target=feedback]:not(:empty)]/feedback:hidden! group-has-[[data-writing-target=reading]:not(:empty)]/feedback:hidden!"><%= kbd("Esc") %><%= t("design.practice.feedback.restart") %></span>
+            </p>
+          </div>
+          <%= render "stats", controller:, stats: %>
+        </div>
+      <% else %>
+        <div data-practice-target="board" class="flex flex-1 flex-col">
+          <%# WordPrompt %>
+          <div class="relative flex min-h-44 flex-1 flex-col items-center justify-center gap-3 px-4 pt-6 pb-2 text-center sm:min-h-52 sm:gap-3.5 sm:px-6 sm:pt-11">
+            <p class="max-w-full text-base break-words text-foreground empty:hidden" data-practice-target="annotation"></p>
+            <p class="<%= practice_design_text_class(@words.first&.dig(:display)) %>" data-practice-target="display"></p>
+            <span class="rounded-full border px-2 text-xs text-muted-foreground" data-practice-target="typeThis" hidden><%= t("design.practice.word.type_this") %></span>
+            <p class="<%= practice_design_text_class(@words.first&.dig(:input)) %>" data-practice-target="letters" aria-hidden="true"></p>
+            <% if @mode == "recall" %>
+              <button type="button" class="<%= button_classes(variant: :outline, size: :sm) %>" data-practice-target="reveal"
+                data-action="mousedown->practice#keepFocus practice#reveal" aria-keyshortcuts="Shift+Enter"><%= icon("eye") %><%= t("design.practice.recall.reveal") %></button>
+            <% end %>
+            <%# Shown when the input has lost the focus; clicking it gives the focus back and resumes the clock. %>
+            <label for="practice-field" class="absolute inset-0 z-10 hidden cursor-pointer place-items-center bg-card/70 backdrop-blur-sm group-[.blurred]:grid">
+              <span class="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground"><%= icon("mouse-pointer-click") %><%= t("design.practice.word.resume") %></span>
+            </label>
+          </div>
+          <%# TypingInput: no visible field; the word itself shows the progress. %>
+          <div class="relative flex flex-col items-center gap-2.5 px-4 pt-2 pb-4 sm:px-6 sm:pb-5">
+            <input id="practice-field" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+              aria-label="<%= t("design.practice.word.input_label") %>" aria-describedby="practice-feedback" data-practice-target="field"
+              class="absolute top-0 left-1/2 size-px overflow-hidden border-0 bg-transparent p-0 text-transparent caret-transparent opacity-0 outline-none"
+              data-action="input->practice#input keydown->practice#keydown compositionstart->practice#compositionStart compositionend->practice#compositionEnd blur->practice#blur focus->practice#focus paste->practice#keepFocus drop->practice#keepFocus">
+            <p id="practice-feedback" aria-live="polite" class="flex min-h-5 flex-wrap items-center justify-center text-xs text-muted-foreground" data-practice-target="feedback">
+              <span class="inline-flex items-center gap-1.5 text-[13px] font-medium text-destructive" data-feedback="error" hidden><%= icon("circle-alert", class: "size-4 shrink-0") %></span>
+              <span class="inline-flex flex-wrap items-center justify-center gap-x-2" data-feedback="composing" hidden><span class="text-base text-foreground underline decoration-dotted underline-offset-4" data-feedback-text></span><%= t("design.practice.feedback.composing") %></span>
+              <span class="hidden items-center gap-1.5 sm:inline-flex" data-feedback="idle"><%= kbd("Esc") %><%= t("design.practice.feedback.restart") %></span>
+            </p>
+            <%# The keys simple input takes for the word's marked letters (typle-r's TypingInput simpleKeys). %>
+            <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-xs text-muted-foreground" data-practice-target="simpleKeys" hidden>
+              <span><%= tt("practice.word.simpleKeys") %></span>
+              <dl class="contents" data-simple-keys></dl>
+              <%= link_to tt("practice.word.simpleKeysAll"), input_settings_path, class: "rounded-sm underline-offset-2 outline-none hover:underline focus-visible:ring-3 focus-visible:ring-ring/50" %>
+              <template data-simple-key><div class="inline-flex items-center gap-1"><dt class="text-sm text-foreground" lang="und"></dt><%= icon("arrow-right", class: "size-3", "aria-hidden": "true") %><dd><%= kbd("", class: "font-mono") %></dd></div></template>
+            </div>
+          </div>
+          <%= render "stats", controller:, stats: %>
+          <%# UpcomingWords: the coming words would give away the answers in recall mode. %>
+          <% unless @mode == "recall" %>
+            <div class="flex min-h-14 flex-wrap items-center gap-2 border-t px-4 py-2.5 sm:pr-3 sm:pl-6">
+              <span class="text-xs text-muted-foreground"><%= t("design.practice.upcoming.next") %></span>
+              <span class="contents" data-practice-target="upcoming" data-last="<%= t("design.practice.upcoming.last") %>"></span>
+              <span class="flex-1"></span>
+              <button type="button" class="<%= button_classes(variant: :ghost, size: :lg) %>" aria-expanded="true" aria-controls="all-words" data-action="practice#toggleAll" data-practice-target="showAll">
+                <%= t("design.practice.upcoming.show_all") %><%= icon("chevron-up", class: "size-4 group-aria-[expanded=false]/button:hidden") %><%= icon("chevron-down", class: "size-4 group-aria-[expanded=true]/button:hidden") %>
+              </button>
+              <ul id="all-words" aria-label="<%= t("design.practice.upcoming.all_words") %>" data-practice-target="allWords"
+                class="relative mt-1.5 flex max-h-44 basis-full flex-wrap gap-1.5 overflow-y-auto border-t border-dashed pt-2.5 pb-1"></ul>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <%= render "result", controller:, mode: @mode %>
+    <% end %>
+
+    <% if @list %>
+      <div id="best-records" class="contents"><%= render "best_records", list: @list, mode: @mode, highlight: @highlight %></div>
+    <% end %>
+  </div>
+  <% if @lists.present? %><%= render "aside", lists: @lists, selected: @list, mode: @mode %><% end %>
+  </div>
+</main>

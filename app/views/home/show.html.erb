@@ -1,0 +1,22 @@
+<% content_for :title, t(".title") %>
+<%# typle-r's src/app/home/page.tsx: the dashboard once there are records, a welcome before. %>
+<%= page_main(width: :wide) do %>
+  <% if @dashboard.any? %>
+    <%= render "home/dashboard", dashboard: @dashboard %>
+  <% else %>
+    <h1 class="mb-4 text-3xl"><%= home_t("home.welcome.title") %></h1>
+    <p class="mb-6"><%= home_t("home.welcome.text") %></p>
+    <div class="mb-6 flex flex-wrap gap-3">
+      <%= ui_badge(home_t("home.welcome.lists", count: current_user.word_lists.count), variant: :secondary) %>
+      <%= ui_badge(home_t("home.welcome.practices", count: @dashboard.records.size), variant: :secondary) %>
+    </div>
+    <nav aria-label="<%= home_t("home.welcome.nav_label") %>" class="flex flex-wrap gap-4">
+      <%= link_button home_t("home.welcome.play"), play_path %>
+      <%= link_button home_t("home.welcome.create"), new_pack_path, variant: :outline %>
+      <%= link_button home_t("home.welcome.records"), practice_records_path, variant: :link %>
+    </nav>
+  <% end %>
+  <p class="mt-8"><%= home_t(current_user.guest? ? "home.storage" : "home.storage_account") %></p>
+  <p class="mt-4"><%= home_rich("home.links", guide: link_to(home_t("home.links_guide"), guide_path, class: "underline"),
+                                            about: link_to(home_t("home.links_about"), about_path, class: "underline")) %></p>
+<% end %>

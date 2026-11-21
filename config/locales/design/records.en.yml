@@ -1,0 +1,262 @@
+---
+en:
+  design:
+    records:
+      history:
+        title: Practice history
+        intro: Your practice runs, newest first. See each list’s top records in <rankings>Best records</rankings> and your progress on <home>Home</home>.
+        filter:
+          pack: Pack
+          all_packs: All packs
+          list: List
+          all_lists: All lists
+          device: Device
+          all_devices: All devices
+          clear: Clear filters
+          count:
+            one: "%{count} record"
+            other: "%{count} records"
+          filtered_count:
+            one: "%{matched} of %{count} record"
+            other: "%{matched} of %{count} records"
+        filter_menu:
+          label: "%{name} filter (current: %{current})"
+          all: All
+          count:
+            one: "%{count} run"
+            other: "%{count} runs"
+        columns:
+          time: Time
+          device_words: Device · words
+          list_device: List · device
+          duration: Duration
+          accuracy: Accuracy
+          per_word: Per word
+          mistakes: Mistakes
+        day:
+          heading: "%{relative} · %{date}"
+          summary:
+            one: "%{count} run · %{duration}"
+            other: "%{count} runs · %{duration}"
+        recall_badge: Recall
+        more: Show more (%{count} left)
+        note: Word counts and device names are as they were at the time of practice.
+        note_missing: "“—” marks items that were not recorded (for example, records saved by an earlier version)."
+        row:
+          best: Best
+          best_title: This list’s best record (first among records at the current word count, by highest accuracy, then shortest time)
+          words:
+            one: "%{count} word"
+            other: "%{count} words"
+          seconds: "%{value} s"
+          duration: Duration
+          accuracy: Accuracy
+          low_accuracy: Accuracy is below %{limit}%
+          per_word: Per word
+          per_word_unit: s/word
+          mistakes: Mistakes
+          delete: Delete
+          delete_label: Delete the record for %{name} (%{date} %{time})
+        delete:
+          title: Delete this practice record?
+          description: One record of “%{name}” will be deleted.
+          done: Deleted the practice record of “%{name}” (%{date} %{time}).
+          list: List
+          when: Date, time and device
+          result: Result
+          accuracy: Accuracy %{value}
+          mistakes: Mistakes %{value}
+          best_next: This is the list’s best record. After deleting it, the best will be %{time} (%{accuracy}).
+          best_last: This is the list’s best record. After deleting it, the list will have no records.
+        empty:
+          title: No practice records yet
+          description: Type a list to the end in “Practice”, and the time, accuracy, mistakes and device you used will be kept here.
+          practice: Practice
+        filtered_empty:
+          list_title: No records for “%{name}” yet
+          list_description: Once you practice, your records will appear here.
+          title: No records match the filters
+          description: Try a different list or device.
+          practice_list: Practice this list
+        summary:
+          words:
+            one: "%{count} word"
+            other: "%{count} words"
+          runs:
+            one: "%{count} run"
+            other: "%{count} runs"
+          last: 'Last: %{day}'
+          best: Best (%{mode})
+          rankings: Best records
+          practice: Practice
+        mode_writing: Handwriting
+      rankings:
+        title: Best records
+        intro: Your personal best for each word list. Choose a list to see its top records and how your time has changed.
+        reload: Reload
+        filter:
+          device: Device
+          all_devices: All devices
+          deleted: "%{name} (deleted)"
+        mode:
+          label: Practice mode
+          normal: Normal
+          recall: Recall
+          writing: Handwriting
+        order:
+          label: Ranking order
+          accuracy: Accuracy<wide> first</wide>
+          speed: Speed<wide> first</wide>
+        order_notes:
+          accuracy: Highest accuracy first; ties go to the faster run
+          speed: Fastest first; ties go to the higher accuracy
+        lists: Word lists
+        empty:
+          title: No best records yet
+          description: Type a word list to the end, and each list’s personal best, top records and time trend will appear here.
+          practice: Practice
+          create: Create a word pack
+        list:
+          search: Search lists
+          clear_search: Clear search
+          no_device_records: Lists without records on this device (%{count})
+          no_records: Lists without records yet (%{count})
+          words:
+            one: "%{count} word"
+            other: "%{count} words"
+          no_match: No lists match “%{query}”.
+          last_practiced: Last practiced
+          best: Personal best
+          improved: New
+          improved_title:
+            one: Personal best improved in the last day
+            other: Personal best improved in the last %{count} days
+          runs:
+            one: "%{count} run"
+            other: "%{count} runs"
+          sort_label: 'Sort: %{sort}'
+          sorts:
+            recent: Recently practiced
+            name: Name
+            count: Most records
+          pack_practiced: "%{practiced}/%{lists} practiced"
+          pack_improved: "%{count} new"
+          pack_join: " · "
+          pack_lists:
+            one: "%{pack} · %{count} list"
+            other: "%{pack} · %{count} lists"
+        detail:
+          back: All lists
+          words:
+            one: "%{count} word"
+            other: "%{count} words"
+          records:
+            one: "%{count} record"
+            other: "%{count} records"
+          last_practiced: Last practiced %{day}
+          view_records: View records
+          practice: Practice this list
+          not_practised:
+            title: Not practiced yet
+            description: Type this list to the end, and its personal best and top records will appear here.
+          no_device_records:
+            title: No records practiced on “%{device}”
+            description:
+              one: This list has %{count} record from other devices.
+              other: This list has %{count} records from other devices.
+            show_all: Show records from all devices
+          top:
+            title: Top records
+            accuracy: Accuracy first
+            speed: Speed first
+            shown:
+              one: "%{shown} / %{count} record"
+              other: "%{shown} / %{count} records"
+            show_top: Show only the top %{count}
+            show_all: Show all (%{count})
+            old_accuracy: Records with “—” for accuracy are old ones saved before accuracy was recorded. They come last when ranking by accuracy.
+          stats:
+            best: Personal best
+            best_note: "%{accuracy} · %{day}"
+            no_accuracy: No accuracy
+            recent_average:
+              one: Latest run
+              other: Average of last %{count}
+            gap: "+%{value} s from best"
+            same_as_best: Same as best
+            average_accuracy: Average accuracy
+            recent_runs:
+              one: Latest run
+              other: Last %{count} runs
+            runs: Runs
+            runs_value:
+              one: "%{count} <unit>run</unit>"
+              other: "%{count} <unit>runs</unit>"
+            all_word_counts: All word counts
+            current_words:
+              one: At the current %{count} word
+              other: At the current %{count} words
+          trend:
+            title: Time trend
+            recent:
+              one: Latest run
+              other: Last %{count} runs
+            label: Time trend for %{name}
+            need_two: Practice at least twice to see the trend.
+          others:
+            old:
+              one: "%{count} old record without a word count"
+              other: "%{count} old records without a word count"
+            words:
+              one: "%{count} record at %{words} words"
+              other: "%{count} records at %{words} words"
+            separator: ", "
+            fallback:
+              one: There are no records at the current %{count} word, so records at other word counts (%{detail}) are ranked.
+              other: There are no records at the current %{count} words, so records at other word counts (%{detail}) are ranked.
+            included: Records at other word counts (%{detail}) are included. Times are not directly comparable when the word count differs.
+            excluded:
+              one: "<strong>%{count} record at a different word count is not ranked.</strong> They are from before the list was edited, for example (%{detail})."
+              other: "<strong>%{count} records at a different word count are not ranked.</strong> They are from before the list was edited, for example (%{detail})."
+            exclude: Exclude
+            include: Include
+        top:
+          label: Top records of %{name}
+          rank: Rank
+          time: Time
+          accuracy: Accuracy
+          mistakes: Mistakes
+          device: Device
+          date: Date
+          rank_number: Rank %{rank}
+          deleted: Deleted
+          deleted_suffix: " (deleted)"
+          other_words: Recorded at a different word count
+          words:
+            one: "%{count} word"
+            other: "%{count} words"
+          unknown_words: "? words"
+          old_accuracy: An old record saved before accuracy was recorded
+      format:
+        today: Today
+        yesterday: Yesterday
+        date_with_weekday: "%{weekday}, %{date}"
+        units:
+          hours: h
+          minutes: min
+          seconds: s
+        default_device: Default
+        no_device: Not recorded
+        no_device_recorded: No device recorded
+        device_with_layout: "%{name} (%{layout})"
+      chart:
+        label: "%{label} (use the arrow keys to read each run)"
+        date: Date
+        value: Value
+      extra:
+        weekdays: Sun,Mon,Tue,Wed,Thu,Fri,Sat
+        months: Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec
+        month_day: "%{month_name} %{day}"
+        year_month_day: "%{month_name} %{day}, %{year}"
+        numeric_date: "%{month}/%{day}/%{year}"
+        short_date: "%{month}/%{day}"

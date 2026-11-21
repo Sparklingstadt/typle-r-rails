@@ -1,0 +1,265 @@
+---
+en:
+  design:
+    settings:
+      input:
+        title: Input
+        description: Settings for how you type during practice.
+        simpleSpecial:
+          heading: Simple special-character input
+          description: Lets you type letters with accents, tildes and other marks — like í, ó, ñ and č in Czech or Spanish — with the plain letter (i, o, n, c). Typing the marked letter itself is still correct. Russian Cyrillic letters also accept Latin input, for example привет → privet, школа → shkola and я → ya. Direct Cyrillic input is still correct.
+          label: Use simple special-character input
+          hint: When on, you can type á → a, č → c, ш → sh and я → ya.
+        ignoreCase:
+          heading: Ignore upper and lower case
+          description: Treats upper and lower case, such as A and a, as the same letter. Typing with or without Shift is correct either way.
+          label: Ignore upper and lower case
+          hint: When on, capitals such as A and É count as correct when you type a and é (and the other way round).
+        simpleTable:
+          heading: Simple input reference
+          description: The keys you can type instead of each letter when simple special-character input is on.
+          latin: Latin letters with marks
+          other: Other symbols
+          cyrillic: Cyrillic (Russian)
+          letter: Letter
+          key: Type
+          capitals: Capitals work the same way (Á → A, Ш → Sh or SH).
+        note: This setting is saved where your data is kept (your account, or this browser's data).
+      general:
+        title: General
+        description: Settings for how Typle is displayed and for signing in.
+        language:
+          heading: Display language
+          description: Choose the language used on screen. Your word lists and practice records stay as they are.
+          note: The language you choose is saved in this browser.
+          current: In use
+        languages:
+          ja: Japanese
+          en: English
+          ru: Russian
+          fr: French
+          zh-Hans: Chinese (Simplified)
+          zh-Hant: Chinese (Traditional)
+      form:
+        cancel: Cancel
+        save: Save changes
+        add: Add
+      interests:
+        title: Interests
+        description: Follow the official packs that fit your interests. The official pack list also shows them first.
+        parents:
+          language: Languages
+          programming: Programming
+        childrenLabel: "%{parent}: details"
+        packs:
+          title: Official packs for your interests
+          description: "“Add” follows the packs you switch on. Switching off a followed pack unfollows it. Check packs to follow or unfollow them all at once with the buttons below."
+          pick: Choose interests to see the official packs that fit them here.
+          none: No official packs fit the interests you chose.
+          lists: Word lists
+          separator: ", "
+          switch: Follow %{name}
+          select: Select %{name}
+          selectAll: Select all
+          selected:
+            one: "%{count} selected"
+            other: "%{count} selected"
+          followSelected: Follow selected
+          unfollowSelected: Unfollow selected
+          add: Add
+          confirmTitle: This includes unfollowing
+          confirmDescription: "%{names} will be unfollowed. Their practice history will be deleted too."
+        children:
+          language:
+            zh: Chinese
+            ru: Russian
+            ko: Korean
+            en: English
+            es: Spanish
+            fr: French
+            de: German
+            cs: Czech
+          programming:
+            go: Go
+            kotlin: Kotlin
+            java: Java
+            typescript: TypeScript
+            php: PHP
+            ruby: Ruby
+            sql: SQL
+            linux: Linux
+            vim: Vim
+            test: Testing
+            node: Node.js
+            shell: Shell
+            cloud: Cloud
+        wordCount:
+          one: "%{count} word"
+          other: "%{count} words"
+      devices:
+        title: Devices
+        description: Register the computers and keyboards you practise on. Choose one in “<link>Practice</link>” and your records will show which device you used.
+        usage:
+          one: Practised %{count} time · last %{day}
+          other: Practised %{count} times · last %{day}
+        neverUsed: Not practised yet
+        listHeading: Registered devices
+        count:
+          one: "%{count} device"
+          other: "%{count} devices"
+        add: Add device
+        limit: You can register up to %{max} devices. Delete devices you no longer use to add more.
+        inUse: In use
+        inUseDetail: The device this browser uses for practice
+        defaultDetail: Ready to use without registering. It can’t be renamed or deleted.
+        edit: Edit
+        editLabel: Edit %{name}
+        delete: Delete
+        deleteLabel: Delete %{name}
+        deleteTitle: Delete the device “%{name}”?
+        deleteRemoval: "“%{name}” will be removed from the list."
+        deleteRecords:
+          one: The %{count} record practised on this device will not be deleted and will keep the device name used at the time.
+          other: The %{count} records practised on this device will not be deleted and will keep the device name used at the time.
+        deleteNoRecords: There are no records practised on this device.
+        empty:
+          title: No devices registered yet
+          description: Choose a registered device in “Practice” and your records will show which device you used, so you can compare records by device.
+          example: e.g. MacBook Air (JIS), Desktop + HHKB (US)
+        current:
+          heading: Device this browser uses for practice
+          change: Change
+          changeLabel: 'Change the device this browser uses for practice (current: %{device})'
+          practice: Practice
+          noteSelected: When you practise in “Practice”, this device is saved with your records. Each browser remembers its own choice, so you can pick one per computer.
+          noteUnselected: While nothing is selected, no device is saved with your records. Each browser remembers its own choice, so you can pick one per computer.
+        dialog:
+          addTitle: Add device
+          editTitle: Edit device
+          addDescription: Register a device you practise on.
+          editDescription: Change the displayed name and the layout / notes.
+          name: Device name
+          namePlaceholder: e.g. MacBook Air
+          nameHelp: Shown in the device menu on the practice screen and in your records.
+          layout: Layout / notes
+          optional: " (optional)"
+          layoutPlaceholder: e.g. JIS, US
+          layoutHelp: Noting the layout or settings makes it easier to tell records apart when comparing them.
+          renameNote:
+            one: Even if you rename it, your past records (%{count} time) keep the name used at the time.
+            other: Even if you rename it, your past records (%{count} times) keep the name used at the time.
+          use: Use this device for practice in this browser
+          useHelp: When you practise in “Practice”, this device is saved with your records.
+        deleteCurrent: " The device this browser uses for practice will go back to “Default”."
+      auth:
+        fields:
+          loginId: ID
+          email: Email address
+          password: Password
+          currentPassword: Current password
+          newPassword: New password
+        backToSignIn: Go to sign in
+        signIn:
+          submit: Sign in
+          signUp: Create an account
+          forgotPassword: Forgot password
+          forgotId: Forgot ID
+          or: You can also sign in with a GitHub account.
+        signUp:
+          title: Create an account
+          description: Create a Typle account that signs in with an ID and a password.
+          submit: Create account
+          haveAccount: Already have an account? Sign in
+        forgotPassword:
+          title: Forgot password
+        forgotId:
+          title: Forgot ID
+        resetPassword:
+          title: Set a new password
+          submit: Set password
+        settings:
+          heading: Account
+          verified: Confirmed
+          unverified: Not confirmed
+          changePassword: Change password
+          changePasswordDescription: Your current password is needed. Changing it signs out your other devices.
+        signInWithGitHub: Sign in with GitHub
+      about:
+        title: About Typle
+        intro: A typing app for practicing with word lists you create yourself. Add any words you like, practice them, and track your progress with your best records.
+        play: Practice
+        guide: How to use
+        features:
+          title: What you can do
+        storage:
+          title: Where your data is saved
+          text: Signing in is optional. Where data is saved depends on whether you are signed in, and the two are kept separately (nothing is moved automatically).
+          more: See <link>“Storage and data” in How to use</link> for details.
+        places:
+          current: Current
+          browser:
+            title: This browser
+            condition: When you are not signed in
+          account:
+            title: Account
+            condition: When signed in
+        email:
+          title: How we use email addresses
+          text: When you create an account, you may give an email address. It is used only to confirm the address, to reset your password and to remind you of your ID. It is never used for advertising or newsletters, and never passed on to anyone.
+        version:
+          title: Version and development
+          tech: Built with
+          licenses: Licenses
+      guide:
+        title: How to use
+        intro: Everything from getting started with practice to creating word lists, reading your records, and where your data is saved. All features work without signing in.
+        contentsLabel: On this page
+        contents:
+          practice: Practice
+          lists: Create word lists
+          records: Results and records
+          devices: Register devices
+          storage: Storage and data
+          shortcuts: Keyboard shortcuts
+        start:
+          title: Get started in 3 steps
+          follow:
+            title: Follow official packs
+            text: Follow official packs such as Go or Kotlin to put them in your packs and start practicing right away.
+            action: Official packs
+          create:
+            title: Make your own pack
+            action: Create a pack
+            text: Create a pack in “Create a pack”, add word lists to it and enter the words you want to learn.
+          review:
+            title: Review your records
+            action: Best records
+            text: When you finish a list, your record is saved automatically, and you can look back on it in each list's best records.
+        practice:
+          lead: Choose a word list in <play>Practice</play> and type the words shown.
+        lists:
+          lead: Create a new pack in <create>Create a pack</create>, and edit saved packs and lists in <edit>Word packs</edit>.
+        records:
+          lead: When you finish a practice, the record is saved automatically.
+        devices:
+          lead: Register the computers and keyboards you practice on in <devices>Devices</devices>, and your records will show which device you used.
+        storage:
+          lead: Signing in is optional. Where your data is saved depends on whether you are signed in.
+          browser:
+            title: Saved in this browser
+            when: When you are not signed in
+          account:
+            title: Saved to your account
+            when: When you sign in (with GitHub or an ID and password)
+        shortcuts:
+          lead: Keys you can use instead of the mouse.
+          screens:
+            practice: Practice
+          actions:
+            restart: Start over from the beginning
+            answer: Show the answer (Recall)
+            check: Check (Handwriting)
+            undo: Undo a stroke (handwriting pad)
+        cta:
+          text: Ready? Let’s start practicing.
+          action: Start practicing

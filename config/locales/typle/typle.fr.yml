@@ -1,0 +1,1688 @@
+---
+fr:
+  typle:
+    about:
+      meta:
+        title: À propos de Typle | Typle
+        description: Ce que permet Typle, où sont enregistrées vos données, les informations envoyées pour les statistiques de visite et la version.
+      title: À propos de Typle
+      intro: Une application de dactylographie pour vous entraîner avec vos propres listes de mots. Ajoutez les mots de votre choix, entraînez-vous et suivez vos progrès grâce à vos meilleurs résultats.
+      play: S’entraîner
+      guide: Mode d’emploi
+      features:
+        title: Fonctionnalités
+        create:
+          title: Créer un pack
+          description: Ajoutez les mots que vous voulez retenir. Le mot affiché et les caractères à taper se définissent séparément, et vous pouvez aussi importer des fichiers CSV.
+        play:
+          title: S’entraîner
+          description: La vitesse, la précision et le nombre d’erreurs s’affichent en direct, ainsi que l’endroit où vous avez fait une faute.
+        rankings:
+          title: Meilleurs résultats
+          description: Mesurez vos progrès avec votre record personnel, la moyenne de vos 5 derniers essais et l’évolution de votre temps.
+      storage:
+        title: Où sont enregistrées vos données
+        text: La connexion est facultative. L’emplacement dépend de votre connexion, et les deux jeux de données sont conservés séparément (aucun transfert automatique).
+        more: Pour en savoir plus, consultez <link>« Stockage et données » dans le mode d’emploi</link>.
+      places:
+        current: Emplacement actuel
+        browser:
+          title: Ce navigateur
+          condition: Quand vous n’êtes pas connecté
+          p1: Enregistré dans le LocalStorage de ce navigateur
+          p2: Non synchronisé avec d’autres appareils ou navigateurs
+          p3: Effacé si vous supprimez les données du navigateur
+        account:
+          title: Compte
+          condition: Quand vous êtes connecté
+          p1: Enregistré sur un serveur dédié à votre compte
+          p2: Les mêmes données sur tous les appareils où vous êtes connecté
+          p3: L’enregistrement nécessite une connexion Internet
+      analytics:
+        title: Statistiques de visite
+        text: Pour savoir quelles pages sont consultées et à quelle fréquence, les affichages de pages sont comptés avec Vercel Web Analytics. Seuls l’adresse de la page (sans ce qui suit ?), le site d’origine, le navigateur, le système d’exploitation et le pays sont envoyés. Aucun cookie n’est utilisé, et vos listes de mots et vos résultats d’entraînement ne sont jamais envoyés.
+      email:
+        title: Utilisation de l’adresse e-mail
+        text: Quand vous créez un compte avec un identifiant et un mot de passe, nous conservons votre adresse e-mail. Elle sert uniquement à envoyer les e-mails de confirmation de l’adresse, de réinitialisation du mot de passe et de rappel de l’identifiant. Elle n’est jamais utilisée pour de la publicité ou des annonces ni transmise à d’autres. Les e-mails sont envoyés via Resend.
+      version:
+        title: Version et développement
+        version: Version
+        tech: Technologies utilisées
+        techList: Next.js, React, PostgreSQL (Neon)
+        source: Code source
+        newTab: "(s’ouvre dans un nouvel onglet)"
+        public: Ce dépôt est public. Tout le monde peut consulter le code source.
+        licenses: Licences
+        licensesLink: Licences open source
+      licenses:
+        meta:
+          title: Licences | Typle
+          description: Les logiciels, polices et modèles open source utilisés par Typle, et leurs licences.
+        back: À propos de Typle
+        title: Licences open source
+        intro: Typle utilise les logiciels, polices et modèles open source suivants. Chaque nom ouvre la page du projet. Les textes complets des licences sont réunis dans « Tous les textes de licence ».
+        fullText: Tous les textes de licence
+        filter: Filtrer par nom ou licence
+        count: "%{shown} sur %{total}"
+        loading: Chargement…
+        failed: Impossible de charger la liste des licences.
+        newTab: "(s’ouvre dans un nouvel onglet)"
+        noText: "(aucun texte de licence dans le paquet)"
+    account:
+      checking: Vérification de la connexion
+      signIn: Se connecter
+      signInWithGitHub: Se connecter avec GitHub
+      signInFailed: Connexion impossible. Veuillez réessayer.
+      githubUser: Utilisateur GitHub
+      ffpfUser: Utilisateur FFPF ID
+      menu: Menu du compte
+      signedInWithGitHub: Connecté avec GitHub
+      signedInWithFfpf: Connecté avec FFPF ID
+      signedInWithPassword: Connecté avec un identifiant
+      manageDevices: Gérer les appareils
+      signOut: Se déconnecter
+      signOutFailed: Déconnexion impossible. Veuillez réessayer.
+      localLogin:
+        title: Utiliser Typle sur ce Mac
+        description: Commencez à vous entraîner avec les noms de 193 pays. Les listes et les résultats sont enregistrés dans une base de données propre à ce Mac.
+        start: Commencer l’entraînement
+        failed: Connexion impossible. Veuillez réessayer.
+    auth:
+      fields:
+        loginId: Identifiant
+        email: Adresse e-mail
+        password: Mot de passe
+        currentPassword: Mot de passe actuel
+        newPassword: Nouveau mot de passe
+        loginIdHint: De 3 à 32 lettres, chiffres, « _ » ou « - ». Majuscules et minuscules sont identiques. Il ne peut pas être modifié ensuite.
+        emailHint: Sert à confirmer votre adresse et à vous aider si vous oubliez votre identifiant ou votre mot de passe.
+        passwordHint: De 10 à 128 caractères, différent de l’identifiant.
+      send: Envoyer
+      failed: Une erreur s’est produite. Veuillez réessayer.
+      backToSignIn: Aller à la connexion
+      signIn:
+        submit: Se connecter
+        refused: L’identifiant ou le mot de passe est incorrect, ou la connexion est suspendue pour un moment.
+        signUp: Créer un compte
+        forgotPassword: Mot de passe oublié
+        forgotId: Identifiant oublié
+        or: Vous pouvez aussi vous connecter avec un compte GitHub.
+      signUp:
+        title: Créer un compte
+        description: Créez un compte Typle qui se connecte avec un identifiant et un mot de passe.
+        submit: Créer le compte
+        submitting: Création du compte…
+        done: Votre compte a été créé et vous êtes connecté.
+        mailSent: Un e-mail de confirmation a été envoyé à %{email}. Ouvrez le lien qu’il contient pour confirmer votre adresse.
+        mailNotSent: L’e-mail de confirmation n’a pas pu être envoyé. Vous pouvez le renvoyer depuis « Compte » dans les paramètres.
+        continue: Continuer
+        failed: Le compte n’a pas pu être créé. Veuillez réessayer.
+        signInFailed: Votre compte a été créé, mais la connexion a échoué. Connectez-vous depuis la page de connexion.
+        haveAccount: Vous avez déjà un compte ? Connectez-vous
+      verifyEmail:
+        title: Confirmer l’adresse e-mail
+        description: Confirme votre adresse avec le lien de l’e-mail.
+        verifying: Confirmation…
+        done: Votre adresse e-mail est confirmée.
+        failed: L’adresse n’a pas pu être confirmée. Veuillez réessayer.
+        home: Aller à l’accueil
+      forgotPassword:
+        title: Mot de passe oublié
+        description: Saisissez votre identifiant. S’il a une adresse e-mail confirmée, nous enverrons un lien pour choisir un nouveau mot de passe.
+        sent: Si l’identifiant existe et que son adresse est confirmée, nous avons envoyé un lien pour choisir un nouveau mot de passe. Il est valable 30 minutes.
+      resetPassword:
+        title: Nouveau mot de passe
+        description: Choisissez un nouveau mot de passe. Cela déconnecte tous les appareils et vous reconnecte ici.
+        submit: Enregistrer
+        again: Renvoyer le lien
+        signInFailed: Le mot de passe a été enregistré, mais la connexion a échoué. Connectez-vous depuis la page de connexion.
+      forgotId:
+        title: Identifiant oublié
+        description: Saisissez l’adresse e-mail de votre inscription. Si des comptes l’ont confirmée, nous enverrons leurs identifiants par e-mail.
+        sent: Si des comptes ont confirmé cette adresse, nous avons envoyé leurs identifiants par e-mail.
+      settings:
+        heading: Compte
+        description: Ce compte se connecte avec un identifiant et un mot de passe.
+        verified: Confirmée
+        unverified: Non confirmée
+        resend: Renvoyer l’e-mail de confirmation
+        resent: L’e-mail de confirmation a été envoyé.
+        alreadyVerified: Cette adresse est déjà confirmée.
+        mailNotSent: L’e-mail de confirmation n’a pas pu être envoyé. Veuillez réessayer plus tard.
+        loadFailed: Le compte n’a pas pu être chargé.
+        changePassword: Changer de mot de passe
+        changePasswordDescription: Votre mot de passe actuel est nécessaire. Le changer déconnecte vos autres appareils.
+        change: Changer le mot de passe
+        changed: Votre mot de passe a été changé. Vos autres appareils ont été déconnectés.
+        failed: Le mot de passe n’a pas pu être changé. Veuillez réessayer.
+        signInAgain: Votre mot de passe a été changé, mais cet appareil doit se reconnecter. Connectez-vous avec le nouveau mot de passe.
+    common:
+      loading: Chargement…
+      close: Fermer
+      notifications: Notifications
+      closeNotification: Fermer la notification
+      delete:
+        label: Supprimer
+        title: Voulez-vous vraiment supprimer cet élément ?
+        description: "%{description} Cette action est irréversible."
+        confirm: Supprimer
+        deleting: Suppression…
+        failed: Impossible de supprimer. Veuillez réessayer.
+      storage:
+        guest: Enregistré dans ce navigateur
+        account: Enregistré sur votre compte
+        guestDetail: 'Vous n’êtes pas connecté : les données sont enregistrées dans le LocalStorage de ce navigateur.'
+        accountDetail: Enregistré sur le compte connecté.
+      form:
+        cancel: Annuler
+        saving: Enregistrement…
+        save: Enregistrer
+        add: Ajouter
+        saveFailed: Échec de l’enregistrement. Veuillez réessayer.
+      packList: "%{pack} › %{list}"
+    dashboard:
+      title: Vue d’ensemble
+      sourceGuest: Calculé à partir des résultats enregistrés dans ce navigateur.
+      sourceAccount: Calculé à partir des résultats enregistrés sur votre compte.
+      start: Commencer
+      practice: S’entraîner
+      create: Créer une liste de mots
+      week:
+        title: Cette semaine
+        description: Résultats du %{start} au %{end}. Les variations sont comparées à la semaine dernière, jusqu’au même jour et à la même heure.
+        count: Entraînements cette semaine
+        countUnit:
+          one: séance
+          other: séances
+        streak: Série
+        streakUnit:
+          one: jour
+          other: jours
+        accuracy:
+          one: Précision (dernier résultat)
+          other: Précision moyenne (%{count} derniers)
+        time: Temps d’entraînement cette semaine
+        practisedToday: Entraînement fait aujourd’hui
+        streakNext: Entraînez-vous aujourd’hui pour le jour {day, number}
+        noComparison: Rien à comparer pour l’instant
+        noAccuracy: Aucun résultat avec précision
+        times:
+          one: "%{count} séance"
+          other: "%{count} séances"
+        sameAsLastWeek: Comme la semaine dernière
+        moreThanLastWeek: "%{value} de plus que la semaine dernière"
+        lessThanLastWeek: "%{value} de moins que la semaine dernière"
+      change: {}
+      next:
+        title: Listes à travailler ensuite
+        description: 'Affiche jusqu’à 3 listes : jamais travaillées, non travaillées depuis %{days} jours ou plus, ou dont la précision récente est inférieure à %{accuracy} %.'
+        allPractised: Toutes les listes ont été travaillées récemment.
+        words:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        lastPracticed: 'Dernier entraînement : %{day}'
+        noRecords: Aucun résultat
+        new: Pas encore d’entraînement
+        stale:
+          one: Pas d’entraînement depuis %{count} jour
+          other: Pas d’entraînement depuis %{count} jours
+          __var: days
+        lowAccuracy:
+          one: 'Précision du dernier résultat : %{accuracy} %'
+          other: 'Précision des %{count} derniers : %{accuracy} %'
+        practiceList: S’entraîner sur %{name}
+        practice: S’entraîner
+      trends:
+        title: Évolution par liste
+        description: Secondes par mot (plus c’est bas, plus c’est rapide) et précision, sur les 20 derniers entraînements au maximum. Le temps étant divisé par le nombre de mots, les résultats restent comparables avant et après la modification d’une liste.
+        summary:
+          one: "%{count} séance · Dernier entraînement : %{day}"
+          other: "%{count} séances · Dernier entraînement : %{day}"
+        needTwo: L’évolution s’affiche à partir de deux résultats.
+        practiceList: S’entraîner sur %{name}
+        practice: S’entraîner
+        speed: Secondes par mot
+        accuracy: Précision
+        seconds: "%{value} s"
+        percent: "%{value} %"
+        latest: Dernier <number>%{value}</number>
+        noChart: S’affiche lorsqu’au moins deux résultats comportent cette valeur.
+        best: 'Meilleur résultat : précision %{accuracy} · %{time} s (%{day})'
+        notRecorded: non enregistrée
+      chart:
+        label: "%{label} (flèches gauche et droite pour lire chaque valeur)"
+        date: Date
+        value: Valeur
+      continue:
+        label: Reprendre où vous en étiez
+        meta:
+          one: "%{count} mot · Dernier entraînement %{day}"
+          other: "%{count} mots · Dernier entraînement %{day}"
+        best: 'Meilleur : précision %{accuracy}, %{time} s'
+        notRecorded: non enregistrée
+        samples: Premiers mots
+        more:
+          one: "%{count} autre mot"
+          other: "%{count} autres mots"
+        practice: S’entraîner
+        practiceList: S’entraîner sur %{name}
+        other: Choisir une autre liste
+      weak:
+        title: Mots difficiles
+        description: Pour chaque liste, les mots manqués lors des %{runs} derniers entraînements (hors Handwriting), les plus souvent manqués d’abord. Les mots saisis sans erreur lors d’un entraînement sur les seuls mots difficiles quittent cette liste.
+        none: Pas encore de mots difficiles. Les mots manqués à l’entraînement apparaîtront ici.
+        wordsOf: Mots difficiles de %{name}
+        runs: "%{count} fois"
+        more:
+          one: "%{count} autre mot"
+          other: "%{count} autres mots"
+        practice:
+          one: Réviser le mot difficile
+          other: Réviser les %{count} mots difficiles
+        practiceList:
+          one: Réviser le mot difficile de %{name}
+          other: Réviser les %{count} mots difficiles de %{name}
+    devices:
+      title: Appareils
+      description: Enregistrez les ordinateurs et claviers sur lesquels vous vous entraînez. Choisissez-en un dans « <link>S’entraîner</link> » et vos résultats indiqueront l’appareil utilisé.
+      usage:
+        one: "%{count} entraînement · dernier %{day}"
+        other: "%{count} entraînements · dernier %{day}"
+      neverUsed: Pas encore utilisé
+      listHeading: Appareils enregistrés
+      count:
+        one: "%{count} appareil"
+        other: "%{count} appareils"
+      add: Ajouter un appareil
+      limit: Vous pouvez enregistrer jusqu’à %{max} appareils. Supprimez ceux que vous n’utilisez plus pour en ajouter.
+      inUse: Utilisé
+      inUseDetail: L’appareil utilisé pour l’entraînement dans ce navigateur
+      defaultDetail: Disponible sans enregistrement. Il ne peut être ni renommé ni supprimé.
+      edit: Modifier
+      editLabel: Modifier %{name}
+      delete: Supprimer
+      deleteLabel: Supprimer %{name}
+      added: Appareil « %{name} » ajouté.
+      saved: Appareil « %{name} » enregistré.
+      deleted: Appareil « %{name} » supprimé.
+      deleteTitle: Supprimer l’appareil « %{name} » ?
+      deleteRemoval: "« %{name} » sera retiré de la liste."
+      deleteRecords:
+        one: Les %{count} résultat obtenus sur cet appareil ne seront pas supprimés et garderont le nom de l’appareil au moment de l’entraînement.
+        other: Les %{count} résultats obtenus sur cet appareil ne seront pas supprimés et garderont le nom de l’appareil au moment de l’entraînement.
+      deleteNoRecords: Aucun résultat n’a été obtenu sur cet appareil.
+      empty:
+        title: Aucun appareil enregistré
+        description: 'Choisissez un appareil enregistré dans « S’entraîner » : vos résultats indiqueront l’appareil utilisé et vous pourrez les comparer par appareil.'
+        example: 'Ex. : MacBook Air (JIS), PC de bureau + HHKB (US)'
+      current:
+        heading: Appareil utilisé pour l’entraînement dans ce navigateur
+        change: Modifier
+        changeLabel: 'Modifier l’appareil utilisé pour l’entraînement dans ce navigateur (actuel : %{device})'
+        practice: S’entraîner
+        noteSelected: 'Lorsque vous vous entraînez dans « S’entraîner », cet appareil est enregistré avec vos résultats. Chaque navigateur mémorise son propre choix : vous pouvez en choisir un par ordinateur.'
+        noteUnselected: 'Tant qu’aucun appareil n’est sélectionné, aucun n’est enregistré avec vos résultats. Chaque navigateur mémorise son propre choix : vous pouvez en choisir un par ordinateur.'
+      dialog:
+        addTitle: Ajouter un appareil
+        editTitle: Modifier l’appareil
+        addDescription: Enregistrez un appareil sur lequel vous vous entraînez.
+        editDescription: Modifiez le nom affiché et la disposition / les notes.
+        name: Nom de l’appareil
+        namePlaceholder: 'Ex. : MacBook Air'
+        nameHelp: Affiché dans le menu des appareils de l’écran d’entraînement et dans vos résultats.
+        layout: Disposition / notes
+        optional: " (facultatif)"
+        layoutPlaceholder: 'Ex. : JIS, US'
+        layoutHelp: Noter la disposition ou les réglages aide à distinguer les résultats lorsque vous les comparez.
+        renameNote:
+          one: Même si vous le renommez, vos résultats passés (%{count} entraînement) garderont le nom utilisé à ce moment-là.
+          other: Même si vous le renommez, vos résultats passés (%{count} entraînements) garderont le nom utilisé à ce moment-là.
+        use: Utiliser cet appareil pour l’entraînement dans ce navigateur
+        useHelp: Lorsque vous vous entraînez dans « S’entraîner », cet appareil est enregistré avec vos résultats.
+      menu:
+        label: 'Appareil : %{device}'
+        locked: Impossible de changer d’appareil pendant l’entraînement
+        change: Changer d’appareil
+        unselected: 'Appareil : non sélectionné'
+        heading: Appareil (modifiable uniquement avant de commencer)
+        manage: Gérer les appareils
+      choice:
+        notSelected: Non sélectionné
+        none: Non sélectionné (ne pas enregistrer l’appareil)
+    errors:
+      workspaceRequestFailed: Impossible de récupérer ou d’enregistrer les données.
+      invalidServerData: Les données reçues du serveur ne sont pas valides.
+      loginRequired: Veuillez vous connecter.
+      databaseUnavailable: Impossible de se connecter à la base de données. Réessayez dans quelques instants.
+      authUnavailable: La connexion est indisponible pour le moment. Réessayez dans quelques instants.
+      forbiddenRequest: Cette requête n’est pas autorisée.
+      emptyRequest: Aucune donnée n’a été envoyée.
+      workspaceTooLarge: Les données enregistrées ne doivent pas dépasser 1 Mo.
+      loginAccountChanged: Le compte connecté a changé. Veuillez rouvrir la page.
+      invalidWorkspace: Vérifiez le format et la taille des données enregistrées.
+      conflict: Les données ont été modifiées sur un autre écran. Chargez les dernières données et réessayez.
+      workspaceSaveFailed: Échec de l’enregistrement. Votre saisie est conservée, vous pouvez réessayer.
+      guestReadFailed: Impossible de lire les données enregistrées dans ce navigateur. Les données d’origine n’ont pas été modifiées.
+      storageChanged: L’emplacement d’enregistrement a changé. Veuillez rouvrir la page.
+      guestQuotaExceeded: La quantité de données enregistrables est dépassée. Faites du tri dans vos listes de mots ou vos résultats.
+      guestWriteFailed: Impossible d’enregistrer dans ce navigateur. Vérifiez l’espace libre et les paramètres de stockage, puis réessayez.
+      accountChangedReopen: Votre état de connexion a changé. Veuillez rouvrir la page.
+      accountChanged: Votre état de connexion a changé.
+      loadFailed: Échec du chargement.
+      saveFailed: Échec de l’enregistrement. Veuillez réessayer.
+      listNameRequired: Saisissez le nom de la liste de mots.
+      listNameDuplicate: Une liste de mots porte déjà ce nom. Choisissez un autre nom.
+      wordsRequired: Ajoutez au moins un mot.
+      wordFieldsRequired: Renseignez le mot affiché et le texte à saisir pour chaque mot.
+      savedDataUnreadable: Le format des données enregistrées est illisible.
+      savedDataCorrupted: Les données enregistrées sont corrompues. Les données d’origine n’ont pas été modifiées.
+      invalidWritingLanguage: La langue de l’entraînement à l’écriture manuscrite n’est pas valide.
+      listDeleted: Cette liste de mots a été supprimée. Veuillez rouvrir la page.
+      listLimit: Vous pouvez enregistrer jusqu’à %{max} listes de mots à vous (les listes des packs suivis ne comptent pas).
+      followLimit: Vous pouvez suivre jusqu’à %{max} packs officiels.
+      importFileType: Choisissez un fichier CSV.
+      importFileEncoding: Choisissez un fichier enregistré en UTF-8.
+      importTooLarge: Le fichier ne doit pas dépasser 1 Mio.
+      importQuote: 'Ligne %{line} : les guillemets ne sont pas correctement formés.'
+      importHeaderRequired: L’en-tête doit contenir input et display. annotation est facultatif.
+      importHeaderDuplicate: L’en-tête contient des noms de colonnes en double.
+      importHeaderUnknown: Utilisez input, display, annotation et input_type comme noms de colonnes.
+      importNoRows: Ajoutez au moins une ligne de mots.
+      importTooManyRows: Une liste peut contenir jusqu’à 1 000 mots.
+      importColumnCount: 'Ligne %{line} : le nombre de colonnes ne correspond pas à l’en-tête.'
+      importFieldRequired: 'Ligne %{line} : input et display sont obligatoires.'
+      importFieldTooLong: 'La ligne %{line} dépasse la longueur maximale (input et display : 1 000 caractères, annotation : 2 000 caractères).'
+      deviceDataInvalid: Vérifiez le format des données de l’appareil.
+      deviceNameRequired: Saisissez le nom de l’appareil.
+      deviceNameTooLong: Le nom de l’appareil ne doit pas dépasser %{max} caractères.
+      deviceLayoutTooLong: La disposition / les notes ne doivent pas dépasser %{max} caractères.
+      deviceDeleted: Cet appareil a été supprimé sur un autre écran.
+      deviceNameDuplicate: "« %{name} » est déjà enregistré. Choisissez un autre nom."
+      deviceLimit: Vous pouvez enregistrer jusqu’à %{max} appareils. Supprimez ceux que vous n’utilisez plus avant d’en ajouter.
+      practiceIncomplete: L’entraînement n’est pas terminé.
+      recordListDeleted: La liste de mots a été supprimée ; le résultat ne peut pas être enregistré.
+      invalidRecord: Le résultat d’entraînement n’est pas valide ; il ne peut pas être enregistré.
+      recordLimit: Cette liste de mots a atteint le nombre maximal de résultats d’entraînement.
+      deviceNotFound: L’appareil utilisé pour l’entraînement a été supprimé ; le résultat ne peut pas être enregistré.
+      packNameRequired: Saisissez un nom de pack.
+      packNameDuplicate: Un pack porte déjà ce nom.
+      packListsRequired: Choisissez au moins une liste de mots pour le pack.
+      packDeleted: Ce pack a été supprimé.
+      packFollowed: Les packs officiels ne peuvent pas être modifiés. Copiez-le pour le modifier comme votre propre pack.
+      levelsConflict: Ce pack contient déjà une liste avec la même difficulté (ou, pour une liste sans difficulté, le même nom).
+      tooManyLevels: Une liste ne peut avoir qu’une seule difficulté.
+      packFileUnreadable: Ce fichier n’a pas pu être lu comme un pack de mots.
+      invalidPackFile: Ce fichier contient un élément qui dépasse la limite d’enregistrement.
+      sharedPackNotFound: Ce partage est terminé.
+      invalidPage: Le numéro de page n’est pas valide.
+      importInputTypeInvalid: 'Ligne %{line} : input_type doit être command, code ou word.'
+      invalidRequest: La requête n’est pas valide.
+      loginIdFormat: L’identifiant doit comporter de 3 à 32 lettres, chiffres, « _ » ou « - ».
+      passwordLength: Le mot de passe doit comporter de 10 à 128 caractères.
+      passwordSameAsId: Le mot de passe ne peut pas être identique à l’identifiant.
+      emailFormat: L’adresse e-mail n’est pas valide.
+      loginIdTaken: Cet identifiant est déjà utilisé. Choisissez-en un autre.
+      tooManyRequests: Trop de demandes. Réessayez plus tard.
+      invalidToken: 'Ce lien ne peut pas être utilisé : il a expiré ou a déjà servi.'
+      notPasswordAccount: Réservé aux comptes qui se connectent avec un identifiant et un mot de passe.
+      wrongPassword: Le mot de passe actuel est incorrect.
+    format:
+      today: Aujourd’hui
+      yesterday: Hier
+      dateWithWeekday: "%{weekday} %{date}"
+      units:
+        hours: h
+        minutes: min
+        seconds: s
+      time:
+        one: "%{value} %{unit}"
+        two: "%{first} %{firstUnit} %{second} %{secondUnit}"
+      defaultDevice: Par défaut
+      noDevice: Non enregistré
+      noDeviceRecorded: Aucun appareil enregistré
+      deviceWithLayout: "%{name} (%{layout})"
+    globalError:
+      title: Impossible d’afficher la page
+      description: Veuillez réessayer dans quelques instants.
+      reload: Recharger
+    guide:
+      meta:
+        title: Mode d’emploi | Typle
+        description: Comment commencer à vous entraîner sur Typle, créer des listes de mots, consulter vos résultats, où sont enregistrées vos données et quels sont les raccourcis clavier.
+      title: Mode d’emploi
+      intro: Tout ce qu’il faut savoir, des premiers pas à la création de listes de mots, en passant par la consultation des résultats et l’enregistrement des données. Toutes les fonctionnalités sont disponibles sans vous connecter.
+      contentsLabel: Sur cette page
+      contents:
+        practice: S’entraîner
+        lists: Créer des listes de mots
+        records: Résultats et historique
+        devices: Enregistrer des appareils
+        storage: Stockage et données
+        shortcuts: Raccourcis clavier
+      start:
+        title: Démarrer en 3 étapes
+        follow:
+          title: Suivre des packs officiels
+          text: 'Suivez des packs officiels comme Go ou Kotlin : ils s’ajoutent à vos packs et vous pouvez vous entraîner tout de suite.'
+          action: Packs officiels
+        create:
+          title: Créer votre pack
+          text: Choisissez des listes de mots existantes et regroupez-les dans un pack. Une liste de mots se crée seule, et peut aussi être importée depuis un fichier CSV.
+          action: Créer un pack
+        review:
+          title: Suivre vos résultats
+          text: 'Une fois la liste terminée, votre résultat est enregistré automatiquement : vous pouvez consulter votre record personnel et l’évolution de votre temps.'
+          action: Meilleurs résultats
+      legend:
+        typed: 'Saisie : <mono>%{typed}</mono>'
+        swatch: a
+        done:
+          label: Saisi
+          note: "(vert)"
+        current:
+          label: Caractère suivant
+          note: "(souligné)"
+        pending:
+          label: Pas encore saisi
+          note: "(blanc, noir avec le thème clair)"
+        error:
+          label: Caractère erroné
+          note: "(rouge)"
+      practice:
+        lead: Choisissez une liste de mots dans <play>S’entraîner</play> et tapez les mots affichés.
+        colors:
+          title: Couleurs de saisie
+          text: 'Les caractères bien tapés deviennent verts et vous passez au suivant. Si vous tapez un mauvais caractère, le caractère à taper devient rouge et vous n’avancez pas tant que vous n’avez pas tapé le bon. Il n’y a pas de champ de saisie : le soulignement dans le mot indique votre position. Pour les mots dont l’affichage diffère de ce qu’il faut taper (par exemple taper « noel » pour « Noël »), les caractères à taper s’affichent sous le mot et ce sont eux qui sont colorés.'
+        flow:
+          title: Déroulement de l’entraînement
+          p1: Quand tous les caractères correspondent, vous passez au mot suivant ; l’entraînement se termine après le dernier mot.
+          p2: Le temps est mesuré de la première frappe jusqu’à la fin. Pendant l’entraînement, le temps écoulé, la vitesse (caractères corrects par minute), la précision et le nombre d’erreurs sont affichés.
+          p3: Le texte saisi avec un IME (en japonais, par exemple) est vérifié une fois validé ; les caractères en cours de conversion ne sont pas vérifiés. Le collage et la saisie par glisser-déposer sont désactivés.
+          p4: Les 3 mots suivants s’affichent sous la barre de progression, et « Afficher tous les mots » permet de voir la liste entière.
+          p5: Le bouton en forme d’œil, en haut, affiche ou masque les statistiques en direct (temps écoulé, vitesse, précision et erreurs). Votre choix est enregistré dans ce navigateur. Les masquer ne change ni le chronométrage ni l’enregistrement, et l’écran de résultat affiche toujours les chiffres.
+          p6: Activez « Taper de mémoire » en haut pour vous entraîner avec la réponse cachée. La note s’affiche avec la réponse masquée, et la réponse apparaît sous la forme d’un « ＿ » par caractère restant à taper. Les mots suivants, la liste complète et le guide des caractères à taper ne sont pas affichés. « Voir la réponse » l’affiche, et les caractères restants comptent comme des erreurs. Ces entraînements sont enregistrés comme « De mémoire » et comparés séparément des entraînements normaux. Votre choix est enregistré dans ce navigateur et ne peut pas être changé pendant un entraînement.
+        choose:
+          title: Choisir le pack, la liste et l’appareil
+          p1: Cliquez sur « Pack › Liste » en haut pour choisir un pack et changer de liste. Les packs sont triés par entraînement le plus récent et se recherchent par nom de pack, catégorie, tag, nom de liste ou mot. Un pack d’une seule liste sélectionne cette liste aussitôt. Dans un pack de plusieurs listes, les listes avec une difficulté se choisissent avec des boutons de difficulté, et celles sans difficulté avec des boutons portant leur nom. Vous pouvez aussi choisir dans la liste de droite (en bas sur smartphone).
+          p2: Si vous choisissez une autre liste en cours d’entraînement, une confirmation vous est demandée avant l’interruption. Un entraînement inachevé n’est pas enregistré.
+          p3: "« Recommencer » ou <keys>Esc</keys> relance la même liste depuis le début."
+          p4: Avant de taper le premier caractère, choisissez l’appareil utilisé avec « Appareil » en haut (<devicesSection>Enregistrer des appareils</devicesSection>).
+        writing:
+          title: Typle Handwriting (écriture manuscrite)
+          p1: Dans l’éditeur de liste, activez « Utiliser pour l’écriture manuscrite (Typle Handwriting) » et choisissez une langue pour vous entraîner à écrire cette liste à la main. En la choisissant sur l’écran d’entraînement, un sélecteur Frappe / Handwriting apparaît.
+          p2: Regardez le mot affiché et écrivez-le dans le champ avec la saisie manuscrite de votre système (panneau d’écriture de Windows, clavier manuscrit d’une tablette Android, écriture manuscrite d’un IME, etc.). La version web n’a pas de zone de dessin.
+          p3: Quand la saisie correspond au mot, vous passez au suivant. « Vérifier » (<keys>Enter</keys>) sans correspondance compte une erreur, et « Passer » compte une erreur et passe au mot suivant. Le texte en cours de conversion n’est pas évalué.
+          p4: Les records Handwriting sont comparés à part des records normaux et de mémoire ; sur l’écran des meilleurs records, on bascule entre Normal, De mémoire et Handwriting. Ils comptent dans les séances, le temps d’entraînement et la série de la semaine sur l’accueil, mais la précision, les tendances et les listes suivantes ne comparent que la frappe. Handwriting ne se combine pas avec « Taper de mémoire ». Changer en cours d’entraînement demande une confirmation. Les smartphones seront pris en charge plus tard.
+      lists:
+        lead: Créez un pack dans <create>Créer un pack</create> et modifiez vos packs et listes enregistrés dans <edit>Packs de mots</edit>.
+        packs:
+          title: Packs et listes
+          p1: Les listes de mots sont regroupées en « packs ». Une liste de mots se crée seule ; pour créer un pack, saisissez son nom et choisissez les listes qu'il regroupe.
+          p2: "« Ajouter une liste », dans le menu « … » d’un pack, ajoute une liste à un pack enregistré."
+          p3: "« Modifier le pack », dans le menu « … » d’un pack, permet de changer son nom, sa description, sa catégorie et ses tags, ou de réorganiser les listes qu’il contient."
+          p4: Dans l’éditeur de liste, vous pouvez choisir le pack de la liste (ce qui la déplace vers un autre pack). Vous pouvez aussi saisir une difficulté.
+        files:
+          title: Copie de packs, fichiers de pack et packs officiels
+          p1: "« Dupliquer », dans le menu « … » d’un pack, copie le pack avec ses listes. La copie s’appelle « Nom (copie) » et se place juste après l’original. L’historique d’entraînement n’est pas copié."
+          p2: "« Exporter », dans le menu « … » d’un pack, enregistre le pack dans un fichier « nom-du-pack.typle-pack.json ». Il contient le nom, la description, la catégorie, les tags, les listes et les mots, mais pas l’historique."
+          p3: Choisissez ce fichier avec « Importer depuis un fichier » pour l’importer comme nouveau pack (cela fonctionne aussi quand vous n’avez encore aucun pack). Les fichiers vont jusqu’à 1 Mio ; un fichier illisible est refusé. Si un pack du même nom existe, le nouveau s’appelle « Nom (2) ».
+          p4: 'Dans « Packs officiels », parmi les packs de mots, « Suivre » ajoute ce pack à vos packs. Les packs suivis portent la mention « Officiel » et restent à jour avec la version officielle. Un pack suivi ne peut pas être modifié : pour le changer, utilisez « Dupliquer » afin d’en faire votre propre pack. « Ne plus suivre » retire le pack de vos packs, avec son historique d’entraînement.'
+        interests:
+          title: Centres d’intérêt
+          p1: 'Dans <interests>Centres d’intérêt</interests>, choisissez les puces « Langues » et « Programmation ». Vous pouvez en choisir autant que vous voulez ; chaque choix est enregistré dès que vous appuyez. Au départ, toutes les puces sont choisies : tous les packs officiels correspondent.'
+          p2: Choisir une puce parente ouvre les puces en dessous, comme « Chinois », « Russe » et « Coréen », ou « Go » et « Kotlin ». Désélectionner la parente désélectionne aussi les puces en dessous.
+          p3: Avec des centres d’intérêt choisis, « Packs officiels » parmi les packs de mots est séparé en « Packs correspondant à vos centres d’intérêt » et « Autres packs ». Sans puce choisie sous une parente, tous les packs de ce domaine correspondent ; avec des puces choisies, ce sont les packs portant ces étiquettes. L’écran Centres d’intérêt affiche aussi, sous les puces, les packs officiels qui correspondent, avec leur nom, leurs listes de mots, leur nombre de mots et un interrupteur. Activez des packs puis appuyez sur « Ajouter » en bas pour les suivre ; désactivez un pack suivi puis appuyez sur « Ajouter » pour ne plus le suivre (son historique d’entraînement est supprimé).
+          p4: Les centres d’intérêt sont enregistrés dans votre compte si vous êtes connecté, et dans ce navigateur sinon.
+        share:
+          title: Donner un pack à quelqu’un
+          p1: Pour donner un pack à quelqu’un, enregistrez-le dans un fichier « nom-du-pack.typle-pack.json » avec « Exporter » dans le menu « … » du pack, ou une liste dans un fichier CSV avec « Exporter en CSV », puis envoyez le fichier. L’historique d’entraînement n’est pas inclus.
+          p2: La personne importe un fichier de pack avec « Importer depuis un fichier », et un fichier CSV avec « Importer un CSV » pendant la modification d’une liste.
+        input:
+          title: Saisir les mots
+          p1: Saisissez le nom de la liste puis, pour chaque mot, le « Mot affiché » et le « Texte à saisir ». La note est facultative.
+          p2: Si vous laissez le texte à saisir vide, le mot affiché est utilisé tel quel.
+          p3: Réorganisez les mots par glisser-déposer, avec le menu « … » ou avec <keys>Alt+↑↓</keys>. <keys>Enter</keys> passe au mot suivant et, sur le dernier mot, ajoute une nouvelle ligne.
+          p4: Enregistrez avec « Enregistrer » ou <keys>Ctrl+Enter</keys> (<keys>⌘+Enter</keys> sur Mac).
+        cannotSave:
+          title: Si la liste ne peut pas être enregistrée
+          p1: Une liste avec des lignes vides, une liste sans mots ou une liste portant le même nom qu’une autre liste du même pack ne peut pas être enregistrée.
+          p2: Une liste peut contenir jusqu’à 1 000 mots, et vous pouvez enregistrer jusqu’à 150 listes.
+          p3: Si des modifications ne sont pas enregistrées, une confirmation vous est demandée avant d’annuler ou de revenir en arrière dans le navigateur.
+          p4: Si vous modifiez le nombre de mots, les résultats précédents ne comptent plus dans le classement des meilleurs résultats (ils sont conservés ; voir <wordCount>Si le nombre de mots change</wordCount>).
+        manage:
+          title: Gérer les listes
+          p1: Dans <edit>Packs de mots</edit>, vous pouvez rechercher par nom de pack, nom de liste ou mot et changer l’ordre de tri.
+          p2: 'Le menu « … » d’un pack permet de s’entraîner, de modifier le pack, d’ajouter une liste ou de le supprimer. Supprimer un pack supprime aussi ses listes et leur historique. Chaque ligne de liste a son propre menu « … » : meilleurs résultats, historique, export CSV, duplication et suppression. Les packs officiels suivis ne peuvent pas être modifiés et proposent « Ne plus suivre » au lieu de supprimer.'
+          p3: La duplication ne copie que les mots, pas l’historique d’entraînement. Il en va de même pour la duplication d’un pack.
+        csv:
+          title: Fichiers CSV
+          p1: Pendant la modification d’une liste, choisissez un fichier avec « Importer un CSV ». Après avoir vérifié son contenu, vous pouvez ajouter les mots à la fin des mots actuels ou les remplacer.
+          p2: La première ligne contient les noms de colonnes. input (texte à saisir) et display (mot affiché) sont obligatoires ; annotation (note) est facultative. Vous pouvez importer des fichiers enregistrés en UTF-8, de 1 Mio et 1 000 mots au maximum.
+          p3: "« Exporter en CSV » écrit la saisie, l’affichage et la note de chaque mot dans un fichier CSV en UTF-8 (sans l’historique d’entraînement). Le fichier exporté peut être réimporté tel quel."
+          exampleLabel: Exemple de fichier CSV
+          example: |-
+            input,display,annotation
+            noel,Noël,fête de fin d’année
+            ete,été,
+      records:
+        lead: Quand vous terminez un entraînement, le résultat est enregistré automatiquement.
+        complete:
+          title: Écran de fin
+          p1: Affiche le temps, la précision et le nombre de caractères erronés, la vitesse, le nombre de mots manqués et l’appareil. En dessous, les mots manqués sont listés avec le premier caractère erroné. « Réviser les mots manqués » reprend seulement ces mots, sans enregistrer cette révision.
+          p2: La précision est la part de caractères corrects parmi ceux saisis. Les suppressions ne sont pas comptées, mais les caractères retapés après une correction le sont.
+          p3: Quand vous battez votre record personnel, un badge et l’écart avec le record précédent s’affichent.
+          p4: "« Encore » (<keys>Enter</keys>) relance aussitôt la même liste. Si l’enregistrement échoue, appuyez sur « Réessayer l’enregistrement »."
+        history:
+          title: Historique
+          p1: 'L’<records>Historique</records> affiche vos entraînements par date, du plus récent au plus ancien, et peut être filtré par liste ou par appareil. Les filtres sont conservés dans l’URL : vous pouvez rouvrir le même affichage depuis un favori ou un lien.'
+          p2: Avec un filtre par liste, le nombre d’entraînements et le meilleur résultat de cette liste s’affichent, et « S’entraîner » permet de commencer tout de suite. Choisir un pack limite les listes proposées à celles de ce pack. Les résultats d’un pack de deux listes ou plus s’affichent sous la forme « pack › liste ».
+          p3: Le meilleur résultat de chaque liste porte la mention « Meilleur ». Si vous supprimez un meilleur résultat, la confirmation indique celui qui deviendra le meilleur.
+        best:
+          title: Meilleurs résultats
+          p1: Choisissez une liste dans <rankings>Meilleurs résultats</rankings> pour voir votre record personnel, la moyenne de vos 5 derniers essais, l’évolution de votre temps et vos meilleurs résultats. L’écran des meilleurs résultats regroupe les listes par pack. Chaque pack indique le nombre d’entraînements, le nombre de listes déjà pratiquées (n/m entraînées), la date du dernier entraînement et le nombre de listes dont le meilleur résultat a été battu ces 7 derniers jours. Le tri s’applique aux packs ; les listes d’un pack restent classées par difficulté.
+          p2: Le classement peut basculer entre « Précision d’abord » (précision la plus élevée, puis le plus rapide) et « Vitesse d’abord », et être filtré par appareil. La liste et les options choisies sont conservées dans l’URL.
+          p3: L’écran d’entraînement affiche aussi les 5 meilleurs résultats de la liste choisie et met en évidence le dernier.
+        wordCount:
+          title: Si le nombre de mots change
+          p1: Après l’ajout ou la suppression de mots dans une liste, seuls les résultats obtenus avec le nombre de mots actuel sont classés. Les meilleurs résultats de l’écran d’entraînement et de l’historique suivent la même règle.
+          p2: Les résultats avec un nombre de mots différent peuvent être ajoutés au classement avec « Inclure » dans Meilleurs résultats. S’il n’existe encore aucun résultat avec le nombre de mots actuel, ce sont les résultats avec un nombre de mots différent qui sont classés.
+        home:
+          title: Accueil
+          text: Dès que vous avez au moins un résultat, l’<home>Accueil</home> affiche le nombre d’entraînements de la semaine, votre série de jours consécutifs, la précision moyenne et le temps d’entraînement, la liste à travailler ensuite, ainsi que l’évolution des secondes par mot et de la précision pour chaque liste. Les jours suivent l’horloge de votre appareil, et les semaines commencent le lundi.
+      devices:
+        lead: 'Enregistrez dans <devices>Appareils</devices> les ordinateurs et claviers que vous utilisez pour vous entraîner : vos résultats indiqueront l’appareil utilisé.'
+        p1: L’appareil choisi avec « Appareil » sur l’écran d’entraînement est mémorisé dans ce navigateur et réutilisé lors des entraînements suivants. Tant que vous n’en choisissez pas, « Par défaut » est utilisé.
+        p2: Vous pouvez filtrer l’historique et les meilleurs résultats par appareil.
+        p3: Si vous renommez un appareil, les résultats précédents gardent le nom qu’il avait au moment de l’entraînement. Vous pouvez enregistrer jusqu’à 100 appareils.
+      storage:
+        lead: La connexion est facultative. L’emplacement de vos données dépend de votre connexion.
+        browser:
+          title: Enregistré dans ce navigateur
+          when: Quand vous n’êtes pas connecté
+          p1: Toutes les fonctionnalités sont disponibles.
+          p2: Les données sont enregistrées dans le LocalStorage de ce navigateur et ne sont pas synchronisées avec d’autres appareils ou navigateurs.
+        account:
+          title: Enregistré sur votre compte
+          when: Quand vous êtes connecté (avec GitHub ou un identifiant et un mot de passe)
+          p1: 'Les données sont enregistrées sur un serveur dédié à votre compte : une fois connecté, vous retrouvez les mêmes données sur tous vos appareils.'
+          p2: L’enregistrement nécessite une connexion Internet.
+        warning:
+          title: Quand les données sont perdues
+          p1: Les données enregistrées dans ce navigateur sont effacées si vous supprimez les données de site du navigateur. Vous pouvez sauvegarder vos listes importantes avec « Exporter en CSV ».
+          p2: La suppression d’une liste supprime aussi son historique d’entraînement.
+        notes:
+          p1: Les deux emplacements conservent leurs données séparément, et rien n’est transféré automatiquement lors de la connexion.
+          p2: Les données d’une version antérieure (v0.1.x) peuvent être ajoutées à l’emplacement actuel avec le bouton de migration de l’<home>Accueil</home>.
+          p3: Si l’enregistrement échoue parce que des modifications ont été faites dans plusieurs fenêtres en même temps, chargez les données les plus récentes puis réessayez.
+      shortcuts:
+        lead: Les touches utilisables sans la souris.
+        anyKey: N’importe quelle touche
+        screens:
+          practice: S’entraîner
+          complete: Écran de fin d’entraînement
+          editor: Créer une liste / Modifier une liste de mots
+        actions:
+          restart: Recommencer depuis le début
+          resume: Reprendre la saisie après avoir cliqué hors du champ
+          again: S’entraîner à nouveau
+          next: Passer au mot suivant (ajoute une ligne sur le dernier mot)
+          move: Déplacer un mot vers le haut ou le bas
+          save: Enregistrer (⌘ + Enter sur Mac)
+      cta:
+        text: Prêt ? Lancez-vous dès maintenant.
+        action: Commencer l’entraînement
+    home:
+      welcome:
+        title: Entraînez-vous à taper avec vos propres mots.
+        text: Commencez par vous entraîner avec un pack officiel, ou créez une liste des mots que vous voulez retenir.
+        lists:
+          one: "%{count} liste de mots"
+          other: "%{count} listes de mots"
+        practices:
+          one: "%{count} entraînement terminé"
+          other: "%{count} entraînements terminés"
+        navLabel: Pour commencer
+        play: S’entraîner
+        create: Créer une liste de mots
+        records: Voir les résultats
+      storage: Toutes les fonctions d’entraînement et de modification sont disponibles sans vous connecter. Les listes de mots, l’historique et les appareils sont enregistrés dans ce navigateur. En vous connectant (avec GitHub ou un identifiant et un mot de passe), vous passez à un autre emplacement, votre compte, synchronisé entre vos appareils. Les données du navigateur ne sont pas transférées automatiquement.
+      storageAccount: 'Vous êtes connecté : vos listes de mots, votre historique et vos appareils sont enregistrés dans votre compte et synchronisés avec les autres appareils et navigateurs connectés au même compte. Ils sont conservés séparément des données enregistrées dans ce navigateur sans connexion.'
+      links: "<guide>Mode d’emploi</guide> / <about>À propos de Typle</about>"
+    input:
+      title: Saisie
+      metaTitle: Saisie | Typle
+      description: Réglages de la saisie pendant l'entraînement.
+      note: Ce réglage est enregistré dans ce navigateur.
+      unsaved: Le réglage ne peut pas être enregistré ; il ne s'applique que tant que cette page est ouverte.
+      simpleSpecial:
+        heading: Saisie simplifiée des caractères spéciaux
+        description: Permet de saisir les lettres portant un accent, un tilde ou un autre signe — comme í, ó, ñ et č en tchèque ou en espagnol — avec la lettre simple (i, o, n, c). La lettre accentuée elle-même reste acceptée. Les lettres cyrilliques russes acceptent aussi une saisie latine, par exemple привет → privet, школа → shkola et я → ya. La saisie directe en cyrillique reste acceptée.
+        label: Utiliser la saisie simplifiée des caractères spéciaux
+        hint: Activée, vous pouvez saisir á → a, č → c, ш → sh et я → ya.
+      simpleTable:
+        heading: Tableau de la saisie simplifiée
+        description: Les touches que vous pouvez taper à la place de chaque lettre quand la saisie simplifiée des caractères spéciaux est activée.
+        latin: Lettres latines avec signes
+        other: Autres symboles
+        cyrillic: Cyrillique (russe)
+        letter: Lettre
+        key: À taper
+        capitals: Les majuscules fonctionnent de la même façon (Á → A, Ш → Sh ou SH).
+      ignoreCase:
+        heading: Ignorer les majuscules et minuscules
+        description: Considère les majuscules et les minuscules, comme A et a, comme la même lettre. Taper avec ou sans Maj est accepté.
+        label: Ignorer les majuscules et minuscules
+        hint: Activée, les majuscules comme A et É sont acceptées si vous tapez a et é (et inversement).
+    interests:
+      title: Centres d’intérêt
+      description: Suivez les packs officiels qui correspondent à vos centres d’intérêt. La liste des packs officiels les affiche aussi en premier.
+      parents:
+        language: Langues
+        programming: Programmation
+      childrenLabel: "%{parent} : précisions"
+      children:
+        language:
+          zh: Chinois
+          ru: Russe
+          ko: Coréen
+          en: Anglais
+          es: Espagnol
+          fr: Français
+          de: Allemand
+          cs: Tchèque
+        programming:
+          go: Go
+          kotlin: Kotlin
+          java: Java
+          typescript: TypeScript
+          php: PHP
+          ruby: Ruby
+          sql: SQL
+          linux: Linux
+          vim: Vim
+          test: Tests
+          node: Node.js
+          shell: Shell
+          cloud: Cloud
+      packs:
+        title: Packs officiels pour vos centres d’intérêt
+        description: "« Ajouter » suit les packs activés. Désactiver un pack suivi arrête de le suivre. Cochez des packs pour les suivre ou ne plus les suivre d’un coup avec les boutons du bas."
+        pick: Choisissez des centres d’intérêt pour voir ici les packs officiels qui y correspondent.
+        none: Aucun pack officiel ne correspond aux centres d’intérêt choisis.
+        lists: Listes de mots
+        separator: ", "
+        switch: Suivre %{name}
+        select: Sélectionner %{name}
+        selectAll: Tout sélectionner
+        selected:
+          one: "%{count} sélectionnée"
+          other: "%{count} sélectionnées"
+        followSelected: Suivre la sélection
+        unfollowSelected: Ne plus suivre la sélection
+        add: Ajouter
+        saving: Enregistrement…
+        confirmTitle: Cela inclut l’arrêt du suivi
+        confirmDescription: Vous ne suivrez plus %{names}. Leur historique d’entraînement sera aussi supprimé.
+    landing:
+      meta:
+        title: Typle | Apprenez les mots que vous voulez en les tapant
+        description: Une application de dactylographie gratuite pour apprendre des commandes et la syntaxe de programmation, ou des mots d’autres langues. Entraînez-vous avec %{total} listes officielles ou vos propres listes, sans connexion.
+      hero:
+        eyebrow: Gratuit, sans connexion
+        title: Apprenez les mots que vous voulez en les tapant.
+        lead: Typle est une application de dactylographie pour s’entraîner avec vos propres listes de mots ou des packs officiels. Retenez des commandes et la syntaxe de programmation, ou des mots d’une autre langue, en les tapant.
+        play: Commencer sans se connecter
+        catalog: Voir les packs officiels
+        home: Aller à l’accueil
+      packs:
+        title: Packs officiels
+        lead: Suivez l’une des %{total} listes officielles et entraînez-vous tout de suite.
+        programming:
+          title: Programmation
+          count:
+            one: "%{count} liste"
+            other: "%{count} listes"
+          text: La syntaxe de Go, Java, Kotlin, TypeScript et d’autres, les commandes de Linux, Vim, AWS CLI et d’autres, et les codes d’erreur de PostgreSQL.
+        languages:
+          title: Langues
+          count:
+            one: "%{count} liste"
+            other: "%{count} listes"
+          text: Mots et phrases en chinois (HSK niveaux 5 et 6), coréen, anglais, français, allemand, espagnol, russe et tchèque. Le chinois et le coréen peuvent aussi se pratiquer à l’écriture manuscrite.
+      features:
+        title: Ce que vous pouvez faire
+        own:
+          title: S’entraîner avec vos propres listes
+          text: Ajoutez les mots que vous voulez retenir et entraînez-vous. Le mot affiché et les caractères à taper peuvent différer, et vous pouvez importer des fichiers CSV.
+        recall:
+          title: Taper de mémoire
+          text: Un mode qui cache la réponse et affiche la note comme indice, pour vérifier si vous retenez vraiment chaque mot.
+        records:
+          title: Suivre vos progrès
+          text: 'La vitesse, la précision et les erreurs sont enregistrées à chaque fois : vos records et leur évolution montrent vos progrès.'
+      storage:
+        title: Où sont gardées vos données
+        text: Toutes les fonctions marchent sans connexion. Vos données sont gardées dans ce navigateur, et une connexion (avec GitHub ou un identifiant et un mot de passe) les synchronise entre vos appareils.
+        more: "<guide>Mode d’emploi</guide> / <about>À propos de Typle</about>"
+      try:
+        badge: Essayez ici
+        progress: "%{name} · %{current} / %{total} mots"
+        label: Saisie
+        hint: Tapez le mot ci-dessus pour passer au suivant. Rien de ce qui est tapé ici n’est enregistré.
+        done:
+          one: "%{count} mot tapé. Continuez avec l’entraînement de ce pack, où vos résultats sont enregistrés."
+          other: "%{count} mots tapés. Continuez avec l’entraînement de ce pack, où vos résultats sont enregistrés."
+        continue: Continuer avec ce pack
+        starting: Préparation…
+    mail:
+      verify:
+        subject: 'Typle : confirmez votre adresse e-mail'
+        body: |-
+          Merci de vous être inscrit sur Typle.
+
+          Ouvrez le lien ci-dessous pour confirmer votre adresse e-mail (valable 24 heures).
+
+          %{link}
+
+          Si vous n’attendiez pas cet e-mail, vous pouvez le supprimer.
+      reset:
+        subject: 'Typle : réinitialisez votre mot de passe'
+        body: |-
+          Nous avons reçu une demande de réinitialisation de votre mot de passe.
+
+          Ouvrez le lien ci-dessous pour choisir un nouveau mot de passe (valable 30 minutes, utilisable une seule fois).
+
+          %{link}
+
+          Si vous n’êtes pas à l’origine de cette demande, vous pouvez supprimer cet e-mail. Votre mot de passe n’a pas changé.
+      loginIds:
+        subject: 'Typle : vos identifiants de connexion'
+        body: |-
+          Les identifiants de connexion enregistrés avec cette adresse e-mail sont :
+
+          %{ids}
+
+          Si vous n’attendiez pas cet e-mail, vous pouvez le supprimer.
+    metadata:
+      title: Typle | Entraînez-vous à taper avec vos propres mots
+      description: Une application de dactylographie avec vos propres listes de mots. Ajoutez les mots de votre choix, entraînez-vous et revoyez vos meilleurs résultats.
+      imageAlt: Typle — Entraînez-vous à taper avec vos propres mots. Entraînement et résultats par listes de mots
+      sharedTitle: Pack partagé | Typle
+      playDescription: Choisissez un pack officiel ou l’une de vos listes de mots et entraînez-vous à taper. La vitesse, la précision et les erreurs s’affichent en direct, et chaque session est enregistrée. Sans connexion.
+    nav:
+      mainNavigation: Navigation principale
+      help: Aide
+      skipToContent: Aller au contenu
+      topBar: Barre supérieure
+      openMenu: Ouvrir le menu
+      closeMenu: Fermer le menu
+      menu: Menu
+      groups:
+        practice: Entraînement
+        wordLists: Listes de mots
+        settings: Paramètres
+      links:
+        home: Accueil
+        play: S’entraîner
+        records: Historique
+        rankings: Meilleurs résultats
+        edit: Packs de mots
+        words: Voir les mots
+        create: Créer un pack
+        general: Général
+        input: Saisie
+        interests: Centres d’intérêt
+        devices: Appareils
+        guide: Mode d’emploi
+        about: À propos de Typle
+        github: GitHub
+      storage:
+        label: 'Enregistrement : '
+        account: Enregistré sur votre compte
+        browser: Enregistré dans ce navigateur
+        accountDetail: Enregistré sur votre compte et synchronisé sur les appareils où vous êtes connecté.
+        browserDetail: 'Vous n’êtes pas connecté : les données sont enregistrées uniquement dans ce navigateur.'
+      theme:
+        label: Mode sombre
+        toLight: Passer en mode clair
+        toDark: Passer en mode sombre
+        saveFailed: Le réglage ne peut pas être enregistré ; il ne s’applique qu’à cette page.
+    officialPack:
+      title: 'Entraînement à la frappe : %{name}'
+      practice: S’entraîner avec ce pack
+      preparing: Préparation…
+      full: Vous pouvez suivre jusqu’à %{max} packs officiels. Ne suivez plus un pack que vous n’utilisez pas, puis appuyez de nouveau.
+      catalog: Voir les autres packs officiels
+      free: Gratuit, sans connexion. Le bouton suit ce pack et lance l’entraînement tout de suite.
+      wordsHeading: Contenu du pack
+      input: À taper
+      note: Sens et remarques
+      details: Détails
+    practice:
+      empty: Aucun pack pour l’instant. <catalog>Suivez un pack officiel</catalog> ou <create>créez-en un nouveau</create>.
+      starter:
+        title: Par quoi voulez-vous commencer ?
+        description: Aucun pack pour l’instant. Choisissez un pack officiel pour le suivre et commencer tout de suite. Vous pourrez ne plus le suivre plus tard.
+        first: 'Première liste : %{list}'
+        start: Commencer avec ce pack
+        more: "<catalog>Voir les autres packs officiels</catalog> / <create>Créer votre propre pack</create>"
+      stats:
+        label: Session en cours
+        elapsed: Écoulé
+        speed: Vitesse
+        speedUnit: frappes/min
+        accuracy: Précision
+        mistakes: Erreurs
+        wordSpeedUnit: mots/min
+      progress:
+        label: Progression des mots
+        value:
+          one: "%{current} / %{count} mot"
+          other: "%{current} / %{count} mots"
+          __var: total
+      feedback:
+        mismatch: Le caractère %{position} ne correspond pas. Tapez le bon caractère.
+        composing: Le texte en cours de composition sera vérifié une fois validé
+        restart: Recommencer
+      header:
+        switchList: 'Changer de liste de mots (actuelle : %{name})'
+        wordCount:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        restart: Recommencer
+        restartTitle: Recommencer (Esc)
+        restartShort: Recommencer
+        liveStats: Afficher les statistiques en direct
+        aside: Afficher le panneau latéral (listes de mots)
+      word:
+        typeThis: À saisir
+        resume: Cliquez ou appuyez sur une touche pour reprendre
+        inputLabel: Saisissez le texte affiché
+        simpleKeys: Saisie simplifiée
+        simpleKeysAll: Tableau complet
+      recall:
+        toggle: Taper de mémoire
+        reveal: Voir la réponse
+        noHint: Aucun indice
+        resultHeading: Tapé de mémoire
+      upcoming:
+        next: À suivre
+        last: C’est le dernier mot
+        more: et %{count} de plus
+        showAll: Afficher tous les mots
+        allWords: Tous les mots
+        done: "(terminé)"
+        current: "(en cours)"
+        pending: "(à saisir)"
+      aside:
+        label: Listes de mots
+        lists: Listes de mots
+        create: Nouveau pack
+        best: Meilleurs résultats
+        bestOrder: Par précision décroissante, puis par vitesse
+        bestOrderAtCount:
+          one: Par précision décroissante, puis par vitesse · résultats à %{count} mot uniquement
+          other: Par précision décroissante, puis par vitesse · résultats à %{count} mots uniquement
+        allBest: Tous les meilleurs résultats
+        filter: Filtrer les listes de mots par nom, catégorie ou étiquette
+      picker:
+        title: Choisir une liste de mots
+        description: Si vous choisissez une autre liste en cours d’entraînement, une confirmation vous sera demandée.
+        filter: Filtrer par nom, catégorie ou étiquette
+        candidates: Listes de mots correspondantes
+        noMatch: Aucune liste ne correspond.
+      switch:
+        title: Interrompre l’entraînement ?
+        description:
+          one: Votre progression sur « %{list} » (%{done} / %{count} mot) ne sera pas enregistrée. Vous passerez à « %{next} ».
+          other: Votre progression sur « %{list} » (%{done} / %{count} mots) ne sera pas enregistrée. Vous passerez à « %{next} ».
+          __var: total
+        continue: Continuer l’entraînement
+        confirm: Interrompre et changer
+      result:
+        label: Résultat de l’entraînement
+        title: Bien joué !
+        newBest: Nouveau record personnel
+        completed: 'Entraînement terminé : %{name}'
+        time: Temps
+        seconds: s
+        accuracy: Précision
+        mistakes:
+          one: "%{count} erreur"
+          other: "%{count} erreurs"
+        speed: Vitesse
+        speedUnit: frappes/min
+        correct:
+          one: "%{count} caractère"
+          other: "%{count} caractères"
+        words: Mots
+        wordUnit:
+          one: mot
+          other: mots
+        firstAtCount:
+          one: Premier résultat à %{count} mot
+          other: Premier résultat à %{count} mots
+        firstForList: Premier résultat pour cette liste
+        faster: "−%{seconds} s par rapport au meilleur"
+        bestByAccuracy: Meilleur résultat grâce à la précision
+        behind: 'Meilleur : %{time} s · %{accuracy} %'
+        behindNoAccuracy: 'Meilleur : %{time} s · précision non enregistrée'
+        saveFailed: Impossible d’enregistrer le résultat. Il reste affiché sur cet écran. Vérifiez votre connexion, puis réessayez.
+        retry: Réessayer l’enregistrement
+        saving: Enregistrement du résultat…
+        again: Encore
+        chooseList: Choisir une autre liste
+        viewRecords: Voir l’historique
+        wordSpeedUnit: mots/min
+        correctWords:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        mistakesWords:
+          one: "%{count} erreur"
+          other: "%{count} erreurs"
+        shareOnX: Partager sur X
+        shareText: J’ai tapé « %{name} » en %{time} s avec %{accuracy} % de précision sur Typle
+        reviewNote: Les révisions des mots manqués ne sont pas enregistrées.
+        reviewNoteWeak: Cette révision n’est pas enregistrée. Les mots saisis sans erreur ne sont plus des mots difficiles.
+        reviewing:
+          one: Révision de %{count} mot manqué (non enregistrée)
+          other: Révision de %{count} mots manqués (non enregistrée)
+        missed:
+          tile: Mots manqués
+          of: "/ %{count}"
+          title: Mots manqués
+          none: Aucun mot manqué.
+          typed: "%{typed} tapé au caractère %{position}"
+          wrote: "« %{typed} » écrit"
+          revealed: Réponse affichée
+          skipped: Passé
+          space: Espace
+          count: "%{count} fois"
+          review:
+            one: Réviser le mot manqué
+            other: Réviser les %{count} mots manqués
+        reviewingWeak:
+          one: Révision de %{count} mot difficile (non enregistrée)
+          other: Révision de %{count} mots difficiles (non enregistrée)
+      best:
+        label: Top 5 des meilleurs résultats
+        rank: Rang
+        time: Temps
+        accuracy: Précision
+        device: Appareil
+        seconds: "%{time} s"
+        noAccuracy: Non enregistrée
+        current: Ce résultat
+        empty: Aucun résultat pour l’instant. Terminez une session pour voir ici vos 5 meilleurs résultats.
+      options:
+        selected: "%{name}, sélectionnée"
+        select: Sélectionner %{name}
+        withBest:
+          one: "%{count} mot · meilleur %{time} s"
+          other: "%{count} mots · meilleur %{time} s"
+        noRecord:
+          one: "%{count} mot · aucun résultat"
+          other: "%{count} mots · aucun résultat"
+        groupSelected: "%{level} · %{summary}"
+        groupLists:
+          one: "%{count} liste · choisir un niveau"
+          other: "%{count} listes · choisir un niveau"
+        levels: Niveaux de %{name}
+        chooseLevel: Choisissez une difficulté.
+        groupListsPlain:
+          one: "%{count} liste · choisir une liste"
+          other: "%{count} listes · choisir une liste"
+        listsOf: Listes de %{name}
+        chooseList: Choisissez une liste.
+        match: Correspond à la recherche
+      modeLabel: Mode d’entraînement
+      modeTyping: Frappe
+      modeWriting: Handwriting
+      writingJudge: Vérifier
+      writingSkip: Passer
+      writingRead: Lu comme « %{text} »
+      writingInput: Écrivez ici à la main
+      writingInputMethod: Mode d’écriture
+      writingInputPad: Zone d’écriture
+      writingInputField: Champ de texte
+      writingPad: Zone d’écriture manuscrite
+      writingPadHint: Écrivez ici
+      writingPadLoading: Préparation de la reconnaissance de l’écriture…
+      writingPadFailed: Impossible de charger la reconnaissance de l’écriture.
+      writingPadRetry: Réessayer
+      writingPadUndo: Annuler le trait
+      writingPadClear: Effacer
+      writingPadReading: 'Lu : %{text}'
+    rankings:
+      title: Meilleurs résultats
+      intro: Votre record personnel pour chaque liste de mots. Choisissez une liste pour voir ses meilleurs résultats et l’évolution du temps.
+      reload: Recharger
+      filter:
+        device: Appareil
+        allDevices: Tous les appareils
+        deleted: "%{name} (supprimé)"
+      mode:
+        label: Mode d’entraînement
+        normal: Normal
+        recall: De mémoire
+        writing: Handwriting
+      order:
+        label: Critère de classement
+        accuracy: Précision<wide> d’abord</wide>
+        speed: Vitesse<wide> d’abord</wide>
+      orderNotes:
+        accuracy: Précision la plus élevée d’abord ; à égalité, le plus rapide
+        speed: Le plus rapide d’abord ; à temps égal, la précision la plus élevée
+      lists: Listes de mots
+      empty:
+        title: Aucun meilleur résultat pour l’instant
+        description: 'Tapez une liste de mots jusqu’au bout : le record personnel, les meilleurs résultats et l’évolution du temps de chaque liste apparaîtront ici.'
+        practice: S’entraîner
+        create: Créer un pack de mots
+      list:
+        search: Rechercher une liste
+        clearSearch: Effacer la recherche
+        noDeviceRecords: Listes sans résultat sur cet appareil ({count, number})
+        noRecords: Listes sans résultat pour l’instant ({count, number})
+        words:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        noMatch: Aucune liste ne correspond à « %{query} ».
+        lastPracticed: Dernier entraînement
+        best: Record personnel
+        improved: Record
+        improvedTitle:
+          one: Record personnel battu au cours du dernier jour
+          other: Record personnel battu au cours des %{count} derniers jours
+          __var: days
+        runs: "{count, number} fois"
+        sortLabel: 'Tri : %{sort}'
+        sorts:
+          recent: Entraînement récent
+          name: Nom
+          count: Nombre de résultats
+        packPracticed: "%{practiced}/%{lists} entraînées"
+        packImproved:
+          one: "%{count} record"
+          other: "%{count} records"
+        packJoin: " · "
+        packLists:
+          one: "%{pack} · %{count} liste"
+          other: "%{pack} · %{count} listes"
+      detail:
+        back: Toutes les listes
+        words:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        records:
+          one: "%{count} résultat"
+          other: "%{count} résultats"
+        lastPracticed: 'Dernier entraînement : %{day}'
+        viewRecords: Voir les résultats
+        practice: S’entraîner sur cette liste
+        notPractised:
+          title: Pas encore d’entraînement
+          description: 'Tapez cette liste jusqu’au bout : son record personnel et ses meilleurs résultats apparaîtront ici.'
+        noDeviceRecords:
+          title: Aucun résultat sur « %{device} »
+          description:
+            one: Cette liste a %{count} résultat sur d’autres appareils.
+            other: Cette liste a %{count} résultats sur d’autres appareils.
+          showAll: Afficher les résultats de tous les appareils
+        top:
+          title: Meilleurs résultats
+          accuracy: Précision d’abord
+          speed: Vitesse d’abord
+          shown:
+            one: "{shown, number} / %{count} résultat"
+            other: "{shown, number} / %{count} résultats"
+            __var: total
+          showTop: Afficher seulement les {count, number} premiers
+          showAll: Tout afficher ({count, number})
+          oldAccuracy: Les résultats avec « — » en précision sont anciens, enregistrés avant que la précision ne soit mesurée. Ils sont classés en dernier lorsque la précision prime.
+        stats:
+          best: Record personnel
+          bestNote: "%{accuracy} · %{day}"
+          noAccuracy: Pas de précision
+          recentAverage:
+            one: Dernier résultat
+            other: Moyenne des %{count} derniers
+          gap: "+%{value} s par rapport au record"
+          sameAsBest: Égal au record
+          averageAccuracy: Précision moyenne
+          recentRuns:
+            one: Dernier résultat
+            other: "%{count} derniers résultats"
+          runs: Entraînements
+          runsValue: "%{count} <unit>fois</unit>"
+          allWordCounts: Tous les nombres de mots
+          currentWords:
+            one: Avec le %{count} mot actuel
+            other: Avec les %{count} mots actuels
+        trend:
+          title: Évolution du temps
+          recent:
+            one: dernier résultat
+            other: "%{count} derniers résultats"
+          label: Évolution du temps de %{name}
+          needTwo: L’évolution s’affiche après au moins deux entraînements.
+        others:
+          old:
+            one: "%{count} ancien résultat sans nombre de mots"
+            other: "%{count} anciens résultats sans nombre de mots"
+          words:
+            one: "%{count} résultat à %{words} mots"
+            other: "%{count} résultats à %{words} mots"
+          separator: ", "
+          fallback:
+            one: 'Aucun résultat avec le %{count} mot actuel : le classement utilise les résultats à un autre nombre de mots (%{detail}).'
+            other: 'Aucun résultat avec les %{count} mots actuels : le classement utilise les résultats à un autre nombre de mots (%{detail}).'
+          included: Les résultats à un autre nombre de mots (%{detail}) sont inclus. Avec un nombre de mots différent, les temps ne sont pas directement comparables.
+          excluded:
+            one: "<strong>%{count} résultat à un autre nombre de mots n’est pas classé.</strong> Il s’agit par exemple de résultats antérieurs à la modification de la liste (%{detail})."
+            other: "<strong>%{count} résultats à un autre nombre de mots ne sont pas classés.</strong> Il s’agit par exemple de résultats antérieurs à la modification de la liste (%{detail})."
+          exclude: Exclure
+          include: Inclure
+      top:
+        label: Meilleurs résultats de %{name}
+        rank: Rang
+        time: Temps
+        accuracy: Précision
+        mistakes: Erreurs
+        device: Appareil
+        date: Date
+        rankNumber: Rang %{rank}
+        deleted: Supprimé
+        deletedSuffix: " (supprimé)"
+        otherWords: Résultat à un autre nombre de mots
+        words:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        unknownWords: "? mots"
+        oldAccuracy: Ancien résultat, enregistré avant que la précision ne soit mesurée
+    records:
+      title: Historique
+      intro: Vos entraînements, du plus récent au plus ancien. Les meilleurs résultats de chaque liste sont dans <rankings>Meilleurs résultats</rankings>, et votre progression sur l’<home>Accueil</home>.
+      filter:
+        pack: Pack
+        allPacks: Tous les packs
+        list: Liste
+        allLists: Toutes les listes
+        device: Appareil
+        allDevices: Tous les appareils
+        clear: Effacer les filtres
+        count:
+          one: "%{count} résultat"
+          other: "%{count} résultats"
+        filteredCount:
+          one: "{count, number} sur %{count} résultat"
+          other: "{count, number} sur %{count} résultats"
+          __var: total
+      filterMenu:
+        label: 'Filtre : %{name} (actuel : %{current})'
+        all: Tout
+        count: "{count, number} fois"
+      columns:
+        time: Heure
+        deviceWords: Appareil · mots
+        listDevice: Liste · appareil
+        duration: Temps
+        accuracy: Précision
+        perWord: Par mot
+        mistakes: Erreurs
+      day:
+        heading: "%{relative} · %{date}"
+        summary:
+          one: "%{count} entraînement · %{duration}"
+          other: "%{count} entraînements · %{duration}"
+      recallBadge: De mémoire
+      more: Afficher plus ({count, number} restants)
+      note: Le nombre de mots et le nom de l’appareil sont ceux du moment de l’entraînement.
+      noteMissing: "« — » indique une valeur non enregistrée (par exemple, pour les résultats enregistrés par une version précédente)."
+      row:
+        best: Meilleur
+        bestTitle: 'Meilleur résultat de cette liste (premier parmi les résultats au nombre de mots actuel : précision la plus élevée, puis temps le plus court)'
+        words:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        seconds: "%{value} s"
+        duration: Temps
+        accuracy: Précision
+        lowAccuracy: Précision inférieure à %{limit} %
+        perWord: Par mot
+        perWordUnit: s/mot
+        mistakes: Erreurs
+        delete: Supprimer
+        deleteLabel: Supprimer le résultat de %{name} (%{date} %{time})
+      delete:
+        title: Supprimer ce résultat ?
+        description: Un résultat de « %{name} » sera supprimé.
+        done: Le résultat de « %{name} » (%{date} %{time}) a été supprimé.
+        list: Liste
+        when: Date, heure et appareil
+        result: Résultat
+        accuracy: Précision %{value}
+        mistakes: Erreurs %{value}
+        bestNext: C’est le meilleur résultat de la liste. Après suppression, le meilleur sera %{time} (%{accuracy}).
+        bestLast: C’est le meilleur résultat de la liste. Après suppression, la liste n’aura plus aucun résultat.
+      empty:
+        title: Aucun résultat pour l’instant
+        description: 'Tapez une liste jusqu’au bout dans « S’entraîner » : le temps, la précision, les erreurs et l’appareil utilisé seront conservés ici.'
+        practice: S’entraîner
+      filteredEmpty:
+        listTitle: Aucun résultat pour « %{name} » pour l’instant
+        listDescription: Vos résultats apparaîtront ici après un entraînement.
+        title: Aucun résultat ne correspond aux filtres
+        description: Essayez une autre liste ou un autre appareil.
+        practiceList: S’entraîner sur cette liste
+      summary:
+        words:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        runs:
+          one: "%{count} entraînement"
+          other: "%{count} entraînements"
+        last: 'Dernier : %{day}'
+        best: Meilleur (%{mode})
+        rankings: Meilleurs résultats
+        practice: S’entraîner
+      modeWriting: Handwriting
+    settings:
+      title: Général
+      metaTitle: Général | Typle
+      description: Réglages d’affichage et de connexion de Typle.
+      language:
+        heading: Langue d’affichage
+        description: Choisissez la langue de l’interface. Vos listes de mots et vos résultats ne changent pas.
+        note: La langue choisie est enregistrée dans ce navigateur.
+        current: Utilisée
+        changing: Changement de la langue d’affichage…
+        changed: 'La langue d’affichage est maintenant : %{language}.'
+        failed: Impossible de changer la langue d’affichage. Veuillez réessayer.
+      sessions:
+        heading: Appareils connectés
+        description: 'Déconnectez ce compte de tous les appareils où il est connecté : ce navigateur, les autres navigateurs et les applications iPad, Mac, Android et Windows. Utilisez cette option si vous perdez un appareil ou pensez que quelqu’un d’autre a utilisé votre compte. Toute connexion prend fin après 30 jours, sur tous les appareils.'
+        action: Se déconnecter de tous les appareils
+        confirmTitle: Se déconnecter de tous les appareils ?
+        confirmDescription: Tous les appareils et applications connectés, y compris ce navigateur, seront déconnectés. Reconnectez-vous sur les appareils que vous continuez à utiliser. Vos listes de mots et vos résultats d’entraînement ne sont pas supprimés.
+        confirm: Se déconnecter
+        signingOut: Déconnexion…
+        failed: Impossible de se déconnecter. Veuillez réessayer.
+      languages:
+        ja: japonais
+        en: anglais
+        zh-CN: chinois (simplifié)
+        zh-TW: chinois (traditionnel)
+        ru: russe
+        fr: français
+    sharedResult:
+      title: 'Résultat d’entraînement : %{name}'
+      description: "%{time} s avec %{accuracy} % de précision. Apprenez les mots que vous voulez en les tapant sur Typle."
+      heading: 'Résultat d’entraînement : %{name}'
+      lead: Un résultat tapé sur Typle, une application de dactylographie pour apprendre les mots que vous voulez en les tapant.
+      play: Essayer Typle
+      about: À propos de Typle
+      invalidTitle: Ce résultat ne peut pas être affiché
+      invalid: Le résultat de ce lien n’a pas pu être lu. Vérifiez que le lien n’a pas été coupé.
+    wordLists:
+      page:
+        title: Packs de mots
+        description: Créez et modifiez les packs de mots pour vos entraînements. Exportez une liste en CSV pour l’importer dans un autre navigateur ou compte.
+        reload: Recharger
+        notFound: La liste de mots que vous avez essayé d’ouvrir est introuvable. Elle a peut-être été supprimée.
+        editTitle: Modifier la liste de mots
+        createTitle: Créer une liste de mots
+        editDescription:
+          one: "%{count} mot · %{practice}"
+          other: "%{count} mots · %{practice}"
+        updated: La liste « %{name} » a été mise à jour.
+        created: La liste « %{name} » a été créée.
+        deleted: La liste « %{name} » a été supprimée.
+        packDeleted: Le pack « %{name} » a été supprimé.
+        exportFailed: Impossible d’exporter « %{name} ». Veuillez réessayer.
+        copySuffix:
+          one: " (copie)"
+          other: " (copie %{count})"
+          __var: "n"
+        catalog: Packs officiels
+      manager:
+        heading: Packs enregistrés
+        limitTitle: Jusqu’à %{max} listes à vous et %{followedMax} packs officiels suivis. Les listes des packs suivis ne comptent pas parmi les vôtres.
+        ownCount: À vous %{count} / %{max}
+        followedCount: Suivis %{count} / %{max} packs
+        create: Créer un pack
+        createPack: Nouveau pack
+        createList: Créer une liste de mots
+        full: Vous pouvez enregistrer jusqu’à %{max} listes de mots à vous. Supprimez celles que vous n’utilisez plus pour en créer de nouvelles. Les listes des packs suivis ne comptent pas.
+        search: Rechercher par nom de pack ou de liste, catégorie, étiquette ou mot
+        clearSearch: Effacer la recherche
+        countFiltered: "%{shown} sur %{total}"
+        count:
+          one: "%{count} pack"
+          other: "%{count} packs"
+          __var: total
+        noMatch: Aucun pack ne correspond à « %{query} ». La recherche porte sur les noms de packs et de listes, catégories, étiquettes et mots.
+        csvNote: L’export CSV enregistre les mots affichés, le texte à saisir et les notes (l’historique n’est pas inclus). Vous pouvez le réimporter avec « Importer un CSV » sur l’écran de création ou de modification.
+        importFile: Importer depuis un fichier
+      delete:
+        title: Supprimer « %{name} » ?
+        withRecords: La liste de mots et tout son historique d’entraînement seront supprimés.
+        listOnly: La liste de mots sera supprimée.
+        list: Liste
+        contents: Contenu
+        wordCount:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        noRecords: Aucun entraînement
+        records:
+          one: "%{count} entraînement (dernier : %{day})"
+          other: "%{count} entraînements (dernier : %{day})"
+        exportHint: Vous pouvez conserver les mots en les exportant en CSV (l’historique n’est pas inclus).
+        export: Exporter en CSV
+        packTitle: Supprimer « %{name} » ?
+        lastInPack: Le pack « %{name} » sera aussi supprimé.
+      order:
+        label: Tri
+        current: 'Tri : %{order}'
+        added: Ajout récent
+        practiced: Entraînement récent
+        name: Nom
+        words: Nombre de mots
+      labels:
+        category: Catégorie
+        tag: Étiquette
+      filter:
+        category: Filtrer par catégorie
+        allCategories: Toutes les catégories
+        noCategory: Sans catégorie
+        categoryCurrent: 'Catégorie : %{category}'
+        allTags: Toutes les étiquettes
+        tagsCurrent: 'Étiquettes : %{tags}'
+        separator: ", "
+        tagsHint: Packs ayant toutes les étiquettes choisies
+        clearTags: Effacer les étiquettes
+        clear: Effacer les filtres
+        clearAll: Effacer la recherche et les filtres
+        noMatch: Aucun pack ne correspond à ces filtres.
+        option: "%{name} (%{count})"
+      empty:
+        title: Aucune liste de mots pour l’instant
+        packTitle: Aucun pack de mots pour l’instant
+        description: Ajoutez les mots à travailler et le texte à saisir comme bonne réponse. Vous pouvez aussi les importer depuis un fichier CSV.
+        packDescription: Aucun pack pour l’instant. Suivez un pack officiel ou créez-en un nouveau.
+        catalogLink: Suivre un pack officiel
+      row:
+        examples: 'Exemples de mots :'
+        separator: ", "
+        more: "%{words} et %{rest} autres"
+        wordCount:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        notPracticed: Pas encore d’entraînement
+        practiced:
+          one: "%{count} entraînement · dernier : %{day}"
+          other: "%{count} entraînements · dernier : %{day}"
+        practice: S’entraîner
+        practiceList: S’entraîner avec %{name}
+        edit: Modifier
+        editList: Modifier %{name}
+        moreActions: Autres actions
+        moreFor: Autres actions pour %{name}
+        practiceThis: S’entraîner avec cette liste
+        rankings: Voir les meilleurs résultats
+        records: Voir l’historique
+        recordCount: "{count, number}"
+        export: Exporter en CSV
+        copy: Dupliquer
+        delete: Supprimer
+      pack:
+        lists:
+          one: "%{count} liste"
+          other: "%{count} listes"
+        practiced: "%{practiced}/%{lists} entraînées"
+        wordCount:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        practice: S’entraîner
+        listsOf: Listes de %{name}
+        moreActions: Autres actions
+        moreFor: Actions du pack %{name}
+        edit: Modifier le pack
+        addList: Ajouter une liste
+        delete: Supprimer
+        copy: Dupliquer
+        export: Exporter
+      wordRow:
+        label: Mot %{n}
+        drag: Faire glisser pour déplacer le mot %{n}
+        dragTitle: Faire glisser pour réorganiser
+      editor:
+        back: Packs de mots
+        description: Ajoutez les mots affichés pendant la frappe et le texte à saisir comme bonne réponse.
+        displayRequired: Saisissez un mot à afficher ou supprimez cette ligne (les lignes vides ne peuvent pas être enregistrées).
+        inputBlank: Le texte à saisir ne contient que des espaces. Laissez-le vide pour utiliser le mot affiché.
+        basics: Informations générales
+        name: Nom de la liste
+        nameHelp: Affiché sur l’écran d’entraînement et dans vos listes de mots.
+        words: Mots
+        added:
+          one: "%{count} mot ajouté. Vérifiez-les puis cliquez sur « Enregistrer »."
+          other: "%{count} mots ajoutés. Vérifiez-les puis cliquez sur « Enregistrer »."
+        loaded:
+          one: "%{count} mot importé. Vérifiez-les puis cliquez sur « Enregistrer »."
+          other: "%{count} mots importés. Vérifiez-les puis cliquez sur « Enregistrer »."
+        display: Mot affiché
+        input: Texte à saisir
+        inputHint: Vide = identique au mot affiché
+        annotation: Note
+        annotationOptional: Note (facultatif)
+        dragInstructions: Appuyez sur Espace pour saisir un mot, déplacez-le avec les flèches haut et bas, puis appuyez de nouveau sur Espace pour le déposer. Appuyez sur Échap pour annuler.
+        displayLabel: Mot affiché %{n}
+        displayPlaceholder: Saisissez un mot
+        inputLabel: Texte à saisir %{n}
+        annotationLabel: Note %{n}
+        annotationPlaceholder: Lecture, sens, etc.
+        wordActions: Actions pour le mot %{n}
+        actions: Actions
+        moveUp: Monter
+        moveDown: Descendre
+        moveFirst: Placer en premier
+        moveLast: Placer en dernier
+        deleteWord: Supprimer ce mot
+        deleteWordN: Supprimer le mot %{n}
+        delete: Supprimer
+        addWord: Ajouter un mot
+        shortcutNext: mot suivant (ajoute une ligne après le dernier mot)
+        shortcutMove: déplacer le mot
+        shortcutSave: enregistrer
+        shortcutDrag: faire glisser pour réorganiser
+        recount:
+          one: Le nombre de mots passe de {from, number} à {to, number}. Les résultats obtenus avec {from, number} mots (%{count} résultat) sont conservés, mais ne comptent plus pour les meilleurs résultats.
+          other: Le nombre de mots passe de {from, number} à {to, number}. Les résultats obtenus avec {from, number} mots (%{count} résultats) sont conservés, mais ne comptent plus pour les meilleurs résultats.
+          __var: records
+        errorCount:
+          one: "%{count} erreur"
+          other: "%{count} erreurs"
+        firstError: Aller à la première erreur
+        unsaved: Modifications non enregistrées
+        noChanges: Aucune modification
+        wordTotal:
+          one: "· %{count} mot"
+          other: "· %{count} mots"
+        save: Enregistrer
+        discardTitle: Vous avez des modifications non enregistrées
+        discardDescription: Si vous quittez cette page maintenant, vos saisies seront perdues.
+        keepEditing: Continuer à modifier
+        discard: Abandonner et quitter
+        category: Catégorie (facultatif)
+        categoryPlaceholder: Programmation, Langues…
+        categoryHelp: Choisissez une catégorie déjà utilisée ou tapez pour en créer une. Les listes peuvent être filtrées par catégorie.
+        tags: Étiquettes (facultatif)
+        tagList: Étiquettes de cette liste
+        removeTag: Retirer l’étiquette « %{tag} »
+        tagsFull: "%{max} étiquettes au maximum"
+        tagPlaceholder: Kotlin, PostgreSQL…
+        tagsHelp: Choisissez des étiquettes déjà utilisées ou tapez pour en créer (%{max} au maximum). La recherche porte aussi sur les étiquettes.
+        chooseCategory: Choisir une catégorie
+        searchCategory: Rechercher ou créer une catégorie
+        clearCategory: Retirer la catégorie
+        addTag: Choisir ou créer des étiquettes
+        searchTag: Rechercher ou créer des étiquettes
+        create: Créer « %{name} »
+        noLabels: Aucune pour l’instant. Tapez pour en créer une.
+        pack: Pack
+        newPack: Nouveau pack (nommé d’après la liste)
+        packHelp: Le pack auquel appartient cette liste. En choisir un autre y déplace la liste.
+        addingTo: La liste sera ajoutée au pack « %{name} ».
+        writingToggle: Utiliser pour l’écriture manuscrite (Typle Handwriting)
+        writingToggleHelp: Permet de s’entraîner à écrire cette liste à la main. La langue sert à reconnaître l’écriture.
+        writingLanguage: Langue de reconnaissance
+        writingLanguages:
+          en: English
+          ja: 日本語
+          zh-Hans: 中文（简体）
+          zh-Hant: 中文（繁體）
+          ko: 한국어
+          fr: Français
+          de: Deutsch
+          es: Español
+          ru: Русский
+          cs: Čeština
+        packWillBeDeleted: Le pack « %{name} » sera supprimé.
+        levels: Difficulté (facultatif)
+        levelPlaceholder: ex. Débutant
+        levelsHelp: Sert à choisir parmi les listes d’un pack sur l’écran d’entraînement, par exemple Débutant.
+        inputType: Type de saisie
+        inputTypeLabel: Type de saisie %{n}
+        inputTypeWord: Mot
+        inputTypeCommand: Commande
+        inputTypeCode: Code
+      import:
+        open: Importer un CSV
+        title: Importer depuis un CSV
+        description: La première ligne contient les noms des colonnes. input et display sont obligatoires ; annotation et input_type sont facultatifs. input_type vaut command, code ou word. L’ordre des colonnes est libre.
+        fileLabel: Choisir un fichier CSV
+        readFailed: Impossible de lire le fichier.
+        addFailed: Impossible d’ajouter les mots.
+        bytes: "%{value} o"
+        kilobytes: "%{value} Ko"
+        summary:
+          one: "%{count} mot · %{size}"
+          other: "%{count} mots · %{size}"
+        chooseAnother: Choisir un autre fichier
+        previewLabel: Aperçu des mots à importer
+        display: Mot affiché
+        input: Texte à saisir
+        annotation: Note
+        more:
+          one: et %{count} autre mot
+          other: et %{count} autres mots
+        existing: Que faire des mots déjà saisis
+        append: Ajouter après les mots actuels
+        appendHint:
+          one: Ajoute %{count} mot après les %{existing} déjà saisis.
+          other: Ajoute %{count} mots après les %{existing} déjà saisis.
+        replace: Remplacer les mots actuels
+        replaceHint:
+          one: Le mot déjà saisi sera supprimé.
+          other: Les %{count} mots déjà saisis seront supprimés.
+          __var: existing
+        drop: Déposez un fichier ici
+        choose: Choisir un fichier
+        limits: CSV · UTF-8 · 1 Mio maximum · 1 000 mots maximum par liste
+        example: Exemple de format
+        sample: |-
+          display,input,annotation
+          Bonjour,bonjour,salutation
+          Été,ete,
+        loadedStatus:
+          one: "%{count} mot chargé."
+          other: "%{count} mots chargés."
+        add:
+          one: Ajouter %{count} mot
+          other: Ajouter %{count} mots
+        replaceWith:
+          one: Remplacer par %{count} mot
+          other: Remplacer par %{count} mots
+      words:
+        title: Voir les mots
+        description: 'Choisissez une liste de mots pour voir tous ses mots : le texte à saisir et sa note.'
+        lists: Listes de mots
+        filter: Filtrer par nom de liste, catégorie ou étiquette
+        noMatch: Aucune liste ne correspond.
+        candidates: Listes de mots proposées
+        pickerTitle: Choisir une liste de mots
+        pickerDescription: Les mots de la liste choisie s’affichent dans un tableau.
+        switch: Choisir une liste
+        switchList: 'Choisir une liste de mots (actuelle : %{name})'
+        wordCount:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        practice: S’entraîner
+        practiceList: S’entraîner sur %{name}
+        edit: Modifier
+        editList: Modifier %{name}
+        number: Numéro
+      packEditor:
+        createTitle: Créer un pack
+        createDescription: Renseignez les informations du pack et choisissez les listes de mots qu'il regroupe. Vous pourrez ajouter d'autres listes plus tard.
+        editTitle: Modifier le pack
+        editDescription: Modifiez les informations du pack et l'ordre de ses listes.
+        info: Informations du pack
+        name: Nom du pack
+        nameHelp: Affiché dans la liste des packs et lors du choix d'un pack à pratiquer.
+        descriptionLabel: Description (facultatif)
+        descriptionPlaceholder: Le contenu de ce pack
+        lists: Listes
+        listsHelp: Faites glisser la poignée ou utilisez le clavier pour changer l'ordre.
+        choose: Listes de mots
+        chooseHelp: Les listes choisies quittent leur pack actuel pour rejoindre celui-ci. Un pack qui n'a plus de liste est supprimé.
+        chooseFilter: Filtrer les listes de mots par nom
+        chosen:
+          one: "%{count} sélectionnée"
+          other: "%{count} sélectionnées"
+        inPack: Pack « %{name} »
+        noMatch: Aucune liste de mots ne correspond.
+        noLists: Aucune liste de mots à regrouper dans un pack. Créez d'abord une liste de mots.
+        createList: Créer une liste de mots
+        drag: Faire glisser « %{name} » pour réordonner
+        dragTitle: Faire glisser pour réordonner
+        dragInstructions: Appuyez sur Espace pour saisir une liste, déplacez-la avec les flèches haut et bas, puis appuyez de nouveau sur Espace pour la déposer. Appuyez sur Échap pour annuler.
+        listActions: Actions pour « %{name} »
+        announceStart: Liste « %{name} » saisie. Position %{position} sur %{total}.
+        announceOver: Liste « %{name} » déplacée en position %{position} sur %{total}.
+        announceOutside: La liste « %{name} » est hors de la zone de tri.
+        announceEnd: Liste « %{name} » déposée en position %{position} sur %{total}.
+        announceCancel: Réorganisation annulée. La liste « %{name} » a retrouvé sa place.
+        levels: 'Difficulté : %{levels}'
+        noLevels: Sans difficulté
+        wordCount:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        created: Pack « %{name} » créé.
+        updated: Pack « %{name} » mis à jour.
+      catalog:
+        title: Packs officiels
+        description: Packs prêts à l’emploi. Suivez-en un pour utiliser le contenu officiel, mis à jour automatiquement. Il n’est pas modifiable, mais vous pouvez le dupliquer pour créer votre propre pack.
+        back: Retour aux packs
+        open: Ouvrir
+        full: Vous pouvez suivre jusqu’à %{max} packs officiels. Cessez de suivre ceux que vous n’utilisez plus.
+        follow: Suivre
+        followPack: Suivre %{name}
+        followed: "« %{name} » est suivi."
+        following: Suivi
+        unfollowPack: Ne plus suivre %{name}
+        matching: Packs correspondant à vos centres d’intérêt
+        others: Autres packs
+        noMatching: Aucun pack ne correspond encore à vos centres d’intérêt
+        changeInterests: Modifier les centres d’intérêt
+      sharedPage:
+        toPacks: Ouvrir les packs de mots
+      follow:
+        badge: Officiel
+        unfollow: Ne plus suivre
+        title: Ne plus suivre « %{name} » ?
+        description: Vous ne suivrez plus « %{name} ». Les enregistrements de ce pack seront aussi supprimés.
+        confirm: Ne plus suivre
+        confirming: Arrêt du suivi…
+        done: "« %{name} » n’est plus suivi."

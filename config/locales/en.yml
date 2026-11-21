@@ -1,0 +1,550 @@
+en:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Validation failed: %{errors}"
+    models:
+      user: User
+      pack: Pack
+      word_list: List
+      device: Device
+    attributes:
+      user:
+        login_id: ID
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation
+      pack:
+        name: Pack name
+      word_list:
+        name: List name
+        writing_language: Handwriting language
+      device:
+        name: Device name
+        layout: Layout / notes
+      practice_record:
+        mode: Mode
+  errors:
+    format: "%{attribute} %{message}"
+    rate_limited: Please try again later.
+    messages:
+      blank: can't be blank
+      taken: is already taken
+      too_short:
+        one: is too short (minimum is %{count} character)
+        other: is too short (minimum is %{count} characters)
+      too_long:
+        one: is too long (maximum is %{count} character)
+        other: is too long (maximum is %{count} characters)
+      invalid: is invalid
+      confirmation: doesn't match
+      inclusion: is not included in the list
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      wrong_length:
+        one: is the wrong length (should be %{count} character)
+        other: is the wrong length (should be %{count} characters)
+      required: is required
+      password_too_long: must be 72 bytes or fewer
+      login_id_format: may only contain letters, numbers, _ . and -
+      taken_device: is the same as "%{name}"
+      device_limit:
+        one: You can register up to %{count} device.
+        other: You can register up to %{count} devices.
+      wrong_current_password: Your current password is incorrect.
+      words_required: Enter at least one word.
+      word_fields_required: "Line %{line}: display and input can't be blank."
+  time:
+    formats:
+      default: "%b %-d, %Y %H:%M"
+      short_date_time: "%b %-d, %Y %H:%M"
+  date:
+    formats:
+      default: "%b %-d, %Y"
+  format:
+    seconds: "%{value}s"
+    minutes_seconds: "%{minutes}m %{seconds}s"
+    minutes:
+      one: "%{count} min"
+      other: "%{count} min"
+    hours_minutes: "%{hours}h %{minutes}m"
+  modes:
+    normal: Normal
+    recall: Recall
+    writing: Handwriting
+  languages:
+    en: English
+    ja: Japanese
+    zh-Hans: Chinese (Simplified)
+    zh-Hant: Chinese (Traditional)
+    ko: Korean
+    fr: French
+    de: German
+    es: Spanish
+    ru: Russian
+    cs: Czech
+  forms:
+    save: Save
+    cancel: Cancel
+  words:
+    display: Display
+    input: Input
+    annotation: Note
+    index:
+      title: All words
+      search: Search
+      placeholder: Search display, input or notes
+      count:
+        one: "%{count} word"
+        other: "%{count} words"
+      capped: (showing the first 300 words)
+      list: List
+  devices:
+    default_name: Default
+    none: Not selected
+    unrecorded: Not recorded
+    index:
+      title: Devices
+      lead: Register the keyboards and computers you practise on, and your records will show which device you used. Renaming a device or changing its notes doesn't change past records.
+      this_browser: Device for this browser
+      use: Use device
+      name: Device name
+      layout: Layout / notes
+      layout_placeholder: "e.g. JIS, US, remapped keys"
+      runs: Runs
+      last: Last practised
+      built_in: Built-in
+      edit: Edit
+      delete: Delete
+      delete_confirm: Delete the device "%{name}"? Your records will be kept.
+      add: Add device
+      use_new: Use the new device in this browser (if it currently uses the default or none)
+    create:
+      added: Added the device "%{name}".
+    update:
+      saved: Device saved.
+    destroy:
+      deleted: Deleted the device "%{name}".
+  dashboard:
+    never: Not practised yet
+    idle:
+      one: Not practised for %{count} day
+      other: Not practised for %{count} days
+    low_accuracy: Recent accuracy %{accuracy}%
+  layouts:
+    application:
+      default_title: Typle — learn words by typing them
+      skip: Skip to content
+      menu: Menu
+      storage_account: Saved to your account
+      storage_browser: Saved in this browser
+      theme: Theme
+      theme_light: Light
+      theme_dark: Dark
+      theme_system: System
+      sign_in: Sign in
+      sign_up: Sign up
+      sign_out: Sign out
+      home: Home
+      practice: Practice
+      play: Practice
+      records: History
+      rankings: Best records
+      lists: Word lists
+      packs: Word packs
+      words: All words
+      catalog: Official packs
+      new_pack: New pack
+      settings: Settings
+      general: General
+      input: Input
+      interests: Interests
+      devices: Devices
+      account: Account
+      guide: Guide
+      about: About Typle
+  pages:
+    landing:
+      heading: Learn words by typing them
+      lead:
+        one: Memorise commands, syntax and foreign words by actually typing them on your keyboard. Build your own word lists, or start with our %{count} official pack.
+        other: Memorise commands, syntax and foreign words by actually typing them on your keyboard. Build your own word lists, or start with one of %{count} official packs.
+      start: Start practising without signing in
+      catalog: Browse official packs
+      home: Go to home
+      try: Try typing a word here
+      packs: Official packs
+      list_count:
+        one: "%{count} list"
+        other: "%{count} lists"
+      and_more: " and more"
+      feature_lists: Your own word lists
+      feature_lists_text: Each word has a display, an input and a note. Import and export with CSV.
+      feature_recall: Recall and handwriting
+      feature_recall_text: Hide the word and type it from the note alone, or copy a sample by hand.
+      feature_records: Records
+      feature_records_text: Check your best record for each list, your weak words and a weekly summary on the home page.
+      storage: Without signing in, your data is saved in this browser. When you sign in, it is saved to your account (nothing is copied over automatically).
+      guide: Guide
+      about: About Typle
+    about:
+      title: About Typle
+      lead: Typle is a vocabulary book for learning commands and foreign words by typing. It is a rewrite of typle-r (built with Next.js) in Ruby on Rails %{version}.
+      storage: Where your data is stored
+      browser: This browser
+      account: Account
+      where: Stored in
+      browser_where: Server data tied to this browser (identified by a cookie)
+      account_where: Your account's data
+      sync: Other devices
+      browser_sync: Not synced
+      account_sync: Same data when signed in
+      lost: Lost when
+      browser_lost: You clear this browser's cookies
+      account_lost: You delete your account
+      now: "Currently stored in: %{storage}"
+      tech: Technology
+      licenses: Licences
+      licenses_text: The handwriting pad uses the following software and models.
+    guide:
+      title: Guide
+      step1: Practise
+      step2: Create word lists
+      step3: Check your best records
+      toc: Contents
+      practice:
+        heading: Practise
+        body:
+          - Pick a list under "Practice" and type the word shown into the input field. The timer starts with your first key and stops at the last character. Leaving the input field pauses it.
+          - In "Recall" the word is hidden and you type it from the note alone. If you're stuck, use "Show answer" (Shift+Enter).
+          - Lists with a handwriting language can be practised in "Handwriting". Copy the sample using your OS's handwriting input. Korean lists can also be written on the app's handwriting pad.
+      lists:
+        heading: Create word lists
+        body:
+          - Create a pack with "New pack" and add lists to it. Put one word per line, separating display, input and note with tabs or commas.
+          - Following an official pack adds it to your packs. Its contents stay official and can't be edited.
+      results:
+        heading: Check results and records
+        body:
+          - When you finish, the results screen shows your time, accuracy and missed words. Best records compare runs with the current word count, by accuracy first, then time.
+          - On the home page you can pick up where you left off and check your weak words and weekly summary.
+      devices:
+        heading: Register devices
+        body:
+          - Register your keyboards under "Devices" and choose one on the practice screen to record which device you used.
+      storage:
+        heading: Storage and data
+        body:
+          - When you're not signed in, your data is saved in this browser. When you sign in, it is saved to your account; signing out switches back to the browser's data. The two are never copied automatically.
+      keys:
+        heading: Keyboard shortcuts
+        body:
+          - "Esc: restart / Shift+Enter: show answer (Recall) / Enter: check (Handwriting) / ⌘Z or Ctrl+Z: undo a stroke (handwriting pad)"
+  home:
+    show:
+      title: Home
+      practice: Practice
+      empty: No records yet. Start practising with an official pack, or create your own.
+      catalog: Browse official packs
+      create: New pack
+      continue: Continue
+      last_practised: Last practised %{date}
+      more_words:
+        one: and %{count} more word
+        other: and %{count} more words
+      choose_other: Choose another list
+      week: This week
+      runs: Runs
+      runs_value:
+        one: "%{count} run"
+        other: "%{count} runs"
+      streak: Streak
+      days:
+        one: "%{count} day"
+        other: "%{count} days"
+      recent_accuracy: Accuracy (last 10 runs)
+      practice_time: Practice time
+      week_note: Changes compare with last week up to the same day and time.
+      weak: Weak words
+      times:
+        one: "%{count} time"
+        other: "%{count} times"
+      weak_practice:
+        one: Practise just your %{count} weak word
+        other: Practise just your %{count} weak words
+      next: Lists to practise next
+  practice:
+    messages:
+      time: Time
+      accuracy: Accuracy
+      mistakes: Mistakes
+      seconds: s
+      missed_words: Missed words
+      weak_done: Finished reviewing your weak words (not recorded).
+      not_saved: Practice on official packs you don't follow isn't recorded.
+      save_failed: Couldn't save the record.
+      read_as: Read as "%{text}"
+      reading: "Currently reading: %{text}"
+      pad_loading: Loading the handwriting pad…
+      pad_failed: Couldn't load the handwriting pad.
+    show:
+      title: Practice
+      word_count:
+        one: "%{count} word"
+        other: "%{count} words"
+      weak_note: Weak words only (not recorded)
+      official_note: Official list you don't follow (not recorded)
+      list: List
+      device: Device
+      mode: Mode
+      best: Best %{accuracy} / %{time}
+      time: Time
+      mistakes: Mistakes
+      accuracy: Accuracy
+      input: Input
+      paused: Paused — click the input field to resume
+      reveal: Show answer (Shift+Enter)
+      restart: Restart (Esc)
+      input_method: Input method
+      pad: Handwriting pad
+      field: Input field
+      write_here: Write here
+      os_input_note: Copy the sample using your OS's handwriting input (handwriting panel or keyboard).
+      undo: Undo stroke (⌘Z)
+      clear: Clear
+      reload_pad: Reload
+      check: Check (Enter)
+      skip: Skip
+      no_weak_words: No weak words.
+    result:
+      result: Results
+      again: Again
+      full_list: Practise the whole list
+      sign_up: Sign up to use it on other devices
+    starters:
+      heading: Let's start practising
+      lead: You don't have any packs yet. Start with an official pack, or create your own.
+      more: Browse more official packs
+      create: Create your own pack
+  practice_records:
+    index:
+      title: History
+      list: List
+      all: All
+      best: "Best in %{mode}:"
+      empty: No records yet.
+      date: Date
+      mode: Mode
+      time: Time
+      accuracy: Accuracy
+      mistakes: Mistakes
+      device: Device
+      best_badge: Best
+      delete: Delete
+      delete_confirm: Delete this record?
+    show:
+      title: Results
+      time: Time
+      accuracy: Accuracy
+      mistakes: Mistakes
+      missed_count: Missed words
+      first: Your first record with this word count.
+      best_faster: New best! %{difference} faster than your previous best.
+      best_cleaner: New best! %{difference} slower than your previous best, but more accurate.
+      behind: "Rank %{rank}. Your best is %{accuracy} / %{time}."
+      missed: Missed words
+      no_missed: No missed words.
+      again: Again
+      weak_practice: Practise just your weak words
+      records: History
+    destroy:
+      deleted: Record deleted.
+  rankings:
+    index:
+      title: Best records
+      note: Records with the current word count, compared by accuracy first, then time.
+      empty: No records in this mode yet.
+      count:
+        one: "%{count} record"
+        other: "%{count} records"
+      practice: Practice
+  packs:
+    read_only: Official packs can't be edited.
+    index:
+      title: Word packs
+      create: New pack
+      catalog: Find official packs
+      empty: No packs yet.
+      official: Official packs
+      own: Your packs
+      runs:
+        one: Practised %{count} time
+        other: Practised %{count} times
+      practice: Practice
+      import: Import from CSV
+      import_note: One word per line, as "display, input, note". If input is omitted, it matches the display. The file name becomes the pack and list name.
+      import_button: Import
+    show:
+      add_list: Add list
+      rename: Rename
+      official_page: Official pack page
+      delete: Delete pack
+      delete_confirm: Delete "%{name}" along with its lists and records. Are you sure?
+      edit: Edit
+      delete_list: Delete
+      delete_list_confirm: Delete the list "%{name}" along with its records?
+    new:
+      title: New pack
+    edit:
+      title: Rename pack
+    create:
+      created: Pack created. Now create your first list.
+    update:
+      saved: Pack saved.
+    destroy:
+      deleted: Deleted "%{name}".
+    import:
+      no_file: Please choose a file.
+      default_name: Imported list
+      imported:
+        one: Imported %{count} word.
+        other: Imported %{count} words.
+      failed: "Couldn't import: %{reason}"
+      not_utf8: Please choose a UTF-8 file.
+  word_lists:
+    form:
+      level: "Level (optional, e.g. Beginner)"
+      words: Words (one per line; separate display, input and note with tabs or commas)
+      placeholder: "ls\tls\tList files\npwd\tpwd\tCurrent directory"
+      words_note: If input is omitted, it matches the display. If you change the number of words, best records only compare runs with the new word count.
+      writing: Use for handwriting practice (Typle Handwriting)
+      writing_off: Don't use
+      writing_note: Choose a language to practise this list in Handwriting. Korean can also be written on the app's handwriting pad.
+    new:
+      title: New list
+    edit:
+      title: Edit list
+    create:
+      created: Created the list "%{name}".
+    update:
+      saved: List saved.
+    destroy:
+      deleted: Deleted the list "%{name}".
+  catalog:
+    card:
+      size: "Lists: %{lists} · Words: %{words}"
+      start: Start with this pack
+      followed: Following
+    index:
+      title: Official packs
+      lead:
+        one: "%{count} pack. Following a pack adds it to your packs and keeps your records (its contents stay official and can't be edited). Packs matching your interests are shown first."
+        other: "%{count} packs. Following a pack adds it to your packs and keeps your records (its contents stay official and can't be edited). Packs matching your interests are shown first."
+      categories: Categories
+      all: All
+    show:
+      practice: Practice
+      open_own: View in your packs
+      unfollow: Unfollow
+      unfollow_confirm: Unfollowing also deletes your records for this pack. Are you sure?
+      follow_and_practice: Practise this pack
+      follow: Follow
+      try: Practise without following
+      more_words:
+        one: and %{count} more word
+        other: and %{count} more words
+    follow:
+      followed: Now following "%{name}".
+    unfollow:
+      unfollowed: Unfollowed (records deleted as well).
+  interests:
+    show:
+      title: Interests
+      lead: Choose your interests and matching official packs will be shown first. You can follow several at once from the list below.
+      note: Choosing only a category matches every pack in it.
+      packs:
+        one: Official packs matching your interests (%{count})
+        other: Official packs matching your interests (%{count})
+      no_packs: No matching packs.
+      unfollow_note: Unchecked packs will be unfollowed, and their records deleted.
+      apply: Apply follows
+      apply_confirm: Records for unchecked packs will be deleted. Are you sure?
+    update:
+      saved: Interests saved.
+    packs:
+      saved: Follows applied.
+  settings:
+    show:
+      title: Input
+      ignore_accents: Easy input for special characters
+      ignore_accents_note: Type á, ñ, č and the like without accents (a, n, c), Russian Cyrillic in Latin letters (привет → privet, ш → sh), ß as ss and ¿ as ?.
+      ignore_case: Ignore case
+      ignore_case_note: Treats A and a, É and é as the same character.
+    update:
+      saved: Settings saved.
+    general:
+      title: General
+      language: Display language
+      language_note: Your choice is saved in this browser for one year. Word lists and records are not translated.
+      theme: Theme
+      theme_note: Switch with ☀ (light), ☾ (dark) and ◐ (system) at the top. Your choice is saved in this browser.
+  sessions:
+    new:
+      title: Sign in
+      password: Password
+      submit: Sign in
+      github: Sign in with GitHub
+      forgot_id: Forgot your ID?
+      forgot_password: Forgot your password?
+      no_account: Don't have an account?
+      sign_up: Sign up
+      guest_note: Signing in switches to your account's data. This browser's data stays as it is and comes back when you sign out.
+    create:
+      failed: Incorrect ID or password.
+    destroy:
+      signed_out: Signed out. You're back to this browser's data.
+  registrations:
+    new:
+      title: Create an account
+      login_id: ID (letters, numbers, _ . -; 3–32 characters)
+      email: Email (optional; used if you forget your password or ID)
+      password: Password (at least 8 characters)
+      submit: Sign up
+      have_account: Already have an account?
+      separate_note: This browser's data won't be copied to the new account.
+    create:
+      created: Account created.
+  passwords:
+    invalid_link: The link is invalid or has expired. Please try again.
+    new:
+      title: Forgot your password
+      lead: We'll send a link to reset your password to your account's confirmed email address.
+      submit: Send link
+    create:
+      sent: If that email address is registered, we've sent a link to reset your password.
+    edit:
+      title: New password
+      submit: Set password
+    update:
+      saved: Password set. Please sign in.
+  login_id_reminders:
+    new:
+      title: Forgot your ID
+      lead: We'll send your ID to your account's confirmed email address.
+      submit: Send ID
+    create:
+      sent: If that email address is registered, we've sent your ID.
+  email_confirmations:
+    show:
+      confirmed: Email address confirmed.
+      invalid: The link is invalid or has expired.
+  omniauth_callbacks:
+    github:
+      taken: This GitHub account is linked to another account.
+      linked: Linked to GitHub (%{login}).
+      signed_in: Signed in with GitHub (%{login}).
+    failure:
+      failed: Couldn't sign in with GitHub.

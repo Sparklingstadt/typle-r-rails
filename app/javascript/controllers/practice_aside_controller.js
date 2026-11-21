@@ -1,0 +1,54 @@
+import { Controller } from "@hotwired/stimulus"
+
+// The practice screen's list panel (typle-r's ListChooserAside): narrows the packs by text and category, opens a pack to
+// choose its list, and keeps the chosen list in view inside its own scroll area.
+export default class extends Controller {
+  static targets = ["query", "category", "pack", "scroller", "empty"]
+
+  connect() {
+    const chosen = this.scrollerTarget.querySelector('[aria-pressed="true"]')
+    if (chosen) {
+      const box = this.scrollerTarget
+      const top = chosen.offsetTop - box.offsetTop
+      if (top < box.scrollTop || top + chosen.offsetHeight > box.scrollTop + box.clientHeight) box.scrollTop = top - 8
+    }
+  }
+
+  go(event) {
+    const url = event.currentTarget.dataset.url
+    window.Turbo ? window.Turbo.visit(url) : (window.location.href = url)
+  }
+
+  toggle(event) {
+    const button = event.currentTarget
+    this.setOpen(button, button.getAttribute("aria-expanded") !== "true")
+  }
+
+  setOpen(button, open) {
+    button.setAttribute("aria-expanded", String(open))
+    button.querySelector("svg.lucide-chevron-down")?.classList.toggle("rotate-180", open)
+    document.getElementById(button.getAttribute("aria-controls")).hidden = !open
+  }
+
+  filter() {
+    const query = this.queryTarget.value.trim().toLowerCase()
+    const category = this.hasCategoryTarget ? this.categoryTarget.value : ""
+    let shown = 0
+    for (const pack of this.packTargets) {
+      const inCategory = !category || (category === "none" ? !pack.dataset.category : category === `category:${pack.dataset.category}`)
+      const found = !query || pack.dataset.search.includes(query)
+      pack.hidden = !(inCategory && found)
+      if (!pack.hidden) shown += 1
+      // A pack found by one of its lists opens to show which.
+      const levels = pack.querySelectorAll("[role=group] li[data-search]")
+      levels.forEach(item => {
+        const button = item.querySelector("button")
+        if (query && item.dataset.search.includes(query)) button.dataset.match = ""
+        else delete button.dataset.match
+      })
+      const toggle = pack.querySelector(":scope > button[aria-expanded]")
+      if (toggle && query && [...levels].some(item => item.dataset.search.includes(query))) this.setOpen(toggle, true)
+    }
+    this.emptyTarget.hidden = shown > 0
+  }
+}

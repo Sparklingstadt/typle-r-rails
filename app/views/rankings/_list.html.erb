@@ -1,0 +1,90 @@
+<%# typle-r RankingList: lists grouped by pack; packs without a (matching) record are grouped below, a pack of several collapsed to one row. %>
+<% now = Time.current %>
+<% query = params[:q].to_s.strip %>
+<% matches = packs.filter_map { |item|
+     rows = if query.empty? || item.pack.name.downcase.include?(query.downcase) then item.items
+            else item.items.select { |ranking| ranking.list.name.downcase.include?(query.downcase) || records_level_name(ranking.list).downcase.include?(query.downcase) }
+            end
+     [item, rows] if rows.any?
+   } %>
+<% practised, unpractised = matches.partition { |item, _| item.practised? } %>
+<% row_link = ->(list) { rankings_url.({ list: list.id }) } %>
+<% plain_row = "flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm text-muted-foreground outline-none hover:bg-muted/60 focus-visible:ring-3 focus-visible:ring-ring/50" %>
+<div class="flex items-center gap-2 border-b p-3">
+  <%= form_with url: rankings_path, method: :get, class: "min-w-0 flex-1", data: { turbo_action: "replace" } do %>
+    <% { device: params[:device], order: params[:order], mode: params[:mode], sort: params[:sort], list: params[:list] }.compact_blank.each do |name, value| %>
+      <%= hidden_field_tag name, value, id: nil %>
+    <% end %>
+    <%= clearable_search_field(name: :q, value: query, label: records_t("rankings.list.search"), size: :sm, input_class: "bg-transparent",
+          clear_url: rankings_url.({ q: nil }), clear_label: tt("rankings.list.clearSearch")) %>
+  <% end %>
+  <% current_sort = records_t("rankings.list.sorts.#{@sort}") %>
+  <details class="relative shrink-0" data-controller="dropdown">
+    <summary class="inline-flex h-9 cursor-pointer list-none items-center gap-1 rounded-lg px-2 text-xs text-muted-foreground outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 aria-expanded:bg-muted [&::-webkit-details-marker]:hidden" aria-label="<%= records_t("rankings.list.sort_label", sort: current_sort) %>">
+      <%= current_sort %><%= icon("chevron-down", class: "size-3.5") %>
+    </summary>
+    <div class="<%= cn(UiHelper::MENU_CONTENT, "absolute top-full right-0 mt-1.5 w-44") %>">
+      <% RankingsController::SORTS.each do |sort| %>
+        <%= link_to rankings_url.({ sort: (sort unless sort == "recent") }), class: RecordsDesignHelper::RECORDS_MENU_ITEM, "aria-current": (sort == @sort ? "true" : nil) do %>
+          <% if sort == @sort %><%= menu_check %><% end %>
+          <%= records_t("rankings.list.sorts.#{sort}") %>
+        <% end %>
+      <% end %>
+    </div>
+  </details>
+</div>
+
+<% if practised.any? %>
+  <ul class="space-y-0.5 p-1.5">
+    <% practised.each do |item, rows| %>
+      <% if item.items.size == 1 %>
+        <%= render "rankings/list_row", ranking: rows.first, selected:, href: row_link.(rows.first.list), grouped: false, now: %>
+      <% else %>
+        <li data-pack-id="<%= item.pack.id %>" class="py-1">
+          <% totals = [records_t("rankings.list.runs", count: item.practice_count), records_t("rankings.list.pack_practiced", practiced: item.practised_list_count, lists: item.items.size)]
+             totals << records_day(item.last_practiced, now) if item.last_practiced
+             totals << records_t("rankings.list.pack_improved", count: item.improved_count) if item.improved_count.positive? %>
+          <div class="px-2.5 pt-1.5 pb-1">
+            <h2 class="text-sm font-medium [overflow-wrap:anywhere]"><%= item.pack.name %></h2>
+            <p class="text-xs text-muted-foreground tabular-nums"><%= totals.join(records_t("rankings.list.pack_join")) %></p>
+          </div>
+          <ul class="space-y-0.5">
+            <% rows.each do |ranking| %>
+              <%= render "rankings/list_row", ranking:, selected:, href: row_link.(ranking.list), grouped: true, now: %>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if unpractised.any? %>
+  <div class="<%= cn("p-1.5", practised.any? && "border-t") %>">
+    <h2 class="px-2.5 pt-1.5 pb-1 text-xs font-medium text-muted-foreground"><%= records_t(@device ? "rankings.list.no_device_records" : "rankings.list.no_records", count: unpractised.sum { |_, rows| rows.size }) %></h2>
+    <ul class="space-y-0.5">
+      <% unpractised.each do |item, rows| %>
+        <% if item.items.size == 1 %>
+          <%= render "rankings/list_row", ranking: rows.first, selected:, href: row_link.(rows.first.list), grouped: false, now: %>
+        <% else %>
+          <% current = item.items.any? { |ranking| ranking.list == selected } %>
+          <% name = records_t("rankings.list.pack_lists", pack: item.pack.name, count: item.items.size) %>
+          <li data-pack-id="<%= item.pack.id %>">
+            <%= link_to row_link.(rows.first.list), "data-list-id": rows.first.list.id, "aria-current": (current ? "true" : nil), class: cn(plain_row, current && "bg-muted text-foreground") do %>
+              <span class="line-clamp-2 min-w-0 flex-1 [overflow-wrap:anywhere]" title="<%= name %>"><%= name %></span>
+              <span class="shrink-0 text-xs tabular-nums"><%= records_t("rankings.list.words", count: item.items.sum { |ranking| ranking.list.words.size }) %></span>
+              <%= icon("chevron-right", class: "size-4 shrink-0 xl:hidden") %>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if matches.empty? %>
+  <div class="px-4 py-8 text-center text-sm text-muted-foreground">
+    <p class="[overflow-wrap:anywhere]"><%= records_t("rankings.list.no_match", query:) %></p>
+    <%= link_button records_t("rankings.list.clear_search"), rankings_url.({ q: nil }), variant: :link, size: :sm %>
+  </div>
+<% end %>

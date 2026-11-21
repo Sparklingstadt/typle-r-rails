@@ -1,0 +1,264 @@
+---
+ru:
+  design:
+    home:
+      home:
+        welcome:
+          title: Тренируйте набор на своих словах.
+          text: Начните тренировку с официального набора или создайте список слов, которые хотите выучить.
+          lists:
+            one: "%{count} список слов"
+            few: "%{count} списка слов"
+            many: "%{count} списков слов"
+            other: "%{count} списка слов"
+          practices:
+            one: "%{count} тренировка завершена"
+            few: "%{count} тренировки завершены"
+            many: "%{count} тренировок завершено"
+            other: "%{count} тренировки завершено"
+          nav_label: С чего начать
+          play: Тренироваться
+          create: Создать список слов
+          records: Смотреть результаты
+        storage: Все функции тренировки и редактирования доступны без входа в аккаунт. Списки слов, история тренировок и устройства сохраняются в этом браузере. После входа (через GitHub или по ID и паролю) данные будут храниться в другом месте — в вашем аккаунте — и синхронизироваться между устройствами. Данные из браузера автоматически не переносятся.
+        storage_account: Вы вошли в аккаунт, поэтому списки слов, история тренировок и устройства сохраняются в аккаунте и синхронизируются с другими устройствами и браузерами, где выполнен вход в тот же аккаунт. Они хранятся отдельно от данных, сохранённых в этом браузере без входа.
+        links_guide: Как пользоваться
+        links_about: О Typle
+        links: "%{guide} / %{about}"
+      dashboard:
+        title: Обзор тренировок
+        source_guest: Статистика по результатам, сохранённым в этом браузере.
+        source_account: Статистика по результатам, сохранённым в аккаунте.
+        start: Начать
+        practice: Тренироваться
+        create: Создать список слов
+        week:
+          title: Итоги недели
+          description: Результаты с %{start} по %{end}. Изменения сравниваются с прошлой неделей до того же дня и времени.
+          count: Тренировки за неделю
+          count_unit:
+            one: тренировка
+            few: тренировки
+            many: тренировок
+            other: тренировки
+          streak: Серия
+          streak_unit:
+            one: день
+            few: дня
+            many: дней
+            other: дня
+          accuracy:
+            one: Точность (последний результат)
+            few: Средняя точность (последние %{count})
+            many: Средняя точность (последние %{count})
+            other: Средняя точность (последние %{count})
+          time: Время тренировок за неделю
+          practised_today: Сегодня уже тренировались
+          streak_next: Тренировка сегодня — %{day}-й день серии
+          no_comparison: Пока не с чем сравнить
+          no_accuracy: Нет результатов с точностью
+          times:
+            one: "%{count} тренировка"
+            few: "%{count} тренировки"
+            many: "%{count} тренировок"
+            other: "%{count} тренировки"
+          same_as_last_week: Как на прошлой неделе
+          more_than_last_week: На %{value} больше, чем на прошлой неделе
+          less_than_last_week: На %{value} меньше, чем на прошлой неделе
+        change:
+          same_recent_none_previous_latest: Без изменений по сравнению с предыдущим результатом
+          same_recent_none_previous_other: Без изменений по сравнению с предыдущими %{previousCount}
+          same_recent_latest_previous_latest: 'Последний результат: без изменений по сравнению с предыдущим результатом'
+          same_recent_latest_previous_other: 'Последний результат: без изменений по сравнению с предыдущими %{previousCount}'
+          same_recent_other_previous_latest: 'Среднее за последние %{recentCount}: без изменений по сравнению с предыдущим результатом'
+          same_recent_other_previous_other: 'Среднее за последние %{recentCount}: без изменений по сравнению с предыдущими %{previousCount}'
+          different_recent_none_previous_latest: "%{difference} по сравнению с предыдущим результатом"
+          different_recent_none_previous_other: "%{difference} по сравнению с предыдущими %{previousCount}"
+          different_recent_latest_previous_latest: 'Последний результат: %{difference} по сравнению с предыдущим результатом'
+          different_recent_latest_previous_other: 'Последний результат: %{difference} по сравнению с предыдущими %{previousCount}'
+          different_recent_other_previous_latest: 'Среднее за последние %{recentCount}: %{difference} по сравнению с предыдущим результатом'
+          different_recent_other_previous_other: 'Среднее за последние %{recentCount}: %{difference} по сравнению с предыдущими %{previousCount}'
+          seconds_direction_up: медленнее на %{value} с
+          seconds_direction_other: быстрее на %{value} с
+          points_direction_up: "+%{value} п. п."
+          points_direction_other: "−%{value} п. п."
+        next:
+          title: Что потренировать дальше
+          description: 'До 3 списков: ещё не тренированные, не тренированные %{days} дн. и дольше, а также с недавней точностью ниже %{accuracy}%.'
+          all_practised: Все списки недавно тренировались.
+          words:
+            one: "%{count} слово"
+            few: "%{count} слова"
+            many: "%{count} слов"
+            other: "%{count} слова"
+          last_practiced: 'Последняя тренировка: %{day}'
+          no_records: Нет результатов
+          new: Тренировок ещё не было
+          stale:
+            one: Без тренировок %{count} день
+            few: Без тренировок %{count} дня
+            many: Без тренировок %{count} дней
+            other: Без тренировок %{count} дня
+          low_accuracy:
+            one: 'Точность последнего результата: %{accuracy}%'
+            few: 'Точность за последние %{count}: %{accuracy}%'
+            many: 'Точность за последние %{count}: %{accuracy}%'
+            other: 'Точность за последние %{count}: %{accuracy}%'
+          practice_list: Тренировать «%{name}»
+          practice: Тренироваться
+        trends:
+          title: Динамика по спискам
+          description: Секунды на слово (чем меньше, тем быстрее) и точность за последние 20 тренировок. Время делится на число слов, поэтому результаты до и после редактирования списка можно сравнивать.
+          summary:
+            one: "%{count} тренировка · последняя: %{day}"
+            few: "%{count} тренировки · последняя: %{day}"
+            many: "%{count} тренировок · последняя: %{day}"
+            other: "%{count} тренировки · последняя: %{day}"
+          need_two: Динамика появится, когда будет хотя бы два результата.
+          practice_list: Тренировать «%{name}»
+          practice: Тренироваться
+          speed: Секунды на слово
+          accuracy: Точность
+          seconds: "%{value} с"
+          percent: "%{value}%"
+          latest_number: "%{value}"
+          latest: Последний %{number}
+          no_chart: Появится, когда это значение будет хотя бы в двух результатах.
+          best: 'Лучший результат: точность %{accuracy} · %{time} с (%{day})'
+          not_recorded: не записана
+        chart:
+          label: "%{label} (клавишами влево и вправо можно просмотреть каждую тренировку)"
+          date: Дата
+          value: Значение
+        continue:
+          label: Продолжить
+          meta:
+            one: "%{count} слово · Последняя тренировка %{day}"
+            few: "%{count} слова · Последняя тренировка %{day}"
+            many: "%{count} слов · Последняя тренировка %{day}"
+            other: "%{count} слова · Последняя тренировка %{day}"
+          best: 'Лучший результат: точность %{accuracy}, %{time} с'
+          not_recorded: не записана
+          samples: Первые слова
+          more:
+            one: ещё %{count} слово
+            few: ещё %{count} слова
+            many: ещё %{count} слов
+            other: ещё %{count} слова
+          practice: Тренироваться
+          practice_list: 'Тренироваться: %{name}'
+          other: Выбрать другой список
+        weak:
+          title: Трудные слова
+          description: Для каждого списка — слова с ошибками за последние %{runs} тренировок (без Handwriting), сначала самые частые. Слова, набранные без ошибок при тренировке только трудных слов, убираются из этого списка.
+          none: Трудных слов пока нет. Здесь появятся слова, в которых вы ошибались.
+          words_of: 'Трудные слова: %{name}'
+          runs:
+            one: "%{count} раз"
+            few: "%{count} раза"
+            many: "%{count} раз"
+            other: "%{count} раза"
+          more:
+            one: ещё %{count} слово
+            few: ещё %{count} слова
+            many: ещё %{count} слов
+            other: ещё %{count} слова
+          practice:
+            one: Повторить %{count} трудное слово
+            few: Повторить %{count} трудных слова
+            many: Повторить %{count} трудных слов
+            other: Повторить %{count} трудного слова
+          practice_list:
+            one: 'Повторить %{count} трудное слово: %{name}'
+            few: 'Повторить %{count} трудных слова: %{name}'
+            many: 'Повторить %{count} трудных слов: %{name}'
+            other: 'Повторить %{count} трудного слова: %{name}'
+      landing:
+        hero:
+          eyebrow: Бесплатно и без входа
+          title: Учите нужные слова, набирая их.
+          lead: Typle — приложение для тренировки набора на ваших собственных списках слов или официальных наборах. Команды и синтаксис программирования, слова иностранного языка — всё запоминается во время набора.
+          play: Начать без входа
+          catalog: Официальные наборы
+          home: На главную
+        packs:
+          title: Официальные наборы
+          lead: Подпишитесь на любой из %{total} официальных списков и сразу начинайте тренировку.
+          programming:
+            title: Программирование
+            count:
+              one: "%{count} список"
+              few: "%{count} списка"
+              many: "%{count} списков"
+              other: "%{count} списка"
+            text: Синтаксис Go, Java, Kotlin, TypeScript и других языков, команды Linux, Vim, AWS CLI и других инструментов, коды ошибок PostgreSQL.
+          languages:
+            title: Языки
+            count:
+              one: "%{count} список"
+              few: "%{count} списка"
+              many: "%{count} списков"
+              other: "%{count} списка"
+            text: Слова и конструкции на китайском (HSK 5 и 6), корейском, английском, французском, немецком, испанском, русском и чешском. Китайский и корейский можно тренировать и рукописным вводом.
+        features:
+          title: Что можно делать
+          own:
+            title: Тренироваться на своих списках
+            text: Добавьте слова, которые хотите выучить, и тренируйтесь. Показываемое слово и набираемые символы могут различаться, а списки можно импортировать из CSV.
+          recall:
+            title: Набирать по памяти
+            text: Режим, в котором ответ скрыт, а примечание служит подсказкой, — чтобы проверить, действительно ли вы помните каждое слово.
+          records:
+            title: Следить за прогрессом
+            text: Скорость, точность и ошибки записываются каждый раз, а личные рекорды и динамика показывают ваш прогресс.
+        storage:
+          title: Где хранятся данные
+          text: Все функции работают без входа. Данные хранятся в этом браузере, а вход (через GitHub или по ID и паролю) синхронизирует их между устройствами.
+          more_guide: Как пользоваться
+          more_about: О Typle
+          more: "%{guide} / %{about}"
+        try:
+          badge: Попробуйте здесь
+          progress: "%{name} · %{current} / %{total} слов"
+          label: Ввод
+          hint: Наберите слово выше, чтобы перейти к следующему. То, что набрано здесь, не сохраняется.
+          done: 'Набрано: %{count}. Продолжите тренировку на этом наборе — там результаты сохраняются.'
+          continue: Продолжить с этим набором
+          starting: Подготовка…
+      format:
+        today: Сегодня
+        yesterday: Вчера
+        date_with_weekday: "%{weekday}, %{date}"
+        units:
+          hours: ч
+          minutes: мин
+          seconds: с
+        time:
+          one: "%{value} %{unit}"
+          two: "%{first} %{firstUnit} %{second} %{secondUnit}"
+        month_names:
+        -
+        - янв.
+        - февр.
+        - мар.
+        - апр.
+        - мая
+        - июн.
+        - июл.
+        - авг.
+        - сент.
+        - окт.
+        - нояб.
+        - дек.
+        weekday_names:
+        - вс
+        - пн
+        - вт
+        - ср
+        - чт
+        - пт
+        - сб
+        month_day: "%{day} %{month_name}"
+        year_month_day: "%{day} %{month_name} %{year} г."
+        short_date: "%{dd}.%{mm}"
+        short_date_time: "%{dd}.%{mm}, %{hh}:%{minute}"

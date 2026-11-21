@@ -1,0 +1,145 @@
+fr:
+  design:
+    lists:
+      format:
+        today: Aujourd’hui
+        yesterday: Hier
+        month_day: "%d/%m"
+        year_month_day: "%d/%m/%Y"
+      labels:
+        category: Catégorie
+        tag: Étiquette
+      form:
+        cancel: Annuler
+      page:
+        description: Créez et modifiez les packs de mots pour vos entraînements. Exportez une liste en CSV pour l’importer dans un autre navigateur ou compte.
+        catalog: Packs officiels
+        create_title: Créer une liste de mots
+        edit_title: Modifier la liste de mots
+      manager:
+        heading: Packs enregistrés
+        count:
+          one: "%{count} pack"
+          other: "%{count} packs"
+        create: Créer un pack
+        create_pack: Nouveau pack
+        import_file: Importer depuis un fichier
+        csv_note: L’export CSV enregistre les mots affichés, le texte à saisir et les notes (l’historique n’est pas inclus). Vous pouvez le réimporter avec « Importer depuis un fichier » sur l’écran des packs de mots.
+      pack:
+        lists:
+          one: "%{count} liste"
+          other: "%{count} listes"
+        practiced: "%{practiced}/%{lists} entraînées"
+        word_count:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        practice: S’entraîner
+        open: Ouvrir
+        lists_of: Listes de %{name}
+        more_actions: Autres actions
+        more_for: Actions du pack %{name}
+        edit: Modifier le pack
+        add_list: Ajouter une liste
+        delete: Supprimer
+      row:
+        examples: "Exemples de mots :"
+        separator: ", "
+        more: "%{words} et %{rest} autres"
+        word_count:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        not_practiced: Pas encore d’entraînement
+        practiced:
+          one: "%{count} entraînement · dernier : %{day}"
+          other: "%{count} entraînements · dernier : %{day}"
+        practice: S’entraîner
+        practice_list: S’entraîner avec %{name}
+        edit: Modifier
+        edit_list: Modifier %{name}
+        more_actions: Autres actions
+        more_for: Autres actions pour %{name}
+        practice_this: S’entraîner avec cette liste
+        records: Voir l’historique
+        record_count: "%{count}"
+        export: Exporter en CSV
+        delete: Supprimer
+      empty:
+        title: Aucune liste de mots pour l’instant
+        description: Ajoutez les mots à travailler et le texte à saisir comme bonne réponse. Vous pouvez aussi les importer depuis un fichier CSV.
+        pack_title: Aucun pack de mots pour l’instant
+        pack_description: Aucun pack pour l’instant. Suivez un pack officiel ou créez-en un nouveau.
+        catalog_link: Suivre un pack officiel
+      follow:
+        badge: Officiel
+        unfollow: Ne plus suivre
+      catalog:
+        description: Packs prêts à l’emploi. Suivez-en un pour utiliser le contenu officiel, mis à jour automatiquement. Il n’est pas modifiable, mais vous pouvez le dupliquer pour créer votre propre pack.
+        back: Retour aux packs
+        open: Ouvrir
+        follow: Suivre
+        follow_pack: Suivre %{name}
+        following: Suivi
+        unfollow_pack: Ne plus suivre %{name}
+        matching: Packs correspondant à vos centres d’intérêt
+        others: Autres packs
+        no_matching: Aucun pack ne correspond encore à vos centres d’intérêt
+        change_interests: Modifier les centres d’intérêt
+      official:
+        title: "Entraînement à la frappe : %{name}"
+        stats: "%{lists} · %{words}"
+        stats_lists:
+          one: "%{count} liste"
+          other: "%{count} listes"
+        stats_words:
+          one: "%{count} élément"
+          other: "%{count} éléments"
+        practice: S’entraîner avec ce pack
+        catalog: Voir les autres packs officiels
+        free: Gratuit, sans connexion. Le bouton suit ce pack et lance l’entraînement tout de suite.
+        words_heading: Contenu du pack
+        input: À taper
+        note: Sens et remarques
+        details: Détails
+      starter:
+        first: "Première liste : %{list}"
+      pack_editor:
+        create_title: Créer un pack
+        create_description: Saisissez le nom du pack. Une fois créé, ajoutez-y des listes de mots.
+        edit_title: Modifier le pack
+        edit_description: Modifiez le nom du pack.
+        info: Informations du pack
+        name: Nom du pack
+        name_help: Affiché dans la liste des packs et lors du choix d'un pack à pratiquer.
+      editor:
+        back: Packs de mots
+        description: Ajoutez les mots affichés pendant la frappe et le texte à saisir comme bonne réponse.
+        basics: Informations générales
+        adding_to: La liste sera ajoutée au pack « %{name} ».
+        name: Nom de la liste
+        name_help: Affiché sur l’écran d’entraînement et dans vos listes de mots.
+        levels: Difficulté (facultatif)
+        level_placeholder: ex. Débutant
+        levels_help: Sert à choisir parmi les listes d’un pack sur l’écran d’entraînement, par exemple Débutant.
+        writing_toggle: Utiliser pour l’écriture manuscrite (Typle Handwriting)
+        writing_toggle_help: Permet de s’entraîner à écrire cette liste à la main. La langue sert à reconnaître l’écriture.
+        writing_language: Langue de reconnaissance
+        words: Mots
+        word_total_badge:
+          one: "%{count} mot"
+          other: "%{count} mots"
+        display: Mot affiché
+        input: Texte à saisir
+        input_hint: Vide = identique au mot affiché
+        annotation_optional: Note (facultatif)
+        error_count:
+          one: "%{count} erreur"
+          other: "%{count} erreurs"
+        word_total:
+          one: "· %{count} mot"
+          other: "· %{count} mots"
+        save: Enregistrer
+      words:
+        description: Recherchez les mots de vos listes enregistrées par le texte à saisir, le mot affiché ou la note.
+        all: Tous les mots
+        number: Numéro
+        no_match: Aucun mot ne correspond à « %{query} ».

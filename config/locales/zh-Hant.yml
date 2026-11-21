@@ -1,0 +1,508 @@
+zh-Hant:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "輸入有誤：%{errors}"
+    models:
+      user: 使用者
+      pack: 單字包
+      word_list: 清單
+      device: 裝置
+    attributes:
+      user:
+        login_id: ID
+        email: 電子郵件地址
+        password: 密碼
+        password_confirmation: 確認密碼
+      pack:
+        name: 單字包名稱
+      word_list:
+        name: 清單名稱
+        writing_language: 手寫語言
+      device:
+        name: 裝置名稱
+        layout: 鍵盤配置／備註
+      practice_record:
+        mode: 模式
+  errors:
+    format: "%{attribute}%{message}"
+    rate_limited: 請稍後再試。
+    messages:
+      blank: 不能空白
+      taken: 已被使用
+      too_short: 至少需要 %{count} 個字元
+      too_long: 不能超過 %{count} 個字元
+      invalid: 無效
+      confirmation: 不一致
+      inclusion: 不在可選範圍內
+      not_a_number: 必須是數字
+      not_an_integer: 必須是整數
+      greater_than: 必須大於 %{count}
+      greater_than_or_equal_to: 必須大於或等於 %{count}
+      less_than_or_equal_to: 必須小於或等於 %{count}
+      wrong_length: 必須是 %{count} 個字元
+      required: 為必填
+      password_too_long: 不能超過 72 位元組
+      login_id_format: 只能使用半形英文字母、數字和 _ . -
+      taken_device: 與「%{name}」相同
+      device_limit: 最多可登錄 %{count} 台裝置。
+      wrong_current_password: 目前的密碼不正確。
+      words_required: 請至少輸入一個單字。
+      word_fields_required: "第 %{line} 行：顯示和輸入不能空白。"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      short_date_time: "%Y/%m/%d %H:%M"
+  date:
+    formats:
+      default: "%Y/%m/%d"
+  format:
+    seconds: "%{value}秒"
+    minutes_seconds: "%{minutes}分%{seconds}秒"
+    minutes: "%{count}分鐘"
+    hours_minutes: "%{hours}小時%{minutes}分鐘"
+  modes:
+    normal: 一般
+    recall: 回想
+    writing: Handwriting
+  languages:
+    en: 英文
+    ja: 日文
+    zh-Hans: 中文（簡體）
+    zh-Hant: 中文（繁體）
+    ko: 韓文
+    fr: 法文
+    de: 德文
+    es: 西班牙文
+    ru: 俄文
+    cs: 捷克文
+  forms:
+    save: 儲存
+    cancel: 取消
+  words:
+    display: 顯示
+    input: 輸入
+    annotation: 註解
+    index:
+      title: 單字一覽
+      search: 搜尋
+      placeholder: 依單字、輸入或註解搜尋
+      count: "%{count} 個單字"
+      capped: （僅顯示前 300 個單字）
+      list: 清單
+  devices:
+    default_name: 預設
+    none: 未選擇
+    unrecorded: 未記錄
+    index:
+      title: 裝置
+      lead: 登錄練習時使用的鍵盤或電腦後，紀錄中會保留所用的裝置。變更裝置名稱或備註不會影響過去的紀錄。
+      this_browser: 此瀏覽器使用的裝置
+      use: 使用的裝置
+      name: 裝置名稱
+      layout: 鍵盤配置／備註
+      layout_placeholder: 例：JIS、US、按鍵對調
+      runs: 練習次數
+      last: 最後練習日期
+      built_in: 內建
+      edit: 編輯
+      delete: 刪除
+      delete_confirm: 要刪除裝置「%{name}」嗎？紀錄不會被刪除。
+      add: 新增裝置
+      use_new: 在此瀏覽器使用新增的裝置（目前為預設或未選擇時）
+    create:
+      added: 已新增裝置「%{name}」。
+    update:
+      saved: 裝置已儲存。
+    destroy:
+      deleted: 已刪除裝置「%{name}」。
+  dashboard:
+    never: 尚未練習
+    idle: "已 %{count} 天未練習"
+    low_accuracy: 最近正確率 %{accuracy}%
+  layouts:
+    application:
+      default_title: Typle — 邊打邊記的單字本
+      skip: 跳到主要內容
+      menu: 選單
+      storage_account: 儲存到帳號
+      storage_browser: 儲存在此瀏覽器
+      theme: 主題
+      theme_light: 淺色
+      theme_dark: 深色
+      theme_system: 跟隨系統
+      sign_in: 登入
+      sign_up: 註冊
+      sign_out: 登出
+      home: 首頁
+      practice: 練習
+      play: 開始練習
+      records: 練習紀錄
+      rankings: 最佳紀錄
+      lists: 單字清單
+      packs: 單字包
+      words: 單字一覽
+      catalog: 官方單字包
+      new_pack: 建立單字包
+      settings: 設定
+      general: 一般
+      input: 輸入
+      interests: 興趣
+      devices: 裝置
+      account: 帳號
+      guide: 使用說明
+      about: 關於 Typle
+  pages:
+    landing:
+      heading: 邊打邊記的單字本
+      lead: 一邊在鍵盤上實際輸入，一邊記住指令、語法和外語單字。你可以建立自己的單字清單，也可以從 %{count} 個官方單字包開始。
+      start: 不登入，直接開始練習
+      catalog: 瀏覽官方單字包
+      home: 前往首頁
+      try: 在這裡試打一個單字
+      packs: 官方單字包
+      list_count: "%{count} 個清單"
+      and_more: " 等"
+      feature_lists: 自己的單字清單
+      feature_lists_text: 每個單字由顯示、輸入、註解三部分組成。也支援 CSV 匯入與匯出。
+      feature_recall: 回想輸入與手寫
+      feature_recall_text: 隱藏單字、只看註解來輸入，或照著範本手寫抄寫來記憶。
+      feature_records: 紀錄
+      feature_records_text: 在首頁查看每個清單的最佳紀錄、不熟的單字和本週摘要。
+      storage: 未登入時，資料會儲存在此瀏覽器中。登入後資料會儲存到帳號（不會自動複製）。
+      guide: 使用說明
+      about: 關於 Typle
+    about:
+      title: 關於 Typle
+      lead: Typle 是一款透過打字來記憶指令和外語單字的單字本。它是將以 Next.js 開發的 typle-r 用 Ruby on Rails %{version} 重寫的版本。
+      storage: 資料儲存位置
+      browser: 此瀏覽器
+      account: 帳號
+      where: 儲存位置
+      browser_where: 與此瀏覽器綁定的伺服器資料（以 Cookie 識別）
+      account_where: 帳號資料
+      sync: 其他裝置
+      browser_sync: 不同步
+      account_sync: 登入後資料相同
+      lost: 何時遺失
+      browser_lost: 清除瀏覽器 Cookie 時
+      account_lost: 刪除帳號時
+      now: 目前儲存位置：%{storage}
+      tech: 使用的技術
+      licenses: 授權
+      licenses_text: 手寫板使用了以下軟體和模型。
+    guide:
+      title: 使用說明
+      step1: 練習
+      step2: 建立單字清單
+      step3: 查看最佳紀錄
+      toc: 目錄
+      practice:
+        heading: 練習
+        body:
+          - 在「開始練習」中選擇清單，在輸入欄中輸入顯示的單字。按下第一個鍵開始計時，輸入最後一個字元時停止。離開輸入欄會暫停。
+          - 「回想」模式會隱藏單字，只看註解來輸入。想不起來時可以用「查看答案」（Shift+Enter）顯示。
+          - 設定了手寫語言的清單可以選擇「Handwriting」。看著範本，用作業系統的手寫輸入抄寫。韓文清單還可以在 App 的手寫板上書寫。
+      lists:
+        heading: 建立單字清單
+        body:
+          - 用「建立單字包」建立單字包，再加入清單。每行一個單字，用 Tab 或逗號分隔「顯示、輸入、註解」。
+          - 追蹤官方單字包後，它會加入你的單字包。內容維持官方版本，無法編輯。
+      results:
+        heading: 查看結果和紀錄
+        body:
+          - 練習結束後，結果頁會顯示用時、正確率和打錯的單字。最佳紀錄只比較目前單字數下的紀錄，先比正確率，再比用時。
+          - 在首頁可以接續上次的練習，查看不熟的單字和本週摘要。
+      devices:
+        heading: 登錄裝置
+        body:
+          - 在「裝置」中登錄所用鍵盤，並在練習畫面選擇，紀錄中就會保留裝置資訊。
+      storage:
+        heading: 儲存位置與資料
+        body:
+          - 未登入時，資料會儲存在此瀏覽器中。登入後儲存到帳號，登出後切回瀏覽器的資料。兩份資料不會自動複製。
+      keys:
+        heading: 鍵盤操作
+        body:
+          - Esc：從頭開始 / Shift+Enter：查看答案（回想）/ Enter：判定（Handwriting）/ ⌘Z・Ctrl+Z：復原一筆（手寫板）
+  home:
+    show:
+      title: 首頁
+      practice: 開始練習
+      empty: 還沒有紀錄。從官方單字包開始練習，或建立自己的單字包吧。
+      catalog: 瀏覽官方單字包
+      create: 建立單字包
+      continue: 繼續練習
+      last_practised: 最後練習 %{date}
+      more_words: 等 %{count} 個單字
+      choose_other: 選擇其他清單
+      week: 本週摘要
+      runs: 練習次數
+      runs_value: "%{count} 次"
+      streak: 連續練習
+      days: "%{count} 天"
+      recent_accuracy: 最近 10 次的正確率
+      practice_time: 練習時間
+      week_note: 增減是與上週同一星期、同一時刻之前的比較。
+      weak: 不熟的單字
+      times: "%{count} 次"
+      weak_practice: 只練習 %{count} 個不熟的單字
+      next: 接下來練習的清單
+  practice:
+    messages:
+      time: 用時
+      accuracy: 正確率
+      mistakes: 失誤
+      seconds: 秒
+      missed_words: 打錯的單字
+      weak_done: 不熟單字複習完成（不列入紀錄）。
+      not_saved: 未追蹤的官方單字包練習不會被記錄。
+      save_failed: 無法儲存紀錄。
+      read_as: 辨識為「%{text}」
+      reading: 目前辨識：%{text}
+      pad_loading: 正在載入手寫板…
+      pad_failed: 無法載入手寫板。
+    show:
+      title: 練習
+      word_count: "%{count} 個單字"
+      weak_note: 僅不熟的單字（不記錄）
+      official_note: 未追蹤的官方清單（不記錄）
+      list: 清單
+      device: 裝置
+      mode: 模式
+      best: 最佳 %{accuracy} / %{time}
+      time: 時間
+      mistakes: 失誤
+      accuracy: 正確率
+      input: 輸入
+      paused: 已暫停 — 點擊輸入欄即可繼續
+      reveal: 查看答案（Shift+Enter）
+      restart: 從頭開始（Esc）
+      input_method: 輸入方式
+      pad: 手寫板
+      field: 輸入欄
+      write_here: 在此書寫
+      os_input_note: 用作業系統的手寫輸入（手寫面板、手寫鍵盤）抄寫範本。
+      undo: 復原一筆（⌘Z）
+      clear: 清除
+      reload_pad: 重新載入
+      check: 判定（Enter）
+      skip: 略過
+      no_weak_words: 沒有不熟的單字。
+    result:
+      result: 結果
+      again: 再來一次
+      full_list: 練習整個清單
+      sign_up: 註冊後在其他裝置上使用
+    starters:
+      heading: 開始練習吧
+      lead: 還沒有單字包。從官方單字包開始，或建立自己的單字包吧。
+      more: 瀏覽其他官方單字包
+      create: 建立自己的單字包
+  practice_records:
+    index:
+      title: 練習紀錄
+      list: 清單
+      all: 全部
+      best: "%{mode}的最佳："
+      empty: 還沒有紀錄。
+      date: 日期時間
+      mode: 模式
+      time: 時間
+      accuracy: 正確率
+      mistakes: 失誤
+      device: 裝置
+      best_badge: 最佳
+      delete: 刪除
+      delete_confirm: 要刪除這筆紀錄嗎？
+    show:
+      title: 結果
+      time: 用時
+      accuracy: 正確率
+      mistakes: 失誤
+      missed_count: 打錯的單字
+      first: 這是此單字數下的第一筆紀錄。
+      best_faster: 刷新最佳！比之前的最佳快了 %{difference}。
+      best_cleaner: 刷新最佳！雖然比之前的最佳慢了 %{difference}，但更加準確。
+      behind: "第 %{rank} 名。最佳為 %{accuracy} / %{time}。"
+      missed: 打錯的單字
+      no_missed: 沒有打錯的單字。
+      again: 再來一次
+      weak_practice: 只練習不熟的單字
+      records: 練習紀錄
+    destroy:
+      deleted: 紀錄已刪除。
+  rankings:
+    index:
+      title: 最佳紀錄
+      note: 比較目前單字數下的紀錄，先比正確率，再比用時。
+      empty: 此模式還沒有紀錄。
+      count: "%{count} 筆紀錄"
+      practice: 開始練習
+  packs:
+    read_only: 官方單字包無法編輯。
+    index:
+      title: 單字包
+      create: 建立單字包
+      catalog: 尋找官方單字包
+      empty: 還沒有單字包。
+      official: 官方單字包
+      own: 我的單字包
+      runs: "練習 %{count} 次"
+      practice: 開始練習
+      import: 從 CSV 匯入
+      import_note: 每行一個單字，依「顯示, 輸入, 註解」的順序。省略輸入時與顯示相同。檔案名稱會成為單字包和清單的名稱。
+      import_button: 匯入
+    show:
+      add_list: 新增清單
+      rename: 重新命名
+      official_page: 官方單字包頁面
+      delete: 刪除單字包
+      delete_confirm: 將刪除「%{name}」及其清單和紀錄。確定嗎？
+      edit: 編輯
+      delete_list: 刪除
+      delete_list_confirm: 要刪除清單「%{name}」及其紀錄嗎？
+    new:
+      title: 建立單字包
+    edit:
+      title: 重新命名單字包
+    create:
+      created: 單字包已建立。來建立第一個清單吧。
+    update:
+      saved: 單字包已儲存。
+    destroy:
+      deleted: 已刪除「%{name}」。
+    import:
+      no_file: 請選擇檔案。
+      default_name: 匯入的清單
+      imported: "已匯入 %{count} 個單字。"
+      failed: "無法匯入：%{reason}"
+      not_utf8: 請選擇 UTF-8 編碼的檔案。
+  word_lists:
+    form:
+      level: 等級（選填。例：初級）
+      words: 單字（每行一個。用 Tab 或逗號分隔顯示、輸入、註解）
+      placeholder: "ls\tls\t列出檔案\npwd\tpwd\t目前所在目錄"
+      words_note: 省略輸入時與顯示相同。變更單字數後，最佳紀錄只比較目前單字數下的紀錄。
+      writing: 用於手寫練習（Typle Handwriting）
+      writing_off: 不使用
+      writing_note: 選擇語言後，可以用 Handwriting 練習此清單。韓文還可以在 App 的手寫板上書寫。
+    new:
+      title: 建立清單
+    edit:
+      title: 編輯清單
+    create:
+      created: 已建立清單「%{name}」。
+    update:
+      saved: 清單已儲存。
+    destroy:
+      deleted: 已刪除清單「%{name}」。
+  catalog:
+    card:
+      size: "%{lists} 個清單 · %{words} 個單字"
+      start: 用這個單字包開始
+      followed: 追蹤中
+    index:
+      title: 官方單字包
+      lead: "共 %{count} 個單字包。追蹤後會加入你的單字包並保留紀錄（內容維持官方版本，無法編輯）。符合你興趣的單字包會排在前面。"
+      categories: 分類
+      all: 全部
+    show:
+      practice: 開始練習
+      open_own: 在我的單字包中查看
+      unfollow: 取消追蹤
+      unfollow_confirm: 取消追蹤後，此單字包的紀錄也會被刪除。確定嗎？
+      follow_and_practice: 用這個單字包練習
+      follow: 追蹤
+      try: 不追蹤直接練習
+      more_words: 等 %{count} 個單字
+    follow:
+      followed: 已追蹤「%{name}」。
+    unfollow:
+      unfollowed: 已取消追蹤（紀錄也已刪除）。
+  interests:
+    show:
+      title: 興趣
+      lead: 選擇感興趣的內容後，符合的官方單字包會排在前面。可以在下方清單中一次追蹤多個。
+      note: 只選擇分類時，該分類下的所有單字包都會符合。
+      packs: 符合興趣的官方單字包（%{count}）
+      no_packs: 沒有符合的單字包。
+      unfollow_note: 取消勾選的單字包將被取消追蹤，其紀錄也會被刪除。
+      apply: 套用追蹤
+      apply_confirm: 取消勾選的單字包的紀錄將被刪除。確定嗎？
+    update:
+      saved: 興趣已儲存。
+    packs:
+      saved: 已套用追蹤。
+  settings:
+    show:
+      title: 輸入
+      ignore_accents: 特殊字元簡易輸入
+      ignore_accents_note: 可以用不帶符號的字母（a、n、c）輸入 á、ñ、č 等，用拉丁字母輸入俄文西里爾字母（привет → privet、ш → sh），用 ss 輸入 ß，用 ? 輸入 ¿。
+      ignore_case: 不區分大小寫
+      ignore_case_note: 將 A 和 a、É 和 é 視為同一字元。
+    update:
+      saved: 設定已儲存。
+    general:
+      title: 一般
+      language: 顯示語言
+      language_note: 所選語言會在此瀏覽器中保存一年。單字清單和紀錄的內容不會翻譯。
+      theme: 主題
+      theme_note: 用頂端的 ☀（淺色）、☾（深色）、◐（跟隨系統）切換。所選主題會儲存在此瀏覽器中。
+  sessions:
+    new:
+      title: 登入
+      password: 密碼
+      submit: 登入
+      github: 使用 GitHub 登入
+      forgot_id: 忘記 ID
+      forgot_password: 忘記密碼
+      no_account: 還沒有帳號？
+      sign_up: 立即註冊
+      guest_note: 登入後會切換到帳號的資料。此瀏覽器的資料會保留，登出後即可恢復。
+    create:
+      failed: ID 或密碼不正確。
+    destroy:
+      signed_out: 已登出，已切回此瀏覽器的資料。
+  registrations:
+    new:
+      title: 建立帳號
+      login_id: ID（半形英文字母、數字和 _ . -，3〜32 個字元）
+      email: 電子郵件地址（選填。忘記密碼或 ID 時使用）
+      password: 密碼（至少 8 個字元）
+      submit: 註冊
+      have_account: 已經有帳號？
+      separate_note: 此瀏覽器的資料不會複製到新帳號。
+    create:
+      created: 帳號已建立。
+  passwords:
+    invalid_link: 連結無效或已過期。請再試一次。
+    new:
+      title: 忘記密碼
+      lead: 我們會將重設密碼的連結寄到帳號已驗證的電子郵件地址。
+      submit: 寄送連結
+    create:
+      sent: 如果該電子郵件地址已註冊，我們已寄出重設密碼的連結。
+    edit:
+      title: 新密碼
+      submit: 設定密碼
+    update:
+      saved: 密碼已設定。請登入。
+  login_id_reminders:
+    new:
+      title: 忘記 ID
+      lead: 我們會將 ID 寄到帳號已驗證的電子郵件地址。
+      submit: 寄送 ID
+    create:
+      sent: 如果該電子郵件地址已註冊，我們已寄出 ID。
+  email_confirmations:
+    show:
+      confirmed: 電子郵件地址已驗證。
+      invalid: 連結無效或已過期。
+  omniauth_callbacks:
+    github:
+      taken: 此 GitHub 帳號已與其他帳號連結。
+      linked: 已連結 GitHub（%{login}）。
+      signed_in: 已使用 GitHub（%{login}）登入。
+    failure:
+      failed: 無法使用 GitHub 登入。

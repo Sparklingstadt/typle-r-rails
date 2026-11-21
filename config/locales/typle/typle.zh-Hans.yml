@@ -1,0 +1,1510 @@
+---
+zh-Hans:
+  typle:
+    about:
+      meta:
+        title: 关于 Typle | Typle
+        description: 介绍 Typle 的功能、数据的保存位置、访问统计中发送的信息以及版本。
+      title: 关于 Typle
+      intro: 一款可以用自己创建的单词列表进行练习的打字应用。添加喜欢的词语进行练习，并通过最佳记录回顾自己的进步。
+      play: 开始练习
+      guide: 使用方法
+      features:
+        title: 主要功能
+        create:
+          title: 创建包
+          description: 添加想要记住的单词。显示的单词和要输入的字符可以分别指定，也可以从 CSV 文件添加。
+        play:
+          title: 开始练习
+          description: 实时显示速度、正确率和错误数，并标出输错字符的位置。
+        rankings:
+          title: 最佳记录
+          description: 通过个人最佳、最近 5 次的平均值和用时变化确认自己的进步。
+      storage:
+        title: 数据的保存位置
+        text: 登录是可选的。保存位置取决于是否已登录，两处的数据分开保存（不会自动迁移）。
+        more: 详细说明请参阅<link>使用方法中的“保存位置与数据”</link>。
+      places:
+        current: 当前保存位置
+        browser:
+          title: 此浏览器
+          condition: 未登录时
+          p1: 保存在此浏览器的 LocalStorage 中
+          p2: 不与其他设备或浏览器同步
+          p3: 清除浏览器数据后会丢失
+        account:
+          title: 账号
+          condition: 登录时
+          p1: 保存在账号专用的服务器上
+          p2: 在登录的设备上使用相同的数据
+          p3: 保存需要联网
+      analytics:
+        title: 访问统计
+        text: 为了了解哪些页面被浏览以及浏览次数，我们使用 Vercel Web Analytics 统计页面浏览量。只发送页面地址（不含 ? 之后的部分）、来源页面、浏览器、操作系统和国家。不使用 Cookie，也不会发送你的单词列表和练习记录。
+      email:
+        title: 电子邮件地址的使用
+        text: 使用 ID 和密码注册时，我们会保存你的电子邮件地址。它只用于发送确认地址、重置密码和告知 ID 的邮件，不用于广告或通知，也不会提供给其他方。邮件通过 Resend 发送。
+      version:
+        title: 版本与开发
+        version: 版本
+        tech: 使用的技术
+        techList: Next.js、React、PostgreSQL（Neon）
+        source: 源代码
+        newTab: "（在新标签页中打开）"
+        public: 这是一个公开仓库，任何人都可以查看源代码。
+        licenses: 许可证
+        licensesLink: 开源许可证
+      licenses:
+        meta:
+          title: 许可证 | Typle
+          description: Typle 使用的开源软件、字体和模型及其许可证。
+        back: 关于 Typle
+        title: 开源许可证
+        intro: Typle 使用了以下开源软件、字体和模型。点击名称可打开项目页面。完整的许可证文本汇总在“全部许可证文本”中。
+        fullText: 全部许可证文本
+        filter: 按名称或许可证筛选
+        count: "%{total} 项中的 %{shown} 项"
+        loading: 正在加载…
+        failed: 无法加载许可证列表。
+        newTab: "（在新标签页中打开）"
+        noText: "（软件包中没有许可证文本）"
+    account:
+      checking: 正在确认登录状态
+      signIn: 登录
+      signInWithGitHub: 使用 GitHub 登录
+      signInFailed: 无法登录。请重试。
+      githubUser: GitHub 用户
+      ffpfUser: FFPF ID 用户
+      menu: 账号菜单
+      signedInWithGitHub: 已通过 GitHub 登录
+      signedInWithFfpf: 已通过 FFPF ID 登录
+      signedInWithPassword: 已使用 ID 登录
+      manageDevices: 管理设备
+      signOut: 退出登录
+      signOutFailed: 无法退出登录。请重试。
+      localLogin:
+        title: 在这台 Mac 上使用 Typle
+        description: 可以用 193 个国家的国名开始练习。列表和练习记录保存在这台 Mac 专用的数据库中。
+        start: 开始练习
+        failed: 无法登录。请重试。
+    auth:
+      fields:
+        loginId: ID
+        email: 电子邮件地址
+        password: 密码
+        currentPassword: 当前密码
+        newPassword: 新密码
+        loginIdHint: 3到32个半角字母、数字、“_”或“-”。不区分大小写，之后无法更改。
+        emailHint: 用于发送确认邮件，以及忘记 ID 或密码时的邮件。
+        passwordHint: 10到128个字符，不能与 ID 相同。
+      send: 发送
+      failed: 操作失败，请重试。
+      backToSignIn: 前往登录
+      signIn:
+        submit: 登录
+        refused: ID 或密码错误，或暂时无法登录。
+        signUp: 注册新账户
+        forgotPassword: 忘记密码
+        forgotId: 忘记 ID
+        or: 也可以使用 GitHub 账户登录。
+      signUp:
+        title: 注册
+        description: 创建使用 ID 和密码登录的 Typle 账户。
+        submit: 注册
+        submitting: 正在注册…
+        done: 已注册并登录。
+        mailSent: 确认邮件已发送至 %{email}。请打开邮件中的链接确认地址。
+        mailNotSent: 无法发送确认邮件。可以在设置的“账户”中重新发送。
+        continue: 继续
+        failed: 无法注册，请重试。
+        signInFailed: 已注册，但无法登录。请在登录页面登录。
+        haveAccount: 已有账户？在此登录
+      verifyEmail:
+        title: 确认电子邮件地址
+        description: 使用邮件中的链接确认地址。
+        verifying: 正在确认…
+        done: 已确认电子邮件地址。
+        failed: 无法确认，请重试。
+        home: 返回主页
+      forgotPassword:
+        title: 忘记密码
+        description: 请输入 ID。如果有已确认的电子邮件地址，我们会发送重设密码的链接。
+        sent: 如果该 ID 存在且电子邮件地址已确认，我们已发送重设链接。链接30分钟内有效。
+      resetPassword:
+        title: 重设密码
+        description: 请设置新密码。设置后，所有设备都会退出登录，并在此页面重新登录。
+        submit: 设置
+        again: 重新发送重设链接
+        signInFailed: 已设置密码，但无法登录。请在登录页面登录。
+      forgotId:
+        title: 忘记 ID
+        description: 请输入注册时的电子邮件地址。如果有账户已确认该地址，我们会通过邮件发送 ID。
+        sent: 如果有账户已确认该地址，我们已通过邮件发送 ID。
+      settings:
+        heading: 账户
+        description: 此账户使用 ID 和密码登录。
+        verified: 已确认
+        unverified: 未确认
+        resend: 重新发送确认邮件
+        resent: 已发送确认邮件。
+        alreadyVerified: 此地址已确认。
+        mailNotSent: 无法发送确认邮件，请稍后重试。
+        loadFailed: 无法读取账户信息。
+        changePassword: 更改密码
+        changePasswordDescription: 需要当前密码。更改后，其他设备将退出登录。
+        change: 更改密码
+        changed: 已更改密码。其他设备已退出登录。
+        failed: 无法更改密码，请重试。
+        signInAgain: 已更改密码，但此设备需要重新登录。请使用新密码登录。
+    common:
+      loading: 加载中…
+      close: 关闭
+      notifications: 通知
+      closeNotification: 关闭通知
+      delete:
+        label: 删除
+        title: 确定要删除吗？
+        description: "%{description} 此操作无法撤销。"
+        confirm: 删除
+        deleting: 正在删除…
+        failed: 无法删除。请重试。
+      storage:
+        guest: 保存在此浏览器
+        account: 保存到账号
+        guestDetail: 由于未登录，数据保存在此浏览器的 LocalStorage 中。
+        accountDetail: 保存到当前登录的账号。
+      form:
+        cancel: 取消
+        saving: 正在保存…
+        save: 保存更改
+        add: 添加
+        saveFailed: 无法保存。请重试。
+      packList: "%{pack} › %{list}"
+    dashboard:
+      title: 练习概况
+      sourceGuest: 根据保存在此浏览器中的记录统计。
+      sourceAccount: 根据保存在账号中的记录统计。
+      start: 开始
+      practice: 开始练习
+      create: 创建单词列表
+      week:
+        title: 本周总结
+        description: "%{start}至%{end}的记录。增减是与上周同一星期几、同一时刻之前的记录相比。"
+        count: 本周练习
+        countUnit: 次
+        streak: 连续练习
+        streakUnit: 天
+        accuracy: 平均正确率（最近 %{count} 次）
+        time: 本周练习时间
+        practisedToday: 今天已练习
+        streakNext: 今天练习即为第 %{day} 天
+        noComparison: 还没有可比较的记录
+        noAccuracy: 没有包含正确率的记录
+        times: "%{count} 次"
+        sameAsLastWeek: 与上周相同
+        moreThanLastWeek: 比上周多 %{value}
+        lessThanLastWeek: 比上周少 %{value}
+      change: {}
+      next:
+        title: 接下来练习的列表
+        description: 最多显示 3 个列表：尚未练习的、%{days} 天以上未练习的，以及最近正确率低于 %{accuracy}% 的列表。
+        allPractised: 所有列表最近都练习过了。
+        words: "%{count} 个单词"
+        lastPracticed: 最近练习 %{day}
+        noRecords: 无记录
+        new: 还没有练习
+        stale: 已 %{days} 天未练习
+        lowAccuracy: 最近 %{count} 次的正确率 %{accuracy}%
+        practiceList: 练习 %{name}
+        practice: 开始练习
+      trends:
+        title: 各列表的趋势
+        description: 显示最近 20 次以内的每个单词秒数（越低越快）和正确率。由于用时按单词数平均，编辑列表前后的记录也能相互比较。
+        summary: "%{count} 次 · 最近练习 %{day}"
+        needTwo: 记录达到 2 次以上后显示趋势。
+        practiceList: 练习 %{name}
+        practice: 开始练习
+        speed: 每个单词的秒数
+        accuracy: 正确率
+        seconds: "%{value} 秒"
+        percent: "%{value}%"
+        latest: 最新 <number>%{value}</number>
+        noChart: 包含此项的记录达到 2 次以上后显示。
+        best: 最佳记录：正确率 %{accuracy}・%{time} 秒（%{day}）
+        notRecorded: 未记录
+      chart:
+        label: "%{label}（用左右方向键查看每次的数值）"
+        date: 日期时间
+        value: 数值
+      continue:
+        label: 继续练习
+        meta: "%{count} 个词 · 上次练习 %{day}"
+        best: 最佳：准确率 %{accuracy}，%{time} 秒
+        notRecorded: 未记录
+        samples: 开头的单词
+        more: 另有 %{count} 个词
+        practice: 练习
+        practiceList: 练习 %{name}
+        other: 选择其他列表
+      weak:
+        title: 薄弱单词
+        description: 按列表显示最近 %{runs} 次练习（不含 Handwriting）中打错的词，打错次数多的在前。只练薄弱单词时没有打错的词，会从这里移除。
+        none: 还没有薄弱单词。练习中打错的词会显示在这里。
+        wordsOf: "%{name} 的薄弱单词"
+        runs: "%{count} 次"
+        more: 另有 %{count} 个词
+        practice: 只练习 %{count} 个薄弱单词
+        practiceList: 只练习 %{name} 的 %{count} 个薄弱单词
+    devices:
+      title: 设备
+      description: 登记练习时使用的电脑和键盘。在“<link>开始练习</link>”中选择后，记录中会保留练习时使用的设备。
+      usage: 练习 %{count} 次 · 最近 %{day}
+      neverUsed: 尚未练习
+      listHeading: 已登记的设备
+      count: "%{count} 台"
+      add: 添加设备
+      limit: 最多可以登记 %{max} 台设备。删除不再使用的设备后即可添加。
+      inUse: 使用中
+      inUseDetail: 此浏览器练习时使用的设备
+      defaultDetail: 无需登记即可使用的设备。不能重命名或删除。
+      edit: 编辑
+      editLabel: 编辑 %{name}
+      delete: 删除
+      deleteLabel: 删除 %{name}
+      added: 已添加设备“%{name}”。
+      saved: 已保存设备“%{name}”。
+      deleted: 已删除设备“%{name}”。
+      deleteTitle: 要删除设备“%{name}”吗？
+      deleteRemoval: 将从列表中删除“%{name}”。
+      deleteRecords: 在此设备上练习的 %{count} 次记录不会被删除，并保留练习时的设备名称。
+      deleteNoRecords: 没有在此设备上练习的记录。
+      empty:
+        title: 尚未登记任何设备
+        description: 在“开始练习”中选择已登记的设备后，记录中会保留练习时使用的设备，便于按设备比较记录。
+        example: 例：MacBook Air（JIS）、台式机＋HHKB（US）
+      current:
+        heading: 此浏览器练习时使用的设备
+        change: 更改
+        changeLabel: 更改此浏览器练习时使用的设备（当前：%{device}）
+        practice: 开始练习
+        noteSelected: 在“开始练习”中练习时，记录中会保留此设备。每个浏览器分别记住选择，因此可以为每台电脑分别选择。
+        noteUnselected: 未选择时，练习记录中不保留设备。每个浏览器分别记住选择，因此可以为每台电脑分别选择。
+      dialog:
+        addTitle: 添加设备
+        editTitle: 编辑设备
+        addDescription: 登记练习时使用的设备。
+        editDescription: 更改显示名称和键盘布局・备注。
+        name: 设备名称
+        namePlaceholder: 例：MacBook Air
+        nameHelp: 显示在练习页面的设备菜单和练习记录中。
+        layout: 键盘布局・备注
+        optional: "（可选）"
+        layoutPlaceholder: 例：JIS、US
+        layoutHelp: 写下键盘布局或设置的区别，比较记录时更容易分辨。
+        renameNote: 即使更改名称，以往的练习记录（%{count} 次）仍保留练习时的名称。
+        use: 设为此浏览器练习时使用的设备
+        useHelp: 在“开始练习”中练习时，记录中会保留此设备。
+      menu:
+        label: 使用设备：%{device}
+        locked: 练习中无法更改设备
+        change: 更改使用设备
+        unselected: 设备：未选择
+        heading: 使用设备（仅可在开始练习前更改）
+        manage: 管理设备
+      choice:
+        notSelected: 未选择
+        none: 未选择（不记录设备）
+    errors:
+      workspaceRequestFailed: 无法获取或保存数据。
+      invalidServerData: 服务器返回的数据无效。
+      loginRequired: 请登录。
+      databaseUnavailable: 无法连接到数据库。请稍后重试。
+      authUnavailable: 登录功能暂时不可用。请稍后重试。
+      forbiddenRequest: 不允许的请求。
+      emptyRequest: 没有数据。
+      workspaceTooLarge: 保存的数据不能超过 1 MB。
+      loginAccountChanged: 登录账号已更改。请重新打开页面。
+      invalidWorkspace: 请检查保存数据的格式和大小。
+      conflict: 数据已在其他页面更新。请加载最新数据后重试。
+      workspaceSaveFailed: 无法保存。已保留输入内容，可以重试。
+      guestReadFailed: 无法读取浏览器中保存的数据。原始数据未被更改。
+      storageChanged: 保存位置已更改。请重新打开页面。
+      guestQuotaExceeded: 超出了可保存的数据量。请整理单词列表或记录。
+      guestWriteFailed: 无法保存到浏览器。请检查可用空间和存储设置后重试。
+      accountChangedReopen: 登录状态已更改。请重新打开页面。
+      accountChanged: 登录状态已更改。
+      loadFailed: 加载失败。
+      saveFailed: 保存失败。请重试。
+      listNameRequired: 请输入单词列表名称。
+      listNameDuplicate: 已存在同名的单词列表。请使用其他名称。
+      wordsRequired: 请至少添加一个单词。
+      wordFieldsRequired: 请填写所有单词的显示内容和输入内容。
+      savedDataUnreadable: 无法读取保存数据的格式。
+      savedDataCorrupted: 保存的数据已损坏。原始数据未被更改。
+      invalidWritingLanguage: 手写练习的语言无效。
+      listDeleted: 此单词列表已被删除。请重新打开页面。
+      listLimit: 自建的单词列表最多可以保存 %{max} 个（已关注的包中的列表不计入）。
+      followLimit: 最多可以关注 %{max} 个官方包。
+      importFileType: 请选择 CSV 文件。
+      importFileEncoding: 请选择以 UTF-8 格式保存的文件。
+      importTooLarge: 文件大小不能超过 1 MiB。
+      importQuote: 第 %{line} 行的引号格式不正确。
+      importHeaderRequired: 标题行需要包含 input 和 display。annotation 可以省略。
+      importHeaderDuplicate: 标题行中有重复的列名。
+      importHeaderUnknown: 列名请使用 input、display、annotation 和 input_type。
+      importNoRows: 请至少添加一行单词。
+      importTooManyRows: 每个列表最多 1,000 个单词。
+      importColumnCount: 第 %{line} 行的列数与标题行不一致。
+      importFieldRequired: 第 %{line} 行的 input 和 display 为必填项。
+      importFieldTooLong: 第 %{line} 行超出了字数上限（input、display：1,000 字，annotation：2,000 字）。
+      deviceDataInvalid: 请检查设备数据的格式。
+      deviceNameRequired: 请输入设备名称。
+      deviceNameTooLong: 设备名称不能超过 %{max} 个字符。
+      deviceLayoutTooLong: 键盘布局・备注不能超过 %{max} 个字符。
+      deviceDeleted: 此设备已在其他页面被删除。
+      deviceNameDuplicate: "“%{name}”已登记。请使用其他名称。"
+      deviceLimit: 最多可以登记 %{max} 台设备。请先删除不再使用的设备再添加。
+      practiceIncomplete: 练习尚未完成。
+      recordListDeleted: 单词列表已被删除，无法保存记录。
+      invalidRecord: 练习记录无效，无法保存。
+      recordLimit: 此单词列表的练习记录已达到上限。
+      deviceNotFound: 练习所用的设备已被删除，无法保存记录。
+      packNameRequired: 请输入包名称。
+      packNameDuplicate: 已存在同名的包。
+      packListsRequired: 请至少选择一个要放入包的单词列表。
+      packDeleted: 此包已被删除。
+      packFollowed: 官方包无法编辑。复制后即可作为自己的包进行编辑。
+      levelsConflict: 同一个包中已有难度（没有难度的列表为名称）相同的列表。
+      tooManyLevels: 一个列表只能有一个难度。
+      packFileUnreadable: 无法将此文件作为单词包读取。
+      invalidPackFile: 此文件中有超出可保存上限的项目。
+      sharedPackNotFound: 此共享已结束。
+      invalidPage: 页码无效。
+      importInputTypeInvalid: 第 %{line} 行的 input_type 必须是 command、code 或 word。
+      invalidRequest: 请求内容无效。
+      loginIdFormat: ID 请使用3到32个半角字母、数字、“_”或“-”。
+      passwordLength: 密码请使用10到128个字符。
+      passwordSameAsId: 密码不能与 ID 相同。
+      emailFormat: 电子邮件地址的格式不正确。
+      loginIdTaken: 此 ID 已被使用，请换一个。
+      tooManyRequests: 请求次数过多，请稍后再试。
+      invalidToken: 此链接无法使用，可能已过期或已被使用。
+      notPasswordAccount: 仅适用于使用 ID 和密码登录的账号。
+      wrongPassword: 当前密码不正确。
+    format:
+      today: 今天
+      yesterday: 昨天
+      dateWithWeekday: "%{date}（%{weekday}）"
+      units:
+        hours: 小时
+        minutes: 分
+        seconds: 秒
+      time:
+        one: "%{value}%{unit}"
+        two: "%{first}%{firstUnit}%{second}%{secondUnit}"
+      defaultDevice: 默认
+      noDevice: 未记录
+      noDeviceRecorded: 未记录设备
+      deviceWithLayout: "%{name}（%{layout}）"
+    globalError:
+      title: 无法显示页面
+      description: 请稍后重试。
+      reload: 重新加载
+    guide:
+      meta:
+        title: 使用方法 | Typle
+        description: 介绍 Typle 的练习入门、单词列表的创建方法、记录的查看方式、数据的保存位置以及键盘操作。
+      title: 使用方法
+      intro: 从如何开始练习，到单词列表的创建、记录的查看和数据的保存位置，这里都有说明。无需登录即可使用全部功能。
+      contentsLabel: 本页内容
+      contents:
+        practice: 开始练习
+        lists: 创建单词列表
+        records: 查看结果和记录
+        devices: 登记设备
+        storage: 保存位置与数据
+        shortcuts: 键盘操作
+      start:
+        title: 三步上手
+        follow:
+          title: 关注官方包
+          text: 关注 Go、Kotlin 等官方包后，它们会出现在你的包列表中，可以马上开始练习。
+          action: 官方包
+        create:
+          title: 创建自己的包
+          text: 选择已有的单词列表，整理成包。单词列表可以单独创建，也可以从 CSV 文件导入。
+          action: 创建包
+        review:
+          title: 回顾记录
+          text: 输入到最后一个单词后，记录会自动保存，可以查看个人最佳和用时的变化。
+          action: 最佳记录
+      legend:
+        typed: 输入：<mono>%{typed}</mono>
+        swatch: 字
+        done:
+          label: 已输入
+          note: "（绿色）"
+        current:
+          label: 下一个要输入的字符
+          note: "（下划线）"
+        pending:
+          label: 尚未输入的字符
+          note: "（白色，浅色主题下为黑色）"
+        error:
+          label: 输错的字符
+          note: "（红色）"
+      practice:
+        lead: 在<play>开始练习</play>中选择单词列表，然后输入显示的单词。
+        colors:
+          title: 输入的颜色
+          text: 输对的字符会变成绿色，并进入下一个字符。输错字符时，要输入的字符会变成红色，在输入正确字符之前不会前进。没有输入框：单词中的下划线表示当前输入位置。对于显示的单词和要输入的字符不同的单词（例如输入“beijing”来打出“北京”），要输入的字符会显示在单词下方，并对其标色。
+        flow:
+          title: 练习流程
+          p1: 所有字符都一致后进入下一个单词，完成最后一个单词即结束练习。
+          p2: 从第一次输入到完成全程计时，练习中会显示已用时间、速度（每分钟正确输入的字符数）、正确率和错误数。
+          p3: 使用输入法（IME）输入的中文、日文等，以上屏后的文字为准进行判定，正在转换中的文字不判定。不能粘贴或拖放输入。
+          p4: 进度条下方会显示接下来的 3 个单词，点击“显示全部单词”可查看整个列表。
+          p5: 点击顶部的眼睛按钮，可以显示或隐藏练习中的数据（已用时间、速度、正确率和错误数）。所选状态会保存在此浏览器中。隐藏后计时和记录保存不受影响，结果画面仍会显示数值。
+          p6: 打开顶部的“凭记忆输入”后，会隐藏答案进行练习。备注中的答案部分会被遮住，答案按未输入的字符数显示为“＿”。不显示下一个单词、全部单词和要输入的字符提示。点击“查看答案”可以显示答案，剩余的字符计为错误。这种练习的记录标为“回忆”，与普通记录分开比较。所选状态会保存在此浏览器中，练习途中无法切换。
+        choose:
+          title: 选择包、列表和设备
+          p1: 点击顶部的“包 › 列表”，先选择包，再切换要练习的列表。包按最近练习的顺序排列，可按包名、分类、标签、列表名或单词搜索。只有一个列表的包，选择后会直接选中该列表。有多个列表的包中，带难度的列表用难度按钮选择，没有难度的列表用名称按钮选择。也可以从右侧（手机上为下方）的列表中选择。
+          p2: 练习中途选择其他列表时，会先确认是否中断。未完成的练习不会被记录。
+          p3: 点击“重来”或按 <keys>Esc</keys>，可从头重新练习同一个列表。
+          p4: 请在输入第一个字符之前，通过顶部的“设备”选择练习所用的设备（<devicesSection>登记设备</devicesSection>）。
+        writing:
+          title: Typle Handwriting（手写）
+          p1: 在单词列表的编辑页面打开“用于手写练习（Typle Handwriting）”并选择语言，就可以手写练习这个列表。在练习页面选择该列表时，会出现“打字／Handwriting”切换。
+          p2: 看着显示的单词，用系统的手写输入（Windows 手写面板、Android 平板的手写键盘、输入法的手写等）写进输入框。网页版没有绘图画布。
+          p3: 输入与单词一致就进入下一个。不一致时按“判定”（<keys>Enter</keys>）会记一次失误，“跳过”也记一次失误并进入下一个。正在转换的文字不会判定。
+          p4: Handwriting 的记录与普通记录、回忆记录分开比较，在最佳记录页面切换“普通／回忆／Handwriting”查看。首页的本周次数、练习时间和连续天数会计入，但正确率、趋势和下一个练习的列表只比较打字记录。Handwriting 不能与“凭记忆输入”同时使用。练习途中切换时会先确认。智能手机将在今后支持。
+      lists:
+        lead: 在<create>创建包</create>中创建新包，在<edit>单词包</edit>中编辑已保存的包和列表。
+        packs:
+          title: 包与列表
+          p1: 单词列表按“包”整理管理。单词列表可以单独创建；创建包时，需要输入包的名称并选择要放入的单词列表。
+          p2: 通过包的“…”菜单中的“添加列表”，可以向已保存的包添加列表。
+          p3: 通过包的“…”菜单中的“编辑包”，可以更改名称、说明、类别和标签，也可以调整其中列表的顺序。
+          p4: 在列表的编辑界面中，可以重新选择所属的包（即移到其他包）。还可以填写一个难度。
+        files:
+          title: 包的复制、文件与官方包
+          p1: 通过包的“…”菜单中的“复制”，可以连同列表一起复制包。名称为“名称（副本）”，并放在原包的后面。不复制练习记录。
+          p2: 通过包的“…”菜单中的“导出”，可以将包保存为“包名称.typle-pack.json”文件。文件包含名称、说明、类别、标签、列表和单词，不含练习记录。
+          p3: 用“从文件导入”选择该文件，即可作为新包导入（在还没有任何包时也可使用）。文件最大 1 MiB，无法读取的文件不能导入。已有同名包时，名称会变为“名称（2）”。
+          p4: 在单词包的“官方包”中点击“关注”，该包就会加入你的包列表。关注的包会显示“官方”，并随官方版本自动更新。关注的包不能编辑；想修改时，请用“复制”把它变成自己的包。“取消关注”会把该包连同练习记录一起从列表中移除。
+        interests:
+          title: 兴趣
+          p1: 在<interests>兴趣</interests>中选择“语言”“编程”标签。可以选多个，按下即保存。一开始所有标签都已选中，所有官方包都符合兴趣。
+          p2: 选择上层标签后，下面会展开“中文”“俄语”“韩语”或“Go”“Kotlin”等标签。取消上层标签时，下面的选择也会一并取消。
+          p3: 选择兴趣后，单词包中的“官方包”会分为“符合兴趣的词包”和“其他词包”。若上层标签下没有选择任何标签，则该领域的所有词包都算符合；若有选择，则带有这些标签的词包算符合。兴趣页面的标签下方也会列出符合的官方包，显示包名、包含的单词列表、单词数和开关。打开开关并点击底部的“添加”即可关注；关闭已关注包的开关并点击“添加”即可取消关注（练习记录也会删除）。
+          p4: 登录时兴趣保存到账号，未登录时保存到此浏览器。
+        share:
+          title: 把包交给别人
+          p1: 要把包交给别人，可通过包的“…”菜单中的“导出”保存为“包名称.typle-pack.json”文件，或通过“导出 CSV”将单个列表保存为 CSV 文件，然后发送文件。不含练习记录。
+          p2: 对方可以用“从文件导入”导入包文件，编辑列表时用“导入 CSV”导入 CSV 文件。
+        input:
+          title: 输入单词
+          p1: 输入列表名称，并为每个单词填写“显示的单词”和“输入的文字”。备注可选填。
+          p2: 如果“输入的文字”留空，则使用与显示的单词相同的字符。
+          p3: 可以通过拖动、“…”菜单或 <keys>Alt+↑↓</keys> 调整单词顺序。按 <keys>Enter</keys> 移到下一个单词，在最后一个单词上按则新增一行。
+          p4: 点击“保存”或按 <keys>Ctrl+Enter</keys>（Mac 上为 <keys>⌘+Enter</keys>）即可保存。
+        cannotSave:
+          title: 无法保存时
+          p1: 含有空行的列表、没有单词的列表以及与同一个包中其他列表同名的列表无法保存。
+          p2: 每个列表最多可包含 1,000 个单词，最多可保存 150 个列表。
+          p3: 有未保存的更改时，取消或使用浏览器的“返回”之前会先确认。
+          p4: 更改单词数后，之前的记录将不再计入最佳记录的排名（记录本身会保留。参见<wordCount>单词数变化时</wordCount>）。
+        manage:
+          title: 管理列表
+          p1: 在<edit>单词包</edit>中，可以按包名称、列表名称或单词搜索，并更改排列顺序。
+          p2: 通过包的“…”菜单，可以进行练习、编辑包、添加列表和删除。删除包时，其中的列表和练习记录也会一并删除。每个列表所在的行也有“…”菜单，可以查看最佳记录和练习记录，以及进行 CSV 导出、复制和删除。关注的官方包不能编辑，用“取消关注”代替删除。
+          p3: 复制时只复制单词，不复制练习记录。复制包时也是如此。
+        csv:
+          title: CSV 文件
+          p1: 编辑列表时，通过“导入 CSV”选择文件，确认内容后，可以选择追加到当前单词的末尾或替换现有单词。
+          p2: 第一行为列名。input（要输入的字符）和 display（显示的单词）为必填，annotation（备注）可省略。可以导入以 UTF-8 保存、不超过 1 MiB 且不超过 1,000 个单词的文件。
+          p3: "“导出 CSV”会将输入、显示和备注写入 UTF-8 格式的 CSV 文件（不含练习记录）。导出的文件可以直接重新导入。"
+          exampleLabel: CSV 文件示例
+          example: |-
+            input,display,annotation
+            beijing,北京,中国的首都
+            shanghai,上海,
+      records:
+        lead: 完成练习后，记录会自动保存。
+        complete:
+          title: 完成画面
+          p1: 显示用时、正确率和错误字符数、速度、打错的词数以及设备。下方列出打错的词和第一个出错的字符。点击“只练习打错的词”可以只复习这些词（复习不记录）。
+          p2: 正确率是输入的字符中正确字符所占的比例。删除操作不计入，修改后重新输入的字符会计入。
+          p3: 刷新个人最佳时，会显示徽章以及与之前最佳的差距。
+          p4: 点击“再来一次”（<keys>Enter</keys>）可立即再次练习同一个列表。保存失败时，请点击“重新保存记录”。
+        history:
+          title: 练习记录
+          p1: 在<records>练习记录</records>中，练习历史按日期从新到旧显示，并可按列表或设备筛选。筛选条件会保留在 URL 中，因此可以通过书签或链接打开相同的视图。
+          p2: 按列表筛选时，会显示该列表的练习次数和最佳记录，并可通过“开始练习”立即练习。选择包后，列表的选项仅限该包中的列表。包含 2 个以上列表的包，其记录会显示为“包名 › 列表名”。
+          p3: 每个列表的最佳记录会带有“最佳”标记。删除最佳记录时，确认画面会显示下一个将成为最佳的记录。
+        best:
+          title: 最佳记录
+          p1: 在<rankings>最佳记录</rankings>中选择列表后，会显示个人最佳、最近 5 次的平均值、用时变化以及排名靠前的记录。最佳记录画面会按包归类列表。每个包会显示练习次数、已练习的列表数（已练习 n/m）、最后练习的时间，以及最近 7 天内刷新最佳的列表数。排序以包为单位，包内的列表按难度顺序排列。
+          p2: 排名可在“正确率优先”（正确率从高到低，相同时按速度从快到慢）和“速度优先”之间切换，并可按设备筛选。所选列表和条件会保留在 URL 中。
+          p3: 练习画面也会显示所选列表的前 5 条记录，并突出显示本次的记录。
+        wordCount:
+          title: 单词数变化时
+          p1: 添加或删除列表中的单词后，只有以当前单词数练习的记录才会参与排名。练习画面和练习记录中的最佳记录也采用相同的标准。
+          p2: 单词数不同的记录，可以通过最佳记录中的“包含并显示”加入排名。如果还没有当前单词数的记录，则按单词数不同的记录进行排名。
+        home:
+          title: 首页
+          text: 有 1 条以上记录后，<home>首页</home>会显示本周的练习次数、连续练习天数、平均正确率和练习时间，接下来适合练习的列表，以及各列表每个单词所需秒数和正确率的变化。日期按设备的时间划分，每周从星期一开始。
+      devices:
+        lead: 在<devices>设备</devices>中登记练习用的电脑或键盘后，记录中会保留是在哪台设备上练习的。
+        p1: 在练习画面的“设备”中选择的设备会记在此浏览器中，下次练习时继续使用。选择之前使用“默认”。
+        p2: 可以按设备筛选练习记录和最佳记录。
+        p3: 即使更改设备名称，之前的记录仍会保留练习时的名称。最多可以登记 100 台设备。
+      storage:
+        lead: 登录是可选的。数据的保存位置取决于是否已登录。
+        browser:
+          title: 保存在此浏览器
+          when: 未登录时
+          p1: 可以使用全部功能。
+          p2: 数据保存在此浏览器的 LocalStorage 中，不会与其他设备或浏览器同步。
+        account:
+          title: 保存到账号
+          when: 登录后（GitHub 或 ID 与密码）
+          p1: 数据保存在账号专用的服务器上，只要登录，在任何设备上都能使用相同的数据。
+          p2: 保存需要联网。
+        warning:
+          title: 数据会丢失的情况
+          p1: 保存在此浏览器中的数据，会在清除浏览器的网站数据时丢失。重要的列表可以通过“导出 CSV”进行备份。
+          p2: 删除列表时，该列表的练习记录也会一并删除。
+        notes:
+          p1: 两个保存位置的数据是分开保存的，登录后也不会自动转移。
+          p2: 旧版本（v0.1.x）的数据，可以通过<home>首页</home>的迁移按钮添加到当前的保存位置。
+          p3: 如果因在多个窗口中同时修改而无法保存，请先加载最新数据，然后再操作一次。
+      shortcuts:
+        lead: 无需鼠标即可操作的按键一览。
+        anyKey: 任意键
+        screens:
+          practice: 开始练习
+          complete: 练习完成画面
+          editor: 创建列表・编辑单词列表
+        actions:
+          restart: 从头重新开始
+          resume: 点击输入框外部后，返回输入
+          again: 再练一次
+          next: 移到下一个单词（在最后一个单词上则新增一行）
+          move: 将单词上移或下移一位
+          save: 保存（Mac 上为 ⌘ + Enter）
+      cta:
+        text: 准备好了，就马上开始练习吧。
+        action: 开始练习
+    home:
+      welcome:
+        title: 用自己的单词，练习打字。
+        text: 可以先用官方单词包开始练习，也可以创建一个想要记住的单词列表。
+        lists: 单词列表 %{count} 个
+        practices: 已完成练习 %{count} 次
+        navLabel: 开始使用
+        play: 开始练习
+        create: 创建单词列表
+        records: 查看记录
+      storage: 无需登录即可使用全部练习和编辑功能。单词列表、练习记录和设备会保存在此浏览器中。登录（GitHub 或 ID 与密码）后，将切换到另一个保存位置——账号，并可在设备之间同步。浏览器中的数据不会自动迁移。
+      storageAccount: 你已登录，单词列表、练习记录和设备会保存到账户中，并与登录同一账户的其他设备和浏览器同步。它们与未登录时保存在此浏览器中的数据分开保存。
+      links: "<guide>使用方法</guide> ／ <about>关于 Typle</about>"
+    input:
+      title: 输入
+      metaTitle: 输入 | Typle
+      description: 练习时输入文字的相关设置。
+      note: 此设置保存在此浏览器中。
+      unsaved: 无法保存设置，仅在此页面打开期间有效。
+      simpleSpecial:
+        heading: 特殊字符简易输入
+        description: 对于捷克语、西班牙语等中带有重音符、波浪符等符号的字母（如 í、ó、ñ、č），可以直接输入不带符号的字母（i、o、n、c）。直接输入带符号的字母同样算正确。 俄语西里尔字母也支持拉丁字母输入，例如 привет → privet、школа → shkola、я → ya。直接输入西里尔字母同样算正确。
+        label: 使用特殊字符简易输入
+        hint: 开启后，可以输入 á → a、č → c、ш → sh、я → ya。
+      simpleTable:
+        heading: 简易输入对照表
+        description: 开启特殊字符简易输入后，可以代替各个字母输入的按键。
+        latin: 带符号的拉丁字母
+        other: 其他符号
+        cyrillic: 西里尔字母（俄语）
+        letter: 字母
+        key: 输入的按键
+        capitals: 大写字母也同样适用（Á → A，Ш → Sh 或 SH）。
+      ignoreCase:
+        heading: 不区分大小写
+        description: 将 A 和 a 这样的大写和小写字母视为同一个字母。无论是否按 Shift 键输入都算正确。
+        label: 不区分大小写
+        hint: 开启后，A、É 等大写字母输入 a、é 也算正确（反之亦然）。
+    interests:
+      title: 兴趣
+      description: 可以关注符合兴趣的官方包。官方包列表中也会优先显示它们。
+      parents:
+        language: 语言
+        programming: 编程
+      childrenLabel: "%{parent}：细分"
+      children:
+        language:
+          zh: 中文
+          ru: 俄语
+          ko: 韩语
+          en: 英语
+          es: 西班牙语
+          fr: 法语
+          de: 德语
+          cs: 捷克语
+        programming:
+          go: Go
+          kotlin: Kotlin
+          java: Java
+          typescript: TypeScript
+          php: PHP
+          ruby: Ruby
+          sql: SQL
+          linux: Linux
+          vim: Vim
+          test: 测试
+          node: Node.js
+          shell: Shell
+          cloud: 云
+      packs:
+        title: 符合兴趣的官方包
+        description: 点击“添加”会关注已打开开关的包。关闭已关注包的开关，会取消关注。勾选的包可以用下方的按钮一次性关注或取消关注。
+        pick: 选择兴趣后，符合的官方包会显示在这里。
+        none: 没有符合所选兴趣的官方包。
+        lists: 包含的单词列表
+        separator: "、"
+        switch: 关注 %{name}
+        select: 选择 %{name}
+        selectAll: 全选
+        selected: 已选择 %{count} 个
+        followSelected: 关注所选
+        unfollowSelected: 取消关注所选
+        add: 添加
+        saving: 保存中…
+        confirmTitle: 包含取消关注
+        confirmDescription: 将取消关注%{names}。这些包的练习记录也会删除。
+    landing:
+      meta:
+        title: Typle | 打字记住你想学的词
+        description: 一款免费的打字应用，可以边打边记编程命令和语法，也可以记外语单词。使用 %{total} 个官方列表或自己的单词列表练习，无需登录。
+      hero:
+        eyebrow: 免费，无需登录
+        title: 打字记住你想学的词。
+        lead: Typle 是一款可以用自己的单词列表或官方单词包练习的打字应用。无论是编程命令和语法，还是外语单词，都能边打边记。
+        play: 无需登录，开始练习
+        catalog: 查看官方单词包
+        home: 前往首页
+      packs:
+        title: 官方单词包
+        lead: 关注 %{total} 个官方列表中的任意一个，即可马上开始练习。
+        programming:
+          title: 编程
+          count: "%{count} 个列表"
+          text: Go、Java、Kotlin、TypeScript 等语言的语法，Linux、Vim、AWS CLI 等工具的命令，以及 PostgreSQL 的错误代码。
+        languages:
+          title: 语言
+          count: "%{count} 个列表"
+          text: 中文（HSK 五级、六级）、韩语、英语、法语、德语、西班牙语、俄语和捷克语的单词与句型。中文和韩语还可以用手写练习。
+      features:
+        title: 可以做什么
+        own:
+          title: 用自己的单词列表练习
+          text: 添加想记住的单词并进行练习。显示的单词和要输入的字符可以不同，也可以从 CSV 文件导入。
+        recall:
+          title: 凭记忆打字
+          text: 隐藏答案、以备注作为提示的模式，可以检验自己是否真的记住了每个单词。
+        records:
+          title: 用记录确认进步
+          text: 每次都会记录速度、正确率和错误数，可以通过个人最佳和变化趋势回顾自己的进步。
+      storage:
+        title: 数据保存在哪里
+        text: 无需登录即可使用全部功能。数据保存在此浏览器中，登录（GitHub 或 ID 与密码）后可以在多台设备之间同步。
+        more: "<guide>使用方法</guide> ／ <about>关于 Typle</about>"
+      try:
+        badge: 在这里试打
+        progress: "%{name} · %{current} / %{total} 个词"
+        label: 输入
+        hint: 输入上面的词即可进入下一个。在这里输入的内容不会被记录。
+        done: 已输入 %{count} 个词。继续用这个单词包练习，就会留下记录。
+        continue: 继续用这个单词包练习
+        starting: 正在准备…
+    mail:
+      verify:
+        subject: Typle：确认电子邮件地址
+        body: |-
+          感谢您注册 Typle。
+
+          请打开以下链接确认您的电子邮件地址（24小时内有效）。
+
+          %{link}
+
+          如果您没有进行此操作，请直接删除这封邮件。
+      reset:
+        subject: Typle：重置密码
+        body: |-
+          我们收到了重置密码的请求。
+
+          请打开以下链接设置新密码（30分钟内有效，只能使用一次）。
+
+          %{link}
+
+          如果您没有进行此操作，请直接删除这封邮件。您的密码不会改变。
+      loginIds:
+        subject: Typle：您的登录 ID
+        body: |-
+          使用此电子邮件地址注册的登录 ID 如下：
+
+          %{ids}
+
+          如果您没有进行此操作，请直接删除这封邮件。
+    metadata:
+      title: Typle | 用自己的词汇练习打字
+      description: 一款可以用自己的单词列表练习的打字应用。添加喜欢的词汇，练习打字，并回顾最佳记录。
+      imageAlt: Typle — 用自己的词汇练习打字。用单词列表练习与记录
+      sharedTitle: 共享的包 | Typle
+      playDescription: 选择官方单词包或自己的单词列表练习打字。速度、正确率和错误数会实时显示，每次练习都会自动保存。无需登录。
+    nav:
+      mainNavigation: 主导航
+      help: 帮助
+      skipToContent: 跳到正文
+      topBar: 顶栏
+      openMenu: 打开菜单
+      closeMenu: 关闭菜单
+      menu: 菜单
+      groups:
+        practice: 练习
+        wordLists: 单词列表
+        settings: 设置
+      links:
+        home: 首页
+        play: 开始练习
+        records: 练习记录
+        rankings: 最佳记录
+        edit: 单词包
+        words: 单词一览
+        create: 创建包
+        general: 通用
+        input: 输入
+        interests: 兴趣
+        devices: 设备
+        guide: 使用方法
+        about: 关于 Typle
+        github: GitHub
+      storage:
+        label: 保存位置：
+        account: 保存到账号
+        browser: 保存在此浏览器
+        accountDetail: 保存到账号，并在登录的设备之间同步。
+        browserDetail: 由于未登录，数据只保存在此浏览器中。
+      theme:
+        label: 深色模式
+        toLight: 切换到浅色模式
+        toDark: 切换到深色模式
+        saveFailed: 无法保存设置，仅在此页面内切换。
+    officialPack:
+      title: "%{name}打字练习"
+      stats: "%{lists} 个列表 · %{words} 项"
+      practice: 用这个单词包练习
+      preparing: 正在准备…
+      full: 最多可以关注 %{max} 个官方单词包。请先取消关注不再使用的单词包，然后再按一次。
+      catalog: 查看其他官方单词包
+      free: 免费，无需登录。按下后会关注这个单词包并立即开始练习。
+      wordsHeading: 包含的内容
+      input: 要输入的内容
+      note: 含义与说明
+      details: 查看详情
+    practice:
+      empty: 还没有单词包。请<catalog>关注官方单词包</catalog>，或<create>创建新的单词包</create>。
+      starter:
+        title: 想从哪个开始练习？
+        description: 还没有单词包。选择一个官方单词包，就会关注它并立即开始练习。之后可以取消关注。
+        first: 第一个列表：%{list}
+        start: 从这个单词包开始
+        more: "<catalog>查看其他官方单词包</catalog> ／ <create>创建自己的单词包</create>"
+      stats:
+        label: 本次练习数据
+        elapsed: 用时
+        speed: 速度
+        speedUnit: 键/分
+        accuracy: 正确率
+        mistakes: 错误
+        wordSpeedUnit: 词/分
+      progress:
+        label: 单词进度
+        value: "%{current} / %{total} 个单词"
+      feedback:
+        mismatch: 第 %{position} 个字符不一致。请输入正确的字符。
+        composing: 输入法中尚未确认的文字，确认后才会判定
+        restart: 从头开始
+      header:
+        switchList: 切换单词列表（当前：%{name}）
+        wordCount: "%{count} 个单词"
+        restart: 从头开始
+        restartTitle: 从头开始（Esc）
+        restartShort: 重来
+        liveStats: 显示本次练习数据
+        aside: 显示侧边栏（单词列表）
+      word:
+        typeThis: 需输入
+        resume: 点击或按任意键继续
+        inputLabel: 输入显示的文字
+        simpleKeys: 简易输入
+        simpleKeysAll: 完整对照表
+      recall:
+        toggle: 凭记忆输入
+        reveal: 查看答案
+        noHint: 没有提示
+        resultHeading: 凭记忆输入
+      upcoming:
+        next: 接下来
+        last: 这是最后一个单词
+        more: 还有 %{count} 个
+        showAll: 显示全部单词
+        allWords: 全部单词
+        done: "（已完成）"
+        current: "（输入中）"
+        pending: "（未输入）"
+      aside:
+        label: 单词列表
+        lists: 单词列表
+        create: 新建包
+        best: 最佳记录
+        bestOrder: 按正确率从高到低，相同时按速度从快到慢
+        bestOrderAtCount: 按正确率从高到低，相同时按速度从快到慢 · 仅当前 %{count} 个单词的记录
+        allBest: 全部最佳记录
+        filter: 按名称、分类或标签筛选单词列表
+      picker:
+        title: 选择单词列表
+        description: 练习途中选择其他列表时，会先确认是否中断。
+        filter: 按列表名称、分类或标签筛选
+        candidates: 候选单词列表
+        noMatch: 没有匹配的列表。
+      switch:
+        title: 要中断练习吗？
+        description: "“%{list}”的进度（%{done} / %{total} 个单词）不会被记录。将切换到“%{next}”。"
+        continue: 继续练习
+        confirm: 中断并切换
+      result:
+        label: 练习结果
+        title: 辛苦了！
+        newBest: 刷新个人最佳
+        completed: 练习完成：%{name}
+        time: 用时
+        seconds: 秒
+        accuracy: 正确率
+        mistakes: 错误 %{count} 个字符
+        speed: 速度
+        speedUnit: 键/分
+        correct: "%{count} 个字符"
+        words: 单词
+        wordUnit: 个
+        firstAtCount: 当前 %{count} 个单词的第一条记录
+        firstForList: 此列表的第一条记录
+        faster: 比最佳快 %{seconds} 秒
+        bestByAccuracy: 凭正确率刷新最佳
+        behind: 最佳为 %{time} 秒 · %{accuracy}%
+        behindNoAccuracy: 最佳为 %{time} 秒 · 未记录正确率
+        saveFailed: 无法保存记录。结果仍保留在此页面上。请检查网络连接后重试。
+        retry: 重新保存记录
+        saved: 已保存练习记录。在此列表中排名第 %{rank} 位。
+        saving: 正在保存记录…
+        again: 再来一次
+        chooseList: 选择其他列表
+        viewRecords: 查看记录
+        wordSpeedUnit: 词/分
+        correctWords: "%{count} 个词"
+        mistakesWords: 错误 %{count} 个词
+        shareOnX: 分享到 X
+        shareText: 我在 Typle 上用 %{time} 秒、%{accuracy}% 的正确率打完了“%{name}”
+        reviewNote: 复习打错的词不会记录。
+        reviewNoteWeak: 这次复习不会记录。没有打错的词不再算作薄弱单词。
+        reviewing: 复习打错的 %{count} 个词（不记录）
+        missed:
+          tile: 打错的词
+          of: "/ %{count} 个词"
+          title: 打错的词
+          none: 没有打错的词。
+          typed: 第 %{position} 个字符打成了 %{typed}
+          wrote: 写成了“%{typed}”
+          revealed: 看了答案
+          skipped: 跳过
+          space: 空格
+          count: "%{count} 次"
+          review: 只练习打错的 %{count} 个词
+        reviewingWeak: 复习 %{count} 个薄弱单词（不记录）
+      best:
+        label: 最佳记录前 5 名
+        rank: 排名
+        time: 用时
+        accuracy: 正确率
+        device: 设备
+        seconds: "%{time} 秒"
+        noAccuracy: 未记录
+        current: 本次记录
+        empty: 还没有记录。完成一次练习后，这里会显示前 5 名。
+      options:
+        selected: 已选择 %{name}
+        select: 选择 %{name}
+        withBest: "%{count} 个单词 · 最佳 %{time} 秒"
+        noRecord: "%{count} 个单词 · 无记录"
+        groupSelected: "%{level} · %{summary}"
+        groupLists: "%{count}个列表 · 选择难度"
+        levels: "%{name} 的难度"
+        chooseLevel: 请选择难度。
+        groupListsPlain: "%{count}个列表 · 选择列表"
+        listsOf: "%{name} 的列表"
+        chooseList: 请选择列表。
+        match: 符合搜索
+      modeLabel: 练习方式
+      modeTyping: 打字
+      modeWriting: Handwriting
+      writingJudge: 判定
+      writingSkip: 跳过
+      writingRead: 识别为“%{text}”
+      writingInput: 在此手写输入
+      writingInputMethod: 书写方式
+      writingInputPad: 手写板
+      writingInputField: 输入框
+      writingPad: 手写板
+      writingPadHint: 在这里书写
+      writingPadLoading: 正在准备手写识别…
+      writingPadFailed: 无法加载手写识别。
+      writingPadRetry: 重试
+      writingPadUndo: 撤销一笔
+      writingPadClear: 清除
+      writingPadReading: 当前识别：%{text}
+    rankings:
+      title: 最佳记录
+      intro: 每个单词列表的个人最佳。选择列表后，会显示前几名的记录和用时的变化趋势。
+      reload: 重新加载
+      filter:
+        device: 设备
+        allDevices: 所有设备
+        deleted: "%{name}（已删除）"
+      mode:
+        label: 练习模式
+        normal: 普通
+        recall: 回忆
+        writing: Handwriting
+      order:
+        label: 排名依据
+        accuracy: 正确率<wide>优先</wide>
+        speed: 速度<wide>优先</wide>
+      orderNotes:
+        accuracy: 按正确率从高到低，正确率相同时按速度从快到慢
+        speed: 按速度从快到慢，用时相同时按正确率从高到低
+      lists: 单词列表
+      empty:
+        title: 还没有最佳记录
+        description: 把单词列表输入到最后，各列表的个人最佳、前几名记录和用时趋势就会显示在这里。
+        practice: 开始练习
+        create: 创建单词包
+      list:
+        search: 搜索列表
+        clearSearch: 清除搜索
+        noDeviceRecords: 此设备没有记录的列表（%{count}）
+        noRecords: 还没有记录的列表（%{count}）
+        words: "%{count} 个单词"
+        noMatch: 没有与“%{query}”匹配的列表。
+        lastPracticed: 最近练习
+        best: 个人最佳
+        improved: 刷新
+        improvedTitle: 最近 %{days} 天内刷新了个人最佳
+        runs: "%{count} 次"
+        sortLabel: 排序：%{sort}
+        sorts:
+          recent: 按最近练习
+          name: 按名称
+          count: 按记录数
+        packPracticed: 已练习 %{practiced}/%{lists}
+        packImproved: 刷新 %{count}
+        packJoin: "・"
+        packLists: "%{pack}・%{count} 个列表"
+      detail:
+        back: 列表一览
+        words: "%{count} 个单词"
+        records: 记录 %{count} 次
+        lastPracticed: 最近练习 %{day}
+        viewRecords: 查看记录
+        practice: 练习此列表
+        notPractised:
+          title: 还没有练习
+          description: 输入到最后后，此列表的个人最佳和前几名记录会显示在这里。
+        noDeviceRecords:
+          title: 没有在“%{device}”上练习的记录
+          description: 此列表在其他设备上有 {count, number} 条记录。
+          showAll: 显示所有设备的记录
+        top:
+          title: 前几名记录
+          accuracy: 正确率优先
+          speed: 速度优先
+          shown: "{shown, number} / {total, number} 条"
+          showTop: 仅显示前 {count, number} 条
+          showAll: 全部显示（{count, number} 条）
+          oldAccuracy: 正确率为“—”的记录是开始记录正确率之前的旧记录。按正确率排名时会排在最后。
+        stats:
+          best: 个人最佳
+          bestNote: "%{accuracy} · %{day}"
+          noAccuracy: 无正确率
+          recentAverage: 最近 %{count} 次平均
+          gap: 与最佳相差 +%{value} 秒
+          sameAsBest: 与最佳相同
+          averageAccuracy: 平均正确率
+          recentRuns: 最近 %{count} 次
+          runs: 练习次数
+          runsValue: "%{count}<unit>次</unit>"
+          allWordCounts: 所有单词数
+          currentWords: 当前 %{count} 个单词的练习
+        trend:
+          title: 用时趋势
+          recent: 最近 %{count} 次
+          label: "%{name} 的用时趋势"
+          needTwo: 练习 2 次以上后显示趋势。
+        others:
+          old: 没有单词数的旧记录 {count, number} 条
+          words: "%{words} 个单词的记录 {count, number} 条"
+          separator: "、"
+          fallback: 由于没有当前 %{count} 个单词的练习记录，按单词数不同的记录（%{detail}）进行排名。
+          included: 已包含单词数与当前不同的记录（%{detail}）。单词数不同时，用时无法直接比较。
+          excluded: "<strong>单词数与当前不同的 %{count} 条记录未计入排名。</strong>例如编辑列表之前的记录（%{detail}）。"
+          exclude: 不包含
+          include: 包含并显示
+      top:
+        label: "%{name} 的前几名记录"
+        rank: 名次
+        time: 用时
+        accuracy: 正确率
+        mistakes: 错误
+        device: 设备
+        date: 日期时间
+        rankNumber: 第 %{rank} 名
+        deleted: 已删除
+        deletedSuffix: "（已删除）"
+        otherWords: 单词数与当前不同的记录
+        words: "%{count} 个单词"
+        unknownWords: "? 个单词"
+        oldAccuracy: 开始记录正确率之前的旧记录
+    records:
+      title: 练习记录
+      intro: 按时间从新到旧显示所有练习。各列表的前几名请在<rankings>最佳记录</rankings>中查看，变化趋势请在<home>首页</home>查看。
+      filter:
+        pack: 包
+        allPacks: 所有包
+        list: 列表
+        allLists: 所有列表
+        device: 设备
+        allDevices: 所有设备
+        clear: 清除筛选
+        count: "%{count} 条"
+        filteredCount: "{count, number} 条 / 共 {total, number} 条"
+      filterMenu:
+        label: 按%{name}筛选（当前：%{current}）
+        all: 全部
+        count: "%{count} 次"
+      columns:
+        time: 时间
+        deviceWords: 设备・单词数
+        listDevice: 列表・设备
+        duration: 用时
+        accuracy: 正确率
+        perWord: 每个单词
+        mistakes: 错误
+      day:
+        heading: "%{relative} · %{date}"
+        summary: "%{count} 次 · %{duration}"
+      recallBadge: 回忆
+      more: 显示更多（剩余 {count, number} 条）
+      note: 单词数和设备名称为练习当时的信息。
+      noteMissing: "“—”表示未记录的项目（例如旧版本保存的记录）。"
+      row:
+        best: 最佳
+        bestTitle: 此列表的最佳记录（在当前单词数的记录中，按正确率从高到低、正确率相同时按用时从短到长排名第一）
+        words: "%{count} 个单词"
+        seconds: "%{value} 秒"
+        duration: 用时
+        accuracy: 正确率
+        lowAccuracy: 正确率低于 %{limit}%
+        perWord: 每个单词
+        perWordUnit: 秒/词
+        mistakes: 错误
+        delete: 删除
+        deleteLabel: 删除%{name}（%{date} %{time}）的记录
+      delete:
+        title: 要删除这条练习记录吗？
+        description: 将删除“%{name}”的 1 条记录。
+        done: 已删除“%{name}”的练习记录（%{date} %{time}）。
+        list: 列表
+        when: 日期时间・设备
+        result: 结果
+        accuracy: 正确率 %{value}
+        mistakes: 错误 %{value}
+        bestNext: 这是此列表的最佳记录。删除后，最佳记录将变为 %{time}（%{accuracy}）。
+        bestLast: 这是此列表的最佳记录。删除后，此列表将没有任何记录。
+      empty:
+        title: 还没有练习记录
+        description: 在“开始练习”中把列表输入到最后，用时、正确率、错误和所用设备就会记录在这里。
+        practice: 开始练习
+      filteredEmpty:
+        listTitle: "“%{name}”还没有记录"
+        listDescription: 练习后，记录会显示在这里。
+        title: 没有符合条件的记录
+        description: 请更改列表或设备条件。
+        practiceList: 练习此列表
+      summary:
+        words: "%{count} 个单词"
+        runs: 练习 %{count} 次
+        last: 最近 %{day}
+        best: 最佳（%{mode}）
+        rankings: 最佳记录
+        practice: 开始练习
+      modeWriting: Handwriting
+    settings:
+      title: 通用
+      metaTitle: 通用 | Typle
+      description: 与 Typle 显示和登录相关的设置。
+      language:
+        heading: 显示语言
+        description: 选择界面显示的语言。单词列表的内容和练习记录不会改变。
+        note: 所选语言会保存在此浏览器中。
+        current: 使用中
+        changing: 正在更改显示语言…
+        changed: 显示语言已更改为%{language}。
+        failed: 无法更改显示语言。请重试。
+      sessions:
+        heading: 已登录的设备
+        description: 在此账号已登录的所有设备上退出登录：此浏览器、其他浏览器，以及 iPad、Mac、Android 和 Windows 应用。在设备丢失或怀疑他人使用了你的账号时使用。任何设备上的登录都会在 30 天后失效。
+        action: 在所有设备上退出登录
+        confirmTitle: 要在所有设备上退出登录吗？
+        confirmDescription: 包括此浏览器在内，当前已登录的所有设备和应用都将退出登录。请在继续使用的设备上重新登录。单词列表和练习记录不会被删除。
+        confirm: 退出登录
+        signingOut: 正在退出登录…
+        failed: 无法退出登录。请重试。
+      languages:
+        ja: 日语
+        en: 英语
+        zh-CN: 简体中文
+        zh-TW: 繁体中文
+        ru: 俄语
+        fr: 法语
+    sharedResult:
+      title: 练习记录：%{name}
+      description: "%{time} 秒，正确率 %{accuracy}%。在 Typle 上打字记住你想学的词。"
+      heading: 练习记录：%{name}
+      lead: 这是在 Typle 上打出的记录。Typle 是一款边打字边记住想学的词的应用。
+      play: 试试在 Typle 上练习
+      about: 关于 Typle
+      invalidTitle: 无法显示此记录
+      invalid: 无法读取此链接中的记录。请确认链接没有被截断。
+    wordLists:
+      page:
+        title: 单词包
+        description: 创建和编辑用于练习的单词包。将列表导出为 CSV 后，可在其他浏览器或账号中导入。
+        reload: 重新加载
+        notFound: 找不到要打开的单词列表，可能已被删除。
+        editTitle: 编辑单词列表
+        createTitle: 创建单词列表
+        editDescription: "%{count} 个单词 · %{practice}"
+        updated: 已更新“%{name}”。
+        created: 已创建“%{name}”。
+        deleted: 已删除“%{name}”。
+        packDeleted: 已删除包“%{name}”。
+        exportFailed: 无法导出“%{name}”。请重试。
+        copySuffix:
+          one: "（副本）"
+          other: "（副本%{count}）"
+          __var: "n"
+        catalog: 官方包
+      manager:
+        heading: 已保存的包
+        limitTitle: 自建列表最多 %{max} 个，官方包最多可关注 %{followedMax} 个。已关注的包中的列表不计入自建列表数。
+        ownCount: 自建 %{count} / %{max}
+        followedCount: 关注 %{count} / %{max} 个包
+        create: 创建新包
+        createPack: 新建包
+        createList: 创建单词列表
+        full: 自建的单词列表最多可保存 %{max} 个。删除不再使用的列表后即可创建新列表。已关注的包中的列表不计入。
+        search: 按包名称、列表名称、分类、标签或单词搜索
+        clearSearch: 清除搜索
+        countFiltered: "%{shown} 个 / 共 %{total} 个"
+        count: "%{total} 个"
+        noMatch: 没有与“%{query}”匹配的包。将从包名称、列表名称、分类、标签和单词中查找。
+        csvNote: CSV 导出会保存显示的单词、输入的文字和备注（不含练习记录）。可在创建、编辑界面的“导入 CSV”中使用。
+        importFile: 从文件导入
+      delete:
+        title: 要删除“%{name}”吗？
+        withRecords: 将删除该单词列表及其所有练习记录。
+        listOnly: 将删除该单词列表。
+        list: 列表
+        contents: 内容
+        wordCount: "%{count} 个单词"
+        noRecords: 无练习记录
+        records: 练习记录 %{count} 条（最近：%{day}）
+        exportHint: 可将单词导出为 CSV 保留（不含练习记录）。
+        export: 导出 CSV
+        packTitle: 要删除“%{name}”吗？
+        packDescription: 还将删除 %{lists} 个列表和 %{records} 条练习记录。
+        lastInPack: 包“%{name}”也将被删除。
+      order:
+        label: 排序
+        current: 排序：%{order}
+        added: 添加顺序
+        practiced: 最近练习
+        name: 名称
+        words: 单词数从多到少
+      labels:
+        category: 分类
+        tag: 标签
+      filter:
+        category: 按分类筛选
+        allCategories: 所有分类
+        noCategory: 无分类
+        categoryCurrent: 分类：%{category}
+        allTags: 所有标签
+        tagsCurrent: 标签：%{tags}
+        separator: "、"
+        tagsHint: 包含所有所选标签的包
+        clearTags: 取消选择标签
+        clear: 清除筛选
+        clearAll: 清除搜索和筛选
+        noMatch: 没有符合条件的包。
+        option: "%{name}（%{count}）"
+      empty:
+        title: 还没有单词列表
+        packTitle: 还没有单词包
+        description: 登记想要练习的单词，以及作为正确答案输入的文字。也可以从 CSV 文件导入。
+        packDescription: 还没有单词包。请关注官方单词包，或创建新的单词包。
+        catalogLink: 关注官方单词包
+      row:
+        examples: 单词示例
+        separator: "、"
+        more: "%{words} 等，另有 %{rest} 个"
+        wordCount: "%{count} 个单词"
+        notPracticed: 尚未练习
+        practiced: 练习 %{count} 次 · 最近：%{day}
+        practice: 练习
+        practiceList: 练习 %{name}
+        edit: 编辑
+        editList: 编辑 %{name}
+        moreActions: 更多操作
+        moreFor: "%{name} 的更多操作"
+        practiceThis: 练习此列表
+        rankings: 查看最佳记录
+        records: 查看练习记录
+        recordCount: "%{count} 条"
+        export: 导出 CSV
+        copy: 复制
+        delete: 删除
+      pack:
+        lists: "%{count}个列表"
+        practiced: 已练习 %{practiced}/%{lists}
+        wordCount: "%{count}个单词"
+        practice: 练习
+        listsOf: "%{name} 的列表"
+        moreActions: 更多操作
+        moreFor: "%{name} 包的操作"
+        edit: 编辑包
+        addList: 添加列表
+        delete: 删除
+        copy: 复制
+        export: 导出
+      wordRow:
+        label: 单词 %{n}
+        drag: 拖动以调整单词 %{n} 的顺序
+        dragTitle: 拖动以调整顺序
+      editor:
+        back: 单词包
+        description: 登记打字时显示的单词，以及作为正确答案输入的文字。
+        displayRequired: 请输入要显示的单词，或删除此行（空行无法保存）。
+        inputBlank: 输入的文字只有空格。留空则与显示的单词相同。
+        basics: 基本信息
+        name: 单词列表名称
+        nameHelp: 显示在练习界面和单词列表中。
+        words: 单词
+        added: 已添加 %{count} 个单词。请确认内容后点击“保存”。
+        loaded: 已导入 %{count} 个单词。请确认内容后点击“保存”。
+        display: 显示的单词
+        input: 输入的文字
+        inputHint: 留空则与显示相同
+        annotation: 备注
+        annotationOptional: 备注（可选）
+        dragInstructions: 按空格键拿起单词，用上下方向键移动，再按空格键放下。按 Esc 键取消。
+        displayLabel: 显示的单词 %{n}
+        displayPlaceholder: 输入单词
+        inputLabel: 输入的文字 %{n}
+        annotationLabel: 备注 %{n}
+        annotationPlaceholder: 读音、含义等
+        wordActions: 单词 %{n} 的操作
+        actions: 操作
+        moveUp: 上移
+        moveDown: 下移
+        moveFirst: 移到开头
+        moveLast: 移到末尾
+        deleteWord: 删除此单词
+        deleteWordN: 删除单词 %{n}
+        delete: 删除
+        addWord: 添加单词
+        shortcutNext: 下一个单词（在最后一个单词时添加新行）
+        shortcutMove: 移动单词
+        shortcutSave: 保存
+        shortcutDrag: 拖动以调整顺序
+        recount: 单词数将从 {from, number} 个变为 {to, number} 个。以 {from, number} 个单词练习的记录（%{records} 条）会保留，但不再计入最佳记录的排名。
+        errorCount: 有 %{count} 处错误
+        firstError: 转到第一处错误
+        unsaved: 有未保存的更改
+        noChanges: 没有更改
+        wordTotal: "· %{count} 个单词"
+        save: 保存
+        discardTitle: 有未保存的更改
+        discardDescription: 如果现在离开，输入的内容将会丢失。
+        keepEditing: 继续编辑
+        discard: 放弃并离开
+        category: 分类（可选）
+        categoryPlaceholder: 编程、语言等
+        categoryHelp: 从已使用的分类中选择一个，或输入新建。可在列表和练习页面中按分类筛选。
+        tags: 标签（可选）
+        tagList: 已添加的标签
+        removeTag: 移除标签“%{tag}”
+        tagsFull: 最多%{max}个标签
+        tagPlaceholder: Kotlin、PostgreSQL等
+        tagsHelp: 从已使用的标签中选择，或输入新建（最多%{max}个）。搜索时也会查找标签。
+        chooseCategory: 选择分类
+        searchCategory: 搜索或创建分类
+        clearCategory: 移除分类
+        addTag: 选择或创建标签
+        searchTag: 搜索或创建标签
+        create: 创建“%{name}”
+        noLabels: 还没有。输入即可创建。
+        pack: 包
+        newPack: 新建包（以列表名称命名）
+        packHelp: 此列表所属的包。选择其他包会将列表移到该包。
+        addingTo: 将添加到包“%{name}”。
+        writingToggle: 用于手写练习（Typle Handwriting）
+        writingToggleHelp: 让此列表可以用手写来练习。识别语言用于读取手写的文字。
+        writingLanguage: 识别语言
+        writingLanguages:
+          en: English
+          ja: 日本語
+          zh-Hans: 中文（简体）
+          zh-Hant: 中文（繁體）
+          ko: 한국어
+          fr: Français
+          de: Deutsch
+          es: Español
+          ru: Русский
+          cs: Čeština
+        packWillBeDeleted: 包“%{name}”将被删除。
+        levels: 难度（可选）
+        levelPlaceholder: 例如：初级
+        levelsHelp: 在练习界面中用于选择包内的列表，例如：初级。
+        inputType: 输入类型
+        inputTypeLabel: 输入类型 %{n}
+        inputTypeWord: 单词
+        inputTypeCommand: 命令
+        inputTypeCode: 代码
+      import:
+        open: 导入 CSV
+        title: 从 CSV 导入
+        description: 第一行为列名。input 和 display 为必填项，annotation 和 input_type 可省略。input_type 为 command、code 或 word。列顺序不限。
+        fileLabel: 选择 CSV 文件
+        readFailed: 无法读取文件。
+        addFailed: 无法添加单词。
+        bytes: "%{value} B"
+        kilobytes: "%{value} KB"
+        summary: "%{count} 个单词 · %{size}"
+        chooseAnother: 选择其他文件
+        previewLabel: 要导入的单词预览
+        display: 显示的单词
+        input: 输入的文字
+        annotation: 备注
+        more: 另有 %{count} 个单词
+        existing: 如何处理已输入的单词
+        append: 添加到当前单词之后
+        appendHint: 在已输入的 %{existing} 个单词之后添加 %{count} 个单词。
+        replace: 替换当前单词
+        replaceHint: 已输入的 %{existing} 个单词将被删除。
+        drop: 将文件拖放到此处
+        choose: 选择文件
+        limits: CSV · UTF-8 · 不超过 1 MiB · 每个列表最多 1,000 个单词
+        example: 格式示例
+        sample: |-
+          display,input,annotation
+          你好,nihao,问候
+          谢谢,xiexie,
+        loadedStatus: 已读取 %{count} 个单词。
+        add: 添加 %{count} 个单词
+        replaceWith: 替换为 %{count} 个单词
+      words:
+        title: 单词一览
+        description: 选择单词列表后，以表格显示该列表中输入的文字和备注。
+        lists: 单词列表
+        filter: 按列表名称、分类或标签筛选
+        noMatch: 没有符合条件的列表。
+        candidates: 可选的单词列表
+        pickerTitle: 选择单词列表
+        pickerDescription: 以表格显示所选列表中的单词。
+        switch: 选择列表
+        switchList: 选择单词列表（当前：%{name}）
+        wordCount: "%{count} 个单词"
+        practice: 练习
+        practiceList: 练习 %{name}
+        edit: 编辑
+        editList: 编辑 %{name}
+        number: 编号
+      packEditor:
+        createTitle: 创建包
+        createDescription: 填写包的信息，并选择要放入包的单词列表。之后还可以添加列表。
+        editTitle: 编辑包
+        editDescription: 更改包的信息和其中列表的顺序。
+        info: 包的信息
+        name: 包名称
+        nameHelp: 显示在包列表中，以及选择要练习的包时。
+        descriptionLabel: 说明（可选）
+        descriptionPlaceholder: 这个包的内容等
+        lists: 列表
+        listsHelp: 拖动手柄或使用键盘来调整顺序。
+        choose: 单词列表
+        chooseHelp: 选中的列表会从当前所在的包移到这个包。没有列表的包会被删除。
+        chooseFilter: 按名称筛选单词列表
+        chosen: 已选择 %{count} 个
+        inPack: 包“%{name}”
+        noMatch: 没有匹配的单词列表。
+        noLists: 没有可以放入包的单词列表。请先创建单词列表。
+        createList: 创建单词列表
+        drag: 拖动 %{name} 以重新排序
+        dragTitle: 拖动以重新排序
+        dragInstructions: 按空格键拿起列表，用上下方向键移动，再按空格键放下。按 Esc 键取消。
+        listActions: "%{name} 的操作"
+        announceStart: 已拿起 %{name}。位于第 %{position} 个，共 %{total} 个。
+        announceOver: 已将 %{name} 移到第 %{position} 个，共 %{total} 个。
+        announceOutside: "%{name} 不在排序范围内。"
+        announceEnd: 已将 %{name} 放在第 %{position} 个，共 %{total} 个。
+        announceCancel: 已取消排序。%{name} 已回到原来的位置。
+        levels: 难度：%{levels}
+        noLevels: 无难度
+        wordCount: "%{count}个单词"
+        created: 已创建包“%{name}”。
+        updated: 已更新包“%{name}”。
+      catalog:
+        title: 官方包
+        description: 预先准备好的单词包。关注后可直接使用官方内容，并自动随官方更新。无法编辑，但可以复制成自己的单词包。
+        back: 返回包列表
+        open: 打开
+        full: 最多可以关注 %{max} 个官方包。请取消关注不用的包。
+        follow: 关注
+        followPack: 关注 %{name}
+        followed: 已关注“%{name}”
+        following: 已关注
+        unfollowPack: 取消关注 %{name}
+        matching: 符合兴趣的词包
+        others: 其他词包
+        noMatching: 暂时没有符合兴趣的词包
+        changeInterests: 更改兴趣
+      sharedPage:
+        toPacks: 打开单词包
+      follow:
+        badge: 官方
+        unfollow: 取消关注
+        title: 要取消关注“%{name}”吗？
+        description: 将取消关注“%{name}”。该单词包的记录也会被删除。
+        confirm: 取消关注
+        confirming: 正在取消关注…
+        done: 已取消关注“%{name}”

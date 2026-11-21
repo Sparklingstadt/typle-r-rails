@@ -1,0 +1,91 @@
+<% content_for :title, settings_t("interests.title") %>
+<% chip_label = ->(id) { id.include?("/") ? settings_t("interests.children.#{id.sub("/", ".")}") : settings_t("interests.parents.#{id}") } %>
+<%= page_main(width: :narrow) do %>
+  <%= page_header settings_t("interests.title"), settings_t("interests.description") do %>
+    <%= render "layouts/application/page_storage_badge" %>
+  <% end %>
+  <div class="space-y-8">
+    <%= form_with url: interests_path, method: :patch, data: { controller: "autosubmit" }, class: "space-y-5" do |f| %>
+      <%= hidden_field_tag "interests[]", "", id: nil %>
+      <div class="flex flex-wrap gap-2">
+        <% Interests::OPTIONS.each do |option| %><%= settings_interest_chip(option.id, chip_label.(option.id), @ids.include?(option.id)) %><% end %>
+      </div>
+      <% Interests::OPTIONS.select { |option| @ids.include?(option.id) }.each do |option| %>
+        <% parent = chip_label.(option.id) %>
+        <section role="group" aria-label="<%= settings_t("interests.childrenLabel", parent:) %>" class="space-y-2 rounded-xl border bg-card p-4">
+          <h2 class="text-sm font-bold"><%= parent %></h2>
+          <div class="flex flex-wrap gap-2">
+            <% option.children.each do |child| %><%= settings_interest_chip(child.id, chip_label.(child.id), @ids.include?(child.id)) %><% end %>
+          </div>
+        </section>
+      <% end %>
+      <noscript><%= f.submit settings_t("form.save"), class: button_classes(variant: :outline, size: :sm) %></noscript>
+    <% end %>
+
+    <% if @ids.empty? %>
+      <%= empty_note settings_t("interests.packs.pick") %>
+    <% else %>
+      <section aria-labelledby="interest-packs" class="space-y-3">
+        <div class="space-y-1">
+          <h2 id="interest-packs" class="text-base font-bold"><%= settings_t("interests.packs.title") %></h2>
+          <p class="text-sm text-muted-foreground"><%= settings_t("interests.packs.description") %></p>
+        </div>
+        <% if @packs.empty? %>
+          <%= empty_note settings_t("interests.packs.none") %>
+        <% else %>
+          <% cjk = I18n.locale.to_s.start_with?("ja", "zh") %>
+          <%= form_with url: packs_interests_path, method: :patch, class: "space-y-3",
+                data: { controller: "settings-packs", action: "submit->settings-packs#confirm",
+                        settings_packs_counts_value: (0..@packs.size).map { settings_t("interests.packs.selected", count: _1) }.to_json,
+                        settings_packs_title_value: settings_t("interests.packs.confirmTitle"),
+                        settings_packs_description_value: settings_t("interests.packs.confirmDescription", names: "%{names}"),
+                        settings_packs_separator_value: settings_t("interests.packs.separator"),
+                        settings_packs_quote_value: cjk ? "「%s」" : "“%s”",
+                        settings_packs_delete_value: tt("common.delete.description", description: "%{description}"),
+                        settings_packs_follow_label_value: settings_t("interests.packs.followSelected"),
+                        settings_packs_unfollow_label_value: settings_t("interests.packs.unfollowSelected"),
+                        settings_packs_add_label_value: settings_t("interests.packs.add") } do |f| %>
+            <ul class="<%= UiHelper::CARD_LIST %>">
+              <% @packs.each do |pack| %>
+                <% followed = @followed.include?(pack.catalog_id) %>
+                <li data-catalog-id="<%= pack.catalog_id %>" class="flex items-center gap-4 px-5 py-4">
+                  <%= hidden_field_tag "shown[]", pack.catalog_id, id: nil %>
+                  <input type="checkbox" aria-label="<%= settings_t("interests.packs.select", name: pack.name) %>" class="<%= SettingsDesignHelper::SETTINGS_CHECKBOX %>"
+                    data-catalog-id="<%= pack.catalog_id %>" data-settings-packs-target="check" data-action="settings-packs#update">
+                  <div class="min-w-0 flex-1 space-y-1">
+                    <h3 class="font-bold [overflow-wrap:anywhere]"><%= pack.name %></h3>
+                    <p class="text-[13px] text-muted-foreground [overflow-wrap:anywhere]">
+                      <span class="sr-only"><%= settings_t("interests.packs.lists") %>: </span><%= pack.lists.map(&:name).join(settings_t("interests.packs.separator")) %>
+                    </p>
+                    <p class="text-[13px] text-muted-foreground tabular-nums"><%= settings_t("interests.wordCount", count: pack.word_count) %></p>
+                  </div>
+                  <%= check_box_tag "follow[]", pack.catalog_id, followed, id: "follow-#{pack.catalog_id}", role: "switch", class: UiHelper::SWITCH,
+                        "aria-label": settings_t("interests.packs.switch", name: pack.name),
+                        data: { followed: followed.to_s, name: pack.name, settings_packs_target: "switch", action: "settings-packs#update" } %>
+                </li>
+              <% end %>
+            </ul>
+            <div class="sticky bottom-0 -mx-4 flex flex-wrap items-center justify-end gap-x-4 gap-y-2 border-t bg-background/95 px-4 py-3 backdrop-blur sm:mx-0 sm:rounded-b-xl">
+              <label class="mr-auto flex cursor-pointer items-center gap-2.5 text-sm">
+                <input type="checkbox" class="<%= SettingsDesignHelper::SETTINGS_CHECKBOX %>" data-settings-packs-target="all" data-action="settings-packs#toggleAll">
+                <span><%= settings_t("interests.packs.selectAll") %></span>
+                <span class="text-muted-foreground tabular-nums" aria-live="polite" data-settings-packs-target="count"><%= settings_t("interests.packs.selected", count: 0) %></span>
+              </label>
+              <div class="flex flex-wrap justify-end gap-2">
+                <button type="button" class="<%= button_classes(variant: :outline) %>" data-settings-packs-target="follow" data-action="settings-packs#followSelected">
+                  <%= icon("list-plus") %><%= settings_t("interests.packs.followSelected") %>
+                </button>
+                <button type="button" class="<%= button_classes(variant: :outline) %>" data-settings-packs-target="unfollow" data-action="settings-packs#unfollowSelected">
+                  <%= icon("list-minus") %><%= settings_t("interests.packs.unfollowSelected") %>
+                </button>
+                <button type="submit" class="<%= button_classes %>" data-settings-packs-target="add">
+                  <%= icon(:plus) %><%= settings_t("interests.packs.add") %>
+                </button>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </section>
+    <% end %>
+  </div>
+<% end %>

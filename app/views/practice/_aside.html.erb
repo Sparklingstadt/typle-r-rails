@@ -1,0 +1,127 @@
+<%# ListChooserAside + WordListOptions: the user's packs to choose a list from, filtered by text and category. %>
+<%
+  option = "flex min-h-14 w-full items-center gap-3 rounded-lg px-3 py-2 text-left outline-none hover:bg-muted/60 focus-visible:ring-3 focus-visible:ring-ring/50"
+  radio = ->(selected) {
+    tag.span(selected ? icon(:check, class: "size-3", "stroke-width": 3) : "", "aria-hidden": "true",
+      class: cn("grid size-[18px] shrink-0 place-items-center rounded-full border-2", selected ? "border-primary bg-primary text-primary-foreground" : "border-border"))
+  }
+  summary = ->(list) {
+    best = list.best(mode)
+    best ? tt("practice.options.withBest", count: list.words.size, time: format("%.2f", best.seconds)) : tt("practice.options.noRecord", count: list.words.size)
+  }
+  mode = local_assigns[:mode]
+  url = local_assigns[:url] || ->(list) { play_path({ list: list.id, mode: }.compact) }
+  heading = local_assigns[:heading] || tt("practice.aside.lists")
+  create = local_assigns.fetch(:create, true)
+  search_label = local_assigns[:search_label] || tt("practice.aside.filter")
+  search_placeholder = local_assigns[:search_placeholder] || tt("practice.picker.filter")
+  aside_id = local_assigns[:id] || "practice-aside"
+  # typle-r's packsByRecentPractice: the pack practised last first, packs never practised after them, ties in saved order.
+  last_practiced = current_user.practice_records.where(word_list_id: lists.map(&:id)).group(:word_list_id).maximum(:practiced_at)
+  packs = lists.group_by(&:pack).each_with_index
+    .sort_by { |(_, items), index| [-(items.filter_map { |list| last_practiced[list.id]&.to_f }.max || -Float::INFINITY), index] }
+    .to_h { |(pack, items), _| [pack, items] }
+  categories = packs.keys.map { |pack| pack.word_lists.first&.category }.compact.tally
+  uncategorized = packs.keys.count { |pack| pack.word_lists.first&.category.blank? }
+  search_text = ->(items) { items.flat_map { |list| [list.pack.name, list.name, list.level, list.category, *list.tags] }.compact.join("\n").downcase }
+%>
+<% dialog = local_assigns[:dialog] %>
+<% body = capture do %>
+    <label class="<%= cn(UiHelper::SEARCH_FIELD, dialog ? "h-10 shrink-0" : "mx-1 mt-1 mb-1 h-9 shrink-0") %>">
+      <%= icon(:search, class: "size-4 shrink-0") %>
+      <input type="search" placeholder="<%= search_placeholder %>" aria-label="<%= search_label %>" data-action="input->practice-aside#filter" data-practice-aside-target="query"
+        autocomplete="off" class="min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground">
+    </label>
+    <% if categories.any? %>
+      <div class="<%= "mx-1 mb-1" unless dialog %>">
+        <select aria-label="<%= tt("wordLists.filter.category") %>" class="<%= select_classes(:filter, dialog && "h-10") %>" data-action="practice-aside#filter" data-practice-aside-target="category">
+          <option value=""><%= tt("wordLists.filter.allCategories") %></option>
+          <% categories.each do |name, count| %><option value="category:<%= name %>"><%= tt("wordLists.filter.option", name:, count:) %></option><% end %>
+          <% if uncategorized.positive? %><option value="none"><%= tt("wordLists.filter.option", name: tt("wordLists.filter.noCategory"), count: uncategorized) %></option><% end %>
+        </select>
+      </div>
+    <% end %>
+    <div class="<%= local_assigns.fetch(:scroll_class) { dialog ? nil : "max-h-96 overflow-y-auto overscroll-contain lg:max-h-[min(36rem,calc(100dvh-14rem))]" } %>" data-practice-aside-target="scroller">
+      <ul aria-label="<%= heading %>" class="grid gap-1">
+        <% packs.each do |pack, items| %>
+          <% category = items.first.category %>
+          <% if items.size >= 2 %>
+            <% current = items.find { |list| list == selected } %>
+            <% any_levels = items.any? { |list| list.level.present? } %>
+            <li data-pack-id="<%= pack.id %>" data-search="<%= search_text.(items) %>" data-category="<%= category %>" data-practice-aside-target="pack">
+              <button type="button" aria-expanded="<%= current.present? %>" aria-controls="<%= aside_id %>-levels-<%= pack.id %>" data-action="practice-aside#toggle" class="<%= cn(option, current && "bg-muted hover:bg-muted") %>">
+                <%= radio.(current.present?) %>
+                <span class="grid min-w-0 flex-1">
+                  <span class="line-clamp-2 text-sm font-medium [overflow-wrap:anywhere]" title="<%= pack.name %>"><%= pack.name %></span>
+                  <%= list_labels(category, items.first.tags, class: "my-0.5") %>
+                  <span class="text-xs text-muted-foreground"><%= current ? tt("practice.options.groupSelected", level: current.level.presence || current.name, summary: summary.(current)) : tt(any_levels ? "practice.options.groupLists" : "practice.options.groupListsPlain", count: items.size) %></span>
+                </span>
+                <%= icon("chevron-down", class: cn("size-4 shrink-0 text-muted-foreground transition-transform motion-reduce:transition-none", current && "rotate-180")) %>
+              </button>
+              <div id="<%= aside_id %>-levels-<%= pack.id %>" role="group" aria-label="<%= tt(any_levels ? "practice.options.levels" : "practice.options.listsOf", name: pack.name) %>" class="grid gap-2 px-3 pt-1 pb-2.5 pl-[34px]" <%= "hidden" unless current %>>
+                <ul class="grid gap-0.5">
+                  <% items.each do |list| %>
+                    <% pressed = list == selected %>
+                    <li data-search="<%= search_text.([list]) %>">
+                      <button type="button" aria-pressed="<%= pressed %>" aria-label="<%= list.level.presence || list.name %>" data-action="practice-aside#go" data-url="<%= url.(list) %>"
+                        data-practice-switch="<%= pressed ? "current" : "list" %>" data-switch-name="<%= practice_name_text(list) %>"
+                        class="<%= cn("flex min-h-9 w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-[13px] outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 data-match:not-aria-pressed:bg-primary/10 data-match:not-aria-pressed:font-medium data-match:not-aria-pressed:text-primary", pressed && "bg-primary text-primary-foreground hover:bg-primary/90") %>">
+                        <span class="min-w-0 flex-1 [overflow-wrap:anywhere]"><%= list.level.presence || list.name %></span>
+                        <span class="<%= cn("shrink-0 text-xs tabular-nums", pressed ? "text-primary-foreground/80" : "text-muted-foreground") %>"><%= summary.(list) %></span>
+                      </button>
+                    </li>
+                  <% end %>
+                </ul>
+                <% unless current %><p class="text-xs text-muted-foreground"><%= tt(any_levels ? "practice.options.chooseLevel" : "practice.options.chooseList") %></p><% end %>
+              </div>
+            </li>
+          <% else %>
+            <% list = items.first %>
+            <% pressed = list == selected %>
+            <li data-pack-id="<%= pack.id %>" data-search="<%= search_text.(items) %>" data-category="<%= category %>" data-practice-aside-target="pack">
+              <button type="button" aria-pressed="<%= pressed %>" aria-label="<%= tt(pressed ? "practice.options.selected" : "practice.options.select", name: practice_name_text(list)) %>"
+                data-action="practice-aside#go" data-url="<%= url.(list) %>" data-practice-switch="<%= pressed ? "current" : "list" %>" data-switch-name="<%= practice_name_text(list) %>"
+                class="<%= cn(option, pressed && "bg-muted hover:bg-muted") %>">
+                <%= radio.(pressed) %>
+                <span class="grid min-w-0">
+                  <span class="line-clamp-2 text-sm font-medium [overflow-wrap:anywhere]" title="<%= practice_name_text(list) %>"><%= practice_name(list) %></span>
+                  <%= list_labels(category, list.tags, class: "my-0.5") %>
+                  <span class="text-xs text-muted-foreground"><%= summary.(list) %></span>
+                </span>
+              </button>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+      <p class="<%= dialog ? "px-1 py-2 text-sm text-muted-foreground" : "px-2 py-2 text-sm text-muted-foreground" %>" data-practice-aside-target="empty" hidden><%= local_assigns[:no_match] || tt("practice.picker.noMatch") %></p>
+    </div>
+<% end %>
+<% if dialog %>
+  <%# ListPickerDialog: the same choice in a dialog, for the screens without the side panel. %>
+  <dialog id="<%= aside_id %>" aria-labelledby="<%= aside_id %>-title" aria-describedby="<%= aside_id %>-description" data-controller="practice-aside" data-list-picker-target="dialog"
+          data-action="click->list-picker#backdrop close->list-picker#closed"
+          class="fixed top-1/2 left-1/2 z-50 m-0 max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 gap-4 overflow-y-auto rounded-xl border-0 bg-popover p-5 text-popover-foreground ring-1 ring-foreground/10 outline-none open:grid backdrop:bg-black/10 backdrop:backdrop-blur-xs">
+    <div class="grid gap-1.5 pr-8">
+      <h2 id="<%= aside_id %>-title" class="font-heading text-lg font-bold"><%= dialog[:title] %></h2>
+      <p id="<%= aside_id %>-description" class="text-sm text-muted-foreground"><%= dialog[:description] %></p>
+    </div>
+    <%= body %>
+    <button type="button" aria-label="<%= tt("common.close") %>" data-action="list-picker#close"
+      class="absolute top-3 right-3 inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground outline-none hover:bg-muted hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50"><%= icon(:x, class: "size-4") %></button>
+  </dialog>
+<% else %>
+  <aside id="<%= aside_id %>" aria-label="<%= local_assigns[:label] || tt("practice.aside.label") %>" class="<%= local_assigns[:aside_class] || "grid min-w-0 gap-6" %>" data-controller="practice-aside">
+    <%= card(class: local_assigns[:card_class] || "gap-1 p-3") do %>
+      <% if create %>
+        <div class="flex items-center gap-2 pl-2">
+          <h2 class="text-[15px] font-bold"><%= heading %></h2>
+          <span class="flex-1"></span>
+          <%= link_to new_pack_path, class: button_classes(variant: :ghost, size: :lg) do %><%= icon(:plus) %><%= tt("practice.aside.create") %><% end %>
+        </div>
+      <% else %>
+        <h2 class="pl-2 text-[15px] font-bold"><%= heading %></h2>
+      <% end %>
+      <%= body %>
+    <% end %>
+  </aside>
+<% end %>

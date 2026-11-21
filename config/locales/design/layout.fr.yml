@@ -1,0 +1,46 @@
+---
+fr:
+  layouts:
+    application:
+      top_bar: Barre supérieure
+      open_menu: Ouvrir le menu
+      close_menu: Fermer le menu
+      main_navigation: Navigation principale
+      help: Aide
+      github: GitHub
+      storage_label: 'Enregistrement : '
+      storage_account_detail: Enregistré sur votre compte et synchronisé sur les appareils
+        où vous êtes connecté.
+      storage_browser_detail: 'Vous n’êtes pas connecté : les données sont enregistrées
+        uniquement dans ce navigateur.'
+      storage_account: Enregistré sur votre compte
+      storage_browser: Enregistré dans ce navigateur
+      theme_label: Mode sombre
+      to_light: Passer en mode clair
+      to_dark: Passer en mode sombre
+      theme_save_failed: Le réglage ne peut pas être enregistré ; il ne s’applique
+        qu’à cette page.
+      account_menu: Menu du compte
+      manage_devices: Gérer les appareils
+      signed_in_with_github: Connecté avec GitHub
+      signed_in_with_password: Connecté avec un identifiant
+      sign_in: Se connecter
+      sign_out: Se déconnecter
+      skip: Aller au contenu
+      menu: Menu
+      home: Accueil
+      play: S’entraîner
+      records: Historique
+      rankings: Meilleurs résultats
+      packs: Packs de mots
+      words: Voir les mots
+      new_pack: Créer un pack
+      general: Général
+      input: Saisie
+      interests: Centres d’intérêt
+      devices: Appareils
+      guide: Mode d’emploi
+      about: À propos de Typle
+      practice: Entraînement
+      lists: Listes de mots
+      settings: Paramètres

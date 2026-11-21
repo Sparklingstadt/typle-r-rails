@@ -1,0 +1,212 @@
+---
+ja:
+  design:
+    records:
+      history:
+        title: 練習記録
+        intro: これまでの練習を新しい順に表示します。リストごとの上位は<rankings>ベスト記録</rankings>、推移は<home>ホーム</home>で見られます。
+        filter:
+          pack: パック
+          all_packs: すべてのパック
+          list: リスト
+          all_lists: すべてのリスト
+          device: 端末
+          all_devices: すべての端末
+          clear: 絞り込みを解除
+          count: "%{count}件"
+          filtered_count: "%{matched}件 / 全%{count}件"
+        filter_menu:
+          label: "%{name}で絞り込む（現在：%{current}）"
+          all: すべて
+          count: "%{count}回"
+        columns:
+          time: 時刻
+          device_words: 端末・単語数
+          list_device: リスト・端末
+          duration: 所要時間
+          accuracy: 正確率
+          per_word: 1語あたり
+          mistakes: ミス
+        day:
+          heading: "%{relative} · %{date}"
+          summary: "%{count}回 · %{duration}"
+        recall_badge: 思い出す
+        more: さらに表示（残り %{count}件）
+        note: 単語数・端末名は練習した時点のものです。
+        note_missing: "「—」は記録されていない項目です（以前のバージョンで保存した記録など）。"
+        row:
+          best: ベスト
+          best_title: このリストのベスト記録（今の単語数の記録のうち、正確率の高い順、同率なら所要時間の短い順で1位）
+          words: "%{count}語"
+          seconds: "%{value} 秒"
+          duration: 所要時間
+          accuracy: 正確率
+          low_accuracy: 正確率が%{limit}%未満です
+          per_word: 1語あたり
+          per_word_unit: 秒/語
+          mistakes: ミス
+          delete: 削除
+          delete_label: "%{name}（%{date} %{time}）の記録を削除"
+        delete:
+          title: この練習記録を削除しますか？
+          description: "「%{name}」の記録を1件削除します。"
+          done: "「%{name}」の練習記録（%{date} %{time}）を削除しました。"
+          list: リスト
+          when: 日時・端末
+          result: 結果
+          accuracy: 正確率 %{value}
+          mistakes: ミス %{value}
+          best_next: このリストのベスト記録です。削除すると、ベストは %{time}（%{accuracy}）になります。
+          best_last: このリストのベスト記録です。削除すると、このリストの記録はなくなります。
+        empty:
+          title: まだ練習記録がありません
+          description: "「練習する」でリストを最後まで入力すると、所要時間・正確率・ミス・使った端末がここに残ります。"
+          practice: 練習する
+        filtered_empty:
+          list_title: "「%{name}」の記録はまだありません"
+          list_description: 練習すると、ここに記録が表示されます。
+          title: 条件に合う記録はありません
+          description: リストや端末の条件を変えてください。
+          practice_list: このリストを練習する
+        summary:
+          words: "%{count}語"
+          runs: 練習 %{count}回
+          last: 最終 %{day}
+          best: ベスト（%{mode}）
+          rankings: ベスト記録
+          practice: 練習する
+        mode_writing: Handwriting
+      rankings:
+        title: ベスト記録
+        intro: 単語リストごとの自己ベストです。リストを選ぶと、上位の記録と所要時間の推移を表示します。
+        reload: 再読み込み
+        filter:
+          device: 端末
+          all_devices: すべての端末
+          deleted: "%{name}（削除済み）"
+        mode:
+          label: 練習のモード
+          normal: 通常
+          recall: 思い出す
+          writing: Handwriting
+        order:
+          label: 順位の基準
+          accuracy: 正確率<wide>を</wide>優先
+          speed: 速さ<wide>を</wide>優先
+        order_notes:
+          accuracy: 正確率が高い順。同じ正確率なら速い順
+          speed: 速い順。同じ時間なら正確率が高い順
+        lists: 単語リスト
+        empty:
+          title: まだベスト記録がありません
+          description: 単語リストを最後まで打つと、リストごとの自己ベストと上位の記録、所要時間の推移がここに並びます。
+          practice: 練習する
+          create: 単語パックを作る
+        list:
+          search: リストを検索
+          clear_search: 検索をクリア
+          no_device_records: この端末の記録がないリスト（%{count}）
+          no_records: まだ記録のないリスト（%{count}）
+          words: "%{count}語"
+          no_match: "「%{query}」に一致するリストはありません。"
+          last_practiced: 最終練習
+          best: 自己ベスト
+          improved: 更新
+          improved_title: 直近%{count}日で自己ベストを更新しました
+          runs: "%{count}回"
+          sort_label: 並び順：%{sort}
+          sorts:
+            recent: 最近練習した順
+            name: 名前順
+            count: 記録が多い順
+          pack_practiced: 練習済み %{practiced}/%{lists}
+          pack_improved: 更新 %{count}
+          pack_join: "・"
+          pack_lists: "%{pack}・%{count}リスト"
+        detail:
+          back: リスト一覧
+          words: "%{count}語"
+          records: 記録 %{count}回
+          last_practiced: 最終練習 %{day}
+          view_records: 記録を見る
+          practice: このリストを練習
+          not_practised:
+            title: まだ練習していません
+            description: 最後まで打つと、このリストの自己ベストと上位の記録がここに並びます。
+          no_device_records:
+            title: "「%{device}」で練習した記録はありません"
+            description: このリストには、ほかの端末の記録が %{count}件あります。
+            show_all: すべての端末の記録を表示
+          top:
+            title: 上位の記録
+            accuracy: 正確率を優先
+            speed: 速さを優先
+            shown: "%{shown} / %{count}件"
+            show_top: 上位%{count}件だけ表示
+            show_all: すべて表示（%{count}件）
+            old_accuracy: 正確率が「—」の記録は、正確率を記録する前の古い記録です。正確率を優先するときは最後に並びます。
+          stats:
+            best: 自己ベスト
+            best_note: "%{accuracy} · %{day}"
+            no_accuracy: 正確率なし
+            recent_average: 直近%{count}回の平均
+            gap: ベストとの差 +%{value}秒
+            same_as_best: ベストと同じ
+            average_accuracy: 平均正確率
+            recent_runs: 直近%{count}回
+            runs: 練習回数
+            runs_value: "%{count}<unit>回</unit>"
+            all_word_counts: すべての単語数
+            current_words: 今の%{count}語で練習
+          trend:
+            title: 所要時間の推移
+            recent: 直近%{count}回
+            label: "%{name} の所要時間の推移"
+            need_two: 2回以上練習すると推移を表示します。
+          others:
+            old: 単語数の記録がない古い記録 %{count}件
+            words: "%{words}語の記録 %{count}件"
+            separator: "、"
+            fallback: 今の%{count}語で練習した記録がないため、単語数が違う記録（%{detail}）で順位を付けています。
+            included: 単語数が今と違う記録（%{detail}）も含めています。単語数が違うと所要時間は単純に比べられません。
+            excluded: "<strong>単語数が今と違う%{count}件は順位に含めていません。</strong>リストを編集する前の記録などです（%{detail}）。"
+            exclude: 含めない
+            include: 含めて表示
+        top:
+          label: "%{name} の上位の記録"
+          rank: 順位
+          time: 所要時間
+          accuracy: 正確率
+          mistakes: ミス
+          device: 端末
+          date: 日時
+          rank_number: "%{rank}位"
+          deleted: 削除済み
+          deleted_suffix: "（削除済み）"
+          other_words: 単語数が今と違う記録
+          words: "%{count}語"
+          unknown_words: "?語"
+          old_accuracy: 正確率を記録する前の古い記録です
+      format:
+        today: 今日
+        yesterday: 昨日
+        date_with_weekday: "%{date}（%{weekday}）"
+        units:
+          hours: 時間
+          minutes: 分
+          seconds: 秒
+        default_device: デフォルト
+        no_device: 未記録
+        no_device_recorded: 端末の記録なし
+        device_with_layout: "%{name}（%{layout}）"
+      chart:
+        label: "%{label}（左右キーで各回の値を表示）"
+        date: 日時
+        value: 値
+      extra:
+        weekdays: 日,月,火,水,木,金,土
+        months: 1月,2月,3月,4月,5月,6月,7月,8月,9月,10月,11月,12月
+        month_day: "%{month}月%{day}日"
+        year_month_day: "%{year}年%{month}月%{day}日"
+        numeric_date: "%{year}/%{month}/%{day}"
+        short_date: "%{month}/%{day}"

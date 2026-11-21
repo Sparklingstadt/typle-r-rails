@@ -1,0 +1,1509 @@
+---
+ja:
+  typle:
+    about:
+      meta:
+        title: Typleについて | Typle
+        description: Typleでできること、データの保存先、アクセス解析で送る情報、バージョンをまとめています。
+      title: Typleについて
+      intro: 自分で作った単語リストで練習できるタイピングアプリです。好きな言葉を登録して練習し、ベスト記録で上達を振り返れます。
+      play: 練習する
+      guide: 使い方
+      features:
+        title: できること
+        create:
+          title: パックを作成
+          description: 覚えたい単語を登録します。表示する単語と入力する文字は別々に指定でき、CSVからも追加できます。
+        play:
+          title: 練習する
+          description: 速度・正確率・ミス数をその場で表示し、違う文字を打った位置も示します。
+        rankings:
+          title: ベスト記録
+          description: 自己ベストと直近5回の平均、所要時間の推移で上達を確かめられます。
+      storage:
+        title: データの保存先
+        text: ログインは任意です。ログインしているかどうかで保存先が変わり、2つのデータは別々に保存されます（自動では移行しません）。
+        more: "<link>使い方の「保存先とデータ」</link>に詳しい説明があります。"
+      places:
+        current: 今の保存先
+        browser:
+          title: このブラウザー
+          condition: ログインしていないとき
+          p1: このブラウザーのLocalStorageに保存します
+          p2: 別の端末やブラウザーとは同期しません
+          p3: ブラウザーのデータを削除すると消えます
+        account:
+          title: アカウント
+          condition: ログインしているとき
+          p1: アカウント専用のサーバーに保存します
+          p2: ログインした端末で同じデータを使えます
+          p3: 保存にはインターネット接続が必要です
+      analytics:
+        title: アクセス解析
+        text: どのページがどれくらい見られているかを知るため、Vercel Web Analytics でページの表示を数えています。送るのはページのアドレス（? 以降を除く）と、参照元・ブラウザー・OS・国です。Cookie は使わず、単語リストや練習記録は送りません。
+      email:
+        title: メールアドレスの扱い
+        text: ID とパスワードで登録するときに、メールアドレスをお預かりします。使うのは、アドレスの確認、パスワードの再設定、ID のお知らせのメールを送るときだけです。広告やお知らせには使わず、ほかへ渡すこともありません。メールは Resend で送ります。
+      version:
+        title: バージョンと開発
+        version: バージョン
+        tech: 使用している技術
+        techList: Next.js・React・PostgreSQL（Neon）
+        source: ソースコード
+        newTab: "（新しいタブで開く）"
+        public: 公開のリポジトリです。だれでもソースコードを見られます。
+        licenses: ライセンス
+        licensesLink: オープンソースのライセンス
+      licenses:
+        meta:
+          title: ライセンス | Typle
+          description: Typleが使っているオープンソースのソフトウェア・フォント・モデルと、そのライセンスの一覧です。
+        back: Typleについて
+        title: オープンソースのライセンス
+        intro: Typleは次のオープンソースのソフトウェア・フォント・モデルを使っています。名前から各プロジェクトのページを開けます。ライセンスの全文は「すべてのライセンス文」にまとめています。
+        fullText: すべてのライセンス文
+        filter: 名前・ライセンスで絞り込み
+        count: "%{total}件中 %{shown}件"
+        loading: 読み込んでいます…
+        failed: ライセンスの一覧を読み込めませんでした。
+        newTab: "（新しいタブで開く）"
+        noText: "（パッケージにライセンス文なし）"
+    account:
+      checking: ログイン状態を確認中
+      signIn: ログイン
+      signInWithGitHub: GitHubでログイン
+      signInFailed: ログインできませんでした。もう一度お試しください。
+      githubUser: GitHubユーザー
+      ffpfUser: FFPF IDユーザー
+      menu: アカウントメニュー
+      signedInWithGitHub: GitHubでログイン中
+      signedInWithFfpf: FFPF IDでログイン中
+      signedInWithPassword: IDでログイン中
+      manageDevices: 端末を管理
+      signOut: ログアウト
+      signOutFailed: ログアウトできませんでした。もう一度お試しください。
+      localLogin:
+        title: このMacでTypleを使う
+        description: 国名193か国の練習を始められます。リストと練習記録は、このMacの専用データベースに保存されます。
+        start: 練習を始める
+        failed: ログインできませんでした。もう一度お試しください。
+    auth:
+      fields:
+        loginId: ID
+        email: メールアドレス
+        password: パスワード
+        currentPassword: 今のパスワード
+        newPassword: 新しいパスワード
+        loginIdHint: 半角英数字・「_」・「-」で3〜32文字。大文字と小文字は区別しません。あとから変えられません。
+        emailHint: 確認のメールと、ID やパスワードを忘れたときのメールを送ります。
+        passwordHint: 10〜128文字。ID と同じものは使えません。
+      send: 送る
+      failed: うまくいきませんでした。もう一度お試しください。
+      backToSignIn: ログインの画面へ
+      signIn:
+        submit: ログイン
+        refused: ID かパスワードが違うか、しばらくログインできません。
+        signUp: 新しく登録する
+        forgotPassword: パスワードを忘れた
+        forgotId: ID を忘れた
+        or: GitHub のアカウントでもログインできます。
+      signUp:
+        title: 登録
+        description: ID とパスワードで Typle のアカウントを作ります。
+        submit: 登録する
+        submitting: 登録しています…
+        done: 登録して、ログインしました。
+        mailSent: 確認のメールを %{email} に送りました。メールのリンクを開いて、アドレスを確認してください。
+        mailNotSent: 確認のメールを送れませんでした。設定の「アカウント」から送り直せます。
+        continue: 続ける
+        failed: 登録できませんでした。もう一度お試しください。
+        signInFailed: 登録しましたが、ログインできませんでした。ログインの画面からログインしてください。
+        haveAccount: 登録済みの方は、こちらからログイン
+      verifyEmail:
+        title: メールアドレスの確認
+        description: メールで届いたリンクで、アドレスを確認します。
+        verifying: 確認しています…
+        done: メールアドレスを確認できました。
+        failed: 確認できませんでした。もう一度お試しください。
+        home: ホームへ
+      forgotPassword:
+        title: パスワードを忘れた
+        description: ID を入れてください。確認済みのメールアドレスがあれば、パスワードを再設定するリンクを送ります。
+        sent: ID があり、メールアドレスが確認済みなら、再設定のリンクを送りました。リンクは30分有効です。
+      resetPassword:
+        title: パスワードの再設定
+        description: 新しいパスワードを決めてください。設定すると、すべての端末からログアウトし、この画面でログインし直します。
+        submit: 設定する
+        again: 再設定のリンクをもう一度送る
+        signInFailed: パスワードを設定しましたが、ログインできませんでした。ログインの画面からログインしてください。
+      forgotId:
+        title: ID を忘れた
+        description: 登録したメールアドレスを入れてください。そのアドレスが確認済みのアカウントがあれば、ID をメールで送ります。
+        sent: そのアドレスが確認済みのアカウントがあれば、ID をメールで送りました。
+      settings:
+        heading: アカウント
+        description: ID とパスワードでログインするアカウントです。
+        verified: 確認済み
+        unverified: 未確認
+        resend: 確認のメールを送り直す
+        resent: 確認のメールを送りました。
+        alreadyVerified: このアドレスはすでに確認済みです。
+        mailNotSent: 確認のメールを送れませんでした。しばらくしてから再試行してください。
+        loadFailed: アカウントの情報を読み込めませんでした。
+        changePassword: パスワードの変更
+        changePasswordDescription: 今のパスワードが必要です。変えると、ほかの端末はログアウトします。
+        change: パスワードを変更する
+        changed: パスワードを変更しました。ほかの端末はログアウトしました。
+        failed: パスワードを変更できませんでした。もう一度お試しください。
+        signInAgain: パスワードを変更しましたが、この端末でもログインし直す必要があります。新しいパスワードでログインしてください。
+    common:
+      loading: 読み込み中…
+      close: 閉じる
+      notifications: 通知
+      closeNotification: 通知を閉じる
+      delete:
+        label: 削除
+        title: 削除してもよろしいですか？
+        description: "%{description} この操作は取り消せません。"
+        confirm: 削除する
+        deleting: 削除中…
+        failed: 削除できませんでした。もう一度お試しください。
+      storage:
+        guest: このブラウザーに保存
+        account: アカウントに保存
+        guestDetail: 未ログインのため、このブラウザーのLocalStorageに保存します。
+        accountDetail: ログイン中のアカウントに保存します。
+      form:
+        cancel: キャンセル
+        saving: 保存中…
+        save: 変更を保存
+        add: 追加する
+        saveFailed: 保存できませんでした。もう一度お試しください。
+      packList: "%{pack} › %{list}"
+    dashboard:
+      title: 練習の状況
+      sourceGuest: このブラウザーに保存された記録から集計しています。
+      sourceAccount: アカウントに保存された記録から集計しています。
+      start: はじめる
+      practice: 練習する
+      create: 単語リストを作成
+      week:
+        title: 今週のまとめ
+        description: "%{start}〜%{end}の記録です。増減は、先週の同じ曜日・時刻までの記録と比べています。"
+        count: 今週の練習
+        countUnit: 回
+        streak: 連続練習
+        streakUnit: 日
+        accuracy: 平均正確率（直近%{count}回）
+        time: 今週の練習時間
+        practisedToday: 今日も練習済み
+        streakNext: 今日練習すると%{day}日目
+        noComparison: 比べる記録がまだありません
+        noAccuracy: 正確率のある記録がありません
+        times: "%{count}回"
+        sameAsLastWeek: 先週と同じ
+        moreThanLastWeek: 先週より %{value}多い
+        lessThanLastWeek: 先週より %{value}少ない
+      change: {}
+      next:
+        title: 次に練習するリスト
+        description: まだ練習していないリスト、%{days}日以上練習していないリスト、直近の正確率が%{accuracy}%未満のリストを最大3件表示します。
+        allPractised: どのリストも最近練習できています。
+        words: "%{count}語"
+        lastPracticed: 最終練習 %{day}
+        noRecords: 記録なし
+        new: まだ練習していません
+        stale: "%{days}日間練習していません"
+        lowAccuracy: 直近%{count}回の正確率 %{accuracy}%
+        practiceList: "%{name} を練習する"
+        practice: 練習する
+      trends:
+        title: リスト別の推移
+        description: 1単語あたりの秒数（低いほど速い）と正確率を、直近20回まで表示します。所要時間を単語数で割っているので、リストを編集した前後でも比べられます。
+        summary: "%{count}回 · 最終練習 %{day}"
+        needTwo: 記録が2回以上になると推移を表示します。
+        practiceList: "%{name} を練習する"
+        practice: 練習する
+        speed: 1単語あたりの秒数
+        accuracy: 正確率
+        seconds: "%{value} 秒"
+        percent: "%{value}%"
+        latest: 最新 <number>%{value}</number>
+        noChart: この項目のある記録が2回以上になると表示します。
+        best: ベスト記録：正確率 %{accuracy}・%{time} 秒（%{day}）
+        notRecorded: 未記録
+      chart:
+        label: "%{label}（左右キーで各回の値を表示）"
+        date: 日時
+        value: 値
+      continue:
+        label: 続きから
+        meta: "%{count}語 · 最終練習 %{day}"
+        best: ベスト 正確率 %{accuracy}・%{time} 秒
+        notRecorded: 未記録
+        samples: 最初の単語
+        more: ほか %{count} 語
+        practice: 練習する
+        practiceList: "%{name} を練習する"
+        other: 別のリストを選ぶ
+      weak:
+        title: 苦手な単語
+        description: リストごとに、直近%{runs}回の練習（Handwriting を除く）で間違えた単語を、間違えた回の多い順に表示します。苦手な単語だけの練習でミスなく打てた単語は、ここから外れます。
+        none: まだ苦手な単語はありません。練習で間違えた単語がここに出ます。
+        wordsOf: "%{name} の苦手な単語"
+        runs: "%{count}回"
+        more: ほか %{count} 語
+        practice: 苦手な %{count} 語だけ練習する
+        practiceList: "%{name} の苦手な %{count} 語だけ練習する"
+    devices:
+      title: 端末
+      description: 練習に使うパソコンやキーボードを登録します。「<link>練習する</link>」で選ぶと、どの端末で練習したかが記録に残ります。
+      usage: 練習 %{count}回 · 最終 %{day}
+      neverUsed: まだ練習していません
+      listHeading: 登録済みの端末
+      count: "%{count}台"
+      add: 端末を追加
+      limit: 端末は%{max}台まで登録できます。使わなくなった端末を削除すると追加できます。
+      inUse: 使用中
+      inUseDetail: このブラウザーで練習に使う端末です
+      defaultDetail: 登録しなくても使える端末です。名前の変更と削除はできません。
+      edit: 編集
+      editLabel: "%{name} を編集"
+      delete: 削除
+      deleteLabel: "%{name} を削除"
+      added: 端末「%{name}」を追加しました。
+      saved: 端末「%{name}」を保存しました。
+      deleted: 端末「%{name}」を削除しました。
+      deleteTitle: 端末「%{name}」を削除しますか？
+      deleteRemoval: 一覧から「%{name}」を削除します。
+      deleteRecords: この端末で練習した%{count}回分の記録は削除されず、練習した時点の端末名のまま残ります。
+      deleteNoRecords: この端末で練習した記録はありません。
+      empty:
+        title: 端末はまだ登録されていません
+        description: 登録した端末を「練習する」で選ぶと、どの端末で練習したかが記録に残り、端末ごとの記録を見比べられます。
+        example: 例：MacBook Air（JIS）、デスクトップ＋HHKB（US）
+      current:
+        heading: このブラウザーで練習に使う端末
+        change: 変更
+        changeLabel: このブラウザーで練習に使う端末を変更（現在：%{device}）
+        practice: 練習する
+        noteSelected: "「練習する」で練習すると、この端末が記録に残ります。ブラウザーごとに覚えるので、パソコンごとに選んでおけます。"
+        noteUnselected: 未選択のときは、練習記録に端末を残しません。ブラウザーごとに覚えるので、パソコンごとに選んでおけます。
+      dialog:
+        addTitle: 端末を追加
+        editTitle: 端末を編集
+        addDescription: 練習に使う端末を登録します。
+        editDescription: 表示する名前と配列・メモを変更します。
+        name: 端末名
+        namePlaceholder: 例：MacBook Air
+        nameHelp: 練習画面の端末メニューと練習記録に表示されます。
+        layout: 配列・メモ
+        optional: "（任意）"
+        layoutPlaceholder: 例：JIS、US
+        layoutHelp: 配列や設定の違いを書いておくと、記録を見比べるときの目印になります。
+        renameNote: 名前を変えても、これまでの練習記録（%{count}回）には練習した時点の名前が残ります。
+        use: このブラウザーで練習に使う端末にする
+        useHelp: "「練習する」で練習したとき、この端末が記録に残ります。"
+      menu:
+        label: 使用端末：%{device}
+        locked: 練習中は端末を変更できません
+        change: 使用端末を変更
+        unselected: 端末：未選択
+        heading: 使用端末（練習の開始前だけ変更できます）
+        manage: 端末を管理
+      choice:
+        notSelected: 未選択
+        none: 未選択（端末を記録しない）
+    errors:
+      workspaceRequestFailed: データを取得・保存できませんでした。
+      invalidServerData: サーバーからのデータが不正です。
+      loginRequired: ログインしてください。
+      databaseUnavailable: DBに接続できません。しばらくしてから再試行してください。
+      authUnavailable: ログイン機能を利用できません。しばらくしてから再試行してください。
+      forbiddenRequest: 許可されていないリクエストです。
+      emptyRequest: データがありません。
+      workspaceTooLarge: 保存データは1MB以内にしてください。
+      loginAccountChanged: ログインアカウントが変わりました。画面を開き直してください。
+      invalidWorkspace: 保存データの形式やサイズを確認してください。
+      conflict: 別の画面で更新されています。最新データを読み込んでから再試行してください。
+      workspaceSaveFailed: 保存できませんでした。入力内容を残したまま再試行できます。
+      guestReadFailed: ブラウザーの保存データを読み込めません。元のデータは変更していません。
+      storageChanged: 保存先が変わりました。画面を開き直してください。
+      guestQuotaExceeded: 保存できるデータ量を超えています。単語リストや記録を整理してください。
+      guestWriteFailed: ブラウザーに保存できません。空き容量や保存設定を確認して再試行してください。
+      accountChangedReopen: ログイン状態が変わりました。画面を開き直してください。
+      accountChanged: ログイン状態が変わりました。
+      loadFailed: 読み込みに失敗しました。
+      saveFailed: 保存に失敗しました。もう一度お試しください。
+      listNameRequired: 単語リスト名を入力してください。
+      listNameDuplicate: 同じ名前の単語リストがあります。別の名前を指定してください。
+      wordsRequired: 単語を1つ以上追加してください。
+      wordFieldsRequired: 表示する単語と入力する文字をすべて入力してください。
+      savedDataUnreadable: 保存データの形式を読み取れません。
+      savedDataCorrupted: 保存データが壊れています。元のデータは変更していません。
+      invalidWritingLanguage: 手書き練習の言語が正しくありません。
+      listDeleted: この単語リストは削除されています。画面を開き直してください。
+      listLimit: 自作の単語リストは%{max}件まで保存できます（フォローしたパックのリストは数えません）。
+      followLimit: 公式パックは%{max}個までフォローできます。
+      importFileType: CSVファイルを選択してください。
+      importFileEncoding: UTF-8形式で保存したファイルを選択してください。
+      importTooLarge: ファイルは1 MiB以内にしてください。
+      importQuote: "%{line}行目の引用符の形式が正しくありません。"
+      importHeaderRequired: 見出しに input と display が必要です。annotation は省略できます。
+      importHeaderDuplicate: 見出しのカラム名が重複しています。
+      importHeaderUnknown: カラム名は input、display、annotation、input_type を使用してください。
+      importNoRows: 単語を1行以上追加してください。
+      importTooManyRows: 単語は1リストにつき1,000件までです。
+      importColumnCount: "%{line}行目のカラム数が見出しと一致しません。"
+      importFieldRequired: "%{line}行目の input と display は必須です。"
+      importFieldTooLong: "%{line}行目が文字数の上限を超えています（input・display: 1,000文字、annotation: 2,000文字）。"
+      deviceDataInvalid: 端末データの形式を確認してください。
+      deviceNameRequired: 端末名を入力してください。
+      deviceNameTooLong: 端末名は%{max}文字以内で入力してください。
+      deviceLayoutTooLong: 配列・メモは%{max}文字以内で入力してください。
+      deviceDeleted: この端末は別の画面で削除されています。
+      deviceNameDuplicate: "「%{name}」はすでに登録されています。別の名前にしてください。"
+      deviceLimit: 端末は%{max}台まで登録できます。使わなくなった端末を削除してから追加してください。
+      practiceIncomplete: 練習が完了していません。
+      recordListDeleted: 単語リストが削除されているため、記録を保存できません。
+      invalidRecord: 練習記録の内容が正しくないため、保存できません。
+      recordLimit: 1つの単語リストに保存できる練習記録の上限に達しています。
+      deviceNotFound: 練習したデバイスが削除されているため、記録を保存できません。
+      packNameRequired: パック名を入力してください
+      packNameDuplicate: 同じ名前のパックがあります
+      packListsRequired: パックにまとめる単語リストを1つ以上選んでください。
+      packDeleted: このパックは削除されています
+      packFollowed: 公式パックは編集できません。複製すると自分のパックとして編集できます
+      levelsConflict: 同じパックに、難易度（難易度がないリストは名前）が同じリストがあります
+      tooManyLevels: 難易度は1つまでです。
+      packFileUnreadable: 単語パックのファイルとして読み込めませんでした
+      invalidPackFile: このファイルの中に、保存できる上限を超える項目があります
+      sharedPackNotFound: この共有は終了しました。
+      invalidPage: ページの指定が正しくありません。
+      importInputTypeInvalid: "%{line}行目の input_type は command、code、word のいずれかにしてください。"
+      invalidRequest: リクエストの内容が正しくありません。
+      loginIdFormat: ID は3〜32文字の半角英数字・「_」・「-」で入力してください。
+      passwordLength: パスワードは10〜128文字で入力してください。
+      passwordSameAsId: ID と同じパスワードは使えません。
+      emailFormat: メールアドレスの形式が正しくありません。
+      loginIdTaken: この ID はすでに使われています。別の ID にしてください。
+      tooManyRequests: 回数の上限に達しました。しばらくしてから再試行してください。
+      invalidToken: このリンクは使えません。期限が切れたか、すでに使われています。
+      notPasswordAccount: ID とパスワードでログインしたアカウントでだけ使えます。
+      wrongPassword: 今のパスワードが違います。
+    format:
+      today: 今日
+      yesterday: 昨日
+      dateWithWeekday: "%{date}（%{weekday}）"
+      units:
+        hours: 時間
+        minutes: 分
+        seconds: 秒
+      time:
+        one: "%{value}%{unit}"
+        two: "%{first}%{firstUnit}%{second}%{secondUnit}"
+      defaultDevice: デフォルト
+      noDevice: 未記録
+      noDeviceRecorded: 端末の記録なし
+      deviceWithLayout: "%{name}（%{layout}）"
+    globalError:
+      title: 画面を表示できませんでした
+      description: しばらくしてから、もう一度お試しください。
+      reload: 再読み込み
+    guide:
+      meta:
+        title: 使い方 | Typle
+        description: Typleの練習の始め方、単語リストの作り方、記録の見方、データの保存先、キーボード操作をまとめています。
+      title: 使い方
+      intro: 練習の始め方から、単語リストの作り方、記録の見方、データの保存先までをまとめています。ログインしなくても、すべての機能を使えます。
+      contentsLabel: このページの内容
+      contents:
+        practice: 練習する
+        lists: 単語リストを作る
+        records: 結果と記録を見る
+        devices: 端末を登録する
+        storage: 保存先とデータ
+        shortcuts: キーボード操作
+      start:
+        title: はじめの3ステップ
+        follow:
+          title: 公式パックをフォローする
+          text: Go・Kotlin などの公式パックをフォローすると、自分のパック一覧に並び、すぐに練習できます。
+          action: 公式パック
+        create:
+          title: 自分のパックを作る
+          text: 既存の単語リストを選んで、パックにまとめます。単語リストは単体で作成でき、CSVファイルからも取り込めます。
+          action: パックを作成
+        review:
+          title: 記録を振り返る
+          text: 最後まで打つと記録が自動で保存され、自己ベストや所要時間の推移を確認できます。
+          action: ベスト記録
+      legend:
+        typed: 入力：<mono>%{typed}</mono>
+        swatch: あ
+        done:
+          label: 入力済み
+          note: "（緑）"
+        current:
+          label: 次に打つ文字
+          note: "（下線）"
+        pending:
+          label: まだの文字
+          note: "（白／ライトテーマでは黒）"
+        error:
+          label: 間違えた文字
+          note: "（赤）"
+      practice:
+        lead: "<play>練習する</play>で単語リストを選び、表示された単語をタイプします。"
+        colors:
+          title: 入力の色
+          text: 正しく打った文字は緑になり、次の文字に進みます。違う文字を打つと次に打つ文字が赤くなり、正しい文字を打つまで先に進みません。入力欄はなく、表示された単語の下線が今の入力位置です。表示する単語と入力する文字が違う単語（例：「東京」を「とうきょう」と打つ）は、表示の下に入力する文字を出し、そちらに色を付けます。
+        flow:
+          title: 練習の流れ
+          p1: すべての文字が一致すると次の単語へ進み、最後の単語で完了します。
+          p2: 最初の入力から完了までを計時し、練習中は経過時間・速度（1分あたりに正しく入力した文字数）・正確率・ミス数を表示します。
+          p3: 日本語は IME で確定した文字で判定します。変換中の文字は判定しません。貼り付けとドラッグ入力は使えません。
+          p4: 進捗バーの下に次の3語を表示し、「すべての単語を表示」で全体を確認できます。
+          p5: 上部の目のボタンで、練習中の記録（経過時間・速度・正確率・ミス数）の表示と非表示を切り替えられます。選んだ状態はこのブラウザーに保存されます。非表示にしても計時と記録の保存は変わらず、結果画面には数値を表示します。
+          p6: 上部の「思い出して打つ」を入れると、答えを隠して練習します。補足は答えの部分を伏せて表示し、答えは未入力の文字数だけ「＿」で示します。次の単語・すべての単語・入力する文字の案内は表示しません。「答えを見る」で答えを表示でき、残りの文字はミスに数えます。この練習の記録は「思い出す」として、通常の記録とは分けて比べます。選んだ状態はこのブラウザーに保存され、練習の途中では切り替えられません。
+        choose:
+          title: パック・リスト・端末を選ぶ
+          p1: 上部の「パック名 › リスト名」を押すと、パックを選んで練習するリストを切り替えられます。パックは最近練習した順に並び、パック名・カテゴリ・タグ・リスト名・単語で検索できます。リストが1つのパックは、選ぶとすぐそのリストになります。リストが複数のパックでは、難易度があるリストは難易度のボタンで、難易度のないリストは名前のボタンで選びます。右側（スマートフォンでは下）の一覧からも選べます。
+          p2: 練習の途中で別のリストを選ぶと、中断してよいか確認します。途中までの練習は記録しません。
+          p3: "「やり直す」または <keys>Esc</keys> で、同じリストを最初からやり直します。"
+          p4: 上部の「端末」で、練習に使う端末を最初の文字を打つ前に選びます（<devicesSection>端末を登録する</devicesSection>）。
+        writing:
+          title: Typle Handwriting（手書き）
+          p1: 単語リストの編集画面で「手書き練習（Typle Handwriting）に使う」をオンにして言語を選ぶと、そのリストを手書きで練習できます。練習画面でそのリストを選ぶと「タイピング／Handwriting」の切り替えが出ます。
+          p2: 表示された単語を見ながら、OS の手書き入力（Windows の手書きパネル、Android タブレットの手書きキーボード、IME の手書きなど）で入力欄に書きます。Web 版にキャンバスはありません。
+          p3: 入力が単語と一致すると次へ進みます。一致しないまま「判定」（<keys>Enter</keys>）を押すとミスを1つ数え、「飛ばす」でもミスを1つ数えて次へ進みます。変換中の文字は判定しません。
+          p4: Handwriting の記録は通常の記録・思い出して打った記録と分けて比べ、ベスト記録の画面で「通常／思い出す／Handwriting」を切り替えて見ます。ホームの今週の回数・練習時間・連続日数には数えますが、正確率・推移・次に練習するリストはタイピングの記録だけで比べます。Handwriting と「思い出して打つ」は一緒に使えません。練習の途中で切り替えるときは確認します。スマートフォンは今後の対象です。
+      lists:
+        lead: "<create>パックを作成</create>で新しいパックを作り、<edit>単語パック</edit>で保存したパックとリストを編集します。"
+        packs:
+          title: パックとリスト
+          p1: 単語リストは「パック」にまとめて管理します。単語リストは単体で作成でき、パックの作成では、パックの名前とまとめる単語リストを選びます。
+          p2: パックの「…」メニューの「リストを追加」で、保存したパックにリストを足せます。
+          p3: パックの「…」メニューの「パックを編集」では、名前・説明・カテゴリ・タグを変えたり、中のリストを並べ替えたりできます。
+          p4: リストの編集画面では、入れるパックを選び直せます（別のパックへ移せます）。単語の目安として難易度も1つ入力できます。
+        files:
+          title: パックのコピー・ファイル・公式パック
+          p1: パックの「…」メニューの「複製」で、パックをリストごとコピーできます。名前は「名前（コピー）」になり、元のパックの直後に入ります。練習記録は写しません。
+          p2: パックの「…」メニューの「書き出す」で、パックを「パック名.typle-pack.json」ファイルに保存できます。名前・説明・カテゴリ・タグ・リスト・単語を含み、練習記録は含みません。
+          p3: "「ファイルから取り込む」でそのファイルを選ぶと、新しいパックとして取り込みます（単語パックが空のときも使えます）。1 MiB までで、読めないファイルは取り込めません。同じ名前のパックがあるときは「名前（2）」になります。"
+          p4: 単語パックの「公式パック」で「フォローする」を押すと、そのパックが自分のパック一覧に加わります。フォロー中のパックには「公式」と表示し、公式の更新がそのまま反映されます。フォロー中のパックは編集できないので、手を加えたいときは「複製」で自分のパックにします。「フォロー解除」でパックは一覧から消え、練習記録も消えます。
+        interests:
+          title: 関心
+          p1: "<interests>関心</interests>で「語学」「プログラミング」のチップを選べます。いくつでも選べて、押した時点で保存されます。はじめはすべてのチップが選ばれていて、すべての公式パックが関心に合います。"
+          p2: 親のチップを選ぶと、その下に「中国語」「ロシア語」「韓国語」や「Go」「Kotlin」などのチップが開きます。親の選択を外すと、その下の選択も外れます。
+          p3: 関心を選ぶと、単語パックの「公式パック」が「関心に合うパック」と「そのほかのパック」に分かれます。下のチップを選んでいなければその分野のパックすべてが、選んでいればそのタグのパックが「関心に合うパック」になります。関心の画面でも、チップの下に関心に合う公式パックが「パック名」「含まれる単語リスト」「単語数」とスイッチ付きで並びます。スイッチをオンにして画面下の「追加」を押すとフォローし、フォロー中のパックのスイッチをオフにして「追加」を押すとフォローを解除します（記録も消えます）。
+          p4: 関心は、ログインしているとアカウントに、ログインしていないときはこのブラウザーに保存されます。
+        share:
+          title: パックを人に渡す
+          p1: パックを人に渡すときは、パックの「…」メニューの「書き出す」で「パック名.typle-pack.json」ファイルを、リストごとなら「CSVエクスポート」で CSV ファイルを書き出して送ります。練習記録は含みません。
+          p2: 受け取った人は、パックのファイルを「ファイルから取り込む」で、CSV ファイルをリストの編集中に「CSVを読み込む」で取り込めます。
+        input:
+          title: 単語を入力する
+          p1: リスト名と、単語ごとに「表示する単語」「入力する文字」を入力します。補足は任意です。
+          p2: 入力する文字を空欄にすると、表示する単語と同じ文字を使います。
+          p3: 単語はドラッグ、「…」メニュー、<keys>Alt+↑↓</keys> で並べ替えられます。<keys>Enter</keys> で次の単語へ移り、最後の単語では新しい行を追加します。
+          p4: "「保存」または <keys>Ctrl+Enter</keys>（Mac は <keys>⌘+Enter</keys>）で保存します。"
+        cannotSave:
+          title: 保存できないとき
+          p1: 空の行があるリスト、単語のないリスト、同じパックの中に同じ名前があるリストは保存できません。
+          p2: 1つのリストに入れられる単語は1,000語まで、保存できるリストは150件までです。
+          p3: 保存していない変更があるときは、キャンセルやブラウザーの戻るの前に確認します。
+          p4: 単語数を変えると、それまでの記録はベスト記録の順位から外れます（記録は残ります。<wordCount>単語数を変えたとき</wordCount>）。
+        manage:
+          title: リストを管理する
+          p1: "<edit>単語パック</edit>では、パック名やリスト名、単語で検索し、並び順を変えられます。"
+          p2: パックの「…」メニューから、練習・パックを編集・リストを追加・削除ができます。パックを削除すると、中のリストと練習記録も削除されます。リストごとの行にも「…」メニューがあり、ベスト記録・練習記録・CSVエクスポート・複製・削除ができます。公式パックのフォロー中のパックは編集できず、削除の代わりに「フォロー解除」があります。
+          p3: 複製では、リストの単語だけを写します。練習記録は写しません。パックを複製したときも同じです。
+        csv:
+          title: CSVファイル
+          p1: リストの編集中に「CSVを読み込む」でファイルを選ぶと、内容を確認してから、今の単語の末尾に追加するか置き換えるかを選べます。
+          p2: 1行目は列名です。input（入力する文字）と display（表示する単語）が必要で、annotation（補足）は省略できます。UTF-8 で保存した 1 MiB 以内・1,000語までのファイルを読み込めます。
+          p3: "「CSVエクスポート」は、入力・表示・補足を UTF-8 の CSV ファイルに書き出します（練習記録は含みません）。書き出したファイルはそのまま読み込めます。"
+          exampleLabel: CSVファイルの例
+          example: |-
+            input,display,annotation
+            とうきょう,東京,日本の首都
+            おおさか,大阪,
+      records:
+        lead: 練習を最後まで終えると、記録を自動で保存します。
+        complete:
+          title: 完了画面
+          p1: 所要時間、正確率とミス文字数、速度、間違えた単語の数と端末を表示します。その下に、間違えた単語と最初に間違えた文字を並べます。「間違えた単語だけ練習する」で、その単語だけをおさらいできます（おさらいは記録しません）。
+          p2: 正確率は、入力した文字のうち正しかった文字の割合です。削除操作は数えず、訂正して打ち直した文字は数えます。
+          p3: 自己ベストを更新すると、バッジと前のベストとの差を表示します。
+          p4: "「もう一度」（<keys>Enter</keys>）で、同じリストをすぐに練習できます。保存に失敗したときは「記録の保存を再試行」を押してください。"
+        history:
+          title: 練習記録
+          p1: "<records>練習記録</records>では、練習の履歴を日付ごとに新しい順で表示し、リストや端末で絞り込めます。絞り込みは URL に残るので、ブックマークやリンクで同じ表示を開けます。"
+          p2: リストで絞り込むと、そのリストの練習回数とベストを表示し、「練習する」からすぐに練習できます。パックで絞り込むと、リストの選択肢はそのパックのリストだけになります。2リスト以上のパックの記録には「パック名 › リスト名」と表示します。
+          p3: 各リストのベストには「ベスト」の印が付きます。ベストを削除するときは、次にベストになる記録を確認画面に表示します。
+        best:
+          title: ベスト記録
+          p1: "<rankings>ベスト記録</rankings>でリストを選ぶと、自己ベスト・直近5回の平均・所要時間の推移と上位の記録を表示します。ベスト記録の画面は、リストをパックごとにまとめます。パックには、練習回数・練習済みのリスト数（練習済み n/m）・最後に練習した日時・直近7日以内にベストを更新したリストの数を表示します。並べ替えはパック単位で、パックの中のリストは難易度の順です。"
+          p2: 順位は「正確率を優先」（正確率が高い順、同じなら速い順）と「速さを優先」を切り替えられ、端末で絞り込めます。選んだリストと条件は URL に残ります。
+          p3: 練習画面にも、選んでいるリストの上位5件を表示し、今回の記録を強調します。
+        wordCount:
+          title: 単語数を変えたとき
+          p1: リストの単語を追加・削除した後は、今の単語数で練習した記録だけで順位を付けます。練習画面や練習記録のベストも同じ基準です。
+          p2: 単語数が違う記録は、ベスト記録の「含めて表示」で順位に加えられます。今の単語数の記録がまだないときは、単語数が違う記録で順位を付けます。
+        home:
+          title: ホーム
+          text: 記録が1件以上あると、<home>ホーム</home>に今週の練習回数・連続練習日数・平均正確率・練習時間、次に練習するとよいリスト、リストごとの1単語あたりの秒数と正確率の推移を表示します。日付は端末の時刻で区切り、週は月曜はじまりです。
+      devices:
+        lead: "<devices>端末</devices>に練習で使うパソコンやキーボードを登録すると、どの端末で練習したかが記録に残ります。"
+        p1: 練習画面の「端末」で選んだ端末は、このブラウザーで覚えておき、次の練習でも使います。選ぶまでは「デフォルト」を使います。
+        p2: 練習記録とベスト記録を端末で絞り込めます。
+        p3: 端末の名前を変えても、それまでの記録には練習した時点の名前が残ります。登録できる端末は100台までです。
+      storage:
+        lead: ログインは任意です。ログインしているかどうかで、データの保存先が変わります。
+        browser:
+          title: このブラウザーに保存
+          when: ログインしていないとき
+          p1: すべての機能を使えます。
+          p2: このブラウザーの LocalStorage に保存します。別の端末やブラウザーとは同期しません。
+        account:
+          title: アカウントに保存
+          when: ログインしたとき（GitHub または ID とパスワード）
+          p1: アカウント専用のサーバーに保存し、ログインすればどの端末でも同じデータを使えます。
+          p2: 保存にはインターネット接続が必要です。
+        warning:
+          title: データが消えるとき
+          p1: このブラウザーに保存したデータは、ブラウザーのサイトデータを削除すると消えます。大切なリストは「CSVエクスポート」で書き出しておけます。
+          p2: リストを削除すると、そのリストの練習記録も削除されます。
+        notes:
+          p1: 2つの保存先のデータは別々に保存され、ログインしても自動では移りません。
+          p2: 以前のバージョン（v0.1.x）のデータは、<home>ホーム</home>の移行ボタンで今の保存先に追加できます。
+          p3: 複数の画面で同時に変更して保存できなかったときは、最新のデータを読み込んでから、もう一度操作してください。
+      shortcuts:
+        lead: マウスを使わずに操作できるキーの一覧です。
+        anyKey: 任意のキー
+        screens:
+          practice: 練習する
+          complete: 練習の完了画面
+          editor: リストを作成・単語リストの編集
+        actions:
+          restart: 最初からやり直す
+          resume: 入力欄の外をクリックした後、入力に戻る
+          again: もう一度練習する
+          next: 次の単語へ移る（最後の単語では行を追加）
+          move: 単語を1つ上・下へ移動
+          save: 保存する（Mac は ⌘ + Enter）
+      cta:
+        text: 準備ができたら、さっそく練習してみましょう。
+        action: 練習を始める
+    home:
+      welcome:
+        title: 自分の単語で、タイピング練習。
+        text: 公式パックで練習を始めるか、覚えたい単語のリストを作成しましょう。
+        lists: 単語リスト %{count} 件
+        practices: 完了した練習 %{count} 回
+        navLabel: はじめる
+        play: 練習する
+        create: 単語リストを作成
+        records: 記録を見る
+      storage: ログインせずにすべての練習・編集機能を利用できます。単語リスト・練習記録・端末はこのブラウザーに保存されます。ログイン（GitHub または ID とパスワード）すると、別の保存先であるアカウントに切り替わり、端末間で同期できます。ブラウザーのデータは自動で移行されません。
+      storageAccount: ログインしているため、単語リスト・練習記録・端末はアカウントに保存され、同じアカウントでログインした別の端末やブラウザーと同期されます。ログインせずにこのブラウザーへ保存したデータとは別に保存されます。
+      links: "<guide>使い方</guide> ／ <about>Typleについて</about>"
+    input:
+      title: 入力
+      metaTitle: 入力 | Typle
+      description: 練習で文字を入力するときの設定です。
+      note: この設定はこのブラウザーに保存されます。
+      unsaved: 設定を保存できないため、この画面を開いている間だけ使います。
+      simpleSpecial:
+        heading: 特殊文字の簡易入力
+        description: チェコ語やスペイン語などの í・ó・ñ・č のように、アクセントやティルダなどの記号が付いた文字を、記号のない文字（i・o・n・c）で入力できるようにします。記号付きの文字をそのまま入力しても正解になります。 ロシア語のキリル文字も、привет → privet、школа → shkola、я → ya のようにラテン文字で入力できます。キリル文字の直接入力も正解になります。
+        label: 特殊文字の簡易入力を使う
+        hint: ONにすると、á → a、č → c、ш → sh、я → ya のように入力できます。
+      simpleTable:
+        heading: 簡易入力の対応表
+        description: 特殊文字の簡易入力をONにしたときに、それぞれの文字の代わりに入力できるキーです。
+        latin: 記号付きのラテン文字
+        other: そのほかの記号
+        cyrillic: キリル文字（ロシア語）
+        letter: 文字
+        key: 入力するキー
+        capitals: 大文字も同じように入力できます（Á → A、Ш → Sh または SH）。
+      ignoreCase:
+        heading: 大文字・小文字を区別しない
+        description: A と a のように、大文字と小文字を同じ文字として扱います。Shift キーを押さずに入力しても、押して入力しても正解になります。
+        label: 大文字・小文字を区別しない
+        hint: ONにすると、A や É などの大文字を a や é と入力しても正解になります（逆も同じです）。
+    interests:
+      title: 関心
+      description: 選んだ関心に合う公式パックをフォローできます。公式パックの一覧でも、合うパックを先に表示します。
+      parents:
+        language: 語学
+        programming: プログラミング
+      childrenLabel: "%{parent}の関心"
+      children:
+        language:
+          zh: 中国語
+          ru: ロシア語
+          ko: 韓国語
+          en: 英語
+          es: スペイン語
+          fr: フランス語
+          de: ドイツ語
+          cs: チェコ語
+        programming:
+          go: Go
+          kotlin: Kotlin
+          java: Java
+          typescript: TypeScript
+          php: PHP
+          ruby: Ruby
+          sql: SQL
+          linux: Linux
+          vim: Vim
+          test: テスト
+          node: Node.js
+          shell: シェル
+          cloud: クラウド
+      packs:
+        title: 関心に合う公式パック
+        description: スイッチをオンにしたパックを「追加」でフォローします。フォロー中のパックのスイッチをオフにすると、フォローを解除します。チェックを付けたパックは、下の「まとめてフォロー」「まとめて解除」で一度にフォローしたり、フォローを解除したりできます。
+        pick: 関心を選ぶと、合う公式パックがここに並びます。
+        none: 選んだ関心に合う公式パックはありません。
+        lists: 含まれる単語リスト
+        separator: "、"
+        switch: "%{name} をフォローする"
+        select: "%{name} を選ぶ"
+        selectAll: すべて選択
+        selected: "%{count}個を選択中"
+        followSelected: まとめてフォロー
+        unfollowSelected: まとめて解除
+        add: 追加
+        saving: 保存中…
+        confirmTitle: フォローの解除を含みます
+        confirmDescription: "%{names}のフォローを解除します。これらのパックの記録も消えます。"
+    landing:
+      meta:
+        title: Typle | 覚えたい言葉を、打って覚える
+        description: プログラミングのコマンドや構文も、外国語の単語も、打ちながら覚えられる無料のタイピングアプリ。%{total}件の公式リストと自分の単語リストで、ログインせずに練習できます。
+      hero:
+        eyebrow: 無料・ログインなしで使えます
+        title: 覚えたい言葉を、打って覚える。
+        lead: Typle は、自分の単語リストや公式パックで練習できるタイピングアプリです。プログラミングのコマンドや構文も、外国語の単語も、打ちながら身につけられます。
+        play: ログインせずに練習を始める
+        catalog: 公式パックを見る
+        home: ホームへ
+      packs:
+        title: 公式パック
+        lead: "%{total}件の公式リストを、フォローしてすぐに練習できます。"
+        programming:
+          title: プログラミング
+          count: "%{count}リスト"
+          text: Go・Java・Kotlin・TypeScript などの構文、Linux・Vim・AWS CLI などのコマンド、PostgreSQL のエラーコード。
+        languages:
+          title: 語学
+          count: "%{count}リスト"
+          text: 中国語（HSK5・6級）・韓国語・英語・フランス語・ドイツ語・スペイン語・ロシア語・チェコ語の単語と構文。中国語と韓国語は手書きでも練習できます。
+      features:
+        title: できること
+        own:
+          title: 自分の単語リストで練習
+          text: 覚えたい単語を登録して練習します。表示する単語と入力する文字を分けられ、CSV からも取り込めます。
+        recall:
+          title: 思い出して打つ
+          text: 答えを隠し、補足をヒントに思い出しながら打つモードで、覚えたかどうかを確かめられます。
+        records:
+          title: 記録で上達を確かめる
+          text: 速度・正確率・ミスを毎回記録し、自己ベストと推移で上達を振り返れます。
+      storage:
+        title: データの保存先
+        text: ログインしなくても、すべての機能を使えます。データはこのブラウザーに保存され、ログイン（GitHub または ID とパスワード）すると端末間で同期できます。
+        more: "<guide>使い方</guide> ／ <about>Typleについて</about>"
+      try:
+        badge: ここで打ってみる
+        progress: "%{name}・%{current} / %{total} 語"
+        label: 入力
+        hint: 上の単語を打つと、次の単語に進みます。ここで打った分は記録しません。
+        done: "%{count}語打ちました。続きはこのパックの練習で、記録も残ります。"
+        continue: このパックで練習を続ける
+        starting: 準備しています…
+    mail:
+      verify:
+        subject: 'Typle: メールアドレスの確認'
+        body: |-
+          Typle に登録していただきありがとうございます。
+
+          次のリンクを開いて、メールアドレスを確認してください（24時間有効です）。
+
+          %{link}
+
+          このメールに心当たりがない場合は、何もせずに削除してください。
+      reset:
+        subject: 'Typle: パスワードの再設定'
+        body: |-
+          パスワードの再設定を受け付けました。
+
+          次のリンクを開いて、新しいパスワードを設定してください（30分有効で、1回だけ使えます）。
+
+          %{link}
+
+          このメールに心当たりがない場合は、何もせずに削除してください。パスワードは変わりません。
+      loginIds:
+        subject: 'Typle: ログイン ID のお知らせ'
+        body: |-
+          このメールアドレスで登録されているログイン ID は次のとおりです。
+
+          %{ids}
+
+          このメールに心当たりがない場合は、何もせずに削除してください。
+    metadata:
+      title: Typle | 自分の言葉で、タイピング。
+      description: 自分の単語リストで練習できるタイピングアプリ。好きな言葉を登録して、タイピングを練習し、ベスト記録を振り返れます。
+      imageAlt: Typle — 自分の言葉で、タイピング。単語リストで練習・記録
+      sharedTitle: 共有されたパック | Typle
+      playDescription: 公式パックや自分の単語リストを選んで、タイピングを練習します。速度・正確率・ミスをその場で表示し、記録を自動で保存します。ログインは不要です。
+    nav:
+      mainNavigation: メインナビゲーション
+      help: ヘルプ
+      skipToContent: 本文へスキップ
+      topBar: トップバー
+      openMenu: メニューを開く
+      closeMenu: メニューを閉じる
+      menu: メニュー
+      groups:
+        practice: 練習
+        wordLists: 単語リスト
+        settings: 設定
+      links:
+        home: ホーム
+        play: 練習する
+        records: 練習記録
+        rankings: ベスト記録
+        edit: 単語パック
+        words: 単語一覧
+        create: パックを作成
+        general: 一般
+        input: 入力
+        interests: 関心
+        devices: 端末
+        guide: 使い方
+        about: Typleについて
+        github: GitHub
+      storage:
+        label: 保存先：
+        account: アカウントに保存
+        browser: このブラウザーに保存
+        accountDetail: アカウントに保存し、ログインした端末で同期します。
+        browserDetail: ログインしていないため、このブラウザーだけに保存します。
+      theme:
+        label: ダークモード
+        toLight: ライトモードに切り替え
+        toDark: ダークモードに切り替え
+        saveFailed: 設定を保存できないため、この画面内だけで切り替えます。
+    officialPack:
+      title: "%{name}のタイピング練習"
+      practice: このパックで練習する
+      preparing: 準備しています…
+      full: 公式パックは%{max}個までフォローできます。使わないパックのフォローを解除してから、もう一度押してください。
+      catalog: ほかの公式パックを見る
+      free: 無料・ログインなしで練習できます。押すとこのパックをフォローし、すぐに練習が始まります。
+      wordsHeading: 収録している言葉
+      input: 打つ言葉
+      note: 意味・補足
+      details: 詳しく見る
+    practice:
+      empty: まだパックがありません。<catalog>公式パックをフォローする</catalog>か、<create>新しいパックを作り</create>ましょう
+      starter:
+        title: どれから練習しますか？
+        description: まだパックがありません。公式パックを選ぶと、フォローしてすぐに練習が始まります。フォローはあとで解除できます。
+        first: 最初のリスト：%{list}
+        start: このパックで始める
+        more: "<catalog>ほかの公式パックを見る</catalog> ／ <create>自分のパックを作る</create>"
+      stats:
+        label: 練習中の記録
+        elapsed: 経過
+        speed: 速度
+        speedUnit: 打/分
+        accuracy: 正確率
+        mistakes: ミス
+        wordSpeedUnit: 語/分
+      progress:
+        label: 単語の進捗
+        value: "%{current} / %{total} 語"
+      feedback:
+        mismatch: "%{position}文字目が違います。正しい文字を入力してください。"
+        composing: 変換中の文字は、確定してから判定します
+        restart: 最初からやり直す
+      header:
+        switchList: '単語リストを切り替える（現在: %{name}）'
+        wordCount: "%{count}語"
+        restart: 最初からやり直す
+        restartTitle: 最初からやり直す（Esc）
+        restartShort: やり直す
+        liveStats: 練習中の記録を表示
+        aside: サイドパネル（単語リスト）を表示
+      word:
+        typeThis: 入力する文字
+        resume: クリックまたは任意のキーで再開
+        inputLabel: 表示された文字を入力
+        simpleKeys: 簡易入力
+        simpleKeysAll: すべての対応表
+      recall:
+        toggle: 思い出して打つ
+        reveal: 答えを見る
+        noHint: ヒントがありません
+        resultHeading: 思い出して打つ
+      upcoming:
+        next: 次の単語
+        last: これが最後の単語です
+        more: ほか %{count} 語
+        showAll: すべての単語を表示
+        allWords: すべての単語
+        done: "（完了）"
+        current: "（入力中）"
+        pending: "（未入力）"
+      aside:
+        label: 単語リスト
+        lists: 単語リスト
+        create: パックを作成
+        best: ベスト記録
+        bestOrder: 正確率が高い順・同じなら速い順
+        bestOrderAtCount: 正確率が高い順・同じなら速い順・今の%{count}語の記録
+        allBest: すべてのベスト記録
+        filter: 単語リストをリスト名・カテゴリ・タグで絞り込む
+      picker:
+        title: 単語リストを選ぶ
+        description: 練習の途中で別のリストを選ぶと、中断してよいか確認します。
+        filter: リスト名・カテゴリ・タグで絞り込む
+        candidates: 単語リストの候補
+        noMatch: 一致するリストがありません。
+      switch:
+        title: 練習を中断しますか？
+        description: "「%{list}」の進捗（%{done} / %{total} 語）は記録されません。「%{next}」に切り替えます。"
+        continue: 練習を続ける
+        confirm: 中断して切り替える
+      result:
+        label: 練習結果
+        title: おつかれさまでした！
+        newBest: 自己ベスト更新
+        completed: 練習完了：%{name}
+        time: 所要時間
+        seconds: 秒
+        accuracy: 正確率
+        mistakes: ミス %{count} 文字
+        speed: 速度
+        speedUnit: 打/分
+        correct: "%{count} 文字"
+        words: 単語
+        wordUnit: 語
+        firstAtCount: 今の%{count}語では最初の記録
+        firstForList: このリストの最初の記録
+        faster: ベスト比 −%{seconds} 秒
+        bestByAccuracy: 正確率でベストを更新
+        behind: ベストは %{time} 秒・%{accuracy}%
+        behindNoAccuracy: ベストは %{time} 秒・正確率未記録
+        saveFailed: 記録を保存できませんでした。結果はこの画面に残っています。通信状態を確認して再試行してください。
+        retry: 記録の保存を再試行
+        saved: 練習記録を保存しました。このリストの %{rank} 位です。
+        saving: 記録を保存しています…
+        again: もう一度
+        chooseList: 別のリストを選ぶ
+        viewRecords: 記録を見る
+        wordSpeedUnit: 語/分
+        correctWords: "%{count} 語"
+        mistakesWords: ミス %{count} 語
+        shareOnX: X でシェア
+        shareText: Typle で「%{name}」を %{time} 秒・正確率 %{accuracy}% で打ちました
+        reviewNote: 間違えた単語のおさらいは記録しません。
+        reviewNoteWeak: このおさらいは記録しません。ミスなく打てた単語は、苦手な単語から外れます。
+        reviewing: 間違えた %{count} 語のおさらい（記録しません）
+        missed:
+          tile: 間違えた単語
+          of: "/ %{count} 語"
+          title: 間違えた単語
+          none: 間違えた単語はありません。
+          typed: "%{position}文字目で %{typed} と打った"
+          wrote: "「%{typed}」と書いた"
+          revealed: 答えを見た
+          skipped: 飛ばした
+          space: スペース
+          count: "%{count}回"
+          review: 間違えた %{count} 語だけ練習する
+        reviewingWeak: 苦手な %{count} 語のおさらい（記録しません）
+      best:
+        label: ベスト記録 上位5件
+        rank: 順位
+        time: 所要時間
+        accuracy: 正確率
+        device: 端末
+        seconds: "%{time} 秒"
+        noAccuracy: 未記録
+        current: 今回の記録
+        empty: まだ記録がありません。最後まで打つと、ここに上位5件が表示されます。
+      options:
+        selected: "%{name} を選択中"
+        select: "%{name} を選択"
+        withBest: "%{count}語 · ベスト %{time} 秒"
+        noRecord: "%{count}語 · 記録なし"
+        groupSelected: "%{level} · %{summary}"
+        groupLists: "%{count}リスト · 難易度を選ぶ"
+        levels: "%{name} の難易度"
+        chooseLevel: 難易度を選んでください。
+        groupListsPlain: "%{count}リスト · リストを選ぶ"
+        listsOf: "%{name} のリスト"
+        chooseList: リストを選んでください。
+        match: 検索に一致
+      modeLabel: 練習の方法
+      modeTyping: タイピング
+      modeWriting: Handwriting
+      writingJudge: 判定
+      writingSkip: 飛ばす
+      writingRead: "「%{text}」と読めました"
+      writingInput: ここに手書きで入力
+      writingInputMethod: 手書きの入力方法
+      writingInputPad: 手書きパッド
+      writingInputField: 入力欄
+      writingPad: 手書きパッド
+      writingPadHint: ここに書く
+      writingPadLoading: 手書きの認識を準備しています…
+      writingPadFailed: 手書きの認識を読み込めませんでした。
+      writingPadRetry: もう一度読み込む
+      writingPadUndo: 1画戻す
+      writingPadClear: 消す
+      writingPadReading: いまの読み取り：%{text}
+    rankings:
+      title: ベスト記録
+      intro: 単語リストごとの自己ベストです。リストを選ぶと、上位の記録と所要時間の推移を表示します。
+      reload: 再読み込み
+      filter:
+        device: 端末
+        allDevices: すべての端末
+        deleted: "%{name}（削除済み）"
+      mode:
+        label: 練習のモード
+        normal: 通常
+        recall: 思い出す
+        writing: Handwriting
+      order:
+        label: 順位の基準
+        accuracy: 正確率<wide>を</wide>優先
+        speed: 速さ<wide>を</wide>優先
+      orderNotes:
+        accuracy: 正確率が高い順。同じ正確率なら速い順
+        speed: 速い順。同じ時間なら正確率が高い順
+      lists: 単語リスト
+      empty:
+        title: まだベスト記録がありません
+        description: 単語リストを最後まで打つと、リストごとの自己ベストと上位の記録、所要時間の推移がここに並びます。
+        practice: 練習する
+        create: 単語パックを作る
+      list:
+        search: リストを検索
+        clearSearch: 検索をクリア
+        noDeviceRecords: この端末の記録がないリスト（%{count}）
+        noRecords: まだ記録のないリスト（%{count}）
+        words: "%{count}語"
+        noMatch: "「%{query}」に一致するリストはありません。"
+        lastPracticed: 最終練習
+        best: 自己ベスト
+        improved: 更新
+        improvedTitle: 直近%{days}日で自己ベストを更新しました
+        runs: "%{count}回"
+        sortLabel: 並び順：%{sort}
+        sorts:
+          recent: 最近練習した順
+          name: 名前順
+          count: 記録が多い順
+        packPracticed: 練習済み %{practiced}/%{lists}
+        packImproved: 更新 %{count}
+        packJoin: "・"
+        packLists: "%{pack}・%{count}リスト"
+      detail:
+        back: リスト一覧
+        words: "%{count}語"
+        records: 記録 %{count}回
+        lastPracticed: 最終練習 %{day}
+        viewRecords: 記録を見る
+        practice: このリストを練習
+        notPractised:
+          title: まだ練習していません
+          description: 最後まで打つと、このリストの自己ベストと上位の記録がここに並びます。
+        noDeviceRecords:
+          title: "「%{device}」で練習した記録はありません"
+          description: このリストには、ほかの端末の記録が %{count}件あります。
+          showAll: すべての端末の記録を表示
+        top:
+          title: 上位の記録
+          accuracy: 正確率を優先
+          speed: 速さを優先
+          shown: "%{shown} / %{total}件"
+          showTop: 上位%{count}件だけ表示
+          showAll: すべて表示（%{count}件）
+          oldAccuracy: 正確率が「—」の記録は、正確率を記録する前の古い記録です。正確率を優先するときは最後に並びます。
+        stats:
+          best: 自己ベスト
+          bestNote: "%{accuracy} · %{day}"
+          noAccuracy: 正確率なし
+          recentAverage: 直近%{count}回の平均
+          gap: ベストとの差 +%{value}秒
+          sameAsBest: ベストと同じ
+          averageAccuracy: 平均正確率
+          recentRuns: 直近%{count}回
+          runs: 練習回数
+          runsValue: "%{count}<unit>回</unit>"
+          allWordCounts: すべての単語数
+          currentWords: 今の%{count}語で練習
+        trend:
+          title: 所要時間の推移
+          recent: 直近%{count}回
+          label: "%{name} の所要時間の推移"
+          needTwo: 2回以上練習すると推移を表示します。
+        others:
+          old: 単語数の記録がない古い記録 %{count}件
+          words: "%{words}語の記録 %{count}件"
+          separator: "、"
+          fallback: 今の%{count}語で練習した記録がないため、単語数が違う記録（%{detail}）で順位を付けています。
+          included: 単語数が今と違う記録（%{detail}）も含めています。単語数が違うと所要時間は単純に比べられません。
+          excluded: "<strong>単語数が今と違う%{count}件は順位に含めていません。</strong>リストを編集する前の記録などです（%{detail}）。"
+          exclude: 含めない
+          include: 含めて表示
+      top:
+        label: "%{name} の上位の記録"
+        rank: 順位
+        time: 所要時間
+        accuracy: 正確率
+        mistakes: ミス
+        device: 端末
+        date: 日時
+        rankNumber: "%{rank}位"
+        deleted: 削除済み
+        deletedSuffix: "（削除済み）"
+        otherWords: 単語数が今と違う記録
+        words: "%{count}語"
+        unknownWords: "?語"
+        oldAccuracy: 正確率を記録する前の古い記録です
+    records:
+      title: 練習記録
+      intro: これまでの練習を新しい順に表示します。リストごとの上位は<rankings>ベスト記録</rankings>、推移は<home>ホーム</home>で見られます。
+      filter:
+        pack: パック
+        allPacks: すべてのパック
+        list: リスト
+        allLists: すべてのリスト
+        device: 端末
+        allDevices: すべての端末
+        clear: 絞り込みを解除
+        count: "%{count}件"
+        filteredCount: "%{count}件 / 全%{total}件"
+      filterMenu:
+        label: "%{name}で絞り込む（現在：%{current}）"
+        all: すべて
+        count: "%{count}回"
+      columns:
+        time: 時刻
+        deviceWords: 端末・単語数
+        listDevice: リスト・端末
+        duration: 所要時間
+        accuracy: 正確率
+        perWord: 1語あたり
+        mistakes: ミス
+      day:
+        heading: "%{relative} · %{date}"
+        summary: "%{count}回 · %{duration}"
+      recallBadge: 思い出す
+      more: さらに表示（残り %{count}件）
+      note: 単語数・端末名は練習した時点のものです。
+      noteMissing: "「—」は記録されていない項目です（以前のバージョンで保存した記録など）。"
+      row:
+        best: ベスト
+        bestTitle: このリストのベスト記録（今の単語数の記録のうち、正確率の高い順、同率なら所要時間の短い順で1位）
+        words: "%{count}語"
+        seconds: "%{value} 秒"
+        duration: 所要時間
+        accuracy: 正確率
+        lowAccuracy: 正確率が%{limit}%未満です
+        perWord: 1語あたり
+        perWordUnit: 秒/語
+        mistakes: ミス
+        delete: 削除
+        deleteLabel: "%{name}（%{date} %{time}）の記録を削除"
+      delete:
+        title: この練習記録を削除しますか？
+        description: "「%{name}」の記録を1件削除します。"
+        done: "「%{name}」の練習記録（%{date} %{time}）を削除しました。"
+        list: リスト
+        when: 日時・端末
+        result: 結果
+        accuracy: 正確率 %{value}
+        mistakes: ミス %{value}
+        bestNext: このリストのベスト記録です。削除すると、ベストは %{time}（%{accuracy}）になります。
+        bestLast: このリストのベスト記録です。削除すると、このリストの記録はなくなります。
+      empty:
+        title: まだ練習記録がありません
+        description: "「練習する」でリストを最後まで入力すると、所要時間・正確率・ミス・使った端末がここに残ります。"
+        practice: 練習する
+      filteredEmpty:
+        listTitle: "「%{name}」の記録はまだありません"
+        listDescription: 練習すると、ここに記録が表示されます。
+        title: 条件に合う記録はありません
+        description: リストや端末の条件を変えてください。
+        practiceList: このリストを練習する
+      summary:
+        words: "%{count}語"
+        runs: 練習 %{count}回
+        last: 最終 %{day}
+        best: ベスト（%{mode}）
+        rankings: ベスト記録
+        practice: 練習する
+      modeWriting: Handwriting
+    settings:
+      title: 一般
+      metaTitle: 一般 | Typle
+      description: Typleの表示とログインに関する設定です。
+      language:
+        heading: 表示言語
+        description: 画面に表示する言語を選びます。単語リストの内容や練習記録は変わりません。
+        note: 選んだ言語はこのブラウザーに保存されます。
+        current: 使用中
+        changing: 表示言語を変更しています…
+        changed: 表示言語を%{language}に変更しました。
+        failed: 表示言語を変更できませんでした。もう一度お試しください。
+      sessions:
+        heading: ログイン中の端末
+        description: このアカウントでログインしているすべての端末（このブラウザー、ほかのブラウザー、iPad・Mac・Android・Windows アプリ）からログアウトします。端末をなくしたときや、ほかの人に使われた心当たりがあるときに使います。ログインはどの端末でも30日で切れます。
+        action: すべての端末からログアウト
+        confirmTitle: すべての端末からログアウトしますか？
+        confirmDescription: このブラウザーを含め、いまログインしているすべての端末とアプリがログアウトされます。続けて使う端末では、もう一度ログインしてください。単語リストや練習記録は消えません。
+        confirm: ログアウトする
+        signingOut: ログアウトしています…
+        failed: ログアウトできませんでした。もう一度お試しください。
+      languages:
+        ja: 日本語
+        en: 英語
+        zh-CN: 中国語（簡体字）
+        zh-TW: 中国語（繁体字）
+        ru: ロシア語
+        fr: フランス語
+    sharedResult:
+      title: "「%{name}」の練習記録"
+      description: "%{time} 秒・正確率 %{accuracy}%。Typle で覚えたい言葉を打って覚えよう。"
+      heading: "「%{name}」の練習記録"
+      lead: Typle で打った記録です。Typle は、覚えたい言葉を打って覚えるタイピングアプリです。
+      play: Typle で練習してみる
+      about: Typle について
+      invalidTitle: 記録を表示できません
+      invalid: このリンクの記録は読み取れませんでした。リンクが途中で切れていないか確かめてください。
+    wordLists:
+      page:
+        title: 単語パック
+        description: 練習に使う単語パックを作成・編集します。リストをCSVで書き出すと、別のブラウザーやアカウントで読み込めます。
+        reload: 再読み込み
+        notFound: 開こうとした単語リストは見つかりません。削除された可能性があります。
+        editTitle: 単語リストを編集
+        createTitle: 単語リストを作成
+        editDescription: "%{count}語 · %{practice}"
+        updated: "「%{name}」を更新しました。"
+        created: "「%{name}」を作成しました。"
+        deleted: "「%{name}」を削除しました。"
+        packDeleted: パック「%{name}」を削除しました。
+        exportFailed: "「%{name}」をエクスポートできませんでした。もう一度お試しください。"
+        copySuffix:
+          one: "（コピー）"
+          other: "（コピー%{count}）"
+          __var: "n"
+        catalog: 公式パック
+      manager:
+        heading: 保存済みのパック
+        limitTitle: 自作のリストは%{max}件まで、公式パックは%{followedMax}個までフォローできます。フォローしたパックのリストは自作の件数に数えません。
+        ownCount: 自作 %{count} / %{max}
+        followedCount: フォロー %{count} / %{max}パック
+        create: 新しいパックを作成
+        createPack: 新しいパック
+        createList: 単語リストを作成
+        full: 自作の単語リストは%{max}件まで保存できます。使わなくなったリストを削除すると作成できます。フォローしたパックのリストは数えません。
+        search: パック名・リスト名・カテゴリ・タグ・単語で検索
+        clearSearch: 検索をクリア
+        countFiltered: "%{shown}パック / 全%{total}パック"
+        count: "%{total}パック"
+        noMatch: "「%{query}」に一致するパックはありません。パック名・リスト名・カテゴリ・タグ・単語から探します。"
+        csvNote: CSVエクスポートは表示する単語・入力する文字・補足を保存します（練習記録は含みません）。作成・編集画面の「CSVを読み込む」で使えます。
+        importFile: ファイルから取り込む
+      delete:
+        title: "「%{name}」を削除しますか？"
+        withRecords: 単語リストと、このリストの練習記録をすべて削除します。
+        listOnly: 単語リストを削除します。
+        list: リスト
+        contents: 内容
+        wordCount: "%{count}語"
+        noRecords: 練習記録なし
+        records: 練習記録 %{count}件（最終 %{day}）
+        exportHint: 単語はCSVに書き出して残せます（練習記録は含みません）。
+        export: CSVエクスポート
+        packTitle: "%{name} を削除しますか？"
+        packDescription: "%{lists}リストと%{records}件の記録も削除されます。"
+        lastInPack: パック「%{name}」も削除されます。
+      order:
+        label: 並び順
+        current: 並び順：%{order}
+        added: 追加した順
+        practiced: 最近練習した順
+        name: 名前順
+        words: 単語が多い順
+      labels:
+        category: カテゴリ
+        tag: タグ
+      filter:
+        category: カテゴリで絞り込む
+        allCategories: すべてのカテゴリ
+        noCategory: カテゴリなし
+        categoryCurrent: カテゴリ：%{category}
+        allTags: すべてのタグ
+        tagsCurrent: タグ：%{tags}
+        separator: "・"
+        tagsHint: 選んだタグをすべて持つパック
+        clearTags: タグの選択を解除
+        clear: 絞り込みを解除
+        clearAll: 検索と絞り込みを解除
+        noMatch: 条件に一致するパックはありません。
+        option: "%{name}（%{count}）"
+      empty:
+        title: 単語リストはまだありません
+        packTitle: 単語パックはまだありません
+        description: 練習したい単語と、正解として入力する文字を登録します。CSVファイルから読み込むこともできます。
+        packDescription: まだパックがありません。公式パックをフォローするか、新しいパックを作りましょう
+        catalogLink: 公式パックをフォローする
+      row:
+        examples: 単語の例
+        separator: "・"
+        more: "%{words} ほか%{rest}語"
+        wordCount: "%{count}語"
+        notPracticed: まだ練習していません
+        practiced: 練習 %{count}回 · 最終 %{day}
+        practice: 練習
+        practiceList: "%{name} を練習"
+        edit: 編集
+        editList: "%{name} を編集"
+        moreActions: その他の操作
+        moreFor: "%{name} のその他の操作"
+        practiceThis: このリストを練習
+        rankings: ベスト記録を見る
+        records: 練習記録を見る
+        recordCount: "%{count}件"
+        export: CSVエクスポート
+        copy: 複製
+        delete: 削除
+      pack:
+        lists: "%{count}リスト"
+        practiced: 練習済み %{practiced}/%{lists}
+        wordCount: "%{count}語"
+        practice: 練習
+        listsOf: "%{name} のリスト"
+        moreActions: その他の操作
+        moreFor: "%{name} のパックの操作"
+        edit: パックを編集
+        addList: リストを追加
+        delete: 削除
+        copy: 複製
+        export: 書き出す
+      wordRow:
+        label: 単語 %{n}
+        drag: 単語 %{n} をドラッグして並べ替え
+        dragTitle: ドラッグして並べ替え
+      editor:
+        back: 単語パック
+        description: タイピングで表示する単語と、正解として入力する文字を登録します。
+        displayRequired: 表示する単語を入力するか、この行を削除してください（空の行は保存できません）。
+        inputBlank: 入力する文字が空白だけです。空欄にすると表示する単語と同じになります。
+        basics: 基本情報
+        name: 単語リスト名
+        nameHelp: 練習画面と単語リスト一覧に表示されます。
+        words: 単語
+        added: "%{count}語を追加しました。内容を確認して「保存」を押してください。"
+        loaded: "%{count}語を読み込みました。内容を確認して「保存」を押してください。"
+        display: 表示する単語
+        input: 入力する文字
+        inputHint: 空欄なら表示と同じ
+        annotation: 補足
+        annotationOptional: 補足（任意）
+        dragInstructions: スペースキーで単語を持ち上げ、上下矢印キーで移動し、スペースキーで確定します。Escapeキーでキャンセルします。
+        displayLabel: 表示する単語 %{n}
+        displayPlaceholder: 単語を入力
+        inputLabel: 入力する文字 %{n}
+        annotationLabel: 補足 %{n}
+        annotationPlaceholder: 読み・意味など
+        wordActions: 単語 %{n} の操作
+        actions: 操作
+        moveUp: 上へ移動
+        moveDown: 下へ移動
+        moveFirst: 先頭へ移動
+        moveLast: 末尾へ移動
+        deleteWord: この単語を削除
+        deleteWordN: 単語 %{n} を削除
+        delete: 削除
+        addWord: 単語を追加
+        shortcutNext: 次の単語へ（最後の単語では行を追加）
+        shortcutMove: 単語を移動
+        shortcutSave: 保存
+        shortcutDrag: ドラッグで並べ替え
+        recount: 単語数が{from, number}語から{to, number}語に変わります。{from, number}語で練習した記録（%{records}件）は残りますが、ベスト記録の順位には含まれなくなります。
+        errorCount: "%{count}件のエラーがあります"
+        firstError: 最初のエラーへ移動
+        unsaved: 未保存の変更があります
+        noChanges: 変更はありません
+        wordTotal: "・ %{count}語"
+        save: 保存
+        discardTitle: 保存していない変更があります
+        discardDescription: このまま移動すると、入力した内容は失われます。
+        keepEditing: 編集を続ける
+        discard: 破棄して移動
+        category: カテゴリ（任意）
+        categoryPlaceholder: プログラミング、語学など
+        categoryHelp: 使っているカテゴリから1つ選ぶか、入力して新しく作成します。一覧や練習画面で絞り込めます。
+        tags: タグ（任意）
+        tagList: 付けたタグ
+        removeTag: タグ「%{tag}」を外す
+        tagsFull: タグは%{max}個までです
+        tagPlaceholder: Kotlin、PostgreSQLなど
+        tagsHelp: 使っているタグから選ぶか、入力して新しく作成します（%{max}個まで）。リスト名やタグでの検索に使えます。
+        chooseCategory: カテゴリを選ぶ
+        searchCategory: カテゴリを検索・作成
+        clearCategory: カテゴリを外す
+        addTag: タグを選ぶ・作成する
+        searchTag: タグを検索・作成
+        create: "「%{name}」を作成"
+        noLabels: まだありません。入力すると新しく作成できます。
+        pack: パック
+        newPack: 新しいパック（リスト名で作成）
+        packHelp: リストを入れるパックです。ほかのパックを選ぶと、リストはそのパックに移ります。
+        addingTo: パック「%{name}」に追加します。
+        writingToggle: 手書き練習（Typle Handwriting）に使う
+        writingToggleHelp: このリストを手書きで練習できるようにします。認識する言語は手書きの文字を読み取るときに使います。
+        writingLanguage: 認識する言語
+        writingLanguages:
+          en: English
+          ja: 日本語
+          zh-Hans: 中文（简体）
+          zh-Hant: 中文（繁體）
+          ko: 한국어
+          fr: Français
+          de: Deutsch
+          es: Español
+          ru: Русский
+          cs: Čeština
+        packWillBeDeleted: パック「%{name}」は削除されます。
+        levels: 難易度（任意）
+        levelPlaceholder: 初級など
+        levelsHelp: 練習画面で、パックの中のリストを選ぶのに使います。例：初級
+        inputType: 入力の種類
+        inputTypeLabel: 入力の種類 %{n}
+        inputTypeWord: 単語
+        inputTypeCommand: コマンド
+        inputTypeCode: コード
+      import:
+        open: CSVを読み込む
+        title: CSVから読み込む
+        description: 1行目は列名です。input と display は必須、annotation と input_type は省略できます。input_type は command・code・word のいずれかです。列の順番は自由です。
+        fileLabel: CSVファイルを選択
+        readFailed: ファイルを読み込めませんでした。
+        addFailed: 単語を追加できませんでした。
+        bytes: "%{value} B"
+        kilobytes: "%{value} KB"
+        summary: "%{count}語 ・ %{size}"
+        chooseAnother: 別のファイルを選ぶ
+        previewLabel: 読み込む単語のプレビュー
+        display: 表示する単語
+        input: 入力する文字
+        annotation: 補足
+        more: ほか%{count}語
+        existing: 入力済みの単語の扱い
+        append: 今の単語の末尾に追加
+        appendHint: 入力済みの%{existing}語のあとに%{count}語を追加します。
+        replace: 今の単語を置き換える
+        replaceHint: 入力済みの%{existing}語は削除されます。
+        drop: ファイルをここにドロップ
+        choose: ファイルを選択
+        limits: CSV・UTF-8・1 MiB以内・1リスト1,000語まで
+        example: 書式の例
+        sample: |-
+          display,input,annotation
+          日本,nihon,にほん
+          アメリカ,amerika,
+        loadedStatus: "%{count}語を読み込みました。"
+        add: "%{count}語を追加"
+        replaceWith: "%{count}語で置き換える"
+      words:
+        title: 単語一覧
+        description: 単語リストを選ぶと、そのリストの入力する文字と補足を一覧で表示します。
+        lists: 単語リスト
+        filter: リスト名・カテゴリ・タグで絞り込む
+        noMatch: 一致するリストがありません。
+        candidates: 単語リストの候補
+        pickerTitle: 単語リストを選ぶ
+        pickerDescription: 選んだリストの単語を一覧で表示します。
+        switch: リストを選ぶ
+        switchList: '単語リストを選ぶ（現在: %{name}）'
+        wordCount: "%{count}語"
+        practice: 練習
+        practiceList: "%{name} を練習"
+        edit: 編集
+        editList: "%{name} を編集"
+        number: 番号
+      packEditor:
+        createTitle: パックを作成
+        createDescription: パックの情報を入力し、パックにまとめる単語リストを選びます。リストはあとから追加できます。
+        editTitle: パックを編集
+        editDescription: パックの情報と、中のリストの順番を変更します。
+        info: パックの情報
+        name: パック名
+        nameHelp: パックの一覧と、練習するパックの選択に表示されます。
+        descriptionLabel: 説明（任意）
+        descriptionPlaceholder: このパックの内容など
+        lists: リスト
+        listsHelp: つまみをドラッグするか、キーボードで並べ替えます。
+        choose: 単語リスト
+        chooseHelp: 選んだリストは、今入っているパックからこのパックへ移ります。リストがなくなったパックは削除されます。
+        chooseFilter: 単語リストを名前で絞り込む
+        chosen: "%{count}件を選択中"
+        inPack: パック「%{name}」
+        noMatch: 一致する単語リストはありません。
+        noLists: パックにまとめられる単語リストがありません。先に単語リストを作成してください。
+        createList: 単語リストを作成
+        drag: "%{name} をドラッグして並べ替え"
+        dragTitle: ドラッグして並べ替え
+        dragInstructions: スペースキーでリストを持ち上げ、上下矢印キーで移動し、スペースキーで確定します。Escapeキーでキャンセルします。
+        listActions: "%{name} の操作"
+        announceStart: "%{name} を持ち上げました。%{total}件中%{position}番目です。"
+        announceOver: "%{name} を%{total}件中%{position}番目に移動しました。"
+        announceOutside: "%{name} は並べ替えの範囲外です。"
+        announceEnd: "%{name} を%{total}件中%{position}番目に置きました。"
+        announceCancel: 並べ替えをキャンセルしました。%{name} は元の位置に戻りました。
+        levels: '難易度: %{levels}'
+        noLevels: 難易度なし
+        wordCount: "%{count}語"
+        created: パック「%{name}」を作成しました。
+        updated: パック「%{name}」を更新しました。
+      catalog:
+        title: 公式パック
+        description: あらかじめ用意されたパックです。フォローすると公式の内容がそのまま使え、更新にも自動で追随します。編集はできませんが、複製すると自分のパックにできます。
+        back: パックの一覧へ
+        open: 開く
+        full: 公式パックは%{max}個までフォローできます。使わないパックのフォローを解除してください。
+        follow: フォローする
+        followPack: "%{name} をフォローする"
+        followed: "「%{name}」をフォローしました"
+        following: フォロー中
+        unfollowPack: "%{name} のフォローを解除"
+        matching: 関心に合うパック
+        others: そのほかのパック
+        noMatching: 関心に合うパックはまだありません
+        changeInterests: 関心を変える
+      sharedPage:
+        toPacks: 単語パックを開く
+      follow:
+        badge: 公式
+        unfollow: フォロー解除
+        title: "「%{name}」のフォローを解除しますか？"
+        description: "「%{name}」のフォローを解除します。このパックの記録も消えます。"
+        confirm: フォロー解除する
+        confirming: 解除中…
+        done: "「%{name}」のフォローを解除しました"

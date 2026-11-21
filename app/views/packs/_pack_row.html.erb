@@ -1,0 +1,57 @@
+<%# typle-r's PackRow: a pack as one row that opens to show its lists. %>
+<% lists = pack.word_lists %>
+<% records = lists_pack_records(pack) %>
+<% practiced = lists.count { |list| list.practice_records.any? } %>
+<% words_text = t("design.lists.pack.word_count", count: lists.sum { |list| list.words.size }) %>
+<% panel_id = "pack-#{pack.id}" %>
+<%# `/packs?pack=<id>` (after a save, as typle-r's /edit?pack=) opens that pack and points at its row. %>
+<%# `?open=<id>` opens it without pointing (after a list is saved or deleted, the list's row is pointed at instead). %>
+<% pointed = params[:pack].to_s == pack.id.to_s %>
+<% open = local_assigns.fetch(:open, false) || pointed || params[:open].to_s == pack.id.to_s %>
+<li data-pack-id="<%= pack.id %>" data-controller="lists--disclosure" data-packs-filter-target="pack" data-search="<%= pack.search_text %>" data-category="<%= pack.category %>" data-tags="<%= pack.tags.to_json %>">
+  <div class="<%= cn(ListsDesignHelper::LISTS_ROW, "transition-colors duration-700 motion-reduce:transition-none", pointed && "bg-green-50 duration-0 dark:bg-green-950/40") %>"
+       <%= tag.attributes(data: { controller: "row-highlight", "row-highlight-classes-value": "bg-green-50 duration-0 dark:bg-green-950/40" }) if pointed %>>
+    <div class="min-w-0 space-y-0.5">
+      <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+        <h3 class="font-medium [overflow-wrap:anywhere]"><button type="button" aria-expanded="<%= open %>" aria-controls="<%= panel_id %>" data-lists--disclosure-target="button" data-action="lists--disclosure#toggle"
+            class="group/disclosure -my-1 -ml-1.5 inline-flex items-start gap-1.5 rounded-md py-1 pr-1 pl-1.5 text-left outline-none hover:underline focus-visible:ring-3 focus-visible:ring-ring/50"><%= icon("chevron-right", class: "mt-1 size-4 shrink-0 text-muted-foreground transition-transform group-aria-expanded/disclosure:rotate-90 motion-reduce:transition-none") %><%= pack.name %></button></h3>
+        <%= lists_labels(category: lists_pack_category(pack), tags: pack.tags) %>
+        <% if pack.followed? %><%= ui_badge(t("design.lists.follow.badge"), variant: :secondary) %><% end %>
+      </div>
+      <p class="text-sm text-muted-foreground">
+        <%= t("design.lists.pack.lists", count: lists.size) %>
+        <% if lists.size > 1 %> · <%= t("design.lists.pack.practiced", practiced:, lists: lists.size) %><% end %>
+      </p>
+      <p class="pt-0.5 text-xs text-muted-foreground tabular-nums sm:hidden"><%= words_text %> · <%= lists_practice_text(records) %></p>
+    </div>
+    <div class="hidden space-y-0.5 text-[13px] tabular-nums sm:block">
+      <p class="font-medium"><%= words_text %></p>
+      <p class="flex items-center gap-1.5 text-xs text-muted-foreground"><%= icon(:history, class: "size-3.5 shrink-0") %><%= lists_practice_text(records) %></p>
+    </div>
+    <div class="-mr-2 flex items-center gap-1 sm:mr-0">
+      <%= lists_menu(label: t("design.lists.pack.more_for", name: pack.name), title: t("design.lists.pack.more_actions")) do %>
+        <% if (target = lists_practice_target(pack)) %>
+          <%= link_to play_path(list: target.id), class: ListsDesignHelper::LISTS_MENU_ITEM do %><%= icon(:keyboard) %><%= t("design.lists.pack.practice") %><% end %>
+        <% end %>
+        <% if pack.editable? %>
+          <%= link_to edit_pack_path(pack), class: ListsDesignHelper::LISTS_MENU_ITEM do %><%= icon(:pencil) %><%= t("design.lists.pack.edit") %><% end %>
+          <%= link_to new_pack_word_list_path(pack), class: ListsDesignHelper::LISTS_MENU_ITEM do %><%= icon("list-plus") %><%= t("design.lists.pack.add_list") %><% end %>
+        <% end %>
+        <%= button_to copy_pack_path(pack), class: ListsDesignHelper::LISTS_MENU_ITEM, form_class: "contents" do %><%= icon(:copy) %><%= tt("wordLists.pack.copy") %><% end %>
+        <%= link_to export_pack_path(pack), class: ListsDesignHelper::LISTS_MENU_ITEM, data: { turbo: false } do %><%= icon(:download) %><%= tt("wordLists.pack.export") %><% end %>
+        <%= lists_menu_separator %>
+        <% if pack.followed? %>
+          <%= button_to unfollow_catalog_path(pack.catalog_id), method: :delete, class: ListsDesignHelper::LISTS_MENU_DESTRUCTIVE, form_class: "contents",
+                form: { data: unfollow_confirm_data(pack.name) } do %><%= icon("user-minus") %><%= t("design.lists.follow.unfollow") %><% end %>
+        <% else %>
+          <%= button_to pack_path(pack), method: :delete, class: ListsDesignHelper::LISTS_MENU_DESTRUCTIVE, form_class: "contents",
+                form: { data: delete_confirm_data(title: tt("wordLists.delete.packTitle", name: pack.name), description: tt("wordLists.delete.packDescription", lists: lists.size, records: records.size)) } do %><%= icon("trash-2") %><%= t("design.lists.pack.delete") %><% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <ul id="<%= panel_id %>" aria-label="<%= t("design.lists.pack.lists_of", name: pack.name) %>" class="ml-4 divide-y border-t border-l sm:ml-6"
+      data-lists--disclosure-target="panel"<%= " hidden" unless open %>>
+    <%= render partial: "packs/list_row", collection: lists, as: :list %>
+  </ul>
+</li>

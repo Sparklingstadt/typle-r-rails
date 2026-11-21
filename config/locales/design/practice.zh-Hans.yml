@@ -1,0 +1,145 @@
+---
+zh-Hans:
+  design:
+    practice:
+      starter:
+        title: 想从哪个开始练习？
+        description: 还没有单词包。选择一个官方单词包，就会关注它并立即开始练习。之后可以取消关注。
+        first: 第一个列表：%{list}
+        start: 从这个单词包开始
+        more_html: "%{catalog_open}查看其他官方单词包%{close} ／ %{create_open}创建自己的单词包%{close}"
+      stats:
+        label: 本次练习数据
+        elapsed: 用时
+        speed: 速度
+        speed_unit: 键/分
+        accuracy: 正确率
+        mistakes: 错误
+        word_speed_unit: 词/分
+      progress:
+        label: 单词进度
+        value: "%{current} / %{count} 个单词"
+      feedback:
+        mismatch: 第 %{position} 个字符不一致。请输入正确的字符。
+        composing: 输入法中尚未确认的文字，确认后才会判定
+        restart: 从头开始
+      header:
+        switch_list: 切换单词列表（当前：%{name}）
+        word_count: "%{count} 个单词"
+        restart: 从头开始
+        restart_title: 从头开始（Esc）
+        restart_short: 重来
+        live_stats: 显示本次练习数据
+        aside: 显示侧边栏（单词列表）
+      word:
+        type_this: 需输入
+        resume: 点击或按任意键继续
+        input_label: 输入显示的文字
+        simple_keys: 简易输入
+        simple_keys_all: 完整对照表
+      recall:
+        toggle: 凭记忆输入
+        reveal: 查看答案
+        no_hint: 没有提示
+        result_heading: 凭记忆输入
+      upcoming:
+        next: 接下来
+        last: 这是最后一个单词
+        more: 还有 %{count} 个
+        show_all: 显示全部单词
+        all_words: 全部单词
+        done: "（已完成）"
+        current: "（输入中）"
+        pending: "（未输入）"
+      aside:
+        label: 单词列表
+        lists: 单词列表
+        create: 新建包
+        best: 最佳记录
+        best_order: 按正确率从高到低，相同时按速度从快到慢
+        best_order_at_count: 按正确率从高到低，相同时按速度从快到慢 · 仅当前 %{count} 个单词的记录
+        all_best: 全部最佳记录
+        filter: 按名称、分类或标签筛选单词列表
+      result:
+        label: 练习结果
+        title: 辛苦了！
+        new_best: 刷新个人最佳
+        completed: 练习完成：%{name}
+        time: 用时
+        seconds: 秒
+        accuracy: 正确率
+        mistakes: 错误 %{count} 个字符
+        speed: 速度
+        speed_unit: 键/分
+        correct: "%{count} 个字符"
+        words: 单词
+        word_unit: 个
+        first_at_count: 当前 %{count} 个单词的第一条记录
+        first_for_list: 此列表的第一条记录
+        faster: 比最佳快 %{seconds} 秒
+        best_by_accuracy: 凭正确率刷新最佳
+        behind: 最佳为 %{time} 秒 · %{accuracy}%
+        behind_no_accuracy: 最佳为 %{time} 秒 · 未记录正确率
+        save_failed: 无法保存记录。结果仍保留在此页面上。请检查网络连接后重试。
+        retry: 重新保存记录
+        saved: 已保存练习记录。在此列表中排名第 %{rank} 位。
+        saving: 正在保存记录…
+        again: 再来一次
+        choose_list: 选择其他列表
+        view_records: 查看记录
+        word_speed_unit: 词/分
+        correct_words: "%{count} 个词"
+        mistakes_words: 错误 %{count} 个词
+        share_on_x: 分享到 X
+        share_text: 我在 Typle 上用 %{time} 秒、%{accuracy}% 的正确率打完了“%{name}”
+        review_note: 复习打错的词不会记录。
+        review_note_weak: 这次复习不会记录。没有打错的词不再算作薄弱单词。
+        reviewing: 复习打错的 %{count} 个词（不记录）
+        missed:
+          tile: 打错的词
+          of: "/ %{count} 个词"
+          title: 打错的词
+          none: 没有打错的词。
+          typed: 第 %{position} 个字符打成了 %{typed}
+          wrote: 写成了“%{typed}”
+          revealed: 看了答案
+          skipped: 跳过
+          space: 空格
+          count: "%{count} 次"
+          review: 只练习打错的 %{count} 个词
+        reviewing_weak: 复习 %{count} 个薄弱单词（不记录）
+      best:
+        label: 最佳记录前 5 名
+        rank: 排名
+        time: 用时
+        accuracy: 正确率
+        device: 设备
+        seconds: "%{time} 秒"
+        no_accuracy: 未记录
+        current: 本次记录
+        empty: 还没有记录。完成一次练习后，这里会显示前 5 名。
+      mode_label: 练习方式
+      mode_typing: 打字
+      mode_writing: Handwriting
+      writing_judge: 判定
+      writing_skip: 跳过
+      writing_read: 识别为“%{text}”
+      writing_input: 在此手写输入
+      writing_input_method: 书写方式
+      writing_input_pad: 手写板
+      writing_input_field: 输入框
+      writing_pad: 手写板
+      writing_pad_hint: 在这里书写
+      writing_pad_loading: 正在准备手写识别…
+      writing_pad_failed: 无法加载手写识别。
+      writing_pad_retry: 重试
+      writing_pad_undo: 撤销一笔
+      writing_pad_clear: 清除
+      writing_pad_reading: 当前识别：%{text}
+      device_menu:
+        label: 使用设备：%{device}
+        locked: 练习中无法更改设备
+        change: 更改使用设备
+        unselected: 设备：未选择
+        heading: 使用设备（仅可在开始练习前更改）
+        manage: 管理设备

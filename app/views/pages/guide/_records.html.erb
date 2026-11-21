@@ -1,0 +1,18 @@
+<%# RecordsSection. Home's days follow the server's time zone here, so its text is the app's own. %>
+<%= guide_section("records", :history, guide_t("contents.records"), guide_t("records.lead")) do %>
+  <%= guide_topic(guide_t("records.complete.title")) do %>
+    <%= guide_points(guide_t("records.complete.p1"), guide_t("records.complete.p2"), guide_t("records.complete.p3"), guide_rich(guide_t("records.complete.p4"))) %>
+  <% end %>
+  <%= guide_topic(guide_t("records.history.title")) do %>
+    <%= guide_points(guide_rich(guide_t("records.history.p1")), guide_t("records.history.p2"), guide_t("records.history.p3")) %>
+  <% end %>
+  <%= guide_topic(guide_t("records.best.title")) do %>
+    <%= guide_points(guide_rich(guide_t("records.best.p1")), guide_t("records.best.p2"), guide_t("records.best.p3")) %>
+  <% end %>
+  <%= guide_topic(guide_t("records.wordCount.title")) do %>
+    <%= guide_points([guide_t("records.wordCount.p1"), { id: "word-count" }], guide_t("records.wordCount.p2")) %>
+  <% end %>
+  <%= guide_topic(guide_t("records.home.title")) do %>
+    <p><%= guide_rich(guide_own("records.home.text")) %></p>
+  <% end %>
+<% end %>

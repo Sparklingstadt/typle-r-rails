@@ -1,0 +1,20 @@
+<%# One entry of typle-r's 公式パック page: the pack with its labels and numbers, and フォローする or フォロー中. %>
+<% owned = owned_packs[pack.catalog_id] %>
+<li data-catalog-id="<%= pack.catalog_id %>" class="flex flex-wrap items-center gap-x-4 gap-y-3 px-5 py-4">
+  <div class="min-w-0 flex-1 basis-64 space-y-1.5">
+    <%= content_tag heading, pack.name, class: "font-bold [overflow-wrap:anywhere]" %>
+    <%= lists_labels(category: pack.category, tags: pack.tags) %>
+    <p class="text-[13px] text-muted-foreground tabular-nums"><%= t("design.lists.pack.lists", count: pack.lists.size) %> · <%= t("design.lists.pack.word_count", count: pack.word_count) %></p>
+    <%= link_to catalog_path(pack.catalog_id), class: "text-[13px] underline underline-offset-3 hover:text-muted-foreground" do %><%= t("design.lists.official.details") %><span class="sr-only"> <%= pack.name %></span><% end %>
+  </div>
+  <div class="flex flex-wrap items-center gap-2">
+    <% if owned %>
+      <%= link_button packs_path(pack: owned.id), variant: :outline do %><%= icon("square-arrow-out-up-right") %><%= t("design.lists.catalog.open") %><span class="sr-only"> <%= pack.name %></span><% end %>
+      <button type="button" disabled class="<%= button_classes %>"><%= icon(:check) %><%= t("design.lists.catalog.following") %></button>
+      <%= button_to unfollow_catalog_path(pack.catalog_id), method: :delete, class: button_classes(variant: :outline), form_class: "contents",
+            "aria-label": t("design.lists.catalog.unfollow_pack", name: pack.name), form: { data: unfollow_confirm_data(pack.name) } do %><%= icon("user-minus") %><%= t("design.lists.follow.unfollow") %><% end %>
+    <% else %>
+      <%= form_button t("design.lists.catalog.follow"), follow_catalog_path(pack.catalog_id), icon: :plus, "aria-label": t("design.lists.catalog.follow_pack", name: pack.name) %>
+    <% end %>
+  </div>
+</li>

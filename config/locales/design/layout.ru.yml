@@ -1,0 +1,46 @@
+---
+ru:
+  layouts:
+    application:
+      top_bar: Верхняя панель
+      open_menu: Открыть меню
+      close_menu: Закрыть меню
+      main_navigation: Основная навигация
+      help: Справка
+      github: GitHub
+      storage_label: 'Место хранения: '
+      storage_account_detail: Данные сохраняются в аккаунте и синхронизируются на
+        устройствах, где вы вошли.
+      storage_browser_detail: Вы не вошли в систему, поэтому данные сохраняются только
+        в этом браузере.
+      storage_account: Сохраняется в аккаунте
+      storage_browser: Сохраняется в этом браузере
+      theme_label: Тёмная тема
+      to_light: Включить светлую тему
+      to_dark: Включить тёмную тему
+      theme_save_failed: Не удаётся сохранить настройку, поэтому она действует только
+        на этой странице.
+      account_menu: Меню аккаунта
+      manage_devices: Управление устройствами
+      signed_in_with_github: Вход выполнен через GitHub
+      signed_in_with_password: Вход по ID
+      sign_in: Войти
+      sign_out: Выйти
+      skip: Перейти к содержимому
+      menu: Меню
+      home: Главная
+      play: Тренироваться
+      records: История тренировок
+      rankings: Лучшие результаты
+      packs: Наборы слов
+      words: Просмотр слов
+      new_pack: Создать набор
+      general: Общие
+      input: Ввод
+      interests: Интересы
+      devices: Устройства
+      guide: Как пользоваться
+      about: О Typle
+      practice: Тренировка
+      lists: Списки слов
+      settings: Настройки

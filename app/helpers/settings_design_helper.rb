@@ -1,0 +1,142 @@
+# The parts of typle-r's settings, account and info pages (src/components/Settings, Devices, About, Guide, AccountForm)
+# that the pages here share. The class strings are typle-r's.
+module SettingsDesignHelper
+  SETTINGS_SECTION = "rounded-xl border bg-card p-4 sm:p-5"
+  SETTINGS_LINK = "underline underline-offset-4"
+  SETTINGS_GUIDE_LINK = "font-medium underline decoration-foreground/30 underline-offset-3 hover:decoration-foreground"
+  SETTINGS_CHECKBOX = "size-4 shrink-0 cursor-pointer accent-primary disabled:cursor-not-allowed"
+
+  # The marked letters of the languages the packs cover (typle-r's SimpleInputTable).
+  SETTINGS_MARKED_LETTERS = "àáâãäåāăąǎçćĉċčďèéêëēĕėęěĝğġģĥìíîïĩīĭįıĵķĺļľńņňñòóôõöōŏőǒŕŗřśŝşšșţťțùúûüũūŭůűųǔŵýÿŷźżž"
+  SETTINGS_CYRILLIC_LATIN = {
+    "а" => "a", "б" => "b", "в" => "v", "г" => "g", "д" => "d", "е" => "e", "ё" => "yo", "ж" => "zh", "з" => "z",
+    "и" => "i", "й" => "y", "к" => "k", "л" => "l", "м" => "m", "н" => "n", "о" => "o", "п" => "p", "р" => "r",
+    "с" => "s", "т" => "t", "у" => "u", "ф" => "f", "х" => "kh", "ц" => "ts", "ч" => "ch", "ш" => "sh", "щ" => "shch",
+    "ъ" => '"', "ы" => "y", "ь" => "'", "э" => "e", "ю" => "yu", "я" => "ya"
+  }.freeze
+
+  # A text of the design.settings namespace.
+  def settings_t(key, **options) = t("design.settings.#{key}", **options)
+
+  # A message with typle-r's rich tags (<link>…</link>): each tag is turned into a link to links[tag], the rest escaped.
+  def settings_rich(text, link_class: SETTINGS_LINK, **links)
+    parts = text.to_s.split(%r{(<\w+>.*?</\w+>)})
+    safe_join(parts.map do |part|
+      if (match = part.match(%r{\A<(\w+)>(.*)</\1>\z}))
+        url = links[match[1].to_sym]
+        url ? link_to(match[2], url, class: link_class) : match[2]
+      else
+        part
+      end
+    end)
+  end
+
+  # A card of the settings pages: an icon tile, the heading and the description, with the block under them.
+  def settings_section(icon:, title:, id:, description: nil, &block)
+    tag.section(class: SETTINGS_SECTION, "aria-labelledby": "#{id}-heading") do
+      safe_join([
+        tag.div(class: "grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-3 sm:gap-x-4") do
+          safe_join([
+            icon_tile(icon),
+            tag.div(class: "min-w-0 space-y-1") do
+              safe_join([tag.h2(title, id: "#{id}-heading", class: "font-bold"),
+                         (tag.p(description, id: "#{id}-description", class: "text-sm text-muted-foreground") if description)].compact)
+            end
+          ])
+        end,
+        (capture(&block) if block)
+      ].compact)
+    end
+  end
+
+  # FormField of typle-r's AccountForm: a label, the field (the block, given its id) and an optional hint.
+  # typle-r's FormField: the label, the field, its hint and its own problem under it.
+  def settings_field(label, id:, hint: nil, error: nil, &block)
+    tag.div(class: "space-y-1.5") do
+      safe_join([label_tag(id, label, class: label_classes), capture(id, &block),
+                 (tag.p(hint, id: "#{id}-hint", class: "text-xs text-muted-foreground") if hint),
+                 (tag.p(error, id: "#{id}-error", class: "text-sm text-destructive") if error)].compact)
+    end
+  end
+
+  # typle-r's fields.passwordHint, with this app's longest password (bcrypt reads 72 bytes, typle-r allows 128).
+  def password_hint = tt("auth.fields.passwordHint").sub("128", User::MAX_PASSWORD.to_s)
+
+  # typle-r's FormMessage: what a form did, or why it could not.
+  def form_message(text, kind: :done)
+    kind == :error ? tag.p(text, role: "alert", class: "text-sm text-destructive") : tag.p(text, role: "status", class: "text-sm")
+  end
+
+  # The sign-up's problem of a field, in typle-r's words (errors.loginIdFormat, loginIdTaken, passwordLength, …).
+  def signup_problem(user, field)
+    error = user.errors.where(field).first or return
+    case [field, error.type]
+    in [:login_id, :taken] then tt("errors.loginIdTaken")
+    in [:login_id, _] then tt("errors.loginIdFormat")
+    in [:password, :same_as_login_id] then tt("errors.passwordSameAsId")
+    in [:password, _] then tt("errors.passwordLength").sub("128", User::MAX_PASSWORD.to_s)
+    in [:email, :taken] then error.full_message
+    in [:email, _] then tt("errors.emailFormat")
+    end
+  end
+
+  def settings_input_classes = input_classes("h-10")
+
+  # A record's problems, as an alert (typle-r's ErrorAlert).
+  def settings_errors(record)
+    return if record.nil? || record.errors.empty?
+    tag.div(role: "alert", class: alert_classes(:destructive)) do
+      safe_join([icon("circle-alert"),
+                 tag.ul(class: "text-sm", "data-slot": "alert-description") { safe_join(record.errors.full_messages.map { tag.li(_1) }) }])
+    end
+  end
+
+  # The marked Latin letters by the plain letter simple input accepts for them: [["a", ["à", "á", …]], …].
+  def settings_marked_groups
+    SETTINGS_MARKED_LETTERS.each_char.each_with_object(Hash.new { |h, k| h[k] = [] }) { |char, groups|
+      base = char.unicode_normalize(:nfd).gsub(/\p{M}/, "")
+      groups[base] << char if base != char && base.match?(/\A\p{Latin}\z/)
+    }.sort_by(&:first)
+  end
+
+  # typle-r's Kbd of the simple input table.
+  def settings_key(text) = tag.kbd(text, class: "rounded border bg-muted px-1.5 py-0.5 font-mono text-xs")
+
+  # Keys of the guide ("Ctrl" "+" "Enter").
+  def settings_keys(*keys)
+    tag.span(class: "inline-flex flex-wrap items-center gap-1") do
+      safe_join(keys.each_with_index.map { |key, index|
+        tag.span(class: "inline-flex items-center gap-1") do
+          safe_join([(tag.span("+", class: "text-xs text-muted-foreground", "aria-hidden": "true") if index.positive?),
+                     kbd(key, class: "h-6 px-2 text-xs text-foreground/80")].compact)
+        end
+      })
+    end
+  end
+
+  # The heading of a guide section, with its icon.
+  def settings_guide_section(id, icon_name, title, lead, &block)
+    tag.section(id:, "aria-labelledby": "#{id}-heading", class: "border-t pt-8") do
+      safe_join([
+        tag.h2(id: "#{id}-heading", class: "flex items-center gap-2.5 text-xl font-bold") do
+          safe_join([tag.span(icon(icon_name, class: "size-4.5"), class: "grid size-8 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground"), title])
+        end,
+        tag.p(lead, class: "mt-3 text-muted-foreground"),
+        tag.div(capture(&block), class: "mt-5 space-y-5")
+      ])
+    end
+  end
+
+  # A chip of 関心 (typle-r's InterestSettings): a checkbox, sending the form as soon as it changes.
+  def settings_interest_chip(id, label, chosen)
+    classes = cn("inline-flex min-h-10 cursor-pointer items-center rounded-full border px-4 text-sm font-medium transition-colors outline-none has-[:focus-visible]:ring-3 has-[:focus-visible]:ring-ring/50 in-[form[aria-busy=true]]:opacity-60",
+                 chosen ? "border-primary bg-primary text-primary-foreground" : "bg-card hover:bg-muted")
+    tag.label(class: classes) do
+      safe_join([check_box_tag("interests[]", id, chosen, id: "interest-#{id.tr("/", "-")}", class: "sr-only", data: { action: "change->autosubmit#submit" }), label])
+    end
+  end
+
+  def settings_points(items)
+    tag.ul(class: "list-disc space-y-1 pl-5 marker:text-muted-foreground/60") { safe_join(Array(items).map { tag.li(_1) }) }
+  end
+end

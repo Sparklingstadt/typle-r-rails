@@ -1,0 +1,230 @@
+---
+fr:
+  design:
+    home:
+      home:
+        welcome:
+          title: Entraînez-vous à taper avec vos propres mots.
+          text: Commencez par vous entraîner avec un pack officiel, ou créez une liste des mots que vous voulez retenir.
+          lists:
+            one: "%{count} liste de mots"
+            other: "%{count} listes de mots"
+          practices:
+            one: "%{count} entraînement terminé"
+            other: "%{count} entraînements terminés"
+          nav_label: Pour commencer
+          play: S’entraîner
+          create: Créer une liste de mots
+          records: Voir les résultats
+        storage: Toutes les fonctions d’entraînement et de modification sont disponibles sans vous connecter. Les listes de mots, l’historique et les appareils sont enregistrés dans ce navigateur. En vous connectant (avec GitHub ou un identifiant et un mot de passe), vous passez à un autre emplacement, votre compte, synchronisé entre vos appareils. Les données du navigateur ne sont pas transférées automatiquement.
+        storage_account: 'Vous êtes connecté : vos listes de mots, votre historique et vos appareils sont enregistrés dans votre compte et synchronisés avec les autres appareils et navigateurs connectés au même compte. Ils sont conservés séparément des données enregistrées dans ce navigateur sans connexion.'
+        links_guide: Mode d’emploi
+        links_about: À propos de Typle
+        links: "%{guide} / %{about}"
+      dashboard:
+        title: Vue d’ensemble
+        source_guest: Calculé à partir des résultats enregistrés dans ce navigateur.
+        source_account: Calculé à partir des résultats enregistrés sur votre compte.
+        start: Commencer
+        practice: S’entraîner
+        create: Créer une liste de mots
+        week:
+          title: Cette semaine
+          description: Résultats du %{start} au %{end}. Les variations sont comparées à la semaine dernière, jusqu’au même jour et à la même heure.
+          count: Entraînements cette semaine
+          count_unit:
+            one: séance
+            other: séances
+          streak: Série
+          streak_unit:
+            one: jour
+            other: jours
+          accuracy:
+            one: Précision (dernier résultat)
+            other: Précision moyenne (%{count} derniers)
+          time: Temps d’entraînement cette semaine
+          practised_today: Entraînement fait aujourd’hui
+          streak_next: Entraînez-vous aujourd’hui pour le jour %{day}
+          no_comparison: Rien à comparer pour l’instant
+          no_accuracy: Aucun résultat avec précision
+          times:
+            one: "%{count} séance"
+            other: "%{count} séances"
+          same_as_last_week: Comme la semaine dernière
+          more_than_last_week: "%{value} de plus que la semaine dernière"
+          less_than_last_week: "%{value} de moins que la semaine dernière"
+        change:
+          same_recent_none_previous_latest: Identique au résultat précédent
+          same_recent_none_previous_other: Identique aux %{previousCount} précédents
+          same_recent_latest_previous_latest: 'Dernier résultat : identique au résultat précédent'
+          same_recent_latest_previous_other: 'Dernier résultat : identique aux %{previousCount} précédents'
+          same_recent_other_previous_latest: 'Moyenne des %{recentCount} derniers : identique au résultat précédent'
+          same_recent_other_previous_other: 'Moyenne des %{recentCount} derniers : identique aux %{previousCount} précédents'
+          different_recent_none_previous_latest: "%{difference} par rapport au résultat précédent"
+          different_recent_none_previous_other: "%{difference} par rapport aux %{previousCount} précédents"
+          different_recent_latest_previous_latest: 'Dernier résultat : %{difference} par rapport au résultat précédent'
+          different_recent_latest_previous_other: 'Dernier résultat : %{difference} par rapport aux %{previousCount} précédents'
+          different_recent_other_previous_latest: 'Moyenne des %{recentCount} derniers : %{difference} par rapport au résultat précédent'
+          different_recent_other_previous_other: 'Moyenne des %{recentCount} derniers : %{difference} par rapport aux %{previousCount} précédents'
+          seconds_direction_up: "%{value} s plus lent"
+          seconds_direction_other: "%{value} s plus rapide"
+          points_direction_up: "+%{value} pt"
+          points_direction_other: "−%{value} pt"
+        next:
+          title: Listes à travailler ensuite
+          description: 'Affiche jusqu’à 3 listes : jamais travaillées, non travaillées depuis %{days} jours ou plus, ou dont la précision récente est inférieure à %{accuracy} %.'
+          all_practised: Toutes les listes ont été travaillées récemment.
+          words:
+            one: "%{count} mot"
+            other: "%{count} mots"
+          last_practiced: 'Dernier entraînement : %{day}'
+          no_records: Aucun résultat
+          new: Pas encore d’entraînement
+          stale:
+            one: Pas d’entraînement depuis %{count} jour
+            other: Pas d’entraînement depuis %{count} jours
+          low_accuracy:
+            one: 'Précision du dernier résultat : %{accuracy} %'
+            other: 'Précision des %{count} derniers : %{accuracy} %'
+          practice_list: S’entraîner sur %{name}
+          practice: S’entraîner
+        trends:
+          title: Évolution par liste
+          description: Secondes par mot (plus c’est bas, plus c’est rapide) et précision, sur les 20 derniers entraînements au maximum. Le temps étant divisé par le nombre de mots, les résultats restent comparables avant et après la modification d’une liste.
+          summary:
+            one: "%{count} séance · Dernier entraînement : %{day}"
+            other: "%{count} séances · Dernier entraînement : %{day}"
+          need_two: L’évolution s’affiche à partir de deux résultats.
+          practice_list: S’entraîner sur %{name}
+          practice: S’entraîner
+          speed: Secondes par mot
+          accuracy: Précision
+          seconds: "%{value} s"
+          percent: "%{value} %"
+          latest_number: "%{value}"
+          latest: Dernier %{number}
+          no_chart: S’affiche lorsqu’au moins deux résultats comportent cette valeur.
+          best: 'Meilleur résultat : précision %{accuracy} · %{time} s (%{day})'
+          not_recorded: non enregistrée
+        chart:
+          label: "%{label} (flèches gauche et droite pour lire chaque valeur)"
+          date: Date
+          value: Valeur
+        continue:
+          label: Reprendre où vous en étiez
+          meta:
+            one: "%{count} mot · Dernier entraînement %{day}"
+            other: "%{count} mots · Dernier entraînement %{day}"
+          best: 'Meilleur : précision %{accuracy}, %{time} s'
+          not_recorded: non enregistrée
+          samples: Premiers mots
+          more:
+            one: "%{count} autre mot"
+            other: "%{count} autres mots"
+          practice: S’entraîner
+          practice_list: S’entraîner sur %{name}
+          other: Choisir une autre liste
+        weak:
+          title: Mots difficiles
+          description: Pour chaque liste, les mots manqués lors des %{runs} derniers entraînements (hors Handwriting), les plus souvent manqués d’abord. Les mots saisis sans erreur lors d’un entraînement sur les seuls mots difficiles quittent cette liste.
+          none: Pas encore de mots difficiles. Les mots manqués à l’entraînement apparaîtront ici.
+          words_of: Mots difficiles de %{name}
+          runs:
+            one: "%{count} fois"
+            other: "%{count} fois"
+          more:
+            one: "%{count} autre mot"
+            other: "%{count} autres mots"
+          practice:
+            one: Réviser le mot difficile
+            other: Réviser les %{count} mots difficiles
+          practice_list:
+            one: Réviser le mot difficile de %{name}
+            other: Réviser les %{count} mots difficiles de %{name}
+      landing:
+        hero:
+          eyebrow: Gratuit, sans connexion
+          title: Apprenez les mots que vous voulez en les tapant.
+          lead: Typle est une application de dactylographie pour s’entraîner avec vos propres listes de mots ou des packs officiels. Retenez des commandes et la syntaxe de programmation, ou des mots d’une autre langue, en les tapant.
+          play: Commencer sans se connecter
+          catalog: Voir les packs officiels
+          home: Aller à l’accueil
+        packs:
+          title: Packs officiels
+          lead: Suivez l’une des %{total} listes officielles et entraînez-vous tout de suite.
+          programming:
+            title: Programmation
+            count:
+              one: "%{count} liste"
+              other: "%{count} listes"
+            text: La syntaxe de Go, Java, Kotlin, TypeScript et d’autres, les commandes de Linux, Vim, AWS CLI et d’autres, et les codes d’erreur de PostgreSQL.
+          languages:
+            title: Langues
+            count:
+              one: "%{count} liste"
+              other: "%{count} listes"
+            text: Mots et phrases en chinois (HSK niveaux 5 et 6), coréen, anglais, français, allemand, espagnol, russe et tchèque. Le chinois et le coréen peuvent aussi se pratiquer à l’écriture manuscrite.
+        features:
+          title: Ce que vous pouvez faire
+          own:
+            title: S’entraîner avec vos propres listes
+            text: Ajoutez les mots que vous voulez retenir et entraînez-vous. Le mot affiché et les caractères à taper peuvent différer, et vous pouvez importer des fichiers CSV.
+          recall:
+            title: Taper de mémoire
+            text: Un mode qui cache la réponse et affiche la note comme indice, pour vérifier si vous retenez vraiment chaque mot.
+          records:
+            title: Suivre vos progrès
+            text: 'La vitesse, la précision et les erreurs sont enregistrées à chaque fois : vos records et leur évolution montrent vos progrès.'
+        storage:
+          title: Où sont gardées vos données
+          text: Toutes les fonctions marchent sans connexion. Vos données sont gardées dans ce navigateur, et une connexion (avec GitHub ou un identifiant et un mot de passe) les synchronise entre vos appareils.
+          more_guide: Mode d’emploi
+          more_about: À propos de Typle
+          more: "%{guide} / %{about}"
+        try:
+          badge: Essayez ici
+          progress: "%{name} · %{current} / %{total} mots"
+          label: Saisie
+          hint: Tapez le mot ci-dessus pour passer au suivant. Rien de ce qui est tapé ici n’est enregistré.
+          done:
+            one: "%{count} mot tapé. Continuez avec l’entraînement de ce pack, où vos résultats sont enregistrés."
+            other: "%{count} mots tapés. Continuez avec l’entraînement de ce pack, où vos résultats sont enregistrés."
+          continue: Continuer avec ce pack
+          starting: Préparation…
+      format:
+        today: Aujourd’hui
+        yesterday: Hier
+        date_with_weekday: "%{weekday} %{date}"
+        units:
+          hours: h
+          minutes: min
+          seconds: s
+        time:
+          one: "%{value} %{unit}"
+          two: "%{first} %{firstUnit} %{second} %{secondUnit}"
+        month_names:
+        -
+        - janv.
+        - févr.
+        - mars
+        - avr.
+        - mai
+        - juin
+        - juil.
+        - août
+        - sept.
+        - oct.
+        - nov.
+        - déc.
+        weekday_names:
+        - dim.
+        - lun.
+        - mar.
+        - mer.
+        - jeu.
+        - ven.
+        - sam.
+        month_day: "%{day} %{month_name}"
+        year_month_day: "%{day} %{month_name} %{year}"
+        short_date: "%{dd}/%{mm}"
+        short_date_time: "%{dd}/%{mm} %{hh}:%{minute}"

@@ -1,0 +1,33 @@
+# typle-r's messages with more than one plural or a select, kept in their ICU form (IcuMessage).
+ru:
+  typle:
+    dashboard:
+      change:
+        same: '__icu:{recent, select, none {Без изменений} latest {Последний результат:
+          без изменений} other {Среднее за последние {recentCount}: без изменений}}
+          по сравнению с {previous, select, latest {предыдущим результатом} other
+          {предыдущими {previousCount}}}'
+        different: '__icu:{recent, select, none {} latest {Последний результат: }
+          other {Среднее за последние {recentCount}: }}{difference} по сравнению с
+          {previous, select, latest {предыдущим результатом} other {предыдущими {previousCount}}}'
+        seconds: __icu:{direction, select, up {медленнее на {value} с} other {быстрее
+          на {value} с}}
+        points: __icu:{direction, select, up {+{value} п. п.} other {−{value} п. п.}}
+    devices:
+      deleteDescription: __icu:{removal} {records}{current, select, yes { Устройство
+        для тренировок в этом браузере вернётся к значению «По умолчанию».} other
+        {}}
+    interests:
+      packs:
+        done: '__icu:{followed, plural, =0 {} one {Подписка на # набор. } few {Подписка
+          на # набора. } other {Подписка на # наборов. }}{unfollowed, plural, =0 {}
+          one {Отписка от # набора.} other {Отписка от # наборов.}}'
+    officialPack:
+      stats: __icu:{lists, plural, one {# список} few {# списка} many {# списков}
+        other {# списка}} · {words, plural, one {# элемент} few {# элемента} many
+        {# элементов} other {# элемента}}
+    wordLists:
+      delete:
+        packDescription: '__icu:Также будут удалены: {lists, plural, one {# список}
+          few {# списка} many {# списков} other {# списка}} и {records, plural, one
+          {# запись} few {# записи} many {# записей} other {# записи}} о тренировках.'

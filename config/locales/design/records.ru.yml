@@ -1,0 +1,304 @@
+---
+ru:
+  design:
+    records:
+      history:
+        title: История тренировок
+        intro: Все тренировки, сначала новые. Лучшие результаты по каждому списку — в разделе <rankings>Лучшие результаты</rankings>, динамика — на <home>главной</home>.
+        filter:
+          pack: Набор
+          all_packs: Все наборы
+          list: Список
+          all_lists: Все списки
+          device: Устройство
+          all_devices: Все устройства
+          clear: Сбросить фильтры
+          count:
+            one: "%{count} результат"
+            few: "%{count} результата"
+            many: "%{count} результатов"
+            other: "%{count} результата"
+          filtered_count:
+            one: "%{matched} из %{count} результата"
+            few: "%{matched} из %{count} результатов"
+            many: "%{matched} из %{count} результатов"
+            other: "%{matched} из %{count} результата"
+        filter_menu:
+          label: 'Фильтр: %{name} (сейчас: %{current})'
+          all: Все
+          count:
+            one: "%{count} раз"
+            few: "%{count} раза"
+            many: "%{count} раз"
+            other: "%{count} раза"
+        columns:
+          time: Время
+          device_words: Устройство · слова
+          list_device: Список · устройство
+          duration: Время
+          accuracy: Точность
+          per_word: На слово
+          mistakes: Ошибки
+        day:
+          heading: "%{relative} · %{date}"
+          summary:
+            one: "%{count} тренировка · %{duration}"
+            few: "%{count} тренировки · %{duration}"
+            many: "%{count} тренировок · %{duration}"
+            other: "%{count} тренировки · %{duration}"
+        recall_badge: По памяти
+        more: Показать ещё (осталось %{count})
+        note: Число слов и названия устройств указаны на момент тренировки.
+        note_missing: "«—» означает, что значение не было записано (например, в результатах, сохранённых прежней версией)."
+        row:
+          best: Лучший
+          best_title: 'Лучший результат списка (первое место среди результатов с текущим числом слов: по наибольшей точности, при равенстве — по наименьшему времени)'
+          words:
+            one: "%{count} слово"
+            few: "%{count} слова"
+            many: "%{count} слов"
+            other: "%{count} слова"
+          seconds: "%{value} с"
+          duration: Время
+          accuracy: Точность
+          low_accuracy: Точность ниже %{limit}%
+          per_word: На слово
+          per_word_unit: с/слово
+          mistakes: Ошибки
+          delete: Удалить
+          delete_label: Удалить результат «%{name}» (%{date} %{time})
+        delete:
+          title: Удалить этот результат?
+          description: Будет удалён один результат списка «%{name}».
+          done: Результат списка «%{name}» (%{date} %{time}) удалён.
+          list: Список
+          when: Дата, время и устройство
+          result: Результат
+          accuracy: Точность %{value}
+          mistakes: Ошибки %{value}
+          best_next: Это лучший результат списка. После удаления лучшим станет %{time} (%{accuracy}).
+          best_last: Это лучший результат списка. После удаления у списка не останется результатов.
+        empty:
+          title: Пока нет результатов
+          description: Пройдите список до конца в разделе «Тренироваться» — здесь появятся время, точность, ошибки и использованное устройство.
+          practice: Тренироваться
+        filtered_empty:
+          list_title: У списка «%{name}» пока нет результатов
+          list_description: После тренировки результаты появятся здесь.
+          title: Нет результатов, подходящих под условия
+          description: Измените список или устройство.
+          practice_list: Тренировать этот список
+        summary:
+          words:
+            one: "%{count} слово"
+            few: "%{count} слова"
+            many: "%{count} слов"
+            other: "%{count} слова"
+          runs:
+            one: "%{count} тренировка"
+            few: "%{count} тренировки"
+            many: "%{count} тренировок"
+            other: "%{count} тренировки"
+          last: 'Последняя: %{day}'
+          best: Лучший (%{mode})
+          rankings: Лучшие результаты
+          practice: Тренироваться
+        mode_writing: Handwriting
+      rankings:
+        title: Лучшие результаты
+        intro: Личные рекорды по каждому списку слов. Выберите список, чтобы увидеть лучшие результаты и динамику времени.
+        reload: Перезагрузить
+        filter:
+          device: Устройство
+          all_devices: Все устройства
+          deleted: "%{name} (удалено)"
+        mode:
+          label: Режим практики
+          normal: Обычный
+          recall: По памяти
+          writing: Handwriting
+        order:
+          label: Порядок рейтинга
+          accuracy: Точность<wide> важнее</wide>
+          speed: Скорость<wide> важнее</wide>
+        order_notes:
+          accuracy: Сначала самая высокая точность; при равенстве — более быстрый результат
+          speed: Сначала самые быстрые; при равном времени — более высокая точность
+        lists: Списки слов
+        empty:
+          title: Пока нет лучших результатов
+          description: Пройдите список слов до конца — здесь появятся личные рекорды, лучшие результаты и динамика времени по каждому списку.
+          practice: Тренироваться
+          create: Создать набор слов
+        list:
+          search: Поиск списков
+          clear_search: Очистить поиск
+          no_device_records: Списки без результатов на этом устройстве (%{count})
+          no_records: Списки без результатов (%{count})
+          words:
+            one: "%{count} слово"
+            few: "%{count} слова"
+            many: "%{count} слов"
+            other: "%{count} слова"
+          no_match: Нет списков, соответствующих «%{query}».
+          last_practiced: Последняя тренировка
+          best: Личный рекорд
+          improved: Рекорд
+          improved_title:
+            one: Личный рекорд обновлён за последний %{count} день
+            few: Личный рекорд обновлён за последние %{count} дня
+            many: Личный рекорд обновлён за последние %{count} дней
+            other: Личный рекорд обновлён за последние %{count} дня
+          runs:
+            one: "%{count} раз"
+            few: "%{count} раза"
+            many: "%{count} раз"
+            other: "%{count} раза"
+          sort_label: 'Сортировка: %{sort}'
+          sorts:
+            recent: Недавние тренировки
+            name: По названию
+            count: Больше результатов
+          pack_practiced: тренировано %{practiced}/%{lists}
+          pack_improved: 'рекордов: %{count}'
+          pack_join: " · "
+          pack_lists:
+            one: "%{pack} · %{count} список"
+            few: "%{pack} · %{count} списка"
+            many: "%{pack} · %{count} списков"
+            other: "%{pack} · %{count} списка"
+        detail:
+          back: Все списки
+          words:
+            one: "%{count} слово"
+            few: "%{count} слова"
+            many: "%{count} слов"
+            other: "%{count} слова"
+          records:
+            one: "%{count} результат"
+            few: "%{count} результата"
+            many: "%{count} результатов"
+            other: "%{count} результата"
+          last_practiced: 'Последняя тренировка: %{day}'
+          view_records: Посмотреть результаты
+          practice: Тренировать этот список
+          not_practised:
+            title: Тренировок ещё не было
+            description: Пройдите список до конца — здесь появятся личный рекорд и лучшие результаты.
+          no_device_records:
+            title: Нет результатов на «%{device}»
+            description:
+              one: У этого списка %{count} результат на других устройствах.
+              few: У этого списка %{count} результата на других устройствах.
+              many: У этого списка %{count} результатов на других устройствах.
+              other: У этого списка %{count} результата на других устройствах.
+            show_all: Показать результаты со всех устройств
+          top:
+            title: Лучшие результаты
+            accuracy: Точность важнее
+            speed: Скорость важнее
+            shown: "%{shown} из %{count}"
+            show_top: Показать только первые %{count}
+            show_all: Показать все (%{count})
+            old_accuracy: Результаты с «—» в точности — старые, сохранённые до того, как точность начала записываться. При сортировке по точности они идут последними.
+          stats:
+            best: Личный рекорд
+            best_note: "%{accuracy} · %{day}"
+            no_accuracy: Нет точности
+            recent_average:
+              one: Последний результат
+              few: Среднее за последние %{count}
+              many: Среднее за последние %{count}
+              other: Среднее за последние %{count}
+            gap: На %{value} с медленнее рекорда
+            same_as_best: Как рекорд
+            average_accuracy: Средняя точность
+            recent_runs:
+              one: Последний результат
+              few: Последние %{count}
+              many: Последние %{count}
+              other: Последние %{count}
+            runs: Тренировки
+            runs_value:
+              one: "%{count} <unit>раз</unit>"
+              few: "%{count} <unit>раза</unit>"
+              many: "%{count} <unit>раз</unit>"
+              other: "%{count} <unit>раза</unit>"
+            all_word_counts: Любое число слов
+            current_words:
+              one: 'С текущим числом слов: %{count}'
+              few: 'С текущим числом слов: %{count}'
+              many: 'С текущим числом слов: %{count}'
+              other: 'С текущим числом слов: %{count}'
+          trend:
+            title: Динамика времени
+            recent:
+              one: последний результат
+              few: последние %{count}
+              many: последние %{count}
+              other: последние %{count}
+            label: 'Динамика времени: %{name}'
+            need_two: Динамика появится после двух и более тренировок.
+          others:
+            old:
+              one: "%{count} старый результат без числа слов"
+              few: "%{count} старых результата без числа слов"
+              many: "%{count} старых результатов без числа слов"
+              other: "%{count} старого результата без числа слов"
+            words:
+              one: "%{count} результат с %{words} словами"
+              few: "%{count} результата с %{words} словами"
+              many: "%{count} результатов с %{words} словами"
+              other: "%{count} результата с %{words} словами"
+            separator: ", "
+            fallback: Результатов с текущим числом слов (%{count}) нет, поэтому рейтинг составлен по результатам с другим числом слов (%{detail}).
+            included: Включены результаты с другим числом слов (%{detail}). При разном числе слов время нельзя сравнивать напрямую.
+            excluded:
+              one: "<strong>%{count} результат с другим числом слов не учитывается в рейтинге.</strong> Например, это результаты до редактирования списка (%{detail})."
+              few: "<strong>%{count} результата с другим числом слов не учитываются в рейтинге.</strong> Например, это результаты до редактирования списка (%{detail})."
+              many: "<strong>%{count} результатов с другим числом слов не учитываются в рейтинге.</strong> Например, это результаты до редактирования списка (%{detail})."
+              other: "<strong>%{count} результата с другим числом слов не учитываются в рейтинге.</strong> Например, это результаты до редактирования списка (%{detail})."
+            exclude: Не включать
+            include: Включить
+        top:
+          label: 'Лучшие результаты: %{name}'
+          rank: Место
+          time: Время
+          accuracy: Точность
+          mistakes: Ошибки
+          device: Устройство
+          date: Дата
+          rank_number: "%{rank}-е место"
+          deleted: Удалено
+          deleted_suffix: " (удалено)"
+          other_words: Результат с другим числом слов
+          words:
+            one: "%{count} слово"
+            few: "%{count} слова"
+            many: "%{count} слов"
+            other: "%{count} слова"
+          unknown_words: "? слов"
+          old_accuracy: Старый результат, сохранённый до того, как точность начала записываться
+      format:
+        today: Сегодня
+        yesterday: Вчера
+        date_with_weekday: "%{weekday}, %{date}"
+        units:
+          hours: ч
+          minutes: мин
+          seconds: с
+        default_device: По умолчанию
+        no_device: Не записано
+        no_device_recorded: Устройство не записано
+        device_with_layout: "%{name} (%{layout})"
+      chart:
+        label: "%{label} (клавишами влево и вправо можно просмотреть каждую тренировку)"
+        date: Дата
+        value: Значение
+      extra:
+        weekdays: вс,пн,вт,ср,чт,пт,сб
+        months: янв.,февр.,мар.,апр.,мая,июн.,июл.,авг.,сент.,окт.,нояб.,дек.
+        month_day: "%{day} %{month_name}"
+        year_month_day: "%{day} %{month_name} %{year} г."
+        numeric_date: "%{day}.%{month}.%{year}"
+        short_date: "%{day}.%{month}"

@@ -1,0 +1,253 @@
+---
+zh-Hant:
+  design:
+    settings:
+      input:
+        title: 輸入
+        description: 練習時輸入文字的相關設定。
+        simpleSpecial:
+          heading: 特殊字元簡易輸入
+          description: 對於捷克語、西班牙語等中帶有重音符、波浪符等符號的字母（如 í、ó、ñ、č），可以直接輸入不帶符號的字母（i、o、n、c）。直接輸入帶符號的字母同樣算正確。 俄語西里爾字母也支援拉丁字母輸入，例如 привет → privet、школа → shkola、я → ya。直接輸入西里爾字母同樣算正確。
+          label: 使用特殊字元簡易輸入
+          hint: 開啟後，可以輸入 á → a、č → c、ш → sh、я → ya。
+        ignoreCase:
+          heading: 不區分大小寫
+          description: 將 A 和 a 這樣的大寫和小寫字母視為同一個字母。無論是否按 Shift 鍵輸入都算正確。
+          label: 不區分大小寫
+          hint: 開啟後，A、É 等大寫字母輸入 a、é 也算正確（反之亦然）。
+        simpleTable:
+          heading: 簡易輸入對照表
+          description: 開啟特殊字元簡易輸入後，可以代替各個字母輸入的按鍵。
+          latin: 帶符號的拉丁字母
+          other: 其他符號
+          cyrillic: 西里爾字母（俄語）
+          letter: 字母
+          key: 輸入的按鍵
+          capitals: 大寫字母也同樣適用（Á → A，Ш → Sh 或 SH）。
+        note: 此設定儲存在目前的儲存位置（帳戶，或此瀏覽器的資料）。
+      general:
+        title: 一般
+        description: 與 Typle 顯示和登入相關的設定。
+        language:
+          heading: 顯示語言
+          description: 選擇畫面顯示的語言。單字清單的內容與練習紀錄不會改變。
+          note: 所選語言會儲存在此瀏覽器中。
+          current: 使用中
+        languages:
+          ja: 日文
+          en: 英文
+          ru: 俄文
+          fr: 法文
+          zh-Hans: 簡體中文
+          zh-Hant: 繁體中文
+      form:
+        cancel: 取消
+        save: 儲存變更
+        add: 新增
+      interests:
+        title: 興趣
+        description: 可以追蹤符合興趣的官方包。官方包列表中也會優先顯示它們。
+        parents:
+          language: 語言
+          programming: 程式設計
+        childrenLabel: "%{parent}：細分"
+        packs:
+          title: 符合興趣的官方包
+          description: 按「新增」會追蹤已開啟開關的包。關閉追蹤中包的開關，會取消追蹤。勾選的包可以用下方的按鈕一次追蹤或取消追蹤。
+          pick: 選擇興趣後，符合的官方包會顯示在這裡。
+          none: 沒有符合所選興趣的官方包。
+          lists: 包含的單字列表
+          separator: "、"
+          switch: 追蹤 %{name}
+          select: 選擇 %{name}
+          selectAll: 全選
+          selected: 已選擇 %{count} 個
+          followSelected: 追蹤所選
+          unfollowSelected: 取消追蹤所選
+          add: 新增
+          confirmTitle: 包含取消追蹤
+          confirmDescription: 將取消追蹤%{names}。這些包的練習紀錄也會刪除。
+        children:
+          language:
+            zh: 中文
+            ru: 俄語
+            ko: 韓語
+            en: 英語
+            es: 西班牙語
+            fr: 法語
+            de: 德語
+            cs: 捷克語
+          programming:
+            go: Go
+            kotlin: Kotlin
+            java: Java
+            typescript: TypeScript
+            php: PHP
+            ruby: Ruby
+            sql: SQL
+            linux: Linux
+            vim: Vim
+            test: 測試
+            node: Node.js
+            shell: Shell
+            cloud: 雲端
+        wordCount: "%{count}個單字"
+      devices:
+        title: 裝置
+        description: 登錄練習時使用的電腦和鍵盤。在「<link>開始練習</link>」中選擇後，紀錄中會保留練習時使用的裝置。
+        usage: 練習 %{count} 次 · 最近 %{day}
+        neverUsed: 尚未練習
+        listHeading: 已登錄的裝置
+        count: "%{count} 台"
+        add: 新增裝置
+        limit: 最多可以登錄 %{max} 台裝置。刪除不再使用的裝置後即可新增。
+        inUse: 使用中
+        inUseDetail: 此瀏覽器練習時使用的裝置
+        defaultDetail: 無需登錄即可使用的裝置。無法重新命名或刪除。
+        edit: 編輯
+        editLabel: 編輯 %{name}
+        delete: 刪除
+        deleteLabel: 刪除 %{name}
+        deleteTitle: 要刪除裝置「%{name}」嗎？
+        deleteRemoval: 將從清單中刪除「%{name}」。
+        deleteRecords: 在此裝置上練習的 %{count} 次紀錄不會被刪除，並保留練習時的裝置名稱。
+        deleteNoRecords: 沒有在此裝置上練習的紀錄。
+        empty:
+          title: 尚未登錄任何裝置
+          description: 在「開始練習」中選擇已登錄的裝置後，紀錄中會保留練習時使用的裝置，方便依裝置比較紀錄。
+          example: 例：MacBook Air（JIS）、桌上型電腦＋HHKB（US）
+        current:
+          heading: 此瀏覽器練習時使用的裝置
+          change: 變更
+          changeLabel: 變更此瀏覽器練習時使用的裝置（目前：%{device}）
+          practice: 開始練習
+          noteSelected: 在「開始練習」中練習時，紀錄中會保留此裝置。每個瀏覽器會分別記住選擇，因此可以為每台電腦分別選擇。
+          noteUnselected: 未選擇時，練習紀錄中不會保留裝置。每個瀏覽器會分別記住選擇，因此可以為每台電腦分別選擇。
+        dialog:
+          addTitle: 新增裝置
+          editTitle: 編輯裝置
+          addDescription: 登錄練習時使用的裝置。
+          editDescription: 變更顯示名稱與鍵盤配置・備註。
+          name: 裝置名稱
+          namePlaceholder: 例：MacBook Air
+          nameHelp: 會顯示在練習畫面的裝置選單與練習紀錄中。
+          layout: 鍵盤配置・備註
+          optional: "（選填）"
+          layoutPlaceholder: 例：JIS、US
+          layoutHelp: 寫下鍵盤配置或設定的差異，比較紀錄時更容易辨識。
+          renameNote: 即使變更名稱，過去的練習紀錄（%{count} 次）仍會保留練習時的名稱。
+          use: 設為此瀏覽器練習時使用的裝置
+          useHelp: 在「開始練習」中練習時，紀錄中會保留此裝置。
+        deleteCurrent: 此瀏覽器練習時使用的裝置將恢復為「預設」。
+      auth:
+        fields:
+          loginId: ID
+          email: 電子郵件地址
+          password: 密碼
+          currentPassword: 目前的密碼
+          newPassword: 新密碼
+        backToSignIn: 前往登入
+        signIn:
+          submit: 登入
+          signUp: 註冊新帳號
+          forgotPassword: 忘記密碼
+          forgotId: 忘記 ID
+          or: 也可以使用 GitHub 帳號登入。
+        signUp:
+          title: 註冊
+          description: 建立使用 ID 和密碼登入的 Typle 帳號。
+          submit: 註冊
+          haveAccount: 已有帳號？在此登入
+        forgotPassword:
+          title: 忘記密碼
+        forgotId:
+          title: 忘記 ID
+        resetPassword:
+          title: 重設密碼
+          submit: 設定
+        settings:
+          heading: 帳號
+          verified: 已確認
+          unverified: 未確認
+          changePassword: 變更密碼
+          changePasswordDescription: 需要目前的密碼。變更後，其他裝置將會登出。
+        signInWithGitHub: 使用 GitHub 登入
+      about:
+        title: 關於 Typle
+        intro: 一款可以用自己建立的單字清單練習的打字應用程式。加入喜歡的詞語來練習，並透過最佳紀錄回顧自己的進步。
+        play: 開始練習
+        guide: 使用說明
+        features:
+          title: 主要功能
+        storage:
+          title: 資料的儲存位置
+          text: 登入是選用的。儲存位置會依是否登入而不同，兩邊的資料分開儲存（不會自動移轉）。
+          more: 詳細說明請參閱<link>使用說明中的「儲存位置與資料」</link>。
+        places:
+          current: 目前的儲存位置
+          browser:
+            title: 此瀏覽器
+            condition: 未登入時
+          account:
+            title: 帳號
+            condition: 登入時
+        email:
+          title: 電子郵件地址的使用
+          text: 註冊帳戶時，可以選擇填寫電子郵件地址。它只用於確認地址、重設密碼和告知 ID，不會用於廣告或通知，也不會提供給他人。
+        version:
+          title: 版本與開發
+          tech: 使用的技術
+          licenses: 授權
+      guide:
+        title: 使用說明
+        intro: 從如何開始練習，到單字清單的建立、紀錄的查看與資料的儲存位置，都整理在這裡。不必登入也能使用所有功能。
+        contentsLabel: 本頁內容
+        contents:
+          practice: 開始練習
+          lists: 建立單字清單
+          records: 查看結果與紀錄
+          devices: 登錄裝置
+          storage: 儲存位置與資料
+          shortcuts: 鍵盤操作
+        start:
+          title: 三步驟開始
+          follow:
+            title: 追蹤官方包
+            text: 追蹤 Go、Kotlin 等官方包後，它們會出現在你的包列表中，可以馬上開始練習。
+            action: 官方包
+          create:
+            title: 建立自己的包
+            action: 建立包
+            text: 在「建立包」中建立包，新增單字清單，並輸入想記住的單字。
+          review:
+            title: 回顧紀錄
+            action: 最佳紀錄
+            text: 打完最後一個單字後，紀錄會自動儲存，可以在各清單的最佳紀錄中回顧。
+        practice:
+          lead: 在<play>開始練習</play>選擇單字清單，然後輸入顯示的單字。
+        lists:
+          lead: 在<create>建立包</create>建立新的包，在<edit>單字包</edit>編輯已儲存的包與清單。
+        records:
+          lead: 練習完成後，紀錄會自動儲存。
+        devices:
+          lead: 在<devices>裝置</devices>登錄練習用的電腦或鍵盤後，紀錄中就會留下是用哪台裝置練習的。
+        storage:
+          lead: 登入是選用的。資料的儲存位置會依是否登入而不同。
+          browser:
+            title: 儲存在此瀏覽器
+            when: 未登入時
+          account:
+            title: 儲存至帳號
+            when: 登入後（GitHub 或 ID 與密碼）
+        shortcuts:
+          lead: 不用滑鼠也能操作的按鍵一覽。
+          screens:
+            practice: 開始練習
+          actions:
+            restart: 從頭重新開始
+            answer: 查看答案（回想）
+            check: 判定（Handwriting）
+            undo: 復原一筆（手寫板）
+        cta:
+          text: 準備好了，就馬上開始練習吧。
+          action: 開始練習

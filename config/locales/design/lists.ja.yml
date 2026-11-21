@@ -1,0 +1,125 @@
+ja:
+  design:
+    lists:
+      format:
+        today: 今日
+        yesterday: 昨日
+        month_day: "%-m月%-d日"
+        year_month_day: "%Y年%-m月%-d日"
+      labels:
+        category: カテゴリ
+        tag: タグ
+      form:
+        cancel: キャンセル
+      page:
+        description: 練習に使う単語パックを作成・編集します。リストをCSVで書き出すと、別のブラウザーやアカウントで読み込めます。
+        catalog: 公式パック
+        create_title: 単語リストを作成
+        edit_title: 単語リストを編集
+      manager:
+        heading: 保存済みのパック
+        count: "%{count}パック"
+        create: 新しいパックを作成
+        create_pack: 新しいパック
+        import_file: ファイルから取り込む
+        csv_note: CSVエクスポートは表示する単語・入力する文字・補足を保存します（練習記録は含みません）。単語パックの「ファイルから取り込む」で読み込めます。
+      pack:
+        lists: "%{count}リスト"
+        practiced: 練習済み %{practiced}/%{lists}
+        word_count: "%{count}語"
+        practice: 練習
+        open: 開く
+        lists_of: "%{name} のリスト"
+        more_actions: その他の操作
+        more_for: "%{name} のパックの操作"
+        edit: パックを編集
+        add_list: リストを追加
+        delete: 削除
+      row:
+        examples: 単語の例
+        separator: ・
+        more: "%{words} ほか%{rest}語"
+        word_count: "%{count}語"
+        not_practiced: まだ練習していません
+        practiced: 練習 %{count}回 · 最終 %{day}
+        practice: 練習
+        practice_list: "%{name} を練習"
+        edit: 編集
+        edit_list: "%{name} を編集"
+        more_actions: その他の操作
+        more_for: "%{name} のその他の操作"
+        practice_this: このリストを練習
+        records: 練習記録を見る
+        record_count: "%{count}件"
+        export: CSVエクスポート
+        delete: 削除
+      empty:
+        title: 単語リストはまだありません
+        description: 練習したい単語と、正解として入力する文字を登録します。CSVファイルから読み込むこともできます。
+        pack_title: 単語パックはまだありません
+        pack_description: まだパックがありません。公式パックをフォローするか、新しいパックを作りましょう
+        catalog_link: 公式パックをフォローする
+      follow:
+        badge: 公式
+        unfollow: フォロー解除
+      catalog:
+        description: あらかじめ用意されたパックです。フォローすると公式の内容がそのまま使え、更新にも自動で追随します。編集はできませんが、複製すると自分のパックにできます。
+        back: パックの一覧へ
+        open: 開く
+        follow: フォローする
+        follow_pack: "%{name} をフォローする"
+        following: フォロー中
+        unfollow_pack: "%{name} のフォローを解除"
+        matching: 関心に合うパック
+        others: そのほかのパック
+        no_matching: 関心に合うパックはまだありません
+        change_interests: 関心を変える
+      official:
+        title: "%{name}のタイピング練習"
+        stats: "%{lists}・%{words}"
+        stats_lists: "%{count}リスト"
+        stats_words: "%{count}語"
+        practice: このパックで練習する
+        catalog: ほかの公式パックを見る
+        free: 無料・ログインなしで練習できます。押すとこのパックをフォローし、すぐに練習が始まります。
+        words_heading: 収録している言葉
+        input: 打つ言葉
+        note: 意味・補足
+        details: 詳しく見る
+      starter:
+        first: 最初のリスト：%{list}
+      pack_editor:
+        create_title: パックを作成
+        create_description: パックの名前を入力します。作成したあと、パックに単語リストを追加します。
+        edit_title: パックを編集
+        edit_description: パックの名前を変更します。
+        info: パックの情報
+        name: パック名
+        name_help: パックの一覧と、練習するパックの選択に表示されます。
+      editor:
+        back: 単語パック
+        description: タイピングで表示する単語と、正解として入力する文字を登録します。
+        basics: 基本情報
+        adding_to: パック「%{name}」に追加します。
+        name: 単語リスト名
+        name_help: 練習画面と単語リスト一覧に表示されます。
+        levels: 難易度（任意）
+        level_placeholder: 初級など
+        levels_help: 練習画面で、パックの中のリストを選ぶのに使います。例：初級
+        writing_toggle: 手書き練習（Typle Handwriting）に使う
+        writing_toggle_help: このリストを手書きで練習できるようにします。認識する言語は手書きの文字を読み取るときに使います。
+        writing_language: 認識する言語
+        words: 単語
+        word_total_badge: "%{count}語"
+        display: 表示する単語
+        input: 入力する文字
+        input_hint: 空欄なら表示と同じ
+        annotation_optional: 補足（任意）
+        error_count: "%{count}件のエラーがあります"
+        word_total: ・ %{count}語
+        save: 保存
+      words:
+        description: 保存した単語リストの単語を、入力する文字・表示する単語・補足で検索します。
+        all: すべての単語
+        number: 番号
+        no_match: 「%{query}」に一致する単語はありません。

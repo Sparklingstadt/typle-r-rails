@@ -1,0 +1,23 @@
+<% if signed_in? %>
+  <% name = account.github_login.presence || account.login_id %>
+  <% item = "flex w-full cursor-pointer items-center gap-2.5 rounded-md px-3 py-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent [&_svg]:size-4 [&_svg]:text-muted-foreground" %>
+  <details class="relative" data-controller="dropdown">
+    <summary class="<%= button_classes(variant: :ghost, size: :icon, class: "size-10 rounded-full list-none [&::-webkit-details-marker]:hidden") %>" aria-label="<%= t("layouts.application.account_menu") %>" title="<%= name %>">
+      <span class="relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-secondary text-sm font-semibold text-secondary-foreground" aria-hidden="true"><%= name.first.upcase %></span>
+    </summary>
+    <div class="absolute top-full right-0 z-50 mt-2 w-60 rounded-lg border border-border bg-popover p-1 text-popover-foreground shadow-md">
+      <div class="flex items-center gap-3 px-3 py-2">
+        <span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-secondary text-sm font-semibold text-secondary-foreground" aria-hidden="true"><%= name.first.upcase %></span>
+        <span class="grid min-w-0">
+          <span class="truncate text-sm font-medium"><%= name %></span>
+          <span class="text-xs text-muted-foreground"><%= t(account.github_uid && account.password_digest.blank? ? "layouts.application.signed_in_with_github" : "layouts.application.signed_in_with_password") %></span>
+        </span>
+      </div>
+      <div class="my-1 h-px bg-border" role="separator"></div>
+      <%= link_to devices_path, class: item do %><%= icon(:monitor) %><%= t("layouts.application.manage_devices") %><% end %>
+      <%= button_to session_path, method: :delete, class: item, form_class: "contents" do %><%= icon("log-out") %><%= t("layouts.application.sign_out") %><% end %>
+    </div>
+  </details>
+<% else %>
+  <%= link_button new_session_path, variant: :outline, size: :lg, class: "gap-2 px-3" do %><%= icon("log-in") %><%= t("layouts.application.sign_in") %><% end %>
+<% end %>

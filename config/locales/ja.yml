@@ -1,0 +1,508 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "入力に誤りがあります: %{errors}"
+    models:
+      user: ユーザー
+      pack: パック
+      word_list: リスト
+      device: 端末
+    attributes:
+      user:
+        login_id: ID
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+      pack:
+        name: パックの名前
+      word_list:
+        name: リストの名前
+        writing_language: 手書きの言語
+      device:
+        name: 端末名
+        layout: 配列・メモ
+      practice_record:
+        mode: モード
+  errors:
+    format: "%{attribute}%{message}"
+    rate_limited: しばらくしてからもう一度お試しください。
+    messages:
+      blank: を入力してください
+      taken: はすでに使われています
+      too_short: は%{count}文字以上で入力してください
+      too_long: は%{count}文字以内で入力してください
+      invalid: は正しくありません
+      confirmation: が一致しません
+      inclusion: は一覧にありません
+      not_a_number: は数値で入力してください
+      not_an_integer: は整数で入力してください
+      greater_than: は%{count}より大きい値にしてください
+      greater_than_or_equal_to: は%{count}以上の値にしてください
+      less_than_or_equal_to: は%{count}以下の値にしてください
+      wrong_length: は%{count}文字で入力してください
+      required: を入力してください
+      password_too_long: は72バイト以内にしてください
+      login_id_format: は半角英数字と _ . - で入力してください
+      taken_device: は「%{name}」と同じです
+      device_limit: 端末は%{count}台まで登録できます
+      wrong_current_password: 今のパスワードが違います
+      words_required: 単語を1つ以上入力してください
+      word_fields_required: "%{line}行目: 表示と入力は空にできません"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      short_date_time: "%Y/%m/%d %H:%M"
+  date:
+    formats:
+      default: "%Y/%m/%d"
+  format:
+    seconds: "%{value}秒"
+    minutes_seconds: "%{minutes}分%{seconds}秒"
+    minutes: "%{count}分"
+    hours_minutes: "%{hours}時間%{minutes}分"
+  modes:
+    normal: 通常
+    recall: 思い出す
+    writing: Handwriting
+  languages:
+    en: 英語
+    ja: 日本語
+    zh-Hans: 中国語（簡体）
+    zh-Hant: 中国語（繁体）
+    ko: 韓国語
+    fr: フランス語
+    de: ドイツ語
+    es: スペイン語
+    ru: ロシア語
+    cs: チェコ語
+  forms:
+    save: 保存
+    cancel: やめる
+  words:
+    display: 表示
+    input: 入力
+    annotation: 注釈
+    index:
+      title: 単語一覧
+      search: 検索
+      placeholder: 単語・入力・注釈で検索
+      count: "%{count}語"
+      capped: （先頭の300語を表示）
+      list: リスト
+  devices:
+    default_name: デフォルト
+    none: 未選択
+    unrecorded: 未記録
+    index:
+      title: 端末
+      lead: 練習に使うキーボードやパソコンを登録すると、記録に練習した端末が残ります。端末の名前やメモを変えても、過去の記録は変わりません。
+      this_browser: このブラウザーで使う端末
+      use: 使う端末
+      name: 端末名
+      layout: 配列・メモ
+      layout_placeholder: 例：JIS、US、キーの入れ替え
+      runs: 練習回数
+      last: 最後に練習した日
+      built_in: 組み込み
+      edit: 編集
+      delete: 削除
+      delete_confirm: 端末「%{name}」を削除しますか？ 記録は消えません。
+      add: 端末を追加
+      use_new: 追加した端末をこのブラウザーで使う（いまデフォルトか未選択のとき）
+    create:
+      added: 端末「%{name}」を追加しました。
+    update:
+      saved: 端末を保存しました。
+    destroy:
+      deleted: 端末「%{name}」を削除しました。
+  dashboard:
+    never: まだ練習していません
+    idle: "%{count}日練習していません"
+    low_accuracy: 直近の正確率 %{accuracy}%
+  layouts:
+    application:
+      default_title: Typle — 打って覚える単語帳
+      skip: 本文へスキップ
+      menu: メニュー
+      storage_account: アカウントに保存
+      storage_browser: このブラウザーに保存
+      theme: テーマ
+      theme_light: ライト
+      theme_dark: ダーク
+      theme_system: システム
+      sign_in: ログイン
+      sign_up: 登録
+      sign_out: ログアウト
+      home: ホーム
+      practice: 練習
+      play: 練習する
+      records: 練習記録
+      rankings: ベスト記録
+      lists: 単語リスト
+      packs: 単語パック
+      words: 単語一覧
+      catalog: 公式パック
+      new_pack: パックを作成
+      settings: 設定
+      general: 一般
+      input: 入力
+      interests: 関心
+      devices: 端末
+      account: アカウント
+      guide: 使い方
+      about: Typleについて
+  pages:
+    landing:
+      heading: 打って覚える単語帳
+      lead: コマンド、構文、外国語の単語を、実際にキーボードで打ちながら覚えます。自分の単語リストを作ることも、%{count}の公式パックから始めることもできます。
+      start: ログインせずに練習を始める
+      catalog: 公式パックを見る
+      home: ホームへ
+      try: ここで1語打ってみる
+      packs: 公式パック
+      list_count: "%{count}リスト"
+      and_more: " ほか"
+      feature_lists: 自分の単語リスト
+      feature_lists_text: 表示・入力・注釈の3つで1語。CSV で取り込み・書き出しもできます。
+      feature_recall: 思い出して打つ・手書き
+      feature_recall_text: 単語を隠して注釈だけを見て打ったり、見本を手で書き写したりして覚えます。
+      feature_records: 記録
+      feature_records_text: リストごとのベスト記録、苦手な単語、今週のまとめをホームで確かめられます。
+      storage: ログインしなくても、データはこのブラウザーに保存されます。ログインすると、アカウントに保存します（自動ではコピーしません）。
+      guide: 使い方
+      about: Typleについて
+    about:
+      title: Typleについて
+      lead: Typle は、コマンドや外国語の単語をタイピングで覚える単語帳です。Next.js で作られた typle-r を Ruby on Rails %{version} で作り直した版です。
+      storage: データの保存先
+      browser: このブラウザー
+      account: アカウント
+      where: 保存先
+      browser_where: このブラウザーに結び付いたサーバーのデータ（Cookie で識別）
+      account_where: アカウントのデータ
+      sync: 別の端末
+      browser_sync: 同期されません
+      account_sync: ログインすれば同じデータ
+      lost: 失われるとき
+      browser_lost: ブラウザーの Cookie を消したとき
+      account_lost: アカウントを消したとき
+      now: 今の保存先：%{storage}
+      tech: 使っている技術
+      licenses: ライセンス
+      licenses_text: 手書きパッドは次のソフトウェアとモデルを使っています。
+    guide:
+      title: 使い方
+      step1: 練習する
+      step2: 単語リストを作る
+      step3: ベスト記録を見る
+      toc: 目次
+      practice:
+        heading: 練習する
+        body:
+          - 「練習する」でリストを選び、表示された単語を入力欄に打ちます。最初のキーで時間が動き出し、最後の文字で止まります。入力欄から離れると一時停止します。
+          - 「思い出して打つ」では単語を隠し、注釈だけを見て打ちます。分からないときは「答えを見る」（Shift+Enter）で表示できます。
+          - 手書きの言語が付いたリストでは「Handwriting」を選べます。見本を見ながら、OS の手書き入力で書き写します。韓国語のリストではアプリの手書きパッドにも書けます。
+      lists:
+        heading: 単語リストを作る
+        body:
+          - 「パックを作成」でパックを作り、リストを足します。1行に1語、「表示・入力・注釈」をタブかカンマで区切ります。
+          - 公式パックはフォローすると自分のパックに加わります。内容は公式のままで、編集はできません。
+      results:
+        heading: 結果と記録を見る
+        body:
+          - 練習を終えると結果画面に時間・正確率・間違えた単語が出ます。ベストは今の語数の記録を、正確率 → 時間の順に比べます。
+          - ホームでは続きから、苦手な単語、今週のまとめを確かめられます。
+      devices:
+        heading: 端末を登録する
+        body:
+          - 「端末」で使うキーボードを登録し、練習画面で選ぶと、記録に端末が残ります。
+      storage:
+        heading: 保存先とデータ
+        body:
+          - ログインしていないとき、データはこのブラウザーに保存されます。ログインするとアカウントに保存し、ログアウトするとブラウザーのデータに戻ります。2つのデータは自動ではコピーしません。
+      keys:
+        heading: キーボード操作
+        body:
+          - Esc：最初からやり直す / Shift+Enter：答えを見る（思い出して打つ）/ Enter：判定（Handwriting）/ ⌘Z・Ctrl+Z：1画戻す（手書きパッド）
+  home:
+    show:
+      title: ホーム
+      practice: 練習する
+      empty: まだ記録がありません。公式パックで練習を始めるか、自分のパックを作りましょう。
+      catalog: 公式パックを見る
+      create: パックを作成
+      continue: 続きから
+      last_practised: 最終練習 %{date}
+      more_words: ほか %{count} 語
+      choose_other: 別のリストを選ぶ
+      week: 今週のまとめ
+      runs: 練習回数
+      runs_value: "%{count}回"
+      streak: 連続練習
+      days: "%{count}日"
+      recent_accuracy: 直近10回の正確率
+      practice_time: 練習時間
+      week_note: 増減は先週の同じ曜日・時刻までとの比較です。
+      weak: 苦手な単語
+      times: "%{count}回"
+      weak_practice: 苦手な%{count}語だけ練習する
+      next: 次に練習するリスト
+  practice:
+    messages:
+      time: 所要時間
+      accuracy: 正確率
+      mistakes: ミス
+      seconds: 秒
+      missed_words: 間違えた単語
+      weak_done: 苦手な単語のおさらいを終えました（記録には残しません）。
+      not_saved: 公式パックをフォローしていない練習は記録しません。
+      save_failed: 記録を保存できませんでした。
+      read_as: 「%{text}」と読めました
+      reading: いまの読み取り：%{text}
+      pad_loading: 手書きパッドを読み込んでいます…
+      pad_failed: 手書きパッドを読み込めませんでした。
+    show:
+      title: 練習する
+      word_count: "%{count}語"
+      weak_note: 苦手な単語だけ（記録しません）
+      official_note: フォローしていない公式リスト（記録しません）
+      list: リスト
+      device: 端末
+      mode: モード
+      best: ベスト %{accuracy} / %{time}
+      time: 時間
+      mistakes: ミス
+      accuracy: 正確率
+      input: 入力
+      paused: 一時停止中 — 入力欄をクリックすると続きから再開します
+      reveal: 答えを見る（Shift+Enter）
+      restart: 最初から（Esc）
+      input_method: 入力の手段
+      pad: 手書きパッド
+      field: 入力欄
+      write_here: ここに書く
+      os_input_note: OS の手書き入力（手書きパネル・手書きキーボード）で見本を書き写します。
+      undo: 1画戻す（⌘Z）
+      clear: 消す
+      reload_pad: もう一度読み込む
+      check: 判定（Enter）
+      skip: 飛ばす
+      no_weak_words: 苦手な単語はありません。
+    result:
+      result: 結果
+      again: もう一度
+      full_list: リスト全体の練習へ
+      sign_up: 登録して別の端末でも使う
+    starters:
+      heading: 練習を始めましょう
+      lead: まだパックがありません。公式パックから始めるか、自分のパックを作りましょう。
+      more: ほかの公式パックを見る
+      create: 自分のパックを作る
+  practice_records:
+    index:
+      title: 練習記録
+      list: リスト
+      all: すべて
+      best: "%{mode}のベスト:"
+      empty: 記録はまだありません。
+      date: 日時
+      mode: モード
+      time: 時間
+      accuracy: 正確率
+      mistakes: ミス
+      device: 端末
+      best_badge: ベスト
+      delete: 削除
+      delete_confirm: この記録を削除しますか？
+    show:
+      title: 結果
+      time: 所要時間
+      accuracy: 正確率
+      mistakes: ミス
+      missed_count: 間違えた単語
+      first: この語数で初めての記録です。
+      best_faster: ベスト更新！ これまでのベストより %{difference} 速くなりました。
+      best_cleaner: ベスト更新！ これまでのベストより %{difference} 遅いものの、より正確になりました。
+      behind: "%{rank}位です。ベストは %{accuracy} / %{time}。"
+      missed: 間違えた単語
+      no_missed: 間違えた単語はありません。
+      again: もう一度
+      weak_practice: 苦手な単語だけ練習する
+      records: 練習記録
+    destroy:
+      deleted: 記録を削除しました。
+  rankings:
+    index:
+      title: ベスト記録
+      note: 今の語数の記録を、正確率 → 時間の順に比べます。
+      empty: このモードの記録はまだありません。
+      count: "%{count}件の記録"
+      practice: 練習する
+  packs:
+    read_only: 公式パックは編集できません。
+    index:
+      title: 単語パック
+      create: パックを作成
+      catalog: 公式パックを探す
+      empty: まだパックがありません。
+      official: 公式パック
+      own: 自分のパック
+      runs: "%{count}回練習"
+      practice: 練習する
+      import: CSV から取り込む
+      import_note: 1行に1語、「表示, 入力, 注釈」の順。入力を省くと表示と同じになります。ファイル名がパックとリストの名前になります。
+      import_button: 取り込む
+    show:
+      add_list: リストを追加
+      rename: 名前を変える
+      official_page: 公式パックのページ
+      delete: パックを削除
+      delete_confirm: 「%{name}」をリストと記録ごと削除します。よろしいですか？
+      edit: 編集
+      delete_list: 削除
+      delete_list_confirm: リスト「%{name}」を記録ごと削除しますか？
+    new:
+      title: パックを作成
+    edit:
+      title: パックの名前を変える
+    create:
+      created: パックを作成しました。最初のリストを作りましょう。
+    update:
+      saved: パックを保存しました。
+    destroy:
+      deleted: 「%{name}」を削除しました。
+    import:
+      no_file: ファイルを選んでください。
+      default_name: 取り込んだリスト
+      imported: "%{count}語を取り込みました。"
+      failed: "取り込めませんでした: %{reason}"
+      not_utf8: UTF-8 のファイルを選んでください。
+  word_lists:
+    form:
+      level: レベル（任意。例：初級）
+      words: 単語（1行に1語。表示・入力・注釈をタブかカンマで区切る）
+      placeholder: "ls\tls\tファイルの一覧\npwd\tpwd\t今いるディレクトリ"
+      words_note: 入力を省くと表示と同じになります。単語数を変えると、今の語数の記録だけでベストを比べます。
+      writing: 手書き練習（Typle Handwriting）に使う
+      writing_off: 使わない
+      writing_note: 言語を選ぶと、このリストを Handwriting で練習できます。韓国語はアプリの手書きパッドにも書けます。
+    new:
+      title: リストを作成
+    edit:
+      title: リストを編集
+    create:
+      created: リスト「%{name}」を作成しました。
+    update:
+      saved: リストを保存しました。
+    destroy:
+      deleted: リスト「%{name}」を削除しました。
+  catalog:
+    card:
+      size: "%{lists}リスト · %{words}語"
+      start: このパックで始める
+      followed: フォロー中
+    index:
+      title: 公式パック
+      lead: "%{count}パック。フォローすると自分のパックに加わり、記録が残ります（内容は公式のまま編集できません）。関心に合うパックを先に並べます。"
+      categories: カテゴリ
+      all: すべて
+    show:
+      practice: 練習する
+      open_own: 自分のパックで見る
+      unfollow: フォローをやめる
+      unfollow_confirm: フォローをやめると、このパックの記録も消えます。よろしいですか？
+      follow_and_practice: このパックで練習する
+      follow: フォローする
+      try: フォローせずに練習
+      more_words: ほか %{count} 語
+    follow:
+      followed: 「%{name}」をフォローしました。
+    unfollow:
+      unfollowed: フォローをやめました（記録も削除しました）。
+  interests:
+    show:
+      title: 関心
+      lead: 関心のあることを選ぶと、合う公式パックを先に並べます。下の一覧で、まとめてフォローできます。
+      note: カテゴリだけを選ぶと、そのカテゴリのパックすべてが合います。
+      packs: 関心に合う公式パック（%{count}）
+      no_packs: 合うパックがありません。
+      unfollow_note: チェックを外したパックはフォローをやめ、そのパックの記録も消えます。
+      apply: フォローを反映
+      apply_confirm: チェックを外したパックの記録は消えます。よろしいですか？
+    update:
+      saved: 関心を保存しました。
+    packs:
+      saved: フォローを反映しました。
+  settings:
+    show:
+      title: 入力
+      ignore_accents: 特殊文字の簡易入力
+      ignore_accents_note: á・ñ・č などを記号のない文字（a・n・c）で、ロシア語のキリル文字をラテン文字（привет → privet、ш → sh）で、ß を ss で、¿ を ? で入力できます。
+      ignore_case: 大文字・小文字を区別しない
+      ignore_case_note: A と a、É と é を同じ文字として扱います。
+    update:
+      saved: 設定を保存しました。
+    general:
+      title: 一般
+      language: 表示言語
+      language_note: 選んだ言語はこのブラウザーに1年間保存されます。単語リストや記録の内容は翻訳しません。
+      theme: テーマ
+      theme_note: 上部の ☀（ライト）・☾（ダーク）・◐（システム）で切り替えます。選択はこのブラウザーに保存されます。
+  sessions:
+    new:
+      title: ログイン
+      password: パスワード
+      submit: ログイン
+      github: GitHub でログイン
+      forgot_id: ID を忘れた
+      forgot_password: パスワードを忘れた
+      no_account: アカウントがない方は
+      sign_up: 新しく登録
+      guest_note: ログインすると、アカウントのデータに切り替わります。このブラウザーのデータはそのまま残り、ログアウトすると戻ります。
+    create:
+      failed: ID またはパスワードが違います。
+    destroy:
+      signed_out: ログアウトしました。このブラウザーのデータに戻りました。
+  registrations:
+    new:
+      title: アカウントを作る
+      login_id: ID（半角英数字と _ . -、3〜32文字）
+      email: メールアドレス（任意。パスワードや ID を忘れたときに使います）
+      password: パスワード（8文字以上）
+      submit: 登録
+      have_account: 登録済みの方は
+      separate_note: このブラウザーのデータは新しいアカウントにコピーされません。
+    create:
+      created: アカウントを作成しました。
+  passwords:
+    invalid_link: リンクが無効か、期限が切れています。もう一度お試しください。
+    new:
+      title: パスワードを忘れたとき
+      lead: アカウントの確認済みメールアドレスに、パスワードを設定し直すリンクを送ります。
+      submit: リンクを送る
+    create:
+      sent: メールアドレスが登録されていれば、パスワードを設定し直すリンクを送りました。
+    edit:
+      title: 新しいパスワード
+      submit: パスワードを設定
+    update:
+      saved: パスワードを設定しました。ログインしてください。
+  login_id_reminders:
+    new:
+      title: ID を忘れたとき
+      lead: アカウントの確認済みメールアドレスに、ID を送ります。
+      submit: ID を送る
+    create:
+      sent: メールアドレスが登録されていれば、ID を送りました。
+  email_confirmations:
+    show:
+      confirmed: メールアドレスを確認しました。
+      invalid: リンクが無効か、期限が切れています。
+  omniauth_callbacks:
+    github:
+      taken: この GitHub アカウントは別のアカウントと連携しています。
+      linked: GitHub（%{login}）と連携しました。
+      signed_in: GitHub（%{login}）でログインしました。
+    failure:
+      failed: GitHub でログインできませんでした。

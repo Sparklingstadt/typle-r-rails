@@ -1,0 +1,171 @@
+---
+en:
+  design:
+    practice:
+      starter:
+        title: What would you like to practice?
+        description: No packs yet. Choose an official pack to follow it and start practicing right away. You can unfollow it later.
+        first: 'First list: %{list}'
+        start: Start with this pack
+        more_html: "%{catalog_open}See other official packs%{close} / %{create_open}Create your own pack%{close}"
+      stats:
+        label: Current run
+        elapsed: Elapsed
+        speed: Speed
+        speed_unit: keys/min
+        accuracy: Accuracy
+        mistakes: Mistakes
+        word_speed_unit: words/min
+      progress:
+        label: Word progress
+        value:
+          one: "%{current} / %{count} word"
+          other: "%{current} / %{count} words"
+      feedback:
+        mismatch: Character %{position} doesn’t match. Type the correct character.
+        composing: Text you are still composing is checked once you confirm it
+        restart: Start over
+      header:
+        switch_list: 'Switch word list (current: %{name})'
+        word_count:
+          one: "%{count} word"
+          other: "%{count} words"
+        restart: Start over
+        restart_title: Start over (Esc)
+        restart_short: Start over
+        live_stats: Show live stats
+        aside: Show side panel (word lists)
+      word:
+        type_this: Type
+        resume: Click or press any key to resume
+        input_label: Type the text shown
+        simple_keys: Simple input
+        simple_keys_all: Full table
+      recall:
+        toggle: Type from memory
+        reveal: Show answer
+        no_hint: No hint available
+        result_heading: Typed from memory
+      upcoming:
+        next: Next
+        last: This is the last word
+        more: "%{count} more"
+        show_all: Show all words
+        all_words: All words
+        done: "(done)"
+        current: "(typing)"
+        pending: "(not typed yet)"
+      aside:
+        label: Word lists
+        lists: Word lists
+        create: New pack
+        best: Best records
+        best_order: Highest accuracy first, then fastest
+        best_order_at_count:
+          one: Highest accuracy first, then fastest · runs at the current %{count} word
+          other: Highest accuracy first, then fastest · runs at the current %{count} words
+        all_best: All best records
+        filter: Filter word lists by name, category or tag
+      result:
+        label: Practice result
+        title: Well done!
+        new_best: New personal best
+        completed: 'Practice complete: %{name}'
+        time: Time
+        seconds: s
+        accuracy: Accuracy
+        mistakes:
+          one: "%{count} mistake"
+          other: "%{count} mistakes"
+        speed: Speed
+        speed_unit: keys/min
+        correct:
+          one: "%{count} character"
+          other: "%{count} characters"
+        words: Words
+        word_unit:
+          one: word
+          other: words
+        first_at_count:
+          one: First record at the current %{count} word
+          other: First record at the current %{count} words
+        first_for_list: First record for this list
+        faster: "−%{seconds} s vs. your best"
+        best_by_accuracy: New best on accuracy
+        behind: 'Best: %{time} s · %{accuracy}%'
+        behind_no_accuracy: 'Best: %{time} s · accuracy not recorded'
+        save_failed: Couldn’t save the record. Your result is still on this screen. Check your connection and try again.
+        retry: Try saving again
+        saved: Saved to your practice history. This run ranks %{rank} for this list.
+        saving: Saving the record…
+        again: Again
+        choose_list: Choose another list
+        view_records: View history
+        word_speed_unit: words/min
+        correct_words:
+          one: "%{count} word"
+          other: "%{count} words"
+        mistakes_words:
+          one: "%{count} mistake"
+          other: "%{count} mistakes"
+        share_on_x: Share on X
+        share_text: I typed “%{name}” in %{time} s with %{accuracy}% accuracy on Typle
+        review_note: Reviews of missed words are not recorded.
+        review_note_weak: This review is not recorded. Words you typed without a mistake are no longer weak words.
+        reviewing:
+          one: Reviewing %{count} missed word (not recorded)
+          other: Reviewing %{count} missed words (not recorded)
+        missed:
+          tile: Missed words
+          of: "/ %{count}"
+          title: Missed words
+          none: No missed words.
+          typed: Typed %{typed} at character %{position}
+          wrote: Wrote “%{typed}”
+          revealed: Answer revealed
+          skipped: Skipped
+          space: Space
+          count:
+            one: "%{count} time"
+            other: "%{count} times"
+          review:
+            one: Practice the %{count} missed word
+            other: Practice the %{count} missed words
+        reviewing_weak:
+          one: Reviewing %{count} weak word (not recorded)
+          other: Reviewing %{count} weak words (not recorded)
+      best:
+        label: Top 5 best records
+        rank: Rank
+        time: Time
+        accuracy: Accuracy
+        device: Device
+        seconds: "%{time} s"
+        no_accuracy: Not recorded
+        current: This run
+        empty: No records yet. Finish a run and your top 5 will appear here.
+      mode_label: Practice mode
+      mode_typing: Typing
+      mode_writing: Handwriting
+      writing_judge: Check
+      writing_skip: Skip
+      writing_read: Read as “%{text}”
+      writing_input: Write here by hand
+      writing_input_method: How to write
+      writing_input_pad: Handwriting pad
+      writing_input_field: Text field
+      writing_pad: Handwriting pad
+      writing_pad_hint: Write here
+      writing_pad_loading: Getting handwriting recognition ready…
+      writing_pad_failed: Handwriting recognition could not be loaded.
+      writing_pad_retry: Try again
+      writing_pad_undo: Undo stroke
+      writing_pad_clear: Clear
+      writing_pad_reading: 'Reads as: %{text}'
+      device_menu:
+        label: 'Device: %{device}'
+        locked: You can’t change the device during practice
+        change: Change device
+        unselected: 'Device: not selected'
+        heading: Device (can be changed only before you start)
+        manage: Manage devices

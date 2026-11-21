@@ -1,0 +1,1510 @@
+---
+zh-Hant:
+  typle:
+    about:
+      meta:
+        title: 關於 Typle | Typle
+        description: 說明 Typle 的功能、資料的儲存位置、流量統計會傳送的資訊以及版本。
+      title: 關於 Typle
+      intro: 一款可以用自己建立的單字清單練習的打字應用程式。加入喜歡的詞語來練習，並透過最佳紀錄回顧自己的進步。
+      play: 開始練習
+      guide: 使用說明
+      features:
+        title: 主要功能
+        create:
+          title: 建立包
+          description: 加入想記住的單字。顯示的單字與要輸入的字元可以分別指定，也可以從 CSV 檔案加入。
+        play:
+          title: 開始練習
+          description: 即時顯示速度、正確率與錯誤數，並標示打錯字元的位置。
+        rankings:
+          title: 最佳紀錄
+          description: 透過個人最佳、最近 5 次的平均與用時的變化，確認自己的進步。
+      storage:
+        title: 資料的儲存位置
+        text: 登入是選用的。儲存位置會依是否登入而不同，兩邊的資料分開儲存（不會自動移轉）。
+        more: 詳細說明請參閱<link>使用說明中的「儲存位置與資料」</link>。
+      places:
+        current: 目前的儲存位置
+        browser:
+          title: 此瀏覽器
+          condition: 未登入時
+          p1: 儲存在此瀏覽器的 LocalStorage 中
+          p2: 不會與其他裝置或瀏覽器同步
+          p3: 刪除瀏覽器資料後會消失
+        account:
+          title: 帳號
+          condition: 登入時
+          p1: 儲存在帳號專用的伺服器上
+          p2: 在登入的裝置上使用相同的資料
+          p3: 儲存時需要網路連線
+      analytics:
+        title: 流量統計
+        text: 為了了解哪些頁面被瀏覽以及瀏覽次數，我們使用 Vercel Web Analytics 統計頁面瀏覽量。只會傳送頁面網址（不含 ? 之後的部分）、來源頁面、瀏覽器、作業系統和國家。不使用 Cookie，也不會傳送你的單字清單和練習記錄。
+      email:
+        title: 電子郵件地址的使用
+        text: 使用 ID 和密碼註冊時，我們會保存你的電子郵件地址。它只用於寄送確認地址、重設密碼和告知 ID 的郵件，不用於廣告或通知，也不會提供給其他方。郵件透過 Resend 寄送。
+      version:
+        title: 版本與開發
+        version: 版本
+        tech: 使用的技術
+        techList: Next.js、React、PostgreSQL（Neon）
+        source: 原始碼
+        newTab: "（在新分頁中開啟）"
+        public: 這是公開的存放庫，任何人都可以檢視原始碼。
+        licenses: 授權
+        licensesLink: 開放原始碼授權
+      licenses:
+        meta:
+          title: 授權 | Typle
+          description: Typle 使用的開放原始碼軟體、字型和模型及其授權。
+        back: 關於 Typle
+        title: 開放原始碼授權
+        intro: Typle 使用了以下開放原始碼軟體、字型和模型。點選名稱可開啟專案頁面。完整的授權文字彙整在「全部授權文字」中。
+        fullText: 全部授權文字
+        filter: 依名稱或授權篩選
+        count: "%{total} 項中的 %{shown} 項"
+        loading: 正在載入…
+        failed: 無法載入授權清單。
+        newTab: "（在新分頁中開啟）"
+        noText: "（套件中沒有授權文字）"
+    account:
+      checking: 正在確認登入狀態
+      signIn: 登入
+      signInWithGitHub: 使用 GitHub 登入
+      signInFailed: 無法登入。請再試一次。
+      githubUser: GitHub 使用者
+      ffpfUser: FFPF ID 使用者
+      menu: 帳號選單
+      signedInWithGitHub: 已透過 GitHub 登入
+      signedInWithFfpf: 已透過 FFPF ID 登入
+      signedInWithPassword: 已使用 ID 登入
+      manageDevices: 管理裝置
+      signOut: 登出
+      signOutFailed: 無法登出。請再試一次。
+      localLogin:
+        title: 在這台 Mac 上使用 Typle
+        description: 可以用 193 個國家的國名開始練習。清單與練習紀錄會儲存在這台 Mac 專用的資料庫中。
+        start: 開始練習
+        failed: 無法登入。請再試一次。
+    auth:
+      fields:
+        loginId: ID
+        email: 電子郵件地址
+        password: 密碼
+        currentPassword: 目前的密碼
+        newPassword: 新密碼
+        loginIdHint: 3到32個半形英文字母、數字、「_」或「-」。不區分大小寫，之後無法變更。
+        emailHint: 用於寄送確認郵件，以及忘記 ID 或密碼時的郵件。
+        passwordHint: 10到128個字元，不能與 ID 相同。
+      send: 寄送
+      failed: 操作失敗，請再試一次。
+      backToSignIn: 前往登入
+      signIn:
+        submit: 登入
+        refused: ID 或密碼錯誤，或暫時無法登入。
+        signUp: 註冊新帳號
+        forgotPassword: 忘記密碼
+        forgotId: 忘記 ID
+        or: 也可以使用 GitHub 帳號登入。
+      signUp:
+        title: 註冊
+        description: 建立使用 ID 和密碼登入的 Typle 帳號。
+        submit: 註冊
+        submitting: 正在註冊…
+        done: 已註冊並登入。
+        mailSent: 確認郵件已寄至 %{email}。請開啟郵件中的連結確認地址。
+        mailNotSent: 無法寄送確認郵件。可以在設定的「帳號」中重新寄送。
+        continue: 繼續
+        failed: 無法註冊，請再試一次。
+        signInFailed: 已註冊，但無法登入。請在登入頁面登入。
+        haveAccount: 已有帳號？在此登入
+      verifyEmail:
+        title: 確認電子郵件地址
+        description: 使用郵件中的連結確認地址。
+        verifying: 正在確認…
+        done: 已確認電子郵件地址。
+        failed: 無法確認，請再試一次。
+        home: 回到首頁
+      forgotPassword:
+        title: 忘記密碼
+        description: 請輸入 ID。如果有已確認的電子郵件地址，我們會寄送重設密碼的連結。
+        sent: 如果該 ID 存在且電子郵件地址已確認，我們已寄送重設連結。連結30分鐘內有效。
+      resetPassword:
+        title: 重設密碼
+        description: 請設定新密碼。設定後，所有裝置都會登出，並在此頁面重新登入。
+        submit: 設定
+        again: 重新寄送重設連結
+        signInFailed: 已設定密碼，但無法登入。請在登入頁面登入。
+      forgotId:
+        title: 忘記 ID
+        description: 請輸入註冊時的電子郵件地址。如果有帳號已確認該地址，我們會以郵件寄送 ID。
+        sent: 如果有帳號已確認該地址，我們已以郵件寄送 ID。
+      settings:
+        heading: 帳號
+        description: 此帳號使用 ID 和密碼登入。
+        verified: 已確認
+        unverified: 未確認
+        resend: 重新寄送確認郵件
+        resent: 已寄送確認郵件。
+        alreadyVerified: 此地址已確認。
+        mailNotSent: 無法寄送確認郵件，請稍後再試。
+        loadFailed: 無法讀取帳號資訊。
+        changePassword: 變更密碼
+        changePasswordDescription: 需要目前的密碼。變更後，其他裝置將會登出。
+        change: 變更密碼
+        changed: 已變更密碼。其他裝置已登出。
+        failed: 無法變更密碼，請再試一次。
+        signInAgain: 已變更密碼，但此裝置需要重新登入。請使用新密碼登入。
+    common:
+      loading: 載入中…
+      close: 關閉
+      notifications: 通知
+      closeNotification: 關閉通知
+      delete:
+        label: 刪除
+        title: 確定要刪除嗎？
+        description: "%{description} 此操作無法復原。"
+        confirm: 刪除
+        deleting: 正在刪除…
+        failed: 無法刪除。請再試一次。
+      storage:
+        guest: 儲存在此瀏覽器
+        account: 儲存至帳號
+        guestDetail: 由於尚未登入，資料會儲存在此瀏覽器的 LocalStorage 中。
+        accountDetail: 儲存至目前登入的帳號。
+      form:
+        cancel: 取消
+        saving: 正在儲存…
+        save: 儲存變更
+        add: 新增
+        saveFailed: 無法儲存。請再試一次。
+      packList: "%{pack} › %{list}"
+    dashboard:
+      title: 練習概況
+      sourceGuest: 根據儲存在此瀏覽器中的紀錄統計。
+      sourceAccount: 根據儲存在帳號中的紀錄統計。
+      start: 開始
+      practice: 開始練習
+      create: 建立單字清單
+      week:
+        title: 本週摘要
+        description: "%{start}至%{end}的紀錄。增減是與上週同一星期幾、同一時刻之前的紀錄相比。"
+        count: 本週練習
+        countUnit: 次
+        streak: 連續練習
+        streakUnit: 天
+        accuracy: 平均正確率（最近 %{count} 次）
+        time: 本週練習時間
+        practisedToday: 今天已練習
+        streakNext: 今天練習即為第 %{day} 天
+        noComparison: 還沒有可比較的紀錄
+        noAccuracy: 沒有包含正確率的紀錄
+        times: "%{count} 次"
+        sameAsLastWeek: 與上週相同
+        moreThanLastWeek: 比上週多 %{value}
+        lessThanLastWeek: 比上週少 %{value}
+      change: {}
+      next:
+        title: 接下來練習的清單
+        description: 最多顯示 3 個清單：尚未練習的、%{days} 天以上未練習的，以及最近正確率低於 %{accuracy}% 的清單。
+        allPractised: 所有清單最近都練習過了。
+        words: "%{count} 個單字"
+        lastPracticed: 最近練習 %{day}
+        noRecords: 無紀錄
+        new: 還沒有練習
+        stale: 已 %{days} 天未練習
+        lowAccuracy: 最近 %{count} 次的正確率 %{accuracy}%
+        practiceList: 練習 %{name}
+        practice: 開始練習
+      trends:
+        title: 各清單的趨勢
+        description: 顯示最近 20 次以內的每個單字秒數（越低越快）與正確率。由於用時依單字數平均，編輯清單前後的紀錄也能互相比較。
+        summary: "%{count} 次 · 最近練習 %{day}"
+        needTwo: 紀錄達到 2 次以上後顯示趨勢。
+        practiceList: 練習 %{name}
+        practice: 開始練習
+        speed: 每個單字的秒數
+        accuracy: 正確率
+        seconds: "%{value} 秒"
+        percent: "%{value}%"
+        latest: 最新 <number>%{value}</number>
+        noChart: 包含此項的紀錄達到 2 次以上後顯示。
+        best: 最佳紀錄：正確率 %{accuracy}・%{time} 秒（%{day}）
+        notRecorded: 未記錄
+      chart:
+        label: "%{label}（用左右方向鍵查看每次的數值）"
+        date: 日期時間
+        value: 數值
+      continue:
+        label: 繼續練習
+        meta: "%{count} 個詞 · 上次練習 %{day}"
+        best: 最佳：準確率 %{accuracy}，%{time} 秒
+        notRecorded: 未記錄
+        samples: 開頭的單字
+        more: 另有 %{count} 個詞
+        practice: 練習
+        practiceList: 練習 %{name}
+        other: 選擇其他清單
+      weak:
+        title: 不熟的單字
+        description: 依清單顯示最近 %{runs} 次練習（不含 Handwriting）中打錯的詞，打錯次數多的在前。只練不熟的單字時沒有打錯的詞，會從這裡移除。
+        none: 還沒有不熟的單字。練習中打錯的詞會顯示在這裡。
+        wordsOf: "%{name} 不熟的單字"
+        runs: "%{count} 次"
+        more: 另有 %{count} 個詞
+        practice: 只練習 %{count} 個不熟的單字
+        practiceList: 只練習 %{name} 的 %{count} 個不熟的單字
+    devices:
+      title: 裝置
+      description: 登錄練習時使用的電腦和鍵盤。在「<link>開始練習</link>」中選擇後，紀錄中會保留練習時使用的裝置。
+      usage: 練習 %{count} 次 · 最近 %{day}
+      neverUsed: 尚未練習
+      listHeading: 已登錄的裝置
+      count: "%{count} 台"
+      add: 新增裝置
+      limit: 最多可以登錄 %{max} 台裝置。刪除不再使用的裝置後即可新增。
+      inUse: 使用中
+      inUseDetail: 此瀏覽器練習時使用的裝置
+      defaultDetail: 無需登錄即可使用的裝置。無法重新命名或刪除。
+      edit: 編輯
+      editLabel: 編輯 %{name}
+      delete: 刪除
+      deleteLabel: 刪除 %{name}
+      added: 已新增裝置「%{name}」。
+      saved: 已儲存裝置「%{name}」。
+      deleted: 已刪除裝置「%{name}」。
+      deleteTitle: 要刪除裝置「%{name}」嗎？
+      deleteRemoval: 將從清單中刪除「%{name}」。
+      deleteRecords: 在此裝置上練習的 %{count} 次紀錄不會被刪除，並保留練習時的裝置名稱。
+      deleteNoRecords: 沒有在此裝置上練習的紀錄。
+      empty:
+        title: 尚未登錄任何裝置
+        description: 在「開始練習」中選擇已登錄的裝置後，紀錄中會保留練習時使用的裝置，方便依裝置比較紀錄。
+        example: 例：MacBook Air（JIS）、桌上型電腦＋HHKB（US）
+      current:
+        heading: 此瀏覽器練習時使用的裝置
+        change: 變更
+        changeLabel: 變更此瀏覽器練習時使用的裝置（目前：%{device}）
+        practice: 開始練習
+        noteSelected: 在「開始練習」中練習時，紀錄中會保留此裝置。每個瀏覽器會分別記住選擇，因此可以為每台電腦分別選擇。
+        noteUnselected: 未選擇時，練習紀錄中不會保留裝置。每個瀏覽器會分別記住選擇，因此可以為每台電腦分別選擇。
+      dialog:
+        addTitle: 新增裝置
+        editTitle: 編輯裝置
+        addDescription: 登錄練習時使用的裝置。
+        editDescription: 變更顯示名稱與鍵盤配置・備註。
+        name: 裝置名稱
+        namePlaceholder: 例：MacBook Air
+        nameHelp: 會顯示在練習畫面的裝置選單與練習紀錄中。
+        layout: 鍵盤配置・備註
+        optional: "（選填）"
+        layoutPlaceholder: 例：JIS、US
+        layoutHelp: 寫下鍵盤配置或設定的差異，比較紀錄時更容易辨識。
+        renameNote: 即使變更名稱，過去的練習紀錄（%{count} 次）仍會保留練習時的名稱。
+        use: 設為此瀏覽器練習時使用的裝置
+        useHelp: 在「開始練習」中練習時，紀錄中會保留此裝置。
+      menu:
+        label: 使用裝置：%{device}
+        locked: 練習中無法變更裝置
+        change: 變更使用裝置
+        unselected: 裝置：未選擇
+        heading: 使用裝置（僅能在開始練習前變更）
+        manage: 管理裝置
+      choice:
+        notSelected: 未選擇
+        none: 未選擇（不記錄裝置）
+    errors:
+      workspaceRequestFailed: 無法取得或儲存資料。
+      invalidServerData: 伺服器傳回的資料無效。
+      loginRequired: 請登入。
+      databaseUnavailable: 無法連線至資料庫。請稍後再試。
+      authUnavailable: 登入功能暫時無法使用。請稍後再試。
+      forbiddenRequest: 不允許的請求。
+      emptyRequest: 沒有資料。
+      workspaceTooLarge: 儲存的資料不得超過 1 MB。
+      loginAccountChanged: 登入帳號已變更。請重新開啟頁面。
+      invalidWorkspace: 請確認儲存資料的格式與大小。
+      conflict: 資料已在其他畫面更新。請載入最新資料後再試。
+      workspaceSaveFailed: 無法儲存。已保留輸入內容，可以再試一次。
+      guestReadFailed: 無法讀取瀏覽器中儲存的資料。原始資料未被變更。
+      storageChanged: 儲存位置已變更。請重新開啟頁面。
+      guestQuotaExceeded: 超出可儲存的資料量。請整理單字清單或紀錄。
+      guestWriteFailed: 無法儲存至瀏覽器。請確認可用空間與儲存設定後再試。
+      accountChangedReopen: 登入狀態已變更。請重新開啟頁面。
+      accountChanged: 登入狀態已變更。
+      loadFailed: 載入失敗。
+      saveFailed: 儲存失敗。請再試一次。
+      listNameRequired: 請輸入單字清單名稱。
+      listNameDuplicate: 已有同名的單字清單。請使用其他名稱。
+      wordsRequired: 請至少新增一個單字。
+      wordFieldsRequired: 請填寫所有單字的顯示內容與輸入內容。
+      savedDataUnreadable: 無法讀取儲存資料的格式。
+      savedDataCorrupted: 儲存的資料已損毀。原始資料未被變更。
+      invalidWritingLanguage: 手寫練習的語言無效。
+      listDeleted: 此單字清單已被刪除。請重新開啟頁面。
+      listLimit: 自建的單字清單最多可以儲存 %{max} 個（已追蹤的包中的清單不計入）。
+      followLimit: 最多可以追蹤 %{max} 個官方包。
+      importFileType: 請選擇 CSV 檔案。
+      importFileEncoding: 請選擇以 UTF-8 格式儲存的檔案。
+      importTooLarge: 檔案大小不得超過 1 MiB。
+      importQuote: 第 %{line} 行的引號格式不正確。
+      importHeaderRequired: 標題列需要包含 input 與 display。annotation 可以省略。
+      importHeaderDuplicate: 標題列中有重複的欄位名稱。
+      importHeaderUnknown: 欄位名稱請使用 input、display、annotation 和 input_type。
+      importNoRows: 請至少新增一行單字。
+      importTooManyRows: 每個清單最多 1,000 個單字。
+      importColumnCount: 第 %{line} 行的欄位數與標題列不一致。
+      importFieldRequired: 第 %{line} 行的 input 與 display 為必填。
+      importFieldTooLong: 第 %{line} 行超出字數上限（input、display：1,000 字，annotation：2,000 字）。
+      deviceDataInvalid: 請確認裝置資料的格式。
+      deviceNameRequired: 請輸入裝置名稱。
+      deviceNameTooLong: 裝置名稱不得超過 %{max} 個字元。
+      deviceLayoutTooLong: 鍵盤配置・備註不得超過 %{max} 個字元。
+      deviceDeleted: 此裝置已在其他畫面被刪除。
+      deviceNameDuplicate: "「%{name}」已登錄。請使用其他名稱。"
+      deviceLimit: 最多可以登錄 %{max} 台裝置。請先刪除不再使用的裝置再新增。
+      practiceIncomplete: 練習尚未完成。
+      recordListDeleted: 單字清單已被刪除，無法儲存紀錄。
+      invalidRecord: 練習紀錄無效，無法儲存。
+      recordLimit: 此單字清單的練習紀錄已達上限。
+      deviceNotFound: 練習所用的裝置已被刪除，無法儲存紀錄。
+      packNameRequired: 請輸入包名稱。
+      packNameDuplicate: 已有同名的包。
+      packListsRequired: 請至少選擇一份要放入包的單字清單。
+      packDeleted: 此包已被刪除。
+      packFollowed: 官方包無法編輯。複製後即可作為自己的包進行編輯。
+      levelsConflict: 同一個包中已有難度（沒有難度的清單為名稱）相同的清單。
+      tooManyLevels: 一個清單只能有一個難度。
+      packFileUnreadable: 無法將此檔案作為單字包讀取。
+      invalidPackFile: 此檔案中有超出可儲存上限的項目。
+      sharedPackNotFound: 此分享已結束。
+      invalidPage: 頁碼無效。
+      importInputTypeInvalid: 第 %{line} 行的 input_type 必須是 command、code 或 word。
+      invalidRequest: 請求內容無效。
+      loginIdFormat: ID 請使用3到32個半形英文字母、數字、「_」或「-」。
+      passwordLength: 密碼請使用10到128個字元。
+      passwordSameAsId: 密碼不能與 ID 相同。
+      emailFormat: 電子郵件地址的格式不正確。
+      loginIdTaken: 此 ID 已被使用，請換一個。
+      tooManyRequests: 請求次數過多，請稍後再試。
+      invalidToken: 此連結無法使用，可能已過期或已被使用。
+      notPasswordAccount: 僅適用於使用 ID 和密碼登入的帳號。
+      wrongPassword: 目前的密碼不正確。
+    format:
+      today: 今天
+      yesterday: 昨天
+      dateWithWeekday: "%{date}（%{weekday}）"
+      units:
+        hours: 小時
+        minutes: 分
+        seconds: 秒
+      time:
+        one: "%{value}%{unit}"
+        two: "%{first}%{firstUnit}%{second}%{secondUnit}"
+      defaultDevice: 預設
+      noDevice: 未記錄
+      noDeviceRecorded: 未記錄裝置
+      deviceWithLayout: "%{name}（%{layout}）"
+    globalError:
+      title: 無法顯示頁面
+      description: 請稍後再試一次。
+      reload: 重新載入
+    guide:
+      meta:
+        title: 使用說明 | Typle
+        description: 說明 Typle 的練習入門、單字清單的建立方式、紀錄的查看方式、資料的儲存位置及鍵盤操作。
+      title: 使用說明
+      intro: 從如何開始練習，到單字清單的建立、紀錄的查看與資料的儲存位置，都整理在這裡。不必登入也能使用所有功能。
+      contentsLabel: 本頁內容
+      contents:
+        practice: 開始練習
+        lists: 建立單字清單
+        records: 查看結果與紀錄
+        devices: 登錄裝置
+        storage: 儲存位置與資料
+        shortcuts: 鍵盤操作
+      start:
+        title: 三步驟開始
+        follow:
+          title: 追蹤官方包
+          text: 追蹤 Go、Kotlin 等官方包後，它們會出現在你的包列表中，可以馬上開始練習。
+          action: 官方包
+        create:
+          title: 建立自己的包
+          text: 選擇現有的單字清單，整理成包。單字清單可以單獨建立，也可以從 CSV 檔案匯入。
+          action: 建立包
+        review:
+          title: 回顧紀錄
+          text: 打完最後一個單字後，紀錄會自動儲存，可以查看個人最佳與用時的變化。
+          action: 最佳紀錄
+      legend:
+        typed: 輸入：<mono>%{typed}</mono>
+        swatch: 字
+        done:
+          label: 已輸入
+          note: "（綠色）"
+        current:
+          label: 下一個要輸入的字元
+          note: "（底線）"
+        pending:
+          label: 尚未輸入的字元
+          note: "（白色，淺色主題下為黑色）"
+        error:
+          label: 打錯的字元
+          note: "（紅色）"
+      practice:
+        lead: 在<play>開始練習</play>選擇單字清單，然後輸入顯示的單字。
+        colors:
+          title: 輸入的顏色
+          text: 打對的字元會變成綠色，並進到下一個字元。打錯字元時，要輸入的字元會變成紅色，在打出正確字元之前不會前進。沒有輸入欄：單字中的底線表示目前的輸入位置。顯示的單字與要輸入的字元不同時（例如輸入「taipei」來打出「臺北」），要輸入的字元會顯示在單字下方，並由它來標示顏色。
+        flow:
+          title: 練習流程
+          p1: 所有字元都一致後會進入下一個單字，完成最後一個單字即結束練習。
+          p2: 從第一次輸入到完成全程計時，練習中會顯示經過時間、速度（每分鐘正確輸入的字元數）、正確率與錯誤數。
+          p3: 以輸入法輸入的中文、日文等，以選字確定後的文字判定，組字中的文字不判定。無法使用貼上與拖放輸入。
+          p4: 進度列下方會顯示接下來的 3 個單字，點選「顯示所有單字」可查看整份清單。
+          p5: 點選上方的眼睛按鈕，即可顯示或隱藏練習中的數據（經過時間、速度、正確率與錯誤數）。所選狀態會儲存在此瀏覽器中。隱藏後計時與紀錄儲存不受影響，結果畫面仍會顯示數值。
+          p6: 開啟上方的「憑記憶輸入」後，會隱藏答案進行練習。備註中的答案部分會被遮住，答案依未輸入的字元數顯示為「＿」。不顯示下一個單字、所有單字與要輸入的字元提示。點選「查看答案」即可顯示答案，剩餘的字元計為錯誤。這種練習的紀錄標為「回憶」，與一般紀錄分開比較。所選狀態會儲存在此瀏覽器中，練習途中無法切換。
+        choose:
+          title: 選擇包、清單與裝置
+          p1: 點選上方的「包 › 清單」，先選擇包，再切換要練習的清單。包依最近練習的順序排列，可依包名、分類、標籤、清單名稱或單字搜尋。只有一份清單的包，選擇後會直接選定該清單。有多份清單的包中，具難度的清單以難度按鈕選擇，沒有難度的清單以名稱按鈕選擇。也可以從右側（手機上為下方）的清單中選擇。
+          p2: 練習途中選擇其他清單時，會先確認是否中斷。未完成的練習不會留下紀錄。
+          p3: 點選「重來」或按 <keys>Esc</keys>，即可從頭重新練習同一份清單。
+          p4: 請在輸入第一個字元之前，透過上方的「裝置」選擇練習用的裝置（<devicesSection>登錄裝置</devicesSection>）。
+        writing:
+          title: Typle Handwriting（手寫）
+          p1: 在單字清單的編輯頁面開啟「用於手寫練習（Typle Handwriting）」並選擇語言，就可以手寫練習這個清單。在練習頁面選擇該清單時，會出現「打字／Handwriting」切換。
+          p2: 看著顯示的單字，用系統的手寫輸入（Windows 手寫面板、Android 平板的手寫鍵盤、輸入法的手寫等）寫進輸入框。網頁版沒有繪圖畫布。
+          p3: 輸入與單字一致就進入下一個。不一致時按「判定」（<keys>Enter</keys>）會記一次失誤，「跳過」也記一次失誤並進入下一個。正在轉換的文字不會判定。
+          p4: Handwriting 的記錄與一般記錄、回憶記錄分開比較，在最佳記錄頁面切換「一般／回憶／Handwriting」查看。首頁的本週次數、練習時間與連續天數會計入，但正確率、趨勢與下一個練習的清單只比較打字記錄。Handwriting 不能與「憑記憶輸入」同時使用。練習途中切換時會先確認。智慧型手機將在今後支援。
+      lists:
+        lead: 在<create>建立包</create>建立新的包，在<edit>單字包</edit>編輯已儲存的包與清單。
+        packs:
+          title: 包與清單
+          p1: 單字清單會以「包」整理管理。單字清單可以單獨建立；建立包時，需要輸入包的名稱並選擇要放入的單字清單。
+          p2: 透過包的「…」選單中的「新增清單」，可以在已儲存的包中新增清單。
+          p3: 透過包的「…」選單中的「編輯包」，可以變更名稱、說明、類別與標籤，也可以調整其中清單的順序。
+          p4: 在清單的編輯畫面中，可以重新選擇所屬的包（也就是移到其他包）。還可以填寫一個難度。
+        files:
+          title: 包的複製、檔案與官方包
+          p1: 透過包的「…」選單中的「複製」，可以連同清單一起複製包。名稱會是「名稱（副本）」，並放在原包的後面。不會複製練習紀錄。
+          p2: 透過包的「…」選單中的「匯出」，可以將包儲存成「包名稱.typle-pack.json」檔案。檔案包含名稱、說明、類別、標籤、清單與單字，不含練習紀錄。
+          p3: 用「從檔案匯入」選擇該檔案，就能匯入成新的包（在還沒有任何包時也能使用）。檔案上限為 1 MiB，無法讀取的檔案不能匯入。已有同名的包時，名稱會變成「名稱（2）」。
+          p4: 在單字包的「官方包」中按「追蹤」，該包就會加入你的包列表。追蹤中的包會顯示「官方」，並隨官方版本自動更新。追蹤中的包無法編輯；想修改時，請用「複製」把它變成自己的包。「取消追蹤」會把該包連同練習紀錄一起從列表中移除。
+        interests:
+          title: 興趣
+          p1: 在<interests>興趣</interests>中選擇「語言」「程式設計」標籤。可以選多個，按下即儲存。一開始所有標籤都已選取，所有官方包都符合興趣。
+          p2: 選擇上層標籤後，下方會展開「中文」「俄語」「韓語」或「Go」「Kotlin」等標籤。取消上層標籤時，下方的選擇也會一併取消。
+          p3: 選擇興趣後，單字包中的「官方包」會分為「符合興趣的詞包」和「其他詞包」。若上層標籤下沒有選擇任何標籤，該領域的所有詞包都算符合；若有選擇，則帶有這些標籤的詞包算符合。興趣頁面的標籤下方也會列出符合的官方包，顯示包名、包含的單字列表、單字數和開關。開啟開關並按下底部的「新增」即可追蹤；關閉追蹤中包的開關並按下「新增」即可取消追蹤（練習紀錄也會刪除）。
+          p4: 登入時興趣儲存到帳號，未登入時儲存到此瀏覽器。
+        share:
+          title: 把包交給別人
+          p1: 要把包交給別人，可透過包的「…」選單中的「匯出」儲存成「包名稱.typle-pack.json」檔案，或透過「匯出 CSV」將單一清單儲存成 CSV 檔案，再傳送檔案。不含練習紀錄。
+          p2: 對方可以用「從檔案匯入」匯入包檔案，編輯清單時用「匯入 CSV」匯入 CSV 檔案。
+        input:
+          title: 輸入單字
+          p1: 輸入清單名稱，並為每個單字填寫「顯示的單字」與「輸入的文字」。補充說明可不填。
+          p2: "「輸入的文字」留空時，會使用與顯示的單字相同的字元。"
+          p3: 可以透過拖曳、「…」選單或 <keys>Alt+↑↓</keys> 調整單字順序。按 <keys>Enter</keys> 會移到下一個單字，在最後一個單字上按則新增一列。
+          p4: 點選「儲存」或按 <keys>Ctrl+Enter</keys>（Mac 為 <keys>⌘+Enter</keys>）即可儲存。
+        cannotSave:
+          title: 無法儲存時
+          p1: 含有空白列的清單、沒有單字的清單，以及與同一個包中其他清單同名的清單都無法儲存。
+          p2: 每份清單最多可放 1,000 個單字，最多可儲存 150 份清單。
+          p3: 有尚未儲存的變更時，取消或使用瀏覽器的「上一頁」之前會先確認。
+          p4: 變更單字數後，先前的紀錄將不再列入最佳紀錄的排名（紀錄本身會保留。請參閱<wordCount>單字數變更時</wordCount>）。
+        manage:
+          title: 管理清單
+          p1: 在<edit>單字包</edit>中，可以依包名稱、清單名稱或單字搜尋，並變更排列順序。
+          p2: 透過包的「…」選單，可以進行練習、編輯包、新增清單與刪除。刪除包時，其中的清單與練習紀錄也會一併刪除。每份清單所在的列也有「…」選單，可以查看最佳紀錄與練習紀錄，也可以進行 CSV 匯出、複製與刪除。追蹤中的官方包無法編輯，以「取消追蹤」取代刪除。
+          p3: 複製時只會複製單字，不會複製練習紀錄。複製包時也是如此。
+        csv:
+          title: CSV 檔案
+          p1: 編輯清單時，透過「匯入 CSV」選擇檔案，確認內容後，可以選擇加到目前單字的最後面，或是取代現有單字。
+          p2: 第一列為欄位名稱。input（要輸入的字元）與 display（顯示的單字）為必填，annotation（補充說明）可省略。可匯入以 UTF-8 儲存、1 MiB 以內且不超過 1,000 個單字的檔案。
+          p3: "「匯出 CSV」會將輸入、顯示與補充說明寫入 UTF-8 的 CSV 檔案（不含練習紀錄）。匯出的檔案可以直接匯入。"
+          exampleLabel: CSV 檔案範例
+          example: |-
+            input,display,annotation
+            taipei,臺北,臺灣的首都
+            tainan,臺南,
+      records:
+        lead: 練習完成後，紀錄會自動儲存。
+        complete:
+          title: 完成畫面
+          p1: 顯示用時、正確率與錯誤字元數、速度、打錯的詞數及裝置。下方列出打錯的詞與第一個出錯的字元。點選「只練習打錯的詞」即可只複習這些詞（複習不記錄）。
+          p2: 正確率是輸入的字元中正確字元所占的比例。刪除操作不計入，修正後重新輸入的字元會計入。
+          p3: 刷新個人最佳時，會顯示徽章以及與先前最佳的差距。
+          p4: 點選「再來一次」（<keys>Enter</keys>）即可馬上再練習同一份清單。儲存失敗時，請點選「重新儲存紀錄」。
+        history:
+          title: 練習紀錄
+          p1: "<records>練習紀錄</records>會依日期由新到舊顯示練習歷程，並可依清單或裝置篩選。篩選條件會保留在 URL 中，因此可以透過書籤或連結開啟相同的畫面。"
+          p2: 依清單篩選時，會顯示該清單的練習次數與最佳紀錄，並可從「開始練習」馬上練習。選擇包後，清單的選項僅限該包中的清單。包含 2 份以上清單的包，其紀錄會顯示為「包名 › 清單名」。
+          p3: 每份清單的最佳紀錄會標上「最佳」。刪除最佳紀錄時，確認畫面會顯示下一筆將成為最佳的紀錄。
+        best:
+          title: 最佳紀錄
+          p1: 在<rankings>最佳紀錄</rankings>選擇清單後，會顯示個人最佳、最近 5 次的平均、用時的變化與排名在前的紀錄。最佳紀錄畫面會依包歸類清單。每個包會顯示練習次數、已練習的清單數（已練習 n/m）、最後練習的時間，以及最近 7 天內刷新最佳的清單數。排序以包為單位，包內的清單依難度順序排列。
+          p2: 排名可在「正確率優先」（正確率由高到低，相同時依速度由快到慢）與「速度優先」之間切換，並可依裝置篩選。選擇的清單與條件會保留在 URL 中。
+          p3: 練習畫面也會顯示所選清單的前 5 筆紀錄，並醒目標示這次的紀錄。
+        wordCount:
+          title: 單字數變更時
+          p1: 新增或刪除清單中的單字後，只有以目前單字數練習的紀錄才會列入排名。練習畫面與練習紀錄中的最佳紀錄也採用相同標準。
+          p2: 單字數不同的紀錄，可以透過最佳紀錄的「包含並顯示」加入排名。若還沒有目前單字數的紀錄，則以單字數不同的紀錄排名。
+        home:
+          title: 首頁
+          text: 有 1 筆以上的紀錄後，<home>首頁</home>會顯示本週的練習次數、連續練習天數、平均正確率與練習時間、接下來適合練習的清單，以及各清單每個單字所需秒數與正確率的變化。日期依裝置的時間劃分，每週從星期一開始。
+      devices:
+        lead: 在<devices>裝置</devices>登錄練習用的電腦或鍵盤後，紀錄中就會留下是用哪台裝置練習的。
+        p1: 在練習畫面的「裝置」中選擇的裝置會記在此瀏覽器中，下次練習時也會沿用。選擇之前會使用「預設」。
+        p2: 可以依裝置篩選練習紀錄與最佳紀錄。
+        p3: 即使變更裝置名稱，先前的紀錄仍會保留練習當時的名稱。最多可登錄 100 台裝置。
+      storage:
+        lead: 登入是選用的。資料的儲存位置會依是否登入而不同。
+        browser:
+          title: 儲存在此瀏覽器
+          when: 未登入時
+          p1: 可以使用所有功能。
+          p2: 資料儲存在此瀏覽器的 LocalStorage 中，不會與其他裝置或瀏覽器同步。
+        account:
+          title: 儲存至帳號
+          when: 登入後（GitHub 或 ID 與密碼）
+          p1: 資料儲存在帳號專用的伺服器上，只要登入，在任何裝置上都能使用相同的資料。
+          p2: 儲存時需要網路連線。
+        warning:
+          title: 資料會消失的情況
+          p1: 儲存在此瀏覽器的資料，會在刪除瀏覽器的網站資料時消失。重要的清單可以透過「匯出 CSV」先備份起來。
+          p2: 刪除清單時，該清單的練習紀錄也會一併刪除。
+        notes:
+          p1: 兩個儲存位置的資料是分開儲存的，登入後也不會自動移轉。
+          p2: 舊版本（v0.1.x）的資料，可以透過<home>首頁</home>的移轉按鈕加入目前的儲存位置。
+          p3: 若因在多個畫面同時變更而無法儲存，請先載入最新資料，再操作一次。
+      shortcuts:
+        lead: 不用滑鼠也能操作的按鍵一覽。
+        anyKey: 任意鍵
+        screens:
+          practice: 開始練習
+          complete: 練習完成畫面
+          editor: 建立清單・編輯單字清單
+        actions:
+          restart: 從頭重新開始
+          resume: 點選輸入欄外部後，回到輸入
+          again: 再練一次
+          next: 移到下一個單字（在最後一個單字上則新增一列）
+          move: 將單字上移或下移一位
+          save: 儲存（Mac 為 ⌘ + Enter）
+      cta:
+        text: 準備好了，就馬上開始練習吧。
+        action: 開始練習
+    home:
+      welcome:
+        title: 用自己的單字，練習打字。
+        text: 可以先用官方單字包開始練習，或建立一份想記住的單字清單。
+        lists: 單字清單 %{count} 份
+        practices: 已完成練習 %{count} 次
+        navLabel: 開始使用
+        play: 開始練習
+        create: 建立單字清單
+        records: 查看紀錄
+      storage: 不必登入即可使用所有練習與編輯功能。單字清單、練習紀錄與裝置會儲存在此瀏覽器中。登入（GitHub 或 ID 與密碼）後，會切換到另一個儲存位置，也就是帳號，並可在裝置之間同步。瀏覽器中的資料不會自動移轉。
+      storageAccount: 您已登入，單字清單、練習紀錄與裝置會儲存在帳戶中，並與登入同一個帳戶的其他裝置和瀏覽器同步。這些資料與未登入時儲存在此瀏覽器中的資料分開保存。
+      links: "<guide>使用說明</guide> ／ <about>關於 Typle</about>"
+    input:
+      title: 輸入
+      metaTitle: 輸入 | Typle
+      description: 練習時輸入文字的相關設定。
+      note: 此設定儲存在此瀏覽器中。
+      unsaved: 無法儲存設定，僅在此頁面開啟期間有效。
+      simpleSpecial:
+        heading: 特殊字元簡易輸入
+        description: 對於捷克語、西班牙語等中帶有重音符、波浪符等符號的字母（如 í、ó、ñ、č），可以直接輸入不帶符號的字母（i、o、n、c）。直接輸入帶符號的字母同樣算正確。 俄語西里爾字母也支援拉丁字母輸入，例如 привет → privet、школа → shkola、я → ya。直接輸入西里爾字母同樣算正確。
+        label: 使用特殊字元簡易輸入
+        hint: 開啟後，可以輸入 á → a、č → c、ш → sh、я → ya。
+      simpleTable:
+        heading: 簡易輸入對照表
+        description: 開啟特殊字元簡易輸入後，可以代替各個字母輸入的按鍵。
+        latin: 帶符號的拉丁字母
+        other: 其他符號
+        cyrillic: 西里爾字母（俄語）
+        letter: 字母
+        key: 輸入的按鍵
+        capitals: 大寫字母也同樣適用（Á → A，Ш → Sh 或 SH）。
+      ignoreCase:
+        heading: 不區分大小寫
+        description: 將 A 和 a 這樣的大寫和小寫字母視為同一個字母。無論是否按 Shift 鍵輸入都算正確。
+        label: 不區分大小寫
+        hint: 開啟後，A、É 等大寫字母輸入 a、é 也算正確（反之亦然）。
+    interests:
+      title: 興趣
+      description: 可以追蹤符合興趣的官方包。官方包列表中也會優先顯示它們。
+      parents:
+        language: 語言
+        programming: 程式設計
+      childrenLabel: "%{parent}：細分"
+      children:
+        language:
+          zh: 中文
+          ru: 俄語
+          ko: 韓語
+          en: 英語
+          es: 西班牙語
+          fr: 法語
+          de: 德語
+          cs: 捷克語
+        programming:
+          go: Go
+          kotlin: Kotlin
+          java: Java
+          typescript: TypeScript
+          php: PHP
+          ruby: Ruby
+          sql: SQL
+          linux: Linux
+          vim: Vim
+          test: 測試
+          node: Node.js
+          shell: Shell
+          cloud: 雲端
+      packs:
+        title: 符合興趣的官方包
+        description: 按「新增」會追蹤已開啟開關的包。關閉追蹤中包的開關，會取消追蹤。勾選的包可以用下方的按鈕一次追蹤或取消追蹤。
+        pick: 選擇興趣後，符合的官方包會顯示在這裡。
+        none: 沒有符合所選興趣的官方包。
+        lists: 包含的單字列表
+        separator: "、"
+        switch: 追蹤 %{name}
+        select: 選擇 %{name}
+        selectAll: 全選
+        selected: 已選擇 %{count} 個
+        followSelected: 追蹤所選
+        unfollowSelected: 取消追蹤所選
+        add: 新增
+        saving: 儲存中…
+        confirmTitle: 包含取消追蹤
+        confirmDescription: 將取消追蹤%{names}。這些包的練習紀錄也會刪除。
+    landing:
+      meta:
+        title: Typle | 打字記住你想學的詞
+        description: 一款免費的打字應用程式，可以邊打邊記程式設計的指令和語法，也可以記外語單字。使用 %{total} 個官方清單或自己的單字清單練習，無需登入。
+      hero:
+        eyebrow: 免費，無需登入
+        title: 打字記住你想學的詞。
+        lead: Typle 是一款可以用自己的單字清單或官方單字包練習的打字應用程式。無論是程式設計的指令和語法，還是外語單字，都能邊打邊記。
+        play: 無需登入，開始練習
+        catalog: 查看官方單字包
+        home: 前往首頁
+      packs:
+        title: 官方單字包
+        lead: 追蹤 %{total} 個官方清單中的任何一個，就能馬上開始練習。
+        programming:
+          title: 程式設計
+          count: "%{count} 個清單"
+          text: Go、Java、Kotlin、TypeScript 等語言的語法，Linux、Vim、AWS CLI 等工具的指令，以及 PostgreSQL 的錯誤代碼。
+        languages:
+          title: 語言
+          count: "%{count} 個清單"
+          text: 中文（HSK 五級、六級）、韓語、英語、法語、德語、西班牙語、俄語和捷克語的單字與句型。中文和韓語還可以用手寫練習。
+      features:
+        title: 可以做什麼
+        own:
+          title: 用自己的單字清單練習
+          text: 加入想記住的單字並進行練習。顯示的單字和要輸入的字元可以不同，也可以從 CSV 檔案匯入。
+        recall:
+          title: 憑記憶打字
+          text: 隱藏答案、以備註作為提示的模式，可以檢驗自己是否真的記住了每個單字。
+        records:
+          title: 用記錄確認進步
+          text: 每次都會記錄速度、正確率和錯誤數，可以透過個人最佳和變化趨勢回顧自己的進步。
+      storage:
+        title: 資料儲存在哪裡
+        text: 無需登入即可使用全部功能。資料儲存在此瀏覽器中，登入（GitHub 或 ID 與密碼）後可以在多台裝置之間同步。
+        more: "<guide>使用方式</guide> ／ <about>關於 Typle</about>"
+      try:
+        badge: 在這裡試打
+        progress: "%{name} · %{current} / %{total} 個詞"
+        label: 輸入
+        hint: 輸入上面的詞即可進入下一個。在這裡輸入的內容不會被記錄。
+        done: 已輸入 %{count} 個詞。繼續用這個單字包練習，就會留下記錄。
+        continue: 繼續用這個單字包練習
+        starting: 正在準備…
+    mail:
+      verify:
+        subject: Typle：確認電子郵件地址
+        body: |-
+          感謝您註冊 Typle。
+
+          請開啟以下連結確認您的電子郵件地址（24小時內有效）。
+
+          %{link}
+
+          如果您沒有進行此操作，請直接刪除這封郵件。
+      reset:
+        subject: Typle：重設密碼
+        body: |-
+          我們收到了重設密碼的請求。
+
+          請開啟以下連結設定新密碼（30分鐘內有效，只能使用一次）。
+
+          %{link}
+
+          如果您沒有進行此操作，請直接刪除這封郵件。您的密碼不會改變。
+      loginIds:
+        subject: Typle：您的登入 ID
+        body: |-
+          使用此電子郵件地址註冊的登入 ID 如下：
+
+          %{ids}
+
+          如果您沒有進行此操作，請直接刪除這封郵件。
+    metadata:
+      title: Typle | 用自己的詞彙練習打字
+      description: 一款可以用自己的單字清單練習的打字應用程式。新增喜歡的詞彙，練習打字，並回顧最佳紀錄。
+      imageAlt: Typle — 用自己的詞彙練習打字。用單字清單練習與紀錄
+      sharedTitle: 分享的包 | Typle
+      playDescription: 選擇官方單字包或自己的單字清單練習打字。速度、正確率和錯誤數會即時顯示，每次練習都會自動儲存。無需登入。
+    nav:
+      mainNavigation: 主要導覽
+      help: 說明
+      skipToContent: 跳至主要內容
+      topBar: 頂端列
+      openMenu: 開啟選單
+      closeMenu: 關閉選單
+      menu: 選單
+      groups:
+        practice: 練習
+        wordLists: 單字清單
+        settings: 設定
+      links:
+        home: 首頁
+        play: 開始練習
+        records: 練習紀錄
+        rankings: 最佳紀錄
+        edit: 單字包
+        words: 單字一覽
+        create: 建立包
+        general: 一般
+        input: 輸入
+        interests: 興趣
+        devices: 裝置
+        guide: 使用說明
+        about: 關於 Typle
+        github: GitHub
+      storage:
+        label: 儲存位置：
+        account: 儲存至帳號
+        browser: 儲存在此瀏覽器
+        accountDetail: 儲存至帳號，並在登入的裝置之間同步。
+        browserDetail: 由於尚未登入，資料只會儲存在此瀏覽器中。
+      theme:
+        label: 深色模式
+        toLight: 切換為淺色模式
+        toDark: 切換為深色模式
+        saveFailed: 無法儲存設定，僅在此頁面內切換。
+    officialPack:
+      title: "%{name}打字練習"
+      stats: "%{lists} 個清單 · %{words} 項"
+      practice: 用這個單字包練習
+      preparing: 正在準備…
+      full: 最多可以追蹤 %{max} 個官方單字包。請先取消追蹤不再使用的單字包，然後再按一次。
+      catalog: 查看其他官方單字包
+      free: 免費，無需登入。按下後會追蹤這個單字包並立即開始練習。
+      wordsHeading: 包含的內容
+      input: 要輸入的內容
+      note: 含義與說明
+      details: 查看詳情
+    practice:
+      empty: 還沒有單字包。請<catalog>追蹤官方單字包</catalog>，或<create>建立新的單字包</create>。
+      starter:
+        title: 想從哪個開始練習？
+        description: 還沒有單字包。選擇一個官方單字包，就會追蹤它並立即開始練習。之後可以取消追蹤。
+        first: 第一個清單：%{list}
+        start: 從這個單字包開始
+        more: "<catalog>查看其他官方單字包</catalog> ／ <create>建立自己的單字包</create>"
+      stats:
+        label: 本次練習數據
+        elapsed: 用時
+        speed: 速度
+        speedUnit: 鍵/分
+        accuracy: 正確率
+        mistakes: 錯誤
+        wordSpeedUnit: 詞/分
+      progress:
+        label: 單字進度
+        value: "%{current} / %{total} 個單字"
+      feedback:
+        mismatch: 第 %{position} 個字元不一致。請輸入正確的字元。
+        composing: 輸入法中尚未確認的文字，確認後才會判定
+        restart: 從頭開始
+      header:
+        switchList: 切換單字清單（目前：%{name}）
+        wordCount: "%{count} 個單字"
+        restart: 從頭開始
+        restartTitle: 從頭開始（Esc）
+        restartShort: 重來
+        liveStats: 顯示本次練習數據
+        aside: 顯示側邊欄（單字列表）
+      word:
+        typeThis: 需輸入
+        resume: 點擊或按任意鍵繼續
+        inputLabel: 輸入顯示的文字
+        simpleKeys: 簡易輸入
+        simpleKeysAll: 完整對照表
+      recall:
+        toggle: 憑記憶輸入
+        reveal: 查看答案
+        noHint: 沒有提示
+        resultHeading: 憑記憶輸入
+      upcoming:
+        next: 接下來
+        last: 這是最後一個單字
+        more: 還有 %{count} 個
+        showAll: 顯示所有單字
+        allWords: 所有單字
+        done: "（已完成）"
+        current: "（輸入中）"
+        pending: "（未輸入）"
+      aside:
+        label: 單字清單
+        lists: 單字清單
+        create: 建立新包
+        best: 最佳紀錄
+        bestOrder: 依正確率由高到低，相同時依速度由快到慢
+        bestOrderAtCount: 依正確率由高到低，相同時依速度由快到慢 · 僅目前 %{count} 個單字的紀錄
+        allBest: 所有最佳紀錄
+        filter: 依名稱、分類或標籤篩選單字清單
+      picker:
+        title: 選擇單字清單
+        description: 練習途中選擇其他清單時，會先確認是否中斷。
+        filter: 依清單名稱、分類或標籤篩選
+        candidates: 候選單字清單
+        noMatch: 沒有符合的清單。
+      switch:
+        title: 要中斷練習嗎？
+        description: "「%{list}」的進度（%{done} / %{total} 個單字）不會記錄。將切換至「%{next}」。"
+        continue: 繼續練習
+        confirm: 中斷並切換
+      result:
+        label: 練習結果
+        title: 辛苦了！
+        newBest: 刷新個人最佳
+        completed: 練習完成：%{name}
+        time: 用時
+        seconds: 秒
+        accuracy: 正確率
+        mistakes: 錯誤 %{count} 個字元
+        speed: 速度
+        speedUnit: 鍵/分
+        correct: "%{count} 個字元"
+        words: 單字
+        wordUnit: 個
+        firstAtCount: 目前 %{count} 個單字的第一筆紀錄
+        firstForList: 此清單的第一筆紀錄
+        faster: 比最佳快 %{seconds} 秒
+        bestByAccuracy: 憑正確率刷新最佳
+        behind: 最佳為 %{time} 秒 · %{accuracy}%
+        behindNoAccuracy: 最佳為 %{time} 秒 · 未記錄正確率
+        saveFailed: 無法儲存紀錄。結果仍保留在此畫面上。請檢查網路連線後再試一次。
+        retry: 重新儲存紀錄
+        saved: 已儲存練習紀錄。在此清單中排名第 %{rank} 名。
+        saving: 正在儲存紀錄…
+        again: 再來一次
+        chooseList: 選擇其他清單
+        viewRecords: 查看紀錄
+        wordSpeedUnit: 詞/分
+        correctWords: "%{count} 個詞"
+        mistakesWords: 錯誤 %{count} 個詞
+        shareOnX: 分享到 X
+        shareText: 我在 Typle 上以 %{time} 秒、%{accuracy}% 的正確率打完了「%{name}」
+        reviewNote: 複習打錯的詞不會記錄。
+        reviewNoteWeak: 這次複習不會記錄。沒有打錯的詞不再算作不熟的單字。
+        reviewing: 複習打錯的 %{count} 個詞（不記錄）
+        missed:
+          tile: 打錯的詞
+          of: "/ %{count} 個詞"
+          title: 打錯的詞
+          none: 沒有打錯的詞。
+          typed: 第 %{position} 個字元打成了 %{typed}
+          wrote: 寫成了「%{typed}」
+          revealed: 看了答案
+          skipped: 略過
+          space: 空白鍵
+          count: "%{count} 次"
+          review: 只練習打錯的 %{count} 個詞
+        reviewingWeak: 複習 %{count} 個不熟的單字（不記錄）
+      best:
+        label: 最佳紀錄前 5 名
+        rank: 名次
+        time: 用時
+        accuracy: 正確率
+        device: 裝置
+        seconds: "%{time} 秒"
+        noAccuracy: 未記錄
+        current: 本次紀錄
+        empty: 還沒有紀錄。完成一次練習後，這裡會顯示前 5 名。
+      options:
+        selected: 已選擇 %{name}
+        select: 選擇 %{name}
+        withBest: "%{count} 個單字 · 最佳 %{time} 秒"
+        noRecord: "%{count} 個單字 · 無紀錄"
+        groupSelected: "%{level} · %{summary}"
+        groupLists: "%{count}個清單 · 選擇難度"
+        levels: "%{name} 的難度"
+        chooseLevel: 請選擇難度。
+        groupListsPlain: "%{count}個清單 · 選擇清單"
+        listsOf: "%{name} 的清單"
+        chooseList: 請選擇清單。
+        match: 符合搜尋
+      modeLabel: 練習方式
+      modeTyping: 打字
+      modeWriting: Handwriting
+      writingJudge: 判定
+      writingSkip: 跳過
+      writingRead: 辨識為「%{text}」
+      writingInput: 在此手寫輸入
+      writingInputMethod: 書寫方式
+      writingInputPad: 手寫板
+      writingInputField: 輸入框
+      writingPad: 手寫板
+      writingPadHint: 在這裡書寫
+      writingPadLoading: 正在準備手寫辨識…
+      writingPadFailed: 無法載入手寫辨識。
+      writingPadRetry: 重試
+      writingPadUndo: 復原一筆
+      writingPadClear: 清除
+      writingPadReading: 目前辨識：%{text}
+    rankings:
+      title: 最佳紀錄
+      intro: 每個單字清單的個人最佳。選擇清單後，會顯示前幾名的紀錄與用時的變化趨勢。
+      reload: 重新載入
+      filter:
+        device: 裝置
+        allDevices: 所有裝置
+        deleted: "%{name}（已刪除）"
+      mode:
+        label: 練習模式
+        normal: 一般
+        recall: 回憶
+        writing: Handwriting
+      order:
+        label: 排名依據
+        accuracy: 正確率<wide>優先</wide>
+        speed: 速度<wide>優先</wide>
+      orderNotes:
+        accuracy: 依正確率由高到低，正確率相同時依速度由快到慢
+        speed: 依速度由快到慢，用時相同時依正確率由高到低
+      lists: 單字清單
+      empty:
+        title: 還沒有最佳紀錄
+        description: 把單字清單輸入到最後，各清單的個人最佳、前幾名紀錄與用時趨勢就會顯示在這裡。
+        practice: 開始練習
+        create: 建立單字包
+      list:
+        search: 搜尋清單
+        clearSearch: 清除搜尋
+        noDeviceRecords: 此裝置沒有紀錄的清單（%{count}）
+        noRecords: 還沒有紀錄的清單（%{count}）
+        words: "%{count} 個單字"
+        noMatch: 沒有與「%{query}」相符的清單。
+        lastPracticed: 最近練習
+        best: 個人最佳
+        improved: 刷新
+        improvedTitle: 最近 %{days} 天內刷新了個人最佳
+        runs: "%{count} 次"
+        sortLabel: 排序：%{sort}
+        sorts:
+          recent: 依最近練習
+          name: 依名稱
+          count: 依紀錄數
+        packPracticed: 已練習 %{practiced}/%{lists}
+        packImproved: 刷新 %{count}
+        packJoin: "・"
+        packLists: "%{pack}・%{count} 個清單"
+      detail:
+        back: 清單一覽
+        words: "%{count} 個單字"
+        records: 紀錄 %{count} 次
+        lastPracticed: 最近練習 %{day}
+        viewRecords: 查看紀錄
+        practice: 練習此清單
+        notPractised:
+          title: 還沒有練習
+          description: 輸入到最後後，此清單的個人最佳與前幾名紀錄會顯示在這裡。
+        noDeviceRecords:
+          title: 沒有在「%{device}」上練習的紀錄
+          description: 此清單在其他裝置上有 {count, number} 筆紀錄。
+          showAll: 顯示所有裝置的紀錄
+        top:
+          title: 前幾名紀錄
+          accuracy: 正確率優先
+          speed: 速度優先
+          shown: "{shown, number} / {total, number} 筆"
+          showTop: 僅顯示前 {count, number} 筆
+          showAll: 全部顯示（{count, number} 筆）
+          oldAccuracy: 正確率為「—」的紀錄是開始記錄正確率之前的舊紀錄。依正確率排名時會排在最後。
+        stats:
+          best: 個人最佳
+          bestNote: "%{accuracy} · %{day}"
+          noAccuracy: 無正確率
+          recentAverage: 最近 %{count} 次平均
+          gap: 與最佳相差 +%{value} 秒
+          sameAsBest: 與最佳相同
+          averageAccuracy: 平均正確率
+          recentRuns: 最近 %{count} 次
+          runs: 練習次數
+          runsValue: "%{count}<unit>次</unit>"
+          allWordCounts: 所有單字數
+          currentWords: 目前 %{count} 個單字的練習
+        trend:
+          title: 用時趨勢
+          recent: 最近 %{count} 次
+          label: "%{name} 的用時趨勢"
+          needTwo: 練習 2 次以上後顯示趨勢。
+        others:
+          old: 沒有單字數的舊紀錄 {count, number} 筆
+          words: "%{words} 個單字的紀錄 {count, number} 筆"
+          separator: "、"
+          fallback: 由於沒有目前 %{count} 個單字的練習紀錄，依單字數不同的紀錄（%{detail}）進行排名。
+          included: 已包含單字數與目前不同的紀錄（%{detail}）。單字數不同時，用時無法直接比較。
+          excluded: "<strong>單字數與目前不同的 %{count} 筆紀錄未列入排名。</strong>例如編輯清單之前的紀錄（%{detail}）。"
+          exclude: 不包含
+          include: 包含並顯示
+      top:
+        label: "%{name} 的前幾名紀錄"
+        rank: 名次
+        time: 用時
+        accuracy: 正確率
+        mistakes: 錯誤
+        device: 裝置
+        date: 日期時間
+        rankNumber: 第 %{rank} 名
+        deleted: 已刪除
+        deletedSuffix: "（已刪除）"
+        otherWords: 單字數與目前不同的紀錄
+        words: "%{count} 個單字"
+        unknownWords: "? 個單字"
+        oldAccuracy: 開始記錄正確率之前的舊紀錄
+    records:
+      title: 練習紀錄
+      intro: 依時間由新到舊顯示所有練習。各清單的前幾名請在<rankings>最佳紀錄</rankings>中查看，變化趨勢請在<home>首頁</home>查看。
+      filter:
+        pack: 包
+        allPacks: 所有包
+        list: 清單
+        allLists: 所有清單
+        device: 裝置
+        allDevices: 所有裝置
+        clear: 清除篩選
+        count: "%{count} 筆"
+        filteredCount: "{count, number} 筆 / 共 {total, number} 筆"
+      filterMenu:
+        label: 依%{name}篩選（目前：%{current}）
+        all: 全部
+        count: "%{count} 次"
+      columns:
+        time: 時間
+        deviceWords: 裝置・單字數
+        listDevice: 清單・裝置
+        duration: 用時
+        accuracy: 正確率
+        perWord: 每個單字
+        mistakes: 錯誤
+      day:
+        heading: "%{relative} · %{date}"
+        summary: "%{count} 次 · %{duration}"
+      recallBadge: 回憶
+      more: 顯示更多（剩餘 {count, number} 筆）
+      note: 單字數與裝置名稱為練習當時的資訊。
+      noteMissing: "「—」表示未記錄的項目（例如舊版本儲存的紀錄）。"
+      row:
+        best: 最佳
+        bestTitle: 此清單的最佳紀錄（在目前單字數的紀錄中，依正確率由高到低、正確率相同時依用時由短到長排名第一）
+        words: "%{count} 個單字"
+        seconds: "%{value} 秒"
+        duration: 用時
+        accuracy: 正確率
+        lowAccuracy: 正確率低於 %{limit}%
+        perWord: 每個單字
+        perWordUnit: 秒/字
+        mistakes: 錯誤
+        delete: 刪除
+        deleteLabel: 刪除%{name}（%{date} %{time}）的紀錄
+      delete:
+        title: 要刪除這筆練習紀錄嗎？
+        description: 將刪除「%{name}」的 1 筆紀錄。
+        done: 已刪除「%{name}」的練習紀錄（%{date} %{time}）。
+        list: 清單
+        when: 日期時間・裝置
+        result: 結果
+        accuracy: 正確率 %{value}
+        mistakes: 錯誤 %{value}
+        bestNext: 這是此清單的最佳紀錄。刪除後，最佳紀錄將變為 %{time}（%{accuracy}）。
+        bestLast: 這是此清單的最佳紀錄。刪除後，此清單將沒有任何紀錄。
+      empty:
+        title: 還沒有練習紀錄
+        description: 在「開始練習」中把清單輸入到最後，用時、正確率、錯誤和使用的裝置就會記錄在這裡。
+        practice: 開始練習
+      filteredEmpty:
+        listTitle: "「%{name}」還沒有紀錄"
+        listDescription: 練習後，紀錄會顯示在這裡。
+        title: 沒有符合條件的紀錄
+        description: 請變更清單或裝置條件。
+        practiceList: 練習此清單
+      summary:
+        words: "%{count} 個單字"
+        runs: 練習 %{count} 次
+        last: 最近 %{day}
+        best: 最佳（%{mode}）
+        rankings: 最佳紀錄
+        practice: 開始練習
+      modeWriting: Handwriting
+    settings:
+      title: 一般
+      metaTitle: 一般 | Typle
+      description: 與 Typle 顯示和登入相關的設定。
+      language:
+        heading: 顯示語言
+        description: 選擇畫面顯示的語言。單字清單的內容與練習紀錄不會改變。
+        note: 所選語言會儲存在此瀏覽器中。
+        current: 使用中
+        changing: 正在變更顯示語言…
+        changed: 顯示語言已變更為%{language}。
+        failed: 無法變更顯示語言。請再試一次。
+      sessions:
+        heading: 已登入的裝置
+        description: 在此帳號已登入的所有裝置上登出：此瀏覽器、其他瀏覽器，以及 iPad、Mac、Android 和 Windows 應用程式。在裝置遺失或懷疑他人使用了你的帳號時使用。任何裝置上的登入都會在 30 天後失效。
+        action: 在所有裝置上登出
+        confirmTitle: 要在所有裝置上登出嗎？
+        confirmDescription: 包括此瀏覽器在內，目前已登入的所有裝置和應用程式都將登出。請在繼續使用的裝置上重新登入。單字清單和練習紀錄不會被刪除。
+        confirm: 登出
+        signingOut: 正在登出…
+        failed: 無法登出。請再試一次。
+      languages:
+        ja: 日文
+        en: 英文
+        zh-CN: 簡體中文
+        zh-TW: 繁體中文
+        ru: 俄文
+        fr: 法文
+    sharedResult:
+      title: 練習記錄：%{name}
+      description: "%{time} 秒，正確率 %{accuracy}%。在 Typle 上打字記住你想學的詞。"
+      heading: 練習記錄：%{name}
+      lead: 這是在 Typle 上打出的記錄。Typle 是一款邊打字邊記住想學的詞的應用程式。
+      play: 試試在 Typle 上練習
+      about: 關於 Typle
+      invalidTitle: 無法顯示此記錄
+      invalid: 無法讀取此連結中的記錄。請確認連結沒有被截斷。
+    wordLists:
+      page:
+        title: 單字包
+        description: 建立及編輯練習用的單字包。將清單匯出為 CSV 後，可在其他瀏覽器或帳號中匯入。
+        reload: 重新載入
+        notFound: 找不到要開啟的單字清單，可能已被刪除。
+        editTitle: 編輯單字清單
+        createTitle: 建立單字清單
+        editDescription: "%{count} 個單字 · %{practice}"
+        updated: 已更新「%{name}」。
+        created: 已建立「%{name}」。
+        deleted: 已刪除「%{name}」。
+        packDeleted: 已刪除包「%{name}」。
+        exportFailed: 無法匯出「%{name}」。請再試一次。
+        copySuffix:
+          one: "（副本）"
+          other: "（副本%{count}）"
+          __var: "n"
+        catalog: 官方包
+      manager:
+        heading: 已儲存的包
+        limitTitle: 自建清單最多 %{max} 個，官方包最多可追蹤 %{followedMax} 個。已追蹤的包中的清單不計入自建清單數。
+        ownCount: 自建 %{count} / %{max}
+        followedCount: 追蹤 %{count} / %{max} 個包
+        create: 建立新包
+        createPack: 建立新包
+        createList: 建立單字清單
+        full: 自建的單字清單最多可儲存 %{max} 個。刪除不再使用的清單後即可建立新清單。已追蹤的包中的清單不計入。
+        search: 以包名稱、清單名稱、分類、標籤或單字搜尋
+        clearSearch: 清除搜尋
+        countFiltered: "%{shown} 個 / 共 %{total} 個"
+        count: "%{total} 個"
+        noMatch: 沒有符合「%{query}」的包。會從包名稱、清單名稱、分類、標籤和單字中搜尋。
+        csvNote: CSV 匯出會儲存顯示的單字、輸入的文字和補充說明（不含練習紀錄）。可在建立、編輯畫面的「匯入 CSV」中使用。
+        importFile: 從檔案匯入
+      delete:
+        title: 要刪除「%{name}」嗎？
+        withRecords: 將刪除此單字清單及其所有練習紀錄。
+        listOnly: 將刪除此單字清單。
+        list: 清單
+        contents: 內容
+        wordCount: "%{count} 個單字"
+        noRecords: 沒有練習紀錄
+        records: 練習紀錄 %{count} 筆（最近：%{day}）
+        exportHint: 可將單字匯出為 CSV 保留（不含練習紀錄）。
+        export: 匯出 CSV
+        packTitle: 要刪除「%{name}」嗎？
+        packDescription: 還會刪除 %{lists} 個清單和 %{records} 筆練習紀錄。
+        lastInPack: 包「%{name}」也會被刪除。
+      order:
+        label: 排序
+        current: 排序：%{order}
+        added: 新增順序
+        practiced: 最近練習
+        name: 名稱
+        words: 單字數由多到少
+      labels:
+        category: 分類
+        tag: 標籤
+      filter:
+        category: 依分類篩選
+        allCategories: 所有分類
+        noCategory: 無分類
+        categoryCurrent: 分類：%{category}
+        allTags: 所有標籤
+        tagsCurrent: 標籤：%{tags}
+        separator: "、"
+        tagsHint: 包含所有所選標籤的包
+        clearTags: 取消選擇標籤
+        clear: 清除篩選
+        clearAll: 清除搜尋和篩選
+        noMatch: 沒有符合條件的包。
+        option: "%{name}（%{count}）"
+      empty:
+        title: 還沒有單字清單
+        packTitle: 還沒有單字包
+        description: 登錄想練習的單字，以及作為正確答案輸入的文字。也可以從 CSV 檔案匯入。
+        packDescription: 還沒有單字包。請追蹤官方單字包，或建立新的單字包。
+        catalogLink: 追蹤官方單字包
+      row:
+        examples: 單字範例
+        separator: "、"
+        more: "%{words} 等，另有 %{rest} 個"
+        wordCount: "%{count} 個單字"
+        notPracticed: 尚未練習
+        practiced: 練習 %{count} 次 · 最近：%{day}
+        practice: 練習
+        practiceList: 練習 %{name}
+        edit: 編輯
+        editList: 編輯 %{name}
+        moreActions: 更多操作
+        moreFor: "%{name} 的更多操作"
+        practiceThis: 練習此清單
+        rankings: 查看最佳紀錄
+        records: 查看練習紀錄
+        recordCount: "%{count} 筆"
+        export: 匯出 CSV
+        copy: 複製
+        delete: 刪除
+      pack:
+        lists: "%{count}個清單"
+        practiced: 已練習 %{practiced}/%{lists}
+        wordCount: "%{count}個單字"
+        practice: 練習
+        listsOf: "%{name} 的清單"
+        moreActions: 更多操作
+        moreFor: "%{name} 包的操作"
+        edit: 編輯包
+        addList: 新增清單
+        delete: 刪除
+        copy: 複製
+        export: 匯出
+      wordRow:
+        label: 單字 %{n}
+        drag: 拖曳以調整單字 %{n} 的順序
+        dragTitle: 拖曳以調整順序
+      editor:
+        back: 單字包
+        description: 登錄打字時顯示的單字，以及作為正確答案輸入的文字。
+        displayRequired: 請輸入要顯示的單字，或刪除此列（空白列無法儲存）。
+        inputBlank: 輸入的文字只有空白。留空則與顯示的單字相同。
+        basics: 基本資訊
+        name: 單字清單名稱
+        nameHelp: 會顯示在練習畫面和單字清單中。
+        words: 單字
+        added: 已新增 %{count} 個單字。請確認內容後按「儲存」。
+        loaded: 已匯入 %{count} 個單字。請確認內容後按「儲存」。
+        display: 顯示的單字
+        input: 輸入的文字
+        inputHint: 留空則與顯示相同
+        annotation: 補充說明
+        annotationOptional: 補充說明（選填）
+        dragInstructions: 按空白鍵拿起單字，用上下方向鍵移動，再按空白鍵放下。按 Esc 鍵取消。
+        displayLabel: 顯示的單字 %{n}
+        displayPlaceholder: 輸入單字
+        inputLabel: 輸入的文字 %{n}
+        annotationLabel: 補充說明 %{n}
+        annotationPlaceholder: 讀音、意思等
+        wordActions: 單字 %{n} 的操作
+        actions: 操作
+        moveUp: 上移
+        moveDown: 下移
+        moveFirst: 移至開頭
+        moveLast: 移至結尾
+        deleteWord: 刪除此單字
+        deleteWordN: 刪除單字 %{n}
+        delete: 刪除
+        addWord: 新增單字
+        shortcutNext: 下一個單字（在最後一個單字時新增一列）
+        shortcutMove: 移動單字
+        shortcutSave: 儲存
+        shortcutDrag: 拖曳以調整順序
+        recount: 單字數將從 {from, number} 個變為 {to, number} 個。以 {from, number} 個單字練習的紀錄（%{records} 筆）會保留，但不再計入最佳紀錄的排名。
+        errorCount: 有 %{count} 個錯誤
+        firstError: 前往第一個錯誤
+        unsaved: 有未儲存的變更
+        noChanges: 沒有變更
+        wordTotal: "· %{count} 個單字"
+        save: 儲存
+        discardTitle: 有尚未儲存的變更
+        discardDescription: 如果現在離開，輸入的內容將會遺失。
+        keepEditing: 繼續編輯
+        discard: 捨棄並離開
+        category: 分類（選填）
+        categoryPlaceholder: 程式設計、語言等
+        categoryHelp: 從已使用的分類中選擇一個，或輸入新建。可在清單和練習頁面中依分類篩選。
+        tags: 標籤（選填）
+        tagList: 已加上的標籤
+        removeTag: 移除標籤「%{tag}」
+        tagsFull: 最多%{max}個標籤
+        tagPlaceholder: Kotlin、PostgreSQL等
+        tagsHelp: 從已使用的標籤中選擇，或輸入新建（最多%{max}個）。搜尋時也會查找標籤。
+        chooseCategory: 選擇分類
+        searchCategory: 搜尋或建立分類
+        clearCategory: 移除分類
+        addTag: 選擇或建立標籤
+        searchTag: 搜尋或建立標籤
+        create: 建立「%{name}」
+        noLabels: 還沒有。輸入即可建立。
+        pack: 包
+        newPack: 建立新包（以清單名稱命名）
+        packHelp: 此清單所屬的包。選擇其他包會將清單移到該包。
+        addingTo: 將新增到包「%{name}」。
+        writingToggle: 用於手寫練習（Typle Handwriting）
+        writingToggleHelp: 讓此清單可以用手寫來練習。辨識語言用於讀取手寫的文字。
+        writingLanguage: 辨識語言
+        writingLanguages:
+          en: English
+          ja: 日本語
+          zh-Hans: 中文（简体）
+          zh-Hant: 中文（繁體）
+          ko: 한국어
+          fr: Français
+          de: Deutsch
+          es: Español
+          ru: Русский
+          cs: Čeština
+        packWillBeDeleted: 包「%{name}」將被刪除。
+        levels: 難度（選填）
+        levelPlaceholder: 例如：初級
+        levelsHelp: 在練習畫面中用於選擇包內的清單，例如：初級。
+        inputType: 輸入類型
+        inputTypeLabel: 輸入類型 %{n}
+        inputTypeWord: 單字
+        inputTypeCommand: 命令
+        inputTypeCode: 程式碼
+      import:
+        open: 匯入 CSV
+        title: 從 CSV 匯入
+        description: 第一列為欄位名稱。input 和 display 為必填項，annotation 和 input_type 可省略。input_type 為 command、code 或 word。欄位順序不限。
+        fileLabel: 選擇 CSV 檔案
+        readFailed: 無法讀取檔案。
+        addFailed: 無法新增單字。
+        bytes: "%{value} B"
+        kilobytes: "%{value} KB"
+        summary: "%{count} 個單字 · %{size}"
+        chooseAnother: 選擇其他檔案
+        previewLabel: 要匯入的單字預覽
+        display: 顯示的單字
+        input: 輸入的文字
+        annotation: 補充說明
+        more: 另有 %{count} 個單字
+        existing: 如何處理已輸入的單字
+        append: 新增到目前單字之後
+        appendHint: 在已輸入的 %{existing} 個單字之後新增 %{count} 個單字。
+        replace: 取代目前的單字
+        replaceHint: 已輸入的 %{existing} 個單字將被刪除。
+        drop: 將檔案拖放到這裡
+        choose: 選擇檔案
+        limits: CSV · UTF-8 · 1 MiB 以內 · 每個清單最多 1,000 個單字
+        example: 格式範例
+        sample: |-
+          display,input,annotation
+          你好,nihao,問候
+          謝謝,xiexie,
+        loadedStatus: 已讀取 %{count} 個單字。
+        add: 新增 %{count} 個單字
+        replaceWith: 以 %{count} 個單字取代
+      words:
+        title: 單字一覽
+        description: 選擇單字清單後，以表格顯示該清單中輸入的文字與補充說明。
+        lists: 單字清單
+        filter: 依清單名稱、分類或標籤篩選
+        noMatch: 沒有符合條件的清單。
+        candidates: 可選擇的單字清單
+        pickerTitle: 選擇單字清單
+        pickerDescription: 以表格顯示所選清單中的單字。
+        switch: 選擇清單
+        switchList: 選擇單字清單（目前：%{name}）
+        wordCount: "%{count} 個單字"
+        practice: 練習
+        practiceList: 練習 %{name}
+        edit: 編輯
+        editList: 編輯 %{name}
+        number: 編號
+      packEditor:
+        createTitle: 建立包
+        createDescription: 填寫包的資訊，並選擇要放入包的單字清單。之後還可以新增清單。
+        editTitle: 編輯包
+        editDescription: 變更包的資訊和其中清單的順序。
+        info: 包的資訊
+        name: 包名稱
+        nameHelp: 顯示在包清單中，以及選擇要練習的包時。
+        descriptionLabel: 說明（選填）
+        descriptionPlaceholder: 這個包的內容等
+        lists: 清單
+        listsHelp: 拖曳握把或使用鍵盤來調整順序。
+        choose: 單字清單
+        chooseHelp: 選擇的清單會從目前所在的包移到這個包。沒有清單的包會被刪除。
+        chooseFilter: 依名稱篩選單字清單
+        chosen: 已選擇 %{count} 份
+        inPack: 包「%{name}」
+        noMatch: 沒有符合的單字清單。
+        noLists: 沒有可以放入包的單字清單。請先建立單字清單。
+        createList: 建立單字清單
+        drag: 拖曳 %{name} 以重新排序
+        dragTitle: 拖曳以重新排序
+        dragInstructions: 按空白鍵拿起清單，用上下方向鍵移動，再按空白鍵放下。按 Esc 鍵取消。
+        listActions: "%{name} 的操作"
+        announceStart: 已拿起 %{name}。位於第 %{position} 個，共 %{total} 個。
+        announceOver: 已將 %{name} 移到第 %{position} 個，共 %{total} 個。
+        announceOutside: "%{name} 不在排序範圍內。"
+        announceEnd: 已將 %{name} 放在第 %{position} 個，共 %{total} 個。
+        announceCancel: 已取消排序。%{name} 已回到原本的位置。
+        levels: 難度：%{levels}
+        noLevels: 無難度
+        wordCount: "%{count}個單字"
+        created: 已建立包「%{name}」。
+        updated: 已更新包「%{name}」。
+      catalog:
+        title: 官方包
+        description: 預先準備好的單字包。追蹤後可直接使用官方內容，並自動隨官方更新。無法編輯，但可以複製成自己的單字包。
+        back: 返回包列表
+        open: 開啟
+        full: 最多可以追蹤 %{max} 個官方包。請取消追蹤不用的包。
+        follow: 追蹤
+        followPack: 追蹤 %{name}
+        followed: 已追蹤「%{name}」
+        following: 追蹤中
+        unfollowPack: 取消追蹤 %{name}
+        matching: 符合興趣的詞包
+        others: 其他詞包
+        noMatching: 目前沒有符合興趣的詞包
+        changeInterests: 變更興趣
+      sharedPage:
+        toPacks: 開啟單字包
+      follow:
+        badge: 官方
+        unfollow: 取消追蹤
+        title: 要取消追蹤「%{name}」嗎？
+        description: 將取消追蹤「%{name}」。該單字包的紀錄也會被刪除。
+        confirm: 取消追蹤
+        confirming: 正在取消追蹤…
+        done: 已取消追蹤「%{name}」

@@ -1,0 +1,35 @@
+# typle-r's messages with more than one plural or a select, kept in their ICU form (IcuMessage).
+fr:
+  typle:
+    dashboard:
+      change:
+        same: '__icu:{recent, select, none {Identique} latest {Dernier résultat :
+          identique} other {Moyenne des {recentCount} derniers : identique}} {previous,
+          select, latest {au résultat précédent} other {aux {previousCount} précédents}}'
+        different: '__icu:{recent, select, none {} latest {Dernier résultat : } other
+          {Moyenne des {recentCount} derniers : }}{difference} par rapport {previous,
+          select, latest {au résultat précédent} other {aux {previousCount} précédents}}'
+        seconds: __icu:{direction, select, up {{value} s plus lent} other {{value}
+          s plus rapide}}
+        points: __icu:{direction, select, up {+{value} pt} other {−{value} pt}}
+    devices:
+      deleteDescription: __icu:{removal} {records}{current, select, yes { L’appareil
+        utilisé pour l’entraînement dans ce navigateur repassera à « Par défaut ».}
+        other {}}
+    interests:
+      packs:
+        done: __icu:{followed, plural, =0 {} one {# pack suivi. } other {# packs suivis.
+          }}{unfollowed, plural, =0 {} one {# pack n’est plus suivi.} other {# packs
+          ne sont plus suivis.}}
+    officialPack:
+      stats: __icu:{lists, plural, one {# liste} other {# listes}} · {words, plural,
+        one {# élément} other {# éléments}}
+    practice:
+      result:
+        saved: __icu:Résultat enregistré dans l’historique. Il se classe {rank, selectordinal,
+          one {#er} other {#e}} pour cette liste.
+    wordLists:
+      delete:
+        packDescription: __icu:Cela supprime aussi {lists, plural, one {# liste} other
+          {# listes}} et {records, plural, one {# enregistrement} other {# enregistrements}}
+          d’entraînement.

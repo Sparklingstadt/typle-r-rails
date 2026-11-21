@@ -1,0 +1,27 @@
+---
+ru:
+  design:
+    common:
+      pack_stats:
+        lists:
+          one: "%{count} список"
+          few: "%{count} списка"
+          many: "%{count} списков"
+          other: "%{count} списка"
+        words:
+          one: "%{count} элемент"
+          few: "%{count} элемента"
+          many: "%{count} элементов"
+          other: "%{count} элемента"
+        stats: "%{lists} · %{words}"
+      about:
+        browser_p1: Хранится на сервере и привязано к этому браузеру
+        browser_p2: Не синхронизируется с другими устройствами и браузерами
+        browser_p3: Пропадает, если удалить cookie этого браузера
+      auth:
+        password_hint: От 10 до 72 символов. Нельзя использовать тот же текст, что
+          и ID.
+  errors:
+    messages:
+      same_as_login_id: не может совпадать с ID
+      too_many_words: В одном списке может быть не более 1000 слов.

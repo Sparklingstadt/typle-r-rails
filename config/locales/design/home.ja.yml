@@ -1,0 +1,192 @@
+---
+ja:
+  design:
+    home:
+      home:
+        welcome:
+          title: 自分の単語で、タイピング練習。
+          text: 公式パックで練習を始めるか、覚えたい単語のリストを作成しましょう。
+          lists: 単語リスト %{count} 件
+          practices: 完了した練習 %{count} 回
+          nav_label: はじめる
+          play: 練習する
+          create: 単語リストを作成
+          records: 記録を見る
+        storage: ログインせずにすべての練習・編集機能を利用できます。単語リスト・練習記録・端末はこのブラウザーに保存されます。ログイン（GitHub または ID とパスワード）すると、別の保存先であるアカウントに切り替わり、端末間で同期できます。ブラウザーのデータは自動で移行されません。
+        storage_account: ログインしているため、単語リスト・練習記録・端末はアカウントに保存され、同じアカウントでログインした別の端末やブラウザーと同期されます。ログインせずにこのブラウザーへ保存したデータとは別に保存されます。
+        links_guide: 使い方
+        links_about: Typleについて
+        links: "%{guide} ／ %{about}"
+      dashboard:
+        title: 練習の状況
+        source_guest: このブラウザーに保存された記録から集計しています。
+        source_account: アカウントに保存された記録から集計しています。
+        start: はじめる
+        practice: 練習する
+        create: 単語リストを作成
+        week:
+          title: 今週のまとめ
+          description: "%{start}〜%{end}の記録です。増減は、先週の同じ曜日・時刻までの記録と比べています。"
+          count: 今週の練習
+          count_unit: 回
+          streak: 連続練習
+          streak_unit: 日
+          accuracy: 平均正確率（直近%{count}回）
+          time: 今週の練習時間
+          practised_today: 今日も練習済み
+          streak_next: 今日練習すると%{day}日目
+          no_comparison: 比べる記録がまだありません
+          no_accuracy: 正確率のある記録がありません
+          times: "%{count}回"
+          same_as_last_week: 先週と同じ
+          more_than_last_week: 先週より %{value}多い
+          less_than_last_week: 先週より %{value}少ない
+        change:
+          same_recent_none_previous_latest: その前の記録と同じ
+          same_recent_none_previous_other: その前の%{previousCount}回と同じ
+          same_recent_latest_previous_latest: 最新の記録は、その前の記録と同じ
+          same_recent_latest_previous_other: 最新の記録は、その前の%{previousCount}回と同じ
+          same_recent_other_previous_latest: 直近%{recentCount}回の平均は、その前の記録と同じ
+          same_recent_other_previous_other: 直近%{recentCount}回の平均は、その前の%{previousCount}回と同じ
+          different_recent_none_previous_latest: その前の記録より %{difference}
+          different_recent_none_previous_other: その前の%{previousCount}回より %{difference}
+          different_recent_latest_previous_latest: 最新の記録は、その前の記録より %{difference}
+          different_recent_latest_previous_other: 最新の記録は、その前の%{previousCount}回より %{difference}
+          different_recent_other_previous_latest: 直近%{recentCount}回の平均は、その前の記録より %{difference}
+          different_recent_other_previous_other: 直近%{recentCount}回の平均は、その前の%{previousCount}回より %{difference}
+          seconds_direction_up: "%{value} 秒遅い"
+          seconds_direction_other: "%{value} 秒速い"
+          points_direction_up: "+%{value}pt"
+          points_direction_other: "−%{value}pt"
+        next:
+          title: 次に練習するリスト
+          description: まだ練習していないリスト、%{days}日以上練習していないリスト、直近の正確率が%{accuracy}%未満のリストを最大3件表示します。
+          all_practised: どのリストも最近練習できています。
+          words: "%{count}語"
+          last_practiced: 最終練習 %{day}
+          no_records: 記録なし
+          new: まだ練習していません
+          stale: "%{days}日間練習していません"
+          low_accuracy: 直近%{count}回の正確率 %{accuracy}%
+          practice_list: "%{name} を練習する"
+          practice: 練習する
+        trends:
+          title: リスト別の推移
+          description: 1単語あたりの秒数（低いほど速い）と正確率を、直近20回まで表示します。所要時間を単語数で割っているので、リストを編集した前後でも比べられます。
+          summary: "%{count}回 · 最終練習 %{day}"
+          need_two: 記録が2回以上になると推移を表示します。
+          practice_list: "%{name} を練習する"
+          practice: 練習する
+          speed: 1単語あたりの秒数
+          accuracy: 正確率
+          seconds: "%{value} 秒"
+          percent: "%{value}%"
+          latest_number: "%{value}"
+          latest: 最新 %{number}
+          no_chart: この項目のある記録が2回以上になると表示します。
+          best: ベスト記録：正確率 %{accuracy}・%{time} 秒（%{day}）
+          not_recorded: 未記録
+        chart:
+          label: "%{label}（左右キーで各回の値を表示）"
+          date: 日時
+          value: 値
+        continue:
+          label: 続きから
+          meta: "%{count}語 · 最終練習 %{day}"
+          best: ベスト 正確率 %{accuracy}・%{time} 秒
+          not_recorded: 未記録
+          samples: 最初の単語
+          more: ほか %{count} 語
+          practice: 練習する
+          practice_list: "%{name} を練習する"
+          other: 別のリストを選ぶ
+        weak:
+          title: 苦手な単語
+          description: リストごとに、直近%{runs}回の練習（Handwriting を除く）で間違えた単語を、間違えた回の多い順に表示します。苦手な単語だけの練習でミスなく打てた単語は、ここから外れます。
+          none: まだ苦手な単語はありません。練習で間違えた単語がここに出ます。
+          words_of: "%{name} の苦手な単語"
+          runs: "%{count}回"
+          more: ほか %{count} 語
+          practice: 苦手な %{count} 語だけ練習する
+          practice_list: "%{name} の苦手な %{count} 語だけ練習する"
+      landing:
+        hero:
+          eyebrow: 無料・ログインなしで使えます
+          title: 覚えたい言葉を、打って覚える。
+          lead: Typle は、自分の単語リストや公式パックで練習できるタイピングアプリです。プログラミングのコマンドや構文も、外国語の単語も、打ちながら身につけられます。
+          play: ログインせずに練習を始める
+          catalog: 公式パックを見る
+          home: ホームへ
+        packs:
+          title: 公式パック
+          lead: "%{total}件の公式リストを、フォローしてすぐに練習できます。"
+          programming:
+            title: プログラミング
+            count: "%{count}リスト"
+            text: Go・Java・Kotlin・TypeScript などの構文、Linux・Vim・AWS CLI などのコマンド、PostgreSQL のエラーコード。
+          languages:
+            title: 語学
+            count: "%{count}リスト"
+            text: 中国語（HSK5・6級）・韓国語・英語・フランス語・ドイツ語・スペイン語・ロシア語・チェコ語の単語と構文。中国語と韓国語は手書きでも練習できます。
+        features:
+          title: できること
+          own:
+            title: 自分の単語リストで練習
+            text: 覚えたい単語を登録して練習します。表示する単語と入力する文字を分けられ、CSV からも取り込めます。
+          recall:
+            title: 思い出して打つ
+            text: 答えを隠し、補足をヒントに思い出しながら打つモードで、覚えたかどうかを確かめられます。
+          records:
+            title: 記録で上達を確かめる
+            text: 速度・正確率・ミスを毎回記録し、自己ベストと推移で上達を振り返れます。
+        storage:
+          title: データの保存先
+          text: ログインしなくても、すべての機能を使えます。データはこのブラウザーに保存され、ログイン（GitHub または ID とパスワード）すると端末間で同期できます。
+          more_guide: 使い方
+          more_about: Typleについて
+          more: "%{guide} ／ %{about}"
+        try:
+          badge: ここで打ってみる
+          progress: "%{name}・%{current} / %{total} 語"
+          label: 入力
+          hint: 上の単語を打つと、次の単語に進みます。ここで打った分は記録しません。
+          done: "%{count}語打ちました。続きはこのパックの練習で、記録も残ります。"
+          continue: このパックで練習を続ける
+          starting: 準備しています…
+      format:
+        today: 今日
+        yesterday: 昨日
+        date_with_weekday: "%{date}（%{weekday}）"
+        units:
+          hours: 時間
+          minutes: 分
+          seconds: 秒
+        time:
+          one: "%{value}%{unit}"
+          two: "%{first}%{firstUnit}%{second}%{secondUnit}"
+        month_names:
+        -
+        - 1月
+        - 2月
+        - 3月
+        - 4月
+        - 5月
+        - 6月
+        - 7月
+        - 8月
+        - 9月
+        - 10月
+        - 11月
+        - 12月
+        weekday_names:
+        - 日
+        - 月
+        - 火
+        - 水
+        - 木
+        - 金
+        - 土
+        month_day: "%{month}月%{day}日"
+        year_month_day: "%{year}年%{month}月%{day}日"
+        short_date: "%{month}/%{day}"
+        short_date_time: "%{month}/%{day} %{hh}:%{minute}"

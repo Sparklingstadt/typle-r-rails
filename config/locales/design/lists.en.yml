@@ -1,0 +1,145 @@
+en:
+  design:
+    lists:
+      format:
+        today: Today
+        yesterday: Yesterday
+        month_day: "%b %-d"
+        year_month_day: "%b %-d, %Y"
+      labels:
+        category: Category
+        tag: Tag
+      form:
+        cancel: Cancel
+      page:
+        description: Create and edit the word packs you practice with. Export a list as CSV to import it in another browser or account.
+        catalog: Official packs
+        create_title: Create a word list
+        edit_title: Edit word list
+      manager:
+        heading: Saved packs
+        count:
+          one: "%{count} pack"
+          other: "%{count} packs"
+        create: Create a new pack
+        create_pack: New pack
+        import_file: Import from file
+        csv_note: CSV export saves the words, what to type, and notes (practice history is not included). Import it with “Import from file” on the word packs screen.
+      pack:
+        lists:
+          one: "%{count} list"
+          other: "%{count} lists"
+        practiced: "%{practiced}/%{lists} practiced"
+        word_count:
+          one: "%{count} word"
+          other: "%{count} words"
+        practice: Practice
+        open: Open
+        lists_of: Lists of %{name}
+        more_actions: More actions
+        more_for: Actions for pack %{name}
+        edit: Edit pack
+        add_list: Add a list
+        delete: Delete
+      row:
+        examples: "Example words:"
+        separator: ", "
+        more: "%{words} and %{rest} more"
+        word_count:
+          one: "%{count} word"
+          other: "%{count} words"
+        not_practiced: Not practiced yet
+        practiced:
+          one: "Practiced %{count} time · Last: %{day}"
+          other: "Practiced %{count} times · Last: %{day}"
+        practice: Practice
+        practice_list: Practice %{name}
+        edit: Edit
+        edit_list: Edit %{name}
+        more_actions: More actions
+        more_for: More actions for %{name}
+        practice_this: Practice this list
+        records: View practice history
+        record_count: "%{count}"
+        export: Export CSV
+        delete: Delete
+      empty:
+        title: No word lists yet
+        description: Add the words you want to practice and the text to type as the answer. You can also import them from a CSV file.
+        pack_title: No word packs yet
+        pack_description: No packs yet. Follow an official pack or create a new one.
+        catalog_link: Follow an official pack
+      follow:
+        badge: Official
+        unfollow: Unfollow
+      catalog:
+        description: Ready-made packs. Follow one to use the official content as it is; it stays up to date. You cannot edit it, but you can duplicate it to make your own pack.
+        back: Back to packs
+        open: Open
+        follow: Follow
+        follow_pack: Follow %{name}
+        following: Following
+        unfollow_pack: Unfollow %{name}
+        matching: Packs matching your interests
+        others: Other packs
+        no_matching: No packs match your interests yet
+        change_interests: Change interests
+      official:
+        title: "Typing practice: %{name}"
+        stats: "%{lists} · %{words}"
+        stats_lists:
+          one: "%{count} list"
+          other: "%{count} lists"
+        stats_words:
+          one: "%{count} item"
+          other: "%{count} items"
+        practice: Practice this pack
+        catalog: Browse other official packs
+        free: Free, no login needed. Pressing it follows this pack and starts practice right away.
+        words_heading: What this pack contains
+        input: What you type
+        note: Meaning and notes
+        details: Details
+      starter:
+        first: "First list: %{list}"
+      pack_editor:
+        create_title: Create a pack
+        create_description: Enter the pack's name. Once it is created, add word lists to it.
+        edit_title: Edit pack
+        edit_description: Change the pack's name.
+        info: Pack details
+        name: Pack name
+        name_help: Shown in the pack list and when choosing a pack to practice.
+      editor:
+        back: Word packs
+        description: Add the words shown while typing and the text to type as the answer.
+        basics: Basic information
+        adding_to: The list will be added to the pack “%{name}”.
+        name: Word list name
+        name_help: Shown on the practice screen and in your word lists.
+        levels: Difficulty (optional)
+        level_placeholder: e.g. Beginner
+        levels_help: Used to choose among the lists of a pack on the practice screen, such as Beginner.
+        writing_toggle: Use for handwriting practice (Typle Handwriting)
+        writing_toggle_help: Lets this list be practised by handwriting. The language is used to read the handwritten characters.
+        writing_language: Recognition language
+        words: Words
+        word_total_badge:
+          one: "%{count} word"
+          other: "%{count} words"
+        display: Word to display
+        input: Text to type
+        input_hint: Empty = same as displayed
+        annotation_optional: Note (optional)
+        error_count:
+          one: "%{count} error"
+          other: "%{count} errors"
+        word_total:
+          one: "· %{count} word"
+          other: "· %{count} words"
+        save: Save
+      words:
+        description: Search the words of your saved word lists by the text to type, the word shown or the note.
+        all: All words
+        number: Number
+        no_match: No words match “%{query}”.

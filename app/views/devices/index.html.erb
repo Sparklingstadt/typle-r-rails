@@ -1,0 +1,169 @@
+<% content_for :title, settings_t("devices.title") %>
+<% labels = @choice.options.to_h { |label, key| [key, label] } %>
+<% current_key = @choice.key %>
+<% current_label = labels[current_key] %>
+<% editing = @editing || (@devices.find { |device| device.id == params[:edit].to_i } if params[:edit].present?) %>
+<% adding = !editing && (params[:add].present? || @device.errors.any?) %>
+<% full = @devices.size >= Device::MAX %>
+<%= page_main(width: :narrow) do %>
+  <%= page_header settings_t("devices.title"), settings_rich(settings_t("devices.description"), link: play_path, link_class: "underline underline-offset-3 hover:text-foreground") do %>
+    <%= render "layouts/application/page_storage_badge" %>
+  <% end %>
+  <div class="space-y-8">
+    <section aria-labelledby="current-device-heading" class="<%= SettingsDesignHelper::SETTINGS_SECTION %>">
+      <div class="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-3 gap-y-3 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-x-4">
+        <%= icon_tile(:monitor) %>
+        <div class="min-w-0">
+          <h2 id="current-device-heading" class="text-[13px] text-muted-foreground"><%= settings_t("devices.current.heading") %></h2>
+          <p class="font-medium [overflow-wrap:anywhere]"><%= current_label %></p>
+        </div>
+        <div class="col-span-2 flex flex-wrap gap-2 sm:col-span-1">
+          <details class="relative" data-controller="dropdown">
+            <summary class="<%= button_classes(variant: :outline, class: "list-none [&::-webkit-details-marker]:hidden") %>" aria-label="<%= settings_t("devices.current.changeLabel", device: current_label) %>">
+              <%= settings_t("devices.current.change") %><%= icon("chevron-down") %>
+            </summary>
+            <div class="<%= cn(UiHelper::MENU_CONTENT, "absolute top-full right-0 mt-1.5 w-72 max-w-[calc(100vw-2rem)]") %>">
+              <p class="px-2 pt-1.5 pb-1 text-xs text-muted-foreground"><%= settings_t("devices.current.heading") %></p>
+              <% @choice.options.each do |label, key| %>
+                <%= button_to choose_devices_path, params: { key: }, form_class: "contents", "aria-current": (key == current_key ? "true" : nil),
+                      class: UiHelper::MENU_INSET_ITEM do %>
+                  <% if key == current_key %><%= menu_check %><% end %>
+                  <span class="truncate"><%= label %></span>
+                <% end %>
+              <% end %>
+            </div>
+          </details>
+          <%= link_button play_path, variant: :outline do %><%= icon(:keyboard) %><%= settings_t("devices.current.practice") %><% end %>
+        </div>
+      </div>
+      <p class="mt-3 text-[13px] text-muted-foreground sm:pl-14"><%= settings_t(@choice.none? ? "devices.current.noteUnselected" : "devices.current.noteSelected") %></p>
+    </section>
+
+    <section aria-labelledby="device-list-heading" class="space-y-3">
+      <div class="flex min-h-11 flex-wrap items-center gap-x-2 gap-y-2">
+        <h2 id="device-list-heading" class="text-base font-bold"><%= settings_t("devices.listHeading") %></h2>
+        <% if @devices.any? %>
+          <%= ui_badge settings_t("devices.count", count: @devices.size), variant: :secondary, class: "tabular-nums" %>
+          <% if full %>
+            <button type="button" disabled class="<%= button_classes(class: "ml-auto") %>"><%= icon(:plus) %><%= settings_t("devices.add") %></button>
+          <% else %>
+            <%= link_button devices_path(add: 1), class: "ml-auto" do %><%= icon(:plus) %><%= settings_t("devices.add") %><% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <% if full %><p class="text-sm text-muted-foreground"><%= settings_t("devices.limit", max: Device::MAX) %></p><% end %>
+
+      <% if adding || editing %>
+        <%# typle-r's DeviceDialog: the form in a dialog over the page (modal_controller.js opens it; closing goes back). %>
+        <% record = editing || @device %>
+        <% records = editing ? @usage[editing.key]&.dig(:count).to_i : 0 %>
+        <% field_error = ->(attribute) {
+             error = record.errors.where(attribute).first or next
+             case [attribute, error.type]
+             in [:name, :blank] then tt("errors.deviceNameRequired")
+             in [:name, :too_long] then tt("errors.deviceNameTooLong", max: 100)
+             in [:name, :taken_device] then tt("errors.deviceNameDuplicate", name: error.options[:name])
+             in [:layout, _] then tt("errors.deviceLayoutTooLong", max: 200)
+             else error.full_message
+             end
+           } %>
+        <% form_error = record.errors.where(:base).first&.message %>
+        <dialog id="device-form" aria-labelledby="device-dialog-title" aria-describedby="device-dialog-description" data-controller="modal" data-modal-close-url-value="<%= devices_path %>"
+                class="fixed top-1/2 left-1/2 z-50 m-0 max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 overflow-y-auto rounded-xl border-0 bg-popover p-5 text-popover-foreground ring-1 ring-foreground/10 outline-none open:grid sm:max-w-md backdrop:bg-black/10 backdrop:backdrop-blur-xs">
+          <%= form_with model: record, url: editing ? device_path(editing) : devices_path, method: editing ? :patch : :post, class: "grid gap-5", html: { novalidate: true }, data: { turbo: true } do |f| %>
+            <div class="grid gap-1.5 pr-8">
+              <h2 id="device-dialog-title" class="font-heading text-lg font-bold"><%= settings_t(editing ? "devices.dialog.editTitle" : "devices.dialog.addTitle") %></h2>
+              <p id="device-dialog-description" class="text-sm text-muted-foreground"><%= settings_t(editing ? "devices.dialog.editDescription" : "devices.dialog.addDescription") %></p>
+            </div>
+            <% [[:name, "device-name", "devices.dialog.name", "devices.dialog.namePlaceholder", "devices.dialog.nameHelp", 100, true],
+                [:layout, "device-layout", "devices.dialog.layout", "devices.dialog.layoutPlaceholder", "devices.dialog.layoutHelp", 200, false]].each do |attribute, id, label, placeholder, help, max, required| %>
+              <% error = field_error.(attribute) %>
+              <div class="grid gap-2">
+                <label for="<%= id %>" class="<%= label_classes %>"><span><%= settings_t(label) %><% if required %><span aria-hidden="true" class="text-destructive">*</span><% else %><span class="font-normal text-muted-foreground"><%= settings_t("devices.dialog.optional") %></span><% end %></span></label>
+                <%= f.text_field attribute, id:, maxlength: max, autocomplete: "off", autofocus: attribute == :name, class: input_classes("h-11"), placeholder: settings_t(placeholder),
+                      "aria-required": (required ? "true" : nil), "aria-invalid": (error ? true : nil), "aria-describedby": [("#{id}-error" if error), "#{id}-help"].compact.join(" ") %>
+                <% if error %><p id="<%= id %>-error" class="flex items-start gap-1.5 text-sm text-destructive"><%= icon("circle-alert", class: "mt-0.5 size-4 shrink-0") %><%= error %></p><% end %>
+                <p id="<%= id %>-help" class="text-xs text-muted-foreground"><%= settings_t(help) %></p>
+              </div>
+            <% end %>
+            <% if editing && records.positive? %>
+              <p class="flex gap-2 rounded-lg bg-muted px-3 py-2.5 text-[13px] text-muted-foreground">
+                <%= icon(:info, class: "mt-0.5 size-4 shrink-0") %><span><%= settings_t("devices.dialog.renameNote", count: records) %></span>
+              </p>
+            <% end %>
+            <% unless editing %>
+              <div class="flex items-start gap-2.5 text-sm">
+                <%= check_box_tag :use, "1", @choice.default? || @choice.none?, id: "device-use", class: "mt-0.5 size-4 shrink-0 cursor-pointer accent-primary", "aria-describedby": "device-use-help" %>
+                <div class="grid gap-0.5">
+                  <label for="device-use" class="cursor-pointer"><%= settings_t("devices.dialog.use") %></label>
+                  <p id="device-use-help" class="text-xs text-muted-foreground"><%= settings_t("devices.dialog.useHelp") %></p>
+                </div>
+              </div>
+            <% end %>
+            <% if form_error %>
+              <div role="alert" class="<%= alert_classes(:destructive, "border-destructive/40 bg-destructive/5") %>"><%= icon("circle-alert") %><div data-slot="alert-description" class="text-sm"><%= form_error %></div></div>
+            <% end %>
+            <div class="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <button type="button" class="<%= button_classes(variant: :outline) %>" data-action="modal#close"><%= settings_t("form.cancel") %></button>
+              <%= f.button settings_t(editing ? "form.save" : "form.add"), type: "submit", class: button_classes %>
+            </div>
+          <% end %>
+          <button type="button" aria-label="<%= tt("common.close") %>" data-action="modal#close"
+                  class="absolute top-3 right-3 inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground outline-none hover:bg-muted hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50"><%= icon(:x) %></button>
+        </dialog>
+      <% end %>
+
+      <ul class="<%= UiHelper::CARD_LIST %>">
+        <% [nil, *@devices].each do |device| %>
+          <% key = device ? device.key : Device::DEFAULT_KEY %>
+          <% name = device ? device.name : t("devices.default_name") %>
+          <% usage = @usage[key] %>
+          <li class="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-3 gap-y-1.5 px-4 py-3.5 sm:grid-cols-[auto_minmax(0,1fr)_10rem_auto] sm:items-center sm:gap-x-4 sm:px-5">
+            <%= icon_tile(:monitor, class: "hidden sm:grid") %>
+            <div class="min-w-0 space-y-0.5">
+              <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                <h3 class="font-medium [overflow-wrap:anywhere]"><%= name %></h3>
+                <% if key == current_key %>
+                  <%= ui_badge variant: :outline, class: "border-green-200 bg-green-50 text-green-800 dark:border-green-900 dark:bg-green-950 dark:text-green-300", title: settings_t("devices.inUseDetail") do %><%= icon(:check) %><%= settings_t("devices.inUse") %><% end %>
+                <% end %>
+              </div>
+              <% if device.nil? %>
+                <p class="text-sm text-muted-foreground"><%= settings_t("devices.defaultDetail") %></p>
+              <% elsif device.layout.present? %>
+                <p class="text-sm text-muted-foreground [overflow-wrap:anywhere]"><%= device.layout %></p>
+              <% end %>
+            </div>
+            <p class="col-start-1 row-start-2 flex items-center gap-1.5 text-xs text-muted-foreground tabular-nums sm:col-start-3 sm:row-start-1 sm:text-[13px]">
+              <%= icon(:history, class: "size-3.5 shrink-0") %><%= usage ? settings_t("devices.usage", count: usage[:count], day: records_day(usage[:last])) : settings_t("devices.neverUsed") %>
+            </p>
+            <% if device %>
+              <% confirm = delete_confirm_data(title: settings_t("devices.deleteTitle", name:),
+                     description: [settings_t("devices.deleteRemoval", name:),
+                                   usage ? settings_t("devices.deleteRecords", count: usage[:count]) : settings_t("devices.deleteNoRecords"),
+                                   (settings_t("devices.deleteCurrent") if key == current_key)].compact.join) %>
+              <div class="col-start-2 row-span-2 row-start-1 -mr-2 flex items-center sm:col-start-4 sm:row-span-1 sm:mr-0">
+                <%= link_to devices_path(edit: device.id), class: button_classes(variant: :ghost, size: "icon-lg", class: "size-10 text-muted-foreground"),
+                      "aria-label": settings_t("devices.editLabel", name:), title: settings_t("devices.edit") do %><%= icon(:pencil) %><% end %>
+                <%= button_to device_path(device), method: :delete, form_class: "contents", form: { data: confirm },
+                      class: button_classes(variant: :ghost, size: "icon-lg", class: "size-10 text-muted-foreground hover:bg-destructive/10 hover:text-destructive dark:hover:bg-destructive/20"),
+                      "aria-label": settings_t("devices.deleteLabel", name:), title: settings_t("devices.delete") do %><%= icon("trash-2") %><% end %>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <% if @devices.empty? && !adding %>
+        <%= empty_state(class: "py-10 sm:py-12") do %>
+          <%= empty_state_icon(:monitor) %>
+          <div class="space-y-1.5">
+            <h3 class="font-bold"><%= settings_t("devices.empty.title") %></h3>
+            <p class="max-w-md text-sm text-balance text-muted-foreground"><%= settings_t("devices.empty.description") %></p>
+          </div>
+          <%= link_button devices_path(add: 1) do %><%= icon(:plus) %><%= settings_t("devices.add") %><% end %>
+          <p class="text-xs text-muted-foreground"><%= settings_t("devices.empty.example") %></p>
+        <% end %>
+      <% end %>
+    </section>
+  </div>
+<% end %>
