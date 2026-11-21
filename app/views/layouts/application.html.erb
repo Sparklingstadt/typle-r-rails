@@ -8,7 +8,7 @@
     <%= csp_meta_tag %>
     <% if content_for?(:noindex) || (signed_in? && !current_page?(root_path)) %><meta name="robots" content="noindex, follow"><% end %>
     <%# Runs before the first paint, as typle-r's THEME_BOOTSTRAP_SCRIPT: the .dark class from the stored choice or the OS. %>
-    <script>
+    <script nonce="<%= content_security_policy_nonce %>">
       (() => {
         let preference = "system"
         try { const stored = localStorage.getItem("typle-r:theme:v1"); if (stored === "light" || stored === "dark") preference = stored } catch {}

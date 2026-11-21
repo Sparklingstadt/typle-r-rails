@@ -25,6 +25,8 @@ gem "csv"
 gem "omniauth"
 gem "omniauth-github"
 gem "omniauth-rails_csrf_protection"
+# omniauth-github's OAuth client; older versions leak the bearer token on a redirect (GHSA-fpw7-h52c-3w8x and later).
+gem "oauth2", ">= 2.0.22"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]

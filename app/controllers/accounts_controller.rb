@@ -2,6 +2,12 @@
 # the confirmation of its address again, changing its password and signing out of every device.
 class AccountsController < ApplicationController
   require_account
+  # Counted by account: guesses at the current password, and mail to an address the account has not confirmed
+  # (it may be someone else's).
+  rate_limit to: 10, within: 3.minutes, only: :update_password, by: -> { account.id },
+    with: -> { redirect_to general_settings_path(anchor: "account"), alert: t("errors.rate_limited") }
+  rate_limit to: 3, within: 10.minutes, only: :resend_verification, by: -> { account.id },
+    with: -> { redirect_to general_settings_path(anchor: "account"), alert: t("errors.rate_limited") }
 
   def show
     redirect_to general_settings_path(anchor: "account")

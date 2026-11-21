@@ -4,6 +4,8 @@ module Authentication
   extend ActiveSupport::Concern
 
   GUEST_COOKIE = :guest_id
+  GUEST_LIMIT = 60
+  GUEST_WINDOW = 10.minutes
 
   included do
     before_action :require_workspace
@@ -32,8 +34,10 @@ module Authentication
       @current_user ||= account || find_guest
     end
 
+    # A browser without a guest yet reads as an unsaved one (nothing of its own to show); the guest is saved when the
+    # browser first writes something, so that opening pages (crawlers, scripts) adds no rows.
     def require_workspace
-      @current_user = account || find_guest || create_guest
+      @current_user = account || find_guest || (request.get? || request.head? ? User.new(guest: true) : create_guest)
     end
 
     def require_signed_in
@@ -60,7 +64,14 @@ module Authentication
       id && User.find_by(id:, guest: true)
     end
 
+    # New guests are counted by address (a classroom behind one address fits), so that one sender cannot fill the
+    # database with them; past the limit the request is refused and nothing is made.
     def create_guest
+      made = cache_store.increment("guests:#{request.remote_ip}", 1, expires_in: GUEST_WINDOW)
+      if made && made > GUEST_LIMIT
+        request.format.json? ? head(:too_many_requests) : redirect_to(root_path, alert: t("errors.rate_limited"))
+        return
+      end
       User.create_guest!.tap do |guest|
         cookies.signed.permanent[GUEST_COOKIE] = { value: guest.id, httponly: true, same_site: :lax }
       end

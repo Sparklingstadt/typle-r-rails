@@ -61,8 +61,10 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: ENV.fetch("APP_HOST", "example.com"), protocol: "https" }
+  # The host of links in mail: APP_HOST, or the hostname Render gives the service. With neither there is no host, and
+  # a mail with a link fails (in the log) rather than sending its token to a site that is not this one.
+  mail_host = ENV["APP_HOST"].presence || ENV["RENDER_EXTERNAL_HOSTNAME"].presence
+  config.action_mailer.default_url_options = { host: mail_host, protocol: "https" } if mail_host
 
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via bin/rails credentials:edit.
   # config.action_mailer.smtp_settings = {

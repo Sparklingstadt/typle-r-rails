@@ -9,7 +9,7 @@
             ["x", t("design.practice.stats.mistakes"), "mistakes", nil]] %>
 <% toolbar_button = "inline-flex size-8 shrink-0 items-center justify-center" %>
 <%# The side panel and the live stats are remembered per browser with typle-r's keys; set before the page is drawn. %>
-<script>
+<script nonce="<%= content_security_policy_nonce %>">
   (() => {
     const root = document.documentElement
     try {
