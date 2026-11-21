@@ -53,7 +53,7 @@ bin/rails server -p 3010
 | `GITHUB_CLIENT_ID`・`GITHUB_CLIENT_SECRET` | GitHub の OAuth App。コールバック URL は `<オリジン>/auth/github/callback`。ないときは GitHub のボタンを出しません |
 | `MAIL_FROM` | メールの差出人 |
 | `SMTP_ADDRESS`・`SMTP_PORT`・`SMTP_USERNAME`・`SMTP_PASSWORD` | 本番でメールを送る SMTP |
-| `APP_HOST` | 本番のメールに書くリンクのホスト |
+| `APP_HOST` | 本番のメールに書くリンクのホスト。ないときは Render のホスト名（`RENDER_EXTERNAL_HOSTNAME`）。どちらもなければリンクのあるメールは送りません |
 
 開発環境のメールは送らず、`tmp/mails/` にファイルとして書きます。
 
