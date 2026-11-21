@@ -17,10 +17,11 @@ class FlowTest < ActionDispatch::IntegrationTest
   test "guests keep their own data in this browser, apart from accounts" do
     get home_path
     assert_response :success
-    guest = User.find_by(guest: true)
-    assert guest
+    assert_not User.exists?(guest: true), "opening a page makes no guest"
 
     post follow_catalog_path("pack-vim-beginner")
+    guest = User.find_by(guest: true)
+    assert guest, "the first thing saved makes the guest"
     list = guest.word_lists.first
     post practice_records_path, as: :json, params: { word_list_id: list.id, time_ms: 1000, mistakes: 0, accuracy: 100 }
     assert_response :created
@@ -34,6 +35,35 @@ class FlowTest < ActionDispatch::IntegrationTest
     get packs_path
     assert_select "[data-pack-id] h3", "Vimコマンド（2）"
     assert_equal 1, User.where(guest: true).count, "signing out goes back to the same guest data"
+  end
+
+  test "pages open for a browser without a guest, and none is made" do
+    [home_path, play_path, packs_path, new_pack_path, create_list_path, words_path, practice_records_path, rankings_path,
+     devices_path, interests_path, catalog_index_path, input_settings_path].each do |path|
+      get path
+      assert_response :success, path
+    end
+    assert_not User.exists?(guest: true)
+    assert_nil cookies["guest_id"]
+  end
+
+  test "new guests are limited by address" do
+    store = ActionController::Base.cache_store
+    ActionController::Base.cache_store = ActiveSupport::Cache::MemoryStore.new
+    stub_const(Authentication, :GUEST_LIMIT, 2) do
+      3.times do
+        cookies.delete("guest_id")
+        post choose_devices_path, params: { key: "" }
+      end
+      assert_redirected_to root_path
+      assert_equal 2, User.where(guest: true).count
+
+      cookies.delete("guest_id")
+      post practice_records_path, as: :json, params: { word_list_id: 1 }
+      assert_response :too_many_requests
+    end
+  ensure
+    ActionController::Base.cache_store = store
   end
 
   test "registering signs in" do
