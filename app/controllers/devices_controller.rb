@@ -6,7 +6,8 @@ class DevicesController < ApplicationController
     records = current_user.practice_records.where.not(device_key: nil).group(:device_key)
     last = records.maximum(:practiced_at)
     @usage = records.count.to_h { |key, count| [key, { count:, last: last[key] }] }
-    @device = current_user.devices.new
+    # Built apart from the user's devices, so the unsaved form is not one of the choices.
+    @device = Device.new(user: current_user)
   end
 
   def create

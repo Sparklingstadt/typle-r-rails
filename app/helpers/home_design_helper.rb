@@ -91,7 +91,7 @@ module HomeDesignHelper
       text: home_t("dashboard.change.different_recent_#{recent}_previous_#{previous}", **values, difference: text) }
   end
 
-  # --- the trend chart (typle-r's TrendChart.tsx), drawn here without its pointer and key reading ---
+  # --- the trend chart (typle-r's TrendChart.tsx); the trend-chart controller reads it out by pointer and keys ---
 
   def home_trend_chart(label, points, scale, &formatter)
     last = points.size - 1
@@ -108,18 +108,23 @@ module HomeDesignHelper
                 tag.span(format("%.#{scale.decimals}f", tick), class: "absolute right-0 -translate-y-1/2 leading-none", style: "top: #{y.(tick)}%")
               })
             end,
-            tag.div(class: "relative h-[72px] min-w-0 flex-1 rounded-sm py-2", role: "img",
-                    "aria-label": "#{label} #{home_short_date_time(latest.time)} #{formatter.(latest.value)}") do
+            tag.div(class: "relative h-[72px] min-w-0 flex-1 cursor-crosshair touch-pan-y rounded-sm py-2 outline-none focus-visible:ring-3 focus-visible:ring-ring/50", role: "slider", tabindex: 0,
+                    "aria-label": home_t("dashboard.chart.label", label:), "aria-valuemin": 1, "aria-valuemax": points.size, "aria-valuenow": points.size,
+                    "aria-valuetext": "#{home_short_date_time(latest.time)} #{formatter.(latest.value)}",
+                    data: { controller: "trend-chart", action: "focus->trend-chart#focus blur->trend-chart#blur pointermove->trend-chart#point pointerdown->trend-chart#point pointerleave->trend-chart#leave keydown->trend-chart#key",
+                            trend_chart_points_value: points.each_with_index.map { |point, index| { x: x.(index), y: y.(point.value), value: formatter.(point.value), date: home_short_date_time(point.time) } }.to_json }) do
               tag.div(class: "relative mx-1 h-full") do
                 safe_join([
                   tag.svg(viewBox: "0 0 100 100", preserveAspectRatio: "none", class: "absolute inset-0 size-full overflow-visible", "aria-hidden": "true") do
                     safe_join([
                       *scale.ticks.map { |tick| tag.line(x1: 0, x2: 100, y1: y.(tick), y2: y.(tick), class: "stroke-border", "stroke-width": 1, "vector-effect": "non-scaling-stroke") },
                       tag.path(d: "#{line} L#{x.(last)} 100 L0 100 Z", class: "fill-trend/10"),
-                      tag.path(d: line, class: "stroke-trend", fill: "none", "stroke-width": 2, "stroke-linecap": "round", "stroke-linejoin": "round", "vector-effect": "non-scaling-stroke")
+                      tag.path(d: line, class: "stroke-trend", fill: "none", "stroke-width": 2, "stroke-linecap": "round", "stroke-linejoin": "round", "vector-effect": "non-scaling-stroke"),
+                      tag.line(x1: 0, x2: 0, y1: 0, y2: 100, class: "stroke-muted-foreground/60", "stroke-width": 1, "vector-effect": "non-scaling-stroke", style: "display: none", data: { trend_chart_target: "cursor" })
                     ])
                   end,
-                  tag.span(class: "absolute size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-trend ring-2 ring-card", style: "left: #{x.(last)}%; top: #{y.(latest.value)}%", "aria-hidden": "true")
+                  tag.span(class: "absolute size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-trend ring-2 ring-card", style: "left: #{x.(last)}%; top: #{y.(latest.value)}%", "aria-hidden": "true", data: { trend_chart_target: "dot" }),
+                  trend_chart_tooltip
                 ])
               end
             end

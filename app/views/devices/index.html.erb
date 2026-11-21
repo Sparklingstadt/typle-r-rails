@@ -25,7 +25,7 @@
             <div class="<%= cn(UiHelper::MENU_CONTENT, "absolute top-full right-0 mt-1.5 w-72 max-w-[calc(100vw-2rem)]") %>">
               <p class="px-2 pt-1.5 pb-1 text-xs text-muted-foreground"><%= settings_t("devices.current.heading") %></p>
               <% @choice.options.each do |label, key| %>
-                <%= button_to choose_devices_path, params: { key: }, form_class: "contents", "aria-current": (key == current_key ? "true" : nil),
+                <%= button_to choose_devices_path, params: { key: }, form_class: "contents", role: "menuitemradio", "aria-checked": (key == current_key).to_s,
                       class: UiHelper::MENU_INSET_ITEM do %>
                   <% if key == current_key %><%= menu_check %><% end %>
                   <span class="truncate"><%= label %></span>

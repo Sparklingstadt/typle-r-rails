@@ -108,6 +108,15 @@ module UiHelper
     end
   end
 
+  # TrendChart's tooltip: the value and date of the run being read, above it (the trend-chart controller fills it).
+  def trend_chart_tooltip
+    tag.div(hidden: true, "aria-hidden": "true", data: { trend_chart_target: "tooltip" },
+            class: "pointer-events-none absolute bottom-full z-10 mb-3 flex flex-col whitespace-nowrap rounded-md bg-popover px-2 py-1 text-popover-foreground shadow-md ring-1 ring-foreground/10") do
+      safe_join([tag.span(class: "text-sm font-semibold tabular-nums", data: { trend_chart_target: "tooltipValue" }),
+                 tag.span(class: "text-xs text-muted-foreground", data: { trend_chart_target: "tooltipDate" })])
+    end
+  end
+
   def link_button(label = nil, url = nil, variant: :default, size: :default, class: nil, icon: nil, **options, &block)
     url, label = label, nil if block
     classes = button_classes(variant:, size:, class: binding.local_variable_get(:class))

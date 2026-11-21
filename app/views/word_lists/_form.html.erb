@@ -133,7 +133,7 @@
                   <button type="button" class="relative flex w-full cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none select-none hover:bg-accent hover:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:text-muted-foreground"
                     data-action="word-rows#move" data-word-rows-where-param="<%= where %>" data-role="move-<%= where %>"><%= icon(icon_name) %><%= tt("wordLists.editor.#{label}") %><% if keys %><span aria-hidden="true" class="ml-auto text-xs text-muted-foreground"><%= keys %></span><% end %></button>
                 <% end %>
-                <div class="my-1 h-px bg-border"></div>
+                <div role="separator" class="my-1 h-px bg-border"></div>
                 <button type="button" class="relative flex w-full cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm text-destructive outline-none select-none hover:bg-destructive/10 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4"
                   data-action="word-rows#remove" data-role="remove-menu"><%= icon("trash-2") %><%= tt("wordLists.editor.deleteWord") %></button>
               </div>

@@ -33,6 +33,6 @@ class DeviceChoice
 
   # The choices of a device menu: [label, key].
   def options
-    [[I18n.t("devices.default_name"), Device::DEFAULT_KEY], *@user.devices.map { |d| [d.name, d.key] }, [I18n.t("typle.devices.choice.none", default: I18n.t("devices.none")), NONE]]
+    [[I18n.t("devices.default_name"), Device::DEFAULT_KEY], *@user.devices.select(&:persisted?).map { |d| [d.name, d.key] }, [I18n.t("typle.devices.choice.none", default: I18n.t("devices.none")), NONE]]
   end
 end

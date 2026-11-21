@@ -99,7 +99,7 @@
           </button>
           <div class="<%= cn(menu, "w-48") %>">
             <% %w[added practiced name words].each do |order| %>
-              <%= link_to packs_path(order: (order unless order == "added")), class: item, "aria-current": (order == @order ? "true" : nil) do %>
+              <%= link_to packs_path(order: (order unless order == "added")), class: item, role: "menuitemradio", "aria-checked": (order == @order).to_s do %>
                 <% if order == @order %><%= menu_check %><% end %>
                 <%= tt("wordLists.order.#{order}") %>
               <% end %>

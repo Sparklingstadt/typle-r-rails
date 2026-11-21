@@ -1,6 +1,6 @@
 <%# typle-r's AlertDialog (DeleteConfirmation, UnfollowDialog, DiscardChangesDialog, SessionSettings): every confirmation
     of the app opens here instead of the browser's own box (confirm_dialog.js). %>
-<dialog id="confirm-dialog" aria-labelledby="confirm-dialog-title" aria-describedby="confirm-dialog-description" data-size="default" data-default-action="<%= tt("common.delete.confirm") %>"
+<dialog id="confirm-dialog" role="alertdialog" aria-labelledby="confirm-dialog-title" aria-describedby="confirm-dialog-description" data-size="default" data-default-action="<%= tt("common.delete.confirm") %>"
         class="group/alert-dialog-content fixed top-1/2 left-1/2 z-50 m-0 w-full max-w-xs -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl border-0 bg-popover p-4 text-popover-foreground ring-1 ring-foreground/10 outline-none open:grid sm:max-w-sm backdrop:bg-black/10 backdrop:backdrop-blur-xs">
   <div data-slot="alert-dialog-header" class="grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center sm:place-items-start sm:text-left">
     <h2 id="confirm-dialog-title" data-slot="alert-dialog-title" class="font-heading text-base font-medium"></h2>
