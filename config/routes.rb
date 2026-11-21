@@ -3,10 +3,17 @@ Rails.application.routes.draw do
   get "about" => "pages#about"
   get "guide" => "pages#guide"
 
-  resource :session, only: %i[new create destroy]
-  resource :registration, only: %i[new create]
-  resources :passwords, only: %i[new create edit update], param: :token
-  resource :login_id_reminder, only: %i[new create], path: "forgot-id"
+  # typle-r's addresses for signing in and the account pages around it; each keeps ?returnTo= (the page to come back to).
+  get "signin" => "sessions#new", as: :new_session
+  resource :session, only: %i[create destroy]
+  get "signup" => "registrations#new", as: :new_registration
+  resource :registration, only: :create
+  get "forgot-password" => "passwords#new", as: :new_password
+  post "forgot-password" => "passwords#create", as: :passwords
+  get "reset-password" => "passwords#edit", as: :edit_password
+  put "reset-password" => "passwords#update", as: :password
+  get "forgot-id" => "login_id_reminders#new", as: :new_login_id_reminder
+  post "forgot-id" => "login_id_reminders#create", as: :login_id_reminder
   get "email_confirmations/:token" => "email_confirmations#show", as: :email_confirmation
   post "auth/github/callback" => "omniauth_callbacks#github"
   get "auth/github/callback" => "omniauth_callbacks#github"

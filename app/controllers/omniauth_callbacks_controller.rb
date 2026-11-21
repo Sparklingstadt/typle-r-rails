@@ -14,7 +14,8 @@ class OmniauthCallbacksController < ApplicationController
     end
     user = User.find_by(github_uid: uid) || User.create!(login_id: free_login_id(login), github_uid: uid, github_login: login)
     start_new_session_for user
-    redirect_to after_authentication_url, notice: t(".signed_in", login:)
+    # The page the sign-in started from, sent to GitHub's sign-in as its origin.
+    redirect_to return_to(request.env["omniauth.origin"]), notice: t(".signed_in", login:)
   end
 
   def failure

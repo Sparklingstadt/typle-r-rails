@@ -5,6 +5,7 @@
   </header>
   <div class="max-w-sm space-y-6">
     <%= form_with url: session_path, class: "space-y-4", data: { controller: "filled", action: "input->filled#update change->filled#update" } do |f| %>
+      <%= hidden_field_tag :returnTo, return_to, id: nil %>
       <%= settings_field settings_t("auth.fields.loginId"), id: "login-id" do |id| %>
         <%= f.text_field :login_id, id:, required: true, autofocus: !@refused, autocomplete: "username", autocapitalize: "none", spellcheck: false, value: params[:login_id], class: settings_input_classes %>
       <% end %>
@@ -15,14 +16,14 @@
     <% end %>
     <% if @refused %><%= form_message(tt("auth.signIn.refused"), kind: :error) %><% end %>
     <ul class="space-y-1 text-sm">
-      <li><%= link_to settings_t("auth.signIn.signUp"), new_registration_path, class: SettingsDesignHelper::SETTINGS_LINK %></li>
-      <li><%= link_to settings_t("auth.signIn.forgotPassword"), new_password_path, class: SettingsDesignHelper::SETTINGS_LINK %></li>
-      <li><%= link_to settings_t("auth.signIn.forgotId"), new_login_id_reminder_path, class: SettingsDesignHelper::SETTINGS_LINK %></li>
+      <li><%= link_to settings_t("auth.signIn.signUp"), new_registration_path(keep_return_to), class: SettingsDesignHelper::SETTINGS_LINK %></li>
+      <li><%= link_to settings_t("auth.signIn.forgotPassword"), new_password_path(keep_return_to), class: SettingsDesignHelper::SETTINGS_LINK %></li>
+      <li><%= link_to settings_t("auth.signIn.forgotId"), new_login_id_reminder_path(keep_return_to), class: SettingsDesignHelper::SETTINGS_LINK %></li>
     </ul>
     <% if GithubLogin.enabled? %>
       <div class="space-y-3 border-t pt-6">
         <p class="text-sm text-muted-foreground"><%= settings_t("auth.signIn.or") %></p>
-        <%= form_button settings_t("auth.signInWithGitHub"), "/auth/github", method: :post, size: :lg, variant: :outline, icon: "log-in", data: { turbo: false } %>
+        <%= form_button settings_t("auth.signInWithGitHub"), "/auth/github", method: :post, size: :lg, variant: :outline, icon: "log-in", params: { origin: return_to }, data: { turbo: false } %>
       </div>
     <% end %>
   </div>

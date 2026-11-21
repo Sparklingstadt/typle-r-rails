@@ -143,7 +143,7 @@ module UiHelper
 
   # PageMain: the centered main column of a page.
   def page_main(width: :wide, class: nil, &block)
-    tag.div(capture(&block), class: cn("mx-auto w-full px-4 pt-8 pb-16 sm:px-6 lg:px-8", PAGE_WIDTHS.fetch(width), binding.local_variable_get(:class)), "data-slot": "page-main")
+    tag.main(capture(&block), class: cn("mx-auto w-full px-4 pt-8 pb-16 sm:px-6 lg:px-8", PAGE_WIDTHS.fetch(width), binding.local_variable_get(:class)), "data-slot": "page-main")
   end
 
   # PageHeader: the page's heading and description, with `block` at the end of the row.

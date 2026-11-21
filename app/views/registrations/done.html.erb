@@ -5,6 +5,6 @@
   <div class="max-w-sm space-y-4">
     <%= form_message(tt("auth.signUp.done")) %>
     <p class="text-sm"><%= @user.email ? tt("auth.signUp.mailSent", email: @user.email) : tt("auth.signUp.mailNotSent") %></p>
-    <%= link_button tt("auth.signUp.continue"), home_path, size: :lg %>
+    <%= link_button tt("auth.signUp.continue"), return_to, size: :lg %>
   </div>
 <% end %>

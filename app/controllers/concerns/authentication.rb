@@ -7,7 +7,7 @@ module Authentication
 
   included do
     before_action :require_workspace
-    helper_method :signed_in?, :current_user, :account
+    helper_method :signed_in?, :current_user, :account, :return_to, :keep_return_to
   end
 
   class_methods do
@@ -38,9 +38,22 @@ module Authentication
 
     def require_signed_in
       return if signed_in?
-      session[:return_to_after_authenticating] = request.url
-      redirect_to new_session_path
+      redirect_to new_session_path(returnTo: request.fullpath)
     end
+
+    # typle-r's returnPath: the page of this site that ?returnTo= names, to go back to after signing in; /home for
+    # anything else (another site, a path with control characters or backslashes, nothing at all).
+    def return_to(value = params[:returnTo])
+      return "/home" unless value.is_a?(String) && value.start_with?("/") && !value.start_with?("//")
+      return "/home" if value.match?(/[\u0000-\u001f\u007f\\]/)
+      uri = URI.parse(value)
+      uri.scheme || uri.host ? "/home" : value
+    rescue URI::InvalidURIError
+      "/home"
+    end
+
+    # typle-r's keep: the query that passes returnTo on to the next account page, left out when it is /home.
+    def keep_return_to = return_to == "/home" ? {} : { returnTo: return_to }
 
     def find_guest
       id = cookies.signed[GUEST_COOKIE]
@@ -61,9 +74,7 @@ module Authentication
       Session.find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]
     end
 
-    def after_authentication_url
-      session.delete(:return_to_after_authenticating) || home_url
-    end
+    def after_authentication_url = return_to
 
     def start_new_session_for(user)
       @current_user = nil

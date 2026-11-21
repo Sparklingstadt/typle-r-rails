@@ -18,4 +18,22 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_select "input[name=login_id][value=one]"
     assert_nil cookies[:session_id]
   end
+
+  test "sign-in comes back to the page it was opened from, as typle-r's returnTo, and only to this site" do
+    get "/play?list=1"
+    assert_select "a[href='/signin?returnTo=%2Fplay'][data-return-href='/signin?returnTo=%2Fplay%3Flist%3D1']"
+    get "/signin", params: { returnTo: "/records" }
+    assert_select "input[type=hidden][name=returnTo][value='/records']"
+    assert_select "a[href='/signup?returnTo=%2Frecords']"
+    post session_path, params: { login_id: "ONE", password: "password123", returnTo: "/records" }
+    assert_redirected_to "/records"
+    delete session_path
+    post session_path, params: { login_id: "ONE", password: "password123", returnTo: "//evil.example/x" }
+    assert_redirected_to "/home"
+  end
+
+  test "a page for an account sends to sign-in with the way back" do
+    get account_path
+    assert_redirected_to "/signin?returnTo=%2Faccount"
+  end
 end

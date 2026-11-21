@@ -4,7 +4,7 @@ require "test_helper"
 class LocalesTest < ActionDispatch::IntegrationTest
   PAGES = %w[/ /about /guide /home /play /records /rankings /rankings?mode=writing /packs /words /catalog
              /catalog/pack-vim-beginner /settings /input /interests /devices /packs/new
-             /passwords/new /forgot-id/new /session/new /registration/new].freeze
+             /forgot-password /forgot-id /signin /signup].freeze
 
   Localization::LOCALES.each do |locale|
     test "every page renders in #{locale}" do

@@ -1,7 +1,7 @@
 # typle-r's mails (src/server/mail.ts, messages/*/mail.json): their subjects and bodies, with the link or the ID put in.
 class AccountMailer < ApplicationMailer
   def password_reset(user)
-    send_mail user, :reset, link: edit_password_url(user.generate_token_for(:password_reset))
+    send_mail user, :reset, link: edit_password_url(token: user.generate_token_for(:password_reset))
   end
 
   def login_id_reminder(user)

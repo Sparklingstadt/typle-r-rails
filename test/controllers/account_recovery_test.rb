@@ -12,12 +12,12 @@ class AccountRecoveryTest < ActionDispatch::IntegrationTest
     assert_enqueued_emails(1) { post passwords_path, params: { login_id: "ONE" } }
     assert_select "[role=status]", I18n.t("typle.auth.forgotPassword.sent", locale: :ja)
     token = @user.generate_token_for(:password_reset)
-    get edit_password_path(token)
+    get edit_password_path(token:)
     assert_response :success
-    put password_path(token), params: { password: "brand-new-pass" }
+    put password_path(token:), params: { password: "brand-new-pass" }
     assert_redirected_to home_path, "signed in with the new password, as typle-r does"
     assert @user.reload.authenticate("brand-new-pass")
-    get edit_password_path(token)
+    get edit_password_path(token:)
     assert_redirected_to new_password_path, "the link works once"
   end
 
