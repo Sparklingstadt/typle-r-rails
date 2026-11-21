@@ -14,7 +14,7 @@ module PracticeDesignHelper
 
   # ModeToggle: a pill holding a choice of modes. Its items are links or buttons with aria-pressed (or aria-current).
   PRACTICE_DESIGN_TOGGLE = "inline-flex h-9 shrink-0 items-center rounded-full border bg-muted/60 p-0.5 text-[13px]"
-  PRACTICE_DESIGN_TOGGLE_ITEM = "inline-flex h-full items-center rounded-full px-3 text-muted-foreground outline-none hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 disabled:opacity-60 aria-pressed:bg-background aria-pressed:font-medium aria-pressed:text-foreground aria-pressed:shadow-sm dark:aria-pressed:bg-input"
+  PRACTICE_DESIGN_TOGGLE_ITEM = "inline-flex h-full items-center rounded-full px-3 text-muted-foreground outline-none hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 disabled:opacity-60 aria-checked:bg-background aria-checked:font-medium aria-checked:text-foreground aria-checked:shadow-sm dark:aria-checked:bg-input"
 
   # Rank 1 as "1st" in English and "1er" in French; other languages show the number.
   def practice_design_ordinal(rank)

@@ -18,7 +18,7 @@
         <span class="<%= cn("text-muted-foreground", ("max-sm:hidden" if error_count.positive?)) %>" data-word-rows-target="total"><%= local_assigns[:editor] ? tt("wordLists.editor.wordTotal", count: word_count) : t("design.lists.editor.word_total", count: word_count) %></span>
       <% end %>
     </div>
-    <%= link_button t("design.lists.form.cancel"), cancel_url, variant: :ghost %>
+    <%= visit_button t("design.lists.form.cancel"), cancel_url, variant: :ghost %>
     <%= form.button type: :submit, class: button_classes(class: "flex-1 sm:flex-none") do %><%= t("design.lists.editor.save") %><% if local_assigns[:editor] %><span aria-hidden="true" class="hidden text-xs font-normal opacity-60 sm:inline">Ctrl+Enter</span><% end %><% end %>
   </div>
 </div>

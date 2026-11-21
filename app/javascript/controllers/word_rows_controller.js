@@ -9,7 +9,7 @@ import { confirmDialog } from "confirm_dialog"
 const MAX_WORDS = 1000
 
 export default class extends Controller {
-  static targets = ["rows", "row", "template", "count", "notice", "total", "dirty", "dirtyDot", "clean",
+  static targets = ["rows", "row", "template", "count", "notice", "moved", "total", "dirty", "dirtyDot", "clean",
     "importDialog", "importFile", "importEmpty", "importDrop", "importLoaded", "importName", "importSummary", "importPreview", "importMore",
     "importModes", "importMode", "importHint", "importStatus", "importError", "importErrorText", "importConfirm"]
   static values = { labels: Object }
@@ -114,7 +114,7 @@ export default class extends Controller {
 
   move(event) {
     const row = this.rowOf(event)
-    row.querySelector("details")?.removeAttribute("open")
+    row.querySelector("[data-controller~=dropdown][open] > [data-dropdown-target=trigger]")?.click()
     this.moveTo(row, event.params.where)
   }
 
@@ -126,6 +126,12 @@ export default class extends Controller {
     if (target < index) rows[target].before(row)
     else rows[target].after(row)
     this.renumber()
+    this.announceMove(row)
+  }
+
+  // The moved word's new place, read out (the row's own label: 単語 N).
+  announceMove(row) {
+    if (this.hasMovedTarget && row) this.movedTarget.textContent = row.getAttribute("aria-label") ?? ""
   }
 
   keydown(event) {
@@ -170,10 +176,12 @@ export default class extends Controller {
   }
 
   dragEnd() {
+    const moved = this.dragged
     this.dragged?.classList.remove("bg-muted", "shadow-md")
     this.dragged = null
     this.rowsTarget.removeEventListener("dragover", this.over)
     this.renumber()
+    this.announceMove(moved)
   }
 
   // typle-r's WordListImport: a dialog to choose or drop a CSV file (a header naming input, display, annotation and

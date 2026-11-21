@@ -5,11 +5,8 @@ fr:
       practice:
         flow:
           p6: "Activez « Taper de mémoire » en haut pour vous entraîner avec la réponse cachée. La note s’affiche, et la réponse apparaît sous la forme d’un « ＿ » par caractère restant à taper. Les mots suivants et la liste complète ne sont pas affichés. « Voir la réponse » (<keys>Shift+Enter</keys>) l’affiche, et le mot compte comme manqué. Ces entraînements sont enregistrés comme « De mémoire » et comparés séparément des entraînements normaux. Ce choix ne peut pas être changé pendant un entraînement."
-        choose:
-          p1: "Cliquez sur « Pack › Liste » en haut pour changer de liste ; les listes y sont regroupées par pack. Vous pouvez aussi en choisir une dans la liste de droite (en bas sur smartphone), qui se recherche par nom de pack, nom de liste, difficulté, catégorie ou tag. Dans un pack de plusieurs listes, ouvrez le pack et choisissez une liste par sa difficulté ou son nom."
         writing:
           p2: "Regardez le mot affiché et écrivez-le dans le champ avec la saisie manuscrite de votre système (panneau d’écriture de Windows, clavier manuscrit d’une tablette Android, écriture manuscrite d’un IME, etc.). Les listes en coréen peuvent aussi s’écrire sur la zone d’écriture manuscrite de l’application."
-          p4: "Les records Handwriting sont comparés à part des records normaux et de mémoire ; sur l’écran des meilleurs records, on bascule entre Normal, De mémoire et Handwriting. Ils comptent dans les séances, le temps d’entraînement et la série de la semaine sur l’accueil, mais la précision, les tendances et les listes suivantes ne comparent que la frappe. Handwriting ne se combine pas avec « Taper de mémoire »."
       records:
         home:
           text: "Dès que vous avez au moins un résultat, l’<home>Accueil</home> affiche le nombre d’entraînements de la semaine, votre série de jours consécutifs, la précision moyenne et le temps d’entraînement, la liste à travailler ensuite, ainsi que l’évolution des secondes par mot et de la précision pour chaque liste. Les semaines commencent le lundi."

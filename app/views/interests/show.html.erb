@@ -5,8 +5,7 @@
     <%= render "layouts/application/page_storage_badge" %>
   <% end %>
   <div class="space-y-8">
-    <%= form_with url: interests_path, method: :patch, data: { controller: "autosubmit" }, class: "space-y-5" do |f| %>
-      <%= hidden_field_tag "interests[]", "", id: nil %>
+    <%= form_with url: interests_path, method: :patch, class: "space-y-5" do |f| %>
       <div class="flex flex-wrap gap-2">
         <% Interests::OPTIONS.each do |option| %><%= settings_interest_chip(option.id, chip_label.(option.id), @ids.include?(option.id)) %><% end %>
       </div>
@@ -19,7 +18,6 @@
           </div>
         </section>
       <% end %>
-      <noscript><%= f.submit settings_t("form.save"), class: button_classes(variant: :outline, size: :sm) %></noscript>
     <% end %>
 
     <% if @ids.empty? %>

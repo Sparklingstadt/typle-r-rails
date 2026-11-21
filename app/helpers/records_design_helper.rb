@@ -5,7 +5,7 @@ module RecordsDesignHelper
   # Shared by the column labels and the rows so the numbers line up under their headings (RecordRow's recordColumns).
   RECORDS_COLUMNS = "sm:grid-cols-[3.25rem_minmax(0,1fr)_7rem_4.75rem_5.25rem_3rem_2.5rem] sm:gap-x-4"
   RECORDS_PILL = "inline-flex h-9 shrink-0 items-center rounded-full border bg-muted/60 p-0.5 text-[13px]"
-  RECORDS_PILL_ITEM = "inline-flex h-full items-center rounded-full px-3 text-muted-foreground outline-none hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 aria-[current=true]:bg-background aria-[current=true]:font-medium aria-[current=true]:text-foreground aria-[current=true]:shadow-sm dark:aria-[current=true]:bg-input"
+  RECORDS_PILL_ITEM = "inline-flex h-full items-center rounded-full px-3 text-muted-foreground outline-none hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 aria-checked:bg-background aria-checked:font-medium aria-checked:text-foreground aria-checked:shadow-sm dark:aria-checked:bg-input"
   RECORDS_MENU_ITEM = UiHelper::MENU_INSET_ITEM
 
   def records_t(key, **options) = t("design.records.#{key}", **options)
@@ -119,19 +119,19 @@ module RecordsDesignHelper
   # `options` are [value, label, count]; `url` builds the link of a value (nil for all).
   def records_filter_menu(name:, all_label:, value:, options:, url:)
     current = options.find { |option| option[0] == value }
-    trigger = cn("inline-flex h-9 max-w-full min-w-0 cursor-pointer list-none items-center gap-1.5 rounded-full border bg-background px-3.5 text-sm outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 aria-expanded:bg-muted dark:bg-input/30 [&::-webkit-details-marker]:hidden",
+    trigger = cn("inline-flex h-9 max-w-full min-w-0 items-center gap-1.5 rounded-full border bg-background px-3.5 text-sm outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 aria-expanded:bg-muted dark:bg-input/30",
       current && "border-foreground/25 bg-secondary font-medium dark:bg-secondary")
     choices = [[nil, all_label, options.sum { |option| option[2] }], *options]
-    tag.details(class: "relative max-w-full", data: { controller: "dropdown" }) do
+    tag.div(class: "relative max-w-full", data: { controller: "dropdown" }) do
       safe_join([
-        tag.summary(class: trigger, "aria-label": records_t("history.filter_menu.label", name:, current: current ? current[1] : all_label)) {
+        tag.button(type: "button", class: trigger, data: { dropdown_target: "trigger" }, "aria-label": records_t("history.filter_menu.label", name:, current: current ? current[1] : all_label)) {
           safe_join([tag.span(name, class: "shrink-0 text-muted-foreground"), tag.span(current ? current[1] : records_t("history.filter_menu.all"), class: "truncate"),
                      icon("chevron-down", class: "size-3.5 shrink-0 text-muted-foreground")])
         },
-        tag.div(class: cn(UiHelper::MENU_CONTENT, "absolute top-full left-0 mt-1.5 max-h-96 w-72 max-w-[calc(100vw-2rem)] overflow-y-auto")) {
+        tag.div(role: "menu", class: cn(UiHelper::MENU_CONTENT, "absolute top-full left-0 mt-1.5 max-h-96 w-72 max-w-[calc(100vw-2rem)] overflow-y-auto")) {
           safe_join(choices.map { |option_value, label, count|
             chosen = option_value == value
-            link_to(url.(option_value), class: RECORDS_MENU_ITEM, "aria-current": (chosen ? "true" : nil)) do
+            link_to(url.(option_value), class: RECORDS_MENU_ITEM, role: "menuitemradio", "aria-checked": chosen.to_s) do
               safe_join([(menu_check if chosen),
                          tag.span(label, class: "min-w-0 flex-1 truncate"),
                          tag.span(records_t("history.filter_menu.count", count:), class: "shrink-0 text-xs text-muted-foreground tabular-nums")].compact)
@@ -151,10 +151,13 @@ module RecordsDesignHelper
     }
   end
 
-  # ModeToggle / OrderToggle: a choice as a row of links, the chosen one raised.
-  def records_pill(label:, items:)
-    tag.nav(class: RECORDS_PILL, "aria-label": label) do
-      safe_join(items.map { |text, url, current| link_to(tag.span(text), url, class: RECORDS_PILL_ITEM, "aria-current": (current ? "true" : nil)) })
+  # ModeToggle / OrderToggle (typle-r's Radix RadioGroup): radio buttons, the chosen one raised; choosing one opens its URL.
+  def records_pill(label:, items:, item_class: RECORDS_PILL_ITEM, **options)
+    tag.div(role: "radiogroup", class: RECORDS_PILL, "aria-label": label, "aria-orientation": "horizontal", data: { controller: "radio-group" }, **options) do
+      safe_join(items.map { |text, url, current, data = {}|
+        tag.button(tag.span(text), type: "button", role: "radio", class: item_class, "aria-checked": current.to_s, tabindex: (current ? 0 : -1),
+          data: { url:, radio_group_target: "radio", action: "radio-group#choose keydown->radio-group#key", **data })
+      })
     end
   end
 

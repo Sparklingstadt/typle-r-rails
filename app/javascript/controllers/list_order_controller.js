@@ -19,7 +19,7 @@ export default class extends Controller {
 
   move(event) {
     const row = event.target.closest("[data-list-order-target=row]")
-    row.querySelector("details")?.removeAttribute("open")
+    row.querySelector("[data-controller~=dropdown][open] > [data-dropdown-target=trigger]")?.click()
     this.moveTo(row, event.params.where)
   }
 

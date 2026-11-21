@@ -34,8 +34,8 @@ export default class extends Controller {
   resumeKey(event) {
     if (!this.element.classList.contains("blurred") || this.finishedAt) return
     if (event.defaultPrevented || event.isComposing || event.metaKey || event.ctrlKey || event.altKey) return
-    if (event.target instanceof Element && event.target.closest('input, textarea, select, button, a, summary, [contenteditable="true"]')) return
-    if (document.querySelector("details[open] [role=menu], dialog[open]")) return
+    if (event.target instanceof Element && event.target.closest('input, textarea, select, button, a, [contenteditable="true"]')) return
+    if (document.querySelector("[data-controller~=dropdown][open], dialog[open]")) return
     if (event.key.length !== 1 && event.key !== "Enter") return
     event.preventDefault()
     this.fieldTarget.focus()
@@ -163,7 +163,7 @@ export default class extends Controller {
   // picker, the switch confirmation or the device menu is open over the practice.
   updateBlurred() {
     const field = this.hasFieldTarget ? this.fieldTarget : null
-    const overlaid = document.querySelector("dialog[open], details[data-practice-menu][open]")
+    const overlaid = document.querySelector("dialog[open], [data-practice-menu][open]")
     const blurred = this.focusedOnce && !this.finishedAt && document.activeElement !== field && !overlaid
     this.element.classList.toggle("blurred", blurred)
   }
@@ -288,6 +288,10 @@ export default class extends Controller {
     this.progressTarget.textContent = this.messagesValue.progressValue
       ? message(this.messagesValue.progressValue, { current, count: total }) : `${finished} / ${total}`
     this.barTarget.style.width = `${finished / total * 100}%`
+    // typle-r's PracticeProgress: the bar carries the numbers; the text beside it is only for the eye.
+    const bar = this.barTarget.parentElement
+    bar.setAttribute("aria-valuenow", finished)
+    bar.setAttribute("aria-valuetext", this.progressTarget.textContent)
     this.element.classList.toggle("paused", this.pausedAt !== null)
     this.renderFeedback(null)
     this.renderUpcoming()

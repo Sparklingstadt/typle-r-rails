@@ -18,16 +18,16 @@
           <p class="text-xs text-muted-foreground"><%= list.level.present? ? tt("wordLists.packEditor.levels", levels: list.level) : tt("wordLists.packEditor.noLevels") %></p>
         </div>
         <span class="shrink-0 text-sm text-muted-foreground tabular-nums"><%= tt("wordLists.packEditor.wordCount", count: list.words.size) %></span>
-        <details class="relative" data-controller="dropdown">
-          <summary class="<%= button_classes(variant: :ghost, size: :icon, class: "list-none [&::-webkit-details-marker]:hidden#{" pointer-events-none opacity-50" if lists.size < 2}") %>"
-                   aria-label="<%= tt("wordLists.packEditor.listActions", name: list.name) %>" title="<%= tt("wordLists.editor.actions") %>"><%= icon(:ellipsis) %></summary>
+        <div class="relative" data-controller="dropdown">
+          <button type="button" data-dropdown-target="trigger" class="<%= button_classes(variant: :ghost, size: :icon, class: "list-none#{" pointer-events-none opacity-50" if lists.size < 2}") %>"
+                   aria-label="<%= tt("wordLists.packEditor.listActions", name: list.name) %>" title="<%= tt("wordLists.editor.actions") %>"><%= icon(:ellipsis) %></button>
           <div role="menu" class="<%= cn(UiHelper::MENU_CONTENT, "absolute top-full right-0 mt-1 min-w-52") %>">
             <% [["up", "arrow-up", "moveUp"], ["down", "arrow-down", "moveDown"], ["first", "arrow-up-to-line", "moveFirst"], ["last", "arrow-down-to-line", "moveLast"]].each do |where, icon_name, key| %>
               <button type="button" role="menuitem" class="<%= cn(ListsDesignHelper::LISTS_MENU_ITEM, "disabled:pointer-events-none disabled:opacity-40") %>"
                       data-action="list-order#move" data-list-order-where-param="<%= where %>" data-move="<%= where %>"><%= icon(icon_name) %><%= tt("wordLists.editor.#{key}") %></button>
             <% end %>
           </div>
-        </details>
+        </div>
       </li>
     <% end %>
   </ul>

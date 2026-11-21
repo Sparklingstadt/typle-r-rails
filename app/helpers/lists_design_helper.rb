@@ -49,11 +49,11 @@ module ListsDesignHelper
     tag.span(safe_join(parts), class: cn("relative flex min-w-0 flex-wrap items-center gap-1", binding.local_variable_get(:class)), "data-list-labels": "")
   end
 
-  # The ⋯ button and its menu (typle-r's DropdownMenu), as a <details> the dropdown controller closes.
+  # The ⋯ button and its menu (typle-r's DropdownMenu), a button and a menu the dropdown controller opens and closes.
   def lists_menu(label:, title:, &block)
-    tag.details(class: "relative", data: { controller: "dropdown" }) do
+    tag.div(class: "relative", data: { controller: "dropdown" }) do
       safe_join([
-        tag.summary(icon("ellipsis"), class: button_classes(variant: :ghost, size: "icon-lg", class: "size-10 list-none text-muted-foreground [&::-webkit-details-marker]:hidden"),
+        tag.button(icon("ellipsis"), type: "button", data: { dropdown_target: "trigger" }, class: button_classes(variant: :ghost, size: "icon-lg", class: "size-10 text-muted-foreground"),
                     "aria-label": label, title:),
         tag.div(capture(&block), class: LISTS_MENU)
       ])

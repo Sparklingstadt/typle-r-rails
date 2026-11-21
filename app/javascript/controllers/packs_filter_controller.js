@@ -5,7 +5,7 @@ import { message } from "practice_run"
 // tag, and says how many are shown.
 export default class extends Controller {
   static targets = ["query", "category", "categoryText", "categoryTrigger", "tag", "tagsText", "tagsTrigger", "pack", "list", "empty", "count", "clear"]
-  static values = { count: Object, filtered: Object, allCategories: String, noCategory: String, allTags: String, separator: String }
+  static values = { count: Object, filtered: Object, allCategories: String, noCategory: String, allTags: String, separator: String, categoryCurrent: String, tagsCurrent: String }
 
   apply() {
     const query = this.queryTarget.value.trim().toLowerCase()
@@ -30,11 +30,13 @@ export default class extends Controller {
     this.clearTarget.hidden = !filtered
     if (this.hasCategoryTextTarget) {
       this.categoryTextTarget.textContent = this.categoryTargets.find(input => input.checked)?.dataset.text ?? this.allCategoriesValue
+      this.categoryTriggerTarget.setAttribute("aria-label", message(this.categoryCurrentValue, { category: this.categoryTextTarget.textContent }))
       this.categoryTriggerTarget.classList.toggle("border-primary/60", !!category)
     }
     if (this.hasTagsTextTarget) {
       const chosen = this.tagTargets.filter(input => input.checked).map(input => input.value)
       this.tagsTextTarget.textContent = chosen.length ? chosen.join(this.separatorValue) : this.allTagsValue
+      this.tagsTriggerTarget.setAttribute("aria-label", chosen.length ? message(this.tagsCurrentValue, { tags: chosen.join(this.separatorValue) }) : this.allTagsValue)
       this.tagsTriggerTarget.classList.toggle("border-primary/60", chosen.length > 0)
     }
   }

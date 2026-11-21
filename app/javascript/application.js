@@ -10,3 +10,10 @@ document.addEventListener("click", event => {
   event.preventDefault()
   Turbo.visit(link.dataset.returnHref)
 })
+
+// A button that opens a page (typle-r's buttons that choose what the page shows, such as a list of ベスト記録).
+document.addEventListener("click", event => {
+  const button = event.target instanceof Element && event.target.closest("button[data-visit-url]")
+  if (!button || button.disabled || event.defaultPrevented) return
+  Turbo.visit(button.dataset.visitUrl)
+})

@@ -274,18 +274,10 @@ export function renderResult(controller, run, outcome) {
 // Kept for callers that show a run that is not saved.
 export function showResult(controller, run) { renderResult(controller, run, { unsaved: true }) }
 
-// A control locked while a run is on (typle-r disables them): a button is disabled; a menu's <summary>, which cannot be,
-// is closed and taken out of the tab order.
+// A control locked while a run is on (typle-r disables them); a menu's trigger also closes its menu.
 export function lockControl(control, locked) {
-  if (control.tagName !== "SUMMARY") { control.disabled = locked; return }
-  if (locked) {
-    control.setAttribute("tabindex", "-1")
-    control.setAttribute("aria-disabled", "true")
-    control.parentElement.open = false
-  } else {
-    control.removeAttribute("tabindex")
-    control.removeAttribute("aria-disabled")
-  }
+  if (locked && !control.disabled && control.closest("[data-controller~=dropdown][open]")) control.click()
+  control.disabled = locked
 }
 
 // typle-r's usePracticeSwitch: while a run is on, choosing another list or the other way of practising asks first

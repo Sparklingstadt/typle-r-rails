@@ -29,6 +29,19 @@ module Interests
   def decode(value) = value.nil? ? DEFAULT.dup : Array(value).map(&:to_s) & KNOWN
 
   # Known ids in the order of the options; a child only under a chosen parent.
+  # typle-r's toggleInterest: a parent switches with its children; a child only switches under a chosen parent.
+  def toggle(ids, id)
+    ids = Array(ids).map(&:to_s)
+    if (parent = OPTIONS.find { |option| option.id == id })
+      return normalize(ids + [id]) unless ids.include?(id)
+      children = parent.children.map(&:id)
+      return normalize(ids.reject { |item| item == id || children.include?(item) })
+    end
+    owner = OPTIONS.find { |option| option.children.any? { |child| child.id == id } }
+    return normalize(ids) if owner && !ids.include?(owner.id)
+    normalize(ids.include?(id) ? ids - [id] : ids + [id])
+  end
+
   def normalize(ids)
     chosen = Array(ids).map(&:to_s).to_set
     OPTIONS.flat_map { |option|

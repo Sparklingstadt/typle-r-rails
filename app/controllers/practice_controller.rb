@@ -36,7 +36,8 @@ class PracticeController < ApplicationController
   private
     def default_list
       return if params[:official].present?
-      current_user.practice_records.recent.first&.word_list || @lists.find { |l| l.words.any? }
+      # typle-r's usePractice: the first list, in the order of the packs and their lists.
+      @lists.find { |l| l.words.any? }
     end
 
     def render_starters

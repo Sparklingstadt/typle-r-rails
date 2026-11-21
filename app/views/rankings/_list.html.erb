@@ -19,19 +19,19 @@
           clear_url: rankings_url.({ q: nil }), clear_label: tt("rankings.list.clearSearch")) %>
   <% end %>
   <% current_sort = records_t("rankings.list.sorts.#{@sort}") %>
-  <details class="relative shrink-0" data-controller="dropdown">
-    <summary class="inline-flex h-9 cursor-pointer list-none items-center gap-1 rounded-lg px-2 text-xs text-muted-foreground outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 aria-expanded:bg-muted [&::-webkit-details-marker]:hidden" aria-label="<%= records_t("rankings.list.sort_label", sort: current_sort) %>">
+  <div class="relative shrink-0" data-controller="dropdown">
+    <button type="button" data-dropdown-target="trigger" class="inline-flex h-9 items-center gap-1 rounded-lg px-2 text-xs text-muted-foreground outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 aria-expanded:bg-muted" aria-label="<%= records_t("rankings.list.sort_label", sort: current_sort) %>">
       <%= current_sort %><%= icon("chevron-down", class: "size-3.5") %>
-    </summary>
-    <div class="<%= cn(UiHelper::MENU_CONTENT, "absolute top-full right-0 mt-1.5 w-44") %>">
+    </button>
+    <div role="menu" class="<%= cn(UiHelper::MENU_CONTENT, "absolute top-full right-0 mt-1.5 w-44") %>">
       <% RankingsController::SORTS.each do |sort| %>
-        <%= link_to rankings_url.({ sort: (sort unless sort == "recent") }), class: RecordsDesignHelper::RECORDS_MENU_ITEM, "aria-current": (sort == @sort ? "true" : nil) do %>
+        <%= link_to rankings_url.({ sort: (sort unless sort == "recent") }), class: RecordsDesignHelper::RECORDS_MENU_ITEM, role: "menuitemradio", "aria-checked": (sort == @sort).to_s do %>
           <% if sort == @sort %><%= menu_check %><% end %>
           <%= records_t("rankings.list.sorts.#{sort}") %>
         <% end %>
       <% end %>
     </div>
-  </details>
+  </div>
 </div>
 
 <% if practised.any? %>
@@ -70,7 +70,7 @@
           <% current = item.items.any? { |ranking| ranking.list == selected } %>
           <% name = records_t("rankings.list.pack_lists", pack: item.pack.name, count: item.items.size) %>
           <li data-pack-id="<%= item.pack.id %>">
-            <%= link_to row_link.(rows.first.list), "data-list-id": rows.first.list.id, "aria-current": (current ? "true" : nil), class: cn(plain_row, current && "bg-muted text-foreground") do %>
+            <%= tag.button type: "button", data: { visit_url: row_link.(rows.first.list) }, "data-list-id": rows.first.list.id, "aria-current": (current ? "true" : nil), class: cn(plain_row, current && "bg-muted text-foreground") do %>
               <span class="line-clamp-2 min-w-0 flex-1 [overflow-wrap:anywhere]" title="<%= name %>"><%= name %></span>
               <span class="shrink-0 text-xs tabular-nums"><%= records_t("rankings.list.words", count: item.items.sum { |ranking| ranking.list.words.size }) %></span>
               <%= icon("chevron-right", class: "size-4 shrink-0 xl:hidden") %>

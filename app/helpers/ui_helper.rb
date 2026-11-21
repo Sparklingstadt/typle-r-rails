@@ -98,6 +98,16 @@ module UiHelper
   end
 
   # <a> styled as a Button (typle-r's <Button asChild><Link/></Button>).
+  # A button that opens a page, for typle-r's buttons that navigate (戻る, キャンセル): read as a button, not a link.
+  # The click is handled in application.js; an editor's unsaved-changes check still runs (turbo:before-visit).
+  def visit_button(label = nil, url = nil, variant: :default, size: :default, class: nil, icon: nil, **options, &block)
+    url, label = label, nil if block
+    classes = button_classes(variant:, size:, class: binding.local_variable_get(:class))
+    tag.button(type: "button", class: classes, "data-slot": "button", "data-variant": variant, "data-size": size, "data-visit-url": url, **options) do
+      safe_join([(icon(icon) if icon), block ? capture(&block) : label].compact)
+    end
+  end
+
   def link_button(label = nil, url = nil, variant: :default, size: :default, class: nil, icon: nil, **options, &block)
     url, label = label, nil if block
     classes = button_classes(variant:, size:, class: binding.local_variable_get(:class))

@@ -19,7 +19,7 @@
         keepEditing: tt_forms("wordLists.editor.keepEditing"), discardAction: tt_forms("wordLists.editor.discard") }.transform_values { |v| JSON.parse(v) }.to_json %>
 <%= form_with model: list.persisted? ? list : (pack&.persisted? ? [pack, list] : list), url: (create_list_path unless list.persisted? || pack&.persisted?),
       data: { controller: "word-rows", action: "keydown->word-rows#saveShortcut submit->word-rows#submitting turbo:before-visit@document->word-rows#leave beforeunload@window->word-rows#unload", "word-rows-labels-value": word_rows_labels } do |f| %>
-  <%= link_button back, variant: :ghost, size: :lg, class: "-ml-2.5 mb-2 text-muted-foreground" do %><%= icon("chevron-left") %><%= t("design.lists.editor.back") %><% end %>
+  <%= visit_button back, variant: :ghost, size: :lg, class: "-ml-2.5 mb-2 text-muted-foreground" do %><%= icon("chevron-left") %><%= t("design.lists.editor.back") %><% end %>
   <%= page_header(title, description) do %>
     <%= render "layouts/application/page_storage_badge" %>
   <% end %>
@@ -126,8 +126,8 @@
             </div>
           </div>
           <div class="col-start-3 row-start-1 flex items-center justify-end gap-0.5 md:col-start-6">
-            <details class="relative" data-controller="dropdown">
-              <summary class="<%= button_classes(variant: :ghost, size: :icon, class: "list-none [&::-webkit-details-marker]:hidden") %>" title="<%= tt("wordLists.editor.actions") %>" data-role="actions"><%= icon(:ellipsis) %></summary>
+            <div class="relative" data-controller="dropdown">
+              <button type="button" data-dropdown-target="trigger" class="<%= button_classes(variant: :ghost, size: :icon, class: "list-none") %>" title="<%= tt("wordLists.editor.actions") %>" data-role="actions"><%= icon(:ellipsis) %></button>
               <div class="absolute top-full right-0 z-50 mt-1 min-w-52 rounded-lg border bg-popover p-1 text-popover-foreground shadow-md">
                 <% [["up", "arrow-up", "moveUp", "Alt+↑"], ["down", "arrow-down", "moveDown", "Alt+↓"], ["first", "arrow-up-to-line", "moveFirst", nil], ["last", "arrow-down-to-line", "moveLast", nil]].each do |where, icon_name, label, keys| %>
                   <button type="button" class="relative flex w-full cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none select-none hover:bg-accent hover:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:text-muted-foreground"
@@ -137,7 +137,7 @@
                 <button type="button" class="relative flex w-full cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm text-destructive outline-none select-none hover:bg-destructive/10 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4"
                   data-action="word-rows#remove" data-role="remove-menu"><%= icon("trash-2") %><%= tt("wordLists.editor.deleteWord") %></button>
               </div>
-            </details>
+            </div>
             <span class="hidden md:inline-flex">
               <button type="button" class="<%= button_classes(variant: :ghost, size: :icon, class: "text-muted-foreground hover:text-destructive") %>" title="<%= tt("wordLists.editor.delete") %>" data-action="word-rows#remove" data-role="remove"><%= icon("trash-2") %></button>
             </span>
@@ -147,6 +147,8 @@
       <div class="space-y-3 md:space-y-0" data-word-rows-target="rows">
         <% rows.each_with_index do |row, index| %><% row_html.call(row, index) %><% end %>
       </div>
+      <%# Says where a moved word went, as typle-r's drag-and-drop does in its live region. %>
+      <div role="status" aria-live="assertive" aria-atomic="true" class="sr-only" data-word-rows-target="moved"></div>
       <template data-word-rows-target="template"><% row_html.call({ display: "", input: "", annotation: "", input_type: nil }, 0) %></template>
       <% words_errors.each do |message| %><div class="pt-3 md:px-6"><%= lists_field_error(message) %></div><% end %>
       <div class="space-y-3 pt-3 md:px-6 md:py-4">
@@ -154,8 +156,7 @@
         <p class="hidden flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground sm:flex">
           <kbd class="<%= editor_kbd %>">Enter</kbd><%= tt("wordLists.editor.shortcutNext") %>
           <span aria-hidden="true">・</span><kbd class="<%= editor_kbd %>">Alt+↑↓</kbd><%= tt("wordLists.editor.shortcutMove") %>
-          <span aria-hidden="true">・</span><kbd class="<%= editor_kbd %>">Ctrl（⌘）+Enter</kbd><%= tt("wordLists.editor.shortcutSave") %>
-          <span aria-hidden="true">・</span><%= icon("grip-vertical", class: "size-3.5") %><%= tt("wordLists.editor.shortcutDrag") %>
+          <span aria-hidden="true">・</span><kbd class="<%= editor_kbd %>">Ctrl（⌘）+Enter</kbd><%= tt("wordLists.editor.shortcutSave") %><span aria-hidden="true">・</span><%= icon("grip-vertical", class: "size-3.5") %><%= tt("wordLists.editor.shortcutDrag") %>
         </p>
       </div>
     </section>

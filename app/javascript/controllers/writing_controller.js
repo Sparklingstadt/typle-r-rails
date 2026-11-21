@@ -181,6 +181,15 @@ export default class extends Controller {
 
   // --- the pad ---
 
+  // The arrow keys move to the other way of writing and choose it, as in typle-r's ModeToggle.
+  inputKey(event) {
+    if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"].includes(event.key)) return
+    event.preventDefault()
+    const other = [...this.inputSwitchTarget.querySelectorAll("[role=radio]")].find(radio => radio !== event.currentTarget)
+    other?.focus()
+    other?.click()
+  }
+
   chooseInput(event) {
     this.usePad = event.params.input === "pad"
     try { this.usePad ? localStorage.removeItem(INPUT_KEY) : localStorage.setItem(INPUT_KEY, "field") } catch {}
@@ -321,7 +330,9 @@ export default class extends Controller {
     this.padAreaTarget.hidden = !this.usePad
     this.inputSwitchTarget.hidden = !this.padAvailable
     this.inputSwitchTarget.querySelectorAll("[data-writing-input-param]").forEach(button => {
-      button.setAttribute("aria-pressed", String((button.dataset.writingInputParam === "pad") === this.usePad))
+      const chosen = (button.dataset.writingInputParam === "pad") === this.usePad
+      button.setAttribute("aria-checked", String(chosen))
+      button.tabIndex = chosen ? 0 : -1
     })
     const m = this.messagesValue
     const status = this.padStatus === "loading" ? (m.writingPadLoading ?? m.padLoading) : this.padStatus === "failed" ? (m.writingPadFailed ?? m.padFailed) : ""
@@ -338,6 +349,10 @@ export default class extends Controller {
     const current = this.finishedAt ? total : this.index + 1
     this.progressTarget.textContent = m.progressValue ? message(m.progressValue, { current, count: total }) : `${done} / ${total}`
     this.barTarget.style.width = `${done / total * 100}%`
+    // typle-r's PracticeProgress: the bar carries the numbers; the text beside it is only for the eye.
+    const bar = this.barTarget.parentElement
+    bar.setAttribute("aria-valuenow", done)
+    bar.setAttribute("aria-valuetext", this.progressTarget.textContent)
     this.renderStats()
   }
 

@@ -21,9 +21,10 @@
   packs = lists.group_by(&:pack).each_with_index
     .sort_by { |(_, items), index| [-(items.filter_map { |list| last_practiced[list.id]&.to_f }.max || -Float::INFINITY), index] }
     .to_h { |(pack, items), _| [pack, items] }
-  categories = packs.keys.map { |pack| pack.word_lists.first&.category }.compact.tally
+  categories = packs.keys.map { |pack| pack.word_lists.first&.category }.compact.tally.sort_by { |name, _| Collation.key(name) }.to_h
   uncategorized = packs.keys.count { |pack| pack.word_lists.first&.category.blank? }
-  search_text = ->(items) { items.flat_map { |list| [list.pack.name, list.name, list.level, list.category, *list.tags] }.compact.join("\n").downcase }
+  # typle-r's matchesQuery: the pack and list names, the category and tags, and the words, so a list is found by a word.
+  search_text = ->(items) { items.flat_map { |list| [list.pack.name, list.name, list.level, list.category, *list.tags, *list.words.flat_map { |word| [word.display, word.input] }] }.compact.join("\n").downcase }
 %>
 <% dialog = local_assigns[:dialog] %>
 <% body = capture do %>

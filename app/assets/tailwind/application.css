@@ -175,6 +175,8 @@ html[data-live-stats="hidden"] [data-live-stats-panel] { display: none; }
 @keyframes confirm-dialog-in { from { opacity: 0; scale: 0.95; } }
 @keyframes confirm-backdrop-in { from { opacity: 0; } }
 /* Every dialog of the app (confirmations, the device form, CSV import), as typle-r's Dialog and AlertDialog. */
+/* A closed menu (dropdown controller) stays out of sight before its controller connects, too. */
+[data-controller~="dropdown"]:not([open]) > :not([data-dropdown-target="trigger"]) { display: none; }
 dialog.fixed[open] { animation: confirm-dialog-in 100ms ease-out; }
 dialog.fixed[open]::backdrop { animation: confirm-backdrop-in 100ms ease-out; }
 @media (prefers-reduced-motion: reduce) {

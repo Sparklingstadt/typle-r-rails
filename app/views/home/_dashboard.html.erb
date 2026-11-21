@@ -16,7 +16,7 @@
     <nav aria-label="<%= home_t("dashboard.start") %>" class="flex flex-wrap gap-3">
       <%# With a list to go on with, its card holds the practice button. %>
       <% unless continue_list %><%= link_button home_t("dashboard.practice"), play_path, icon: "keyboard" %><% end %>
-      <%= link_button home_t("dashboard.create"), new_pack_path, variant: :outline, icon: "plus" %>
+      <%= link_button home_t("dashboard.create"), create_list_path, variant: :outline, icon: "plus" %>
     </nav>
   </div>
 

@@ -47,6 +47,37 @@ class SettingsAndDevicesTest < ActionDispatch::IntegrationTest
     assert_not users(:one).packs.exists?(catalog_id: "pack-vim-beginner")
   end
 
+  test "interest chips are toggle buttons with typle-r's rules: a parent takes its children with it" do
+    patch interests_path, params: { interests: ["programming", "programming/vim"] }
+    get interests_path
+    assert_select "button[name=toggle][value=programming][aria-pressed=true]"
+    assert_select "button[name=toggle][value='language'][aria-pressed=false]"
+    patch interests_path, params: { toggle: "language/ko" }
+    assert_equal ["programming", "programming/vim"], users(:one).reload.interests, "a child needs its parent chosen"
+    patch interests_path, params: { toggle: "language" }
+    patch interests_path, params: { toggle: "language/ko" }
+    assert_equal ["language", "language/ko", "programming", "programming/vim"], users(:one).reload.interests.sort
+    patch interests_path, params: { toggle: "language" }
+    assert_equal ["programming", "programming/vim"], users(:one).reload.interests, "a parent goes with its children"
+  end
+
+  test "ベスト記録 chooses the mode and the order with radio buttons, and the lists with buttons" do
+    list = OfficialCatalog.follow(users(:one), "pack-vim-beginner").word_lists.first
+    post practice_records_path, as: :json, params: { word_list_id: list.id, time_ms: 1000, mistakes: 0, accuracy: 100 }
+    get rankings_path
+    assert_select "[role=radiogroup] button[role=radio][aria-checked=true][tabindex='0']", 2
+    assert_select "button[role=radio][aria-checked=false][tabindex='-1'][data-url='/rankings?order=speed']"
+    assert_select "button[data-visit-url][data-list-id='#{list.id}']"
+  end
+
+  test "practice opens the first list when none is given, as typle-r's usePractice does" do
+    first = OfficialCatalog.follow(users(:one), "pack-vim-beginner").word_lists.first
+    other = OfficialCatalog.follow(users(:one), "pack-vim").word_lists.first
+    post practice_records_path, as: :json, params: { word_list_id: other.id, time_ms: 1000, mistakes: 0, accuracy: 100 }
+    get play_path
+    assert_select "[data-practice-list-id-value='#{first.id}']"
+  end
+
   test "the display language is kept in a cookie" do
     patch locale_settings_path, params: { locale: "en" }
     get home_path

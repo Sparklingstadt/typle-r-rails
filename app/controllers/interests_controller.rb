@@ -7,7 +7,9 @@ class InterestsController < ApplicationController
   end
 
   def update
-    current_user.update!(interests: Interests.normalize(params[:interests]))
+    # A chip is a toggle button (typle-r's InterestSettings); the whole list still comes from a form without them.
+    ids = params[:toggle].present? ? Interests.toggle(current_user.interest_ids, params[:toggle].to_s) : Interests.normalize(params[:interests])
+    current_user.update!(interests: ids)
     redirect_to interests_path, notice: t(".saved")
   end
 

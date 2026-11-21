@@ -127,13 +127,11 @@ module SettingsDesignHelper
     end
   end
 
-  # A chip of 関心 (typle-r's InterestSettings): a checkbox, sending the form as soon as it changes.
+  # A chip of 関心 (typle-r's InterestSettings): a toggle button that saves at once, disabled while saving.
   def settings_interest_chip(id, label, chosen)
-    classes = cn("inline-flex min-h-10 cursor-pointer items-center rounded-full border px-4 text-sm font-medium transition-colors outline-none has-[:focus-visible]:ring-3 has-[:focus-visible]:ring-ring/50 in-[form[aria-busy=true]]:opacity-60",
+    classes = cn("inline-flex min-h-10 cursor-pointer items-center rounded-full border px-4 text-sm font-medium transition-colors outline-none focus-visible:ring-3 focus-visible:ring-ring/50 disabled:opacity-60 in-[form[aria-busy=true]]:opacity-60",
                  chosen ? "border-primary bg-primary text-primary-foreground" : "bg-card hover:bg-muted")
-    tag.label(class: classes) do
-      safe_join([check_box_tag("interests[]", id, chosen, id: "interest-#{id.tr("/", "-")}", class: "sr-only", data: { action: "change->autosubmit#submit" }), label])
-    end
+    tag.button(label, type: "submit", name: "toggle", value: id, class: classes, "aria-pressed": chosen.to_s)
   end
 
   def settings_points(items)
