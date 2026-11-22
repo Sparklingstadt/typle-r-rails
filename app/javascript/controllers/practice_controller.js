@@ -84,6 +84,7 @@ export default class extends Controller {
     if (this.finishedAt) return
     const shown = this.shownText()
     const value = this.fieldTarget.value
+    const before = { index: this.index, position: this.position, running: this.startedAt !== null }
     // Only keys added at the end count; a deletion puts the field back as it was.
     const added = value.startsWith(shown) ? Array.from(value.slice(shown.length)) : []
     for (const key of added) {
@@ -91,7 +92,10 @@ export default class extends Controller {
       this.feed(key)
     }
     if (!this.finishedAt) this.fieldTarget.value = this.shownText()
-    this.render()
+    // A key within the word redraws only the letters it moved past and the counts; a new word, the first key of a run
+    // and the end draw everything.
+    if (this.finishedAt || this.index !== before.index || !before.running) this.render()
+    else this.renderKey(before.position)
   }
 
   keydown(event) {
@@ -272,16 +276,7 @@ export default class extends Controller {
     }
     if (this.hasRevealTarget) this.revealTarget.hidden = !this.recall || this.revealed
     this.renderSimpleKeys(word)
-    this.lettersTarget.replaceChildren(...this.letters.map((letter, index) => {
-      const span = document.createElement("span")
-      const done = index < this.position || this.finishedAt
-      span.className = done ? "letter-done" : index === this.position ? (this.missed ? "letter-current letter-error" : "letter-current") : "letter-pending"
-      const concealed = hidden && !done && !/\s/.test(letter)
-      span.textContent = concealed ? "＿" : letter
-      if (concealed) span.classList.add("mx-[0.08em]")
-      if (letter === " ") span.classList.add("letter-space")
-      return span
-    }))
+    this.lettersTarget.replaceChildren(...this.letters.map((letter, index) => this.paintLetter(document.createElement("span"), letter, index, hidden)))
     const total = this.wordsValue.length
     const finished = this.finishedAt ? total : this.index
     const current = this.finishedAt ? total : this.index + 1
@@ -295,6 +290,29 @@ export default class extends Controller {
     this.element.classList.toggle("paused", this.pausedAt !== null)
     this.renderFeedback(null)
     this.renderUpcoming()
+    this.renderStats()
+  }
+
+  // One letter of the word: typed, the one to type (wrong or not) or still to come; hidden in recall mode until typed.
+  paintLetter(span, letter, index, hidden) {
+    const done = index < this.position || this.finishedAt
+    span.className = done ? "letter-done" : index === this.position ? (this.missed ? "letter-current letter-error" : "letter-current") : "letter-pending"
+    const concealed = hidden && !done && !/\s/.test(letter)
+    span.textContent = concealed ? "＿" : letter
+    if (concealed) span.classList.add("mx-[0.08em]")
+    if (letter === " ") span.classList.add("letter-space")
+    return span
+  }
+
+  // A key within the word: the letters from where it was to where it is now, what is wrong, and the counts.
+  renderKey(from) {
+    const hidden = this.recall && !this.revealed
+    const letters = this.letters
+    const spans = this.lettersTarget.children
+    for (let index = from; index <= this.position && index < letters.length; index++) {
+      this.paintLetter(spans[index], letters[index], index, hidden)
+    }
+    this.renderFeedback(null)
     this.renderStats()
   }
 
@@ -324,6 +342,7 @@ export default class extends Controller {
     const words = this.wordsValue
     const index = this.finishedAt ? words.length - 1 : this.index
     if (index === this.upcomingIndex) return
+    const from = this.upcomingIndex
     this.upcomingIndex = index
     const next = words.slice(index + 1, index + 4)
     const remaining = words.length - index - 1 - next.length
@@ -333,20 +352,34 @@ export default class extends Controller {
       + (next.length ? "" : `<span class="text-xs text-muted-foreground">${escapeHtml(this.upcomingTarget.dataset.last ?? "")}</span>`)
       + (remaining > 0 ? `<span class="text-xs text-neutral-400 dark:text-neutral-500">${escapeHtml(message(m.upcomingMore, { count: remaining }))}</span>` : "")
     if (!this.hasAllWordsTarget) return
-    this.allWordsTarget.innerHTML = words.map((word, wordIndex) => {
-      const done = wordIndex < index
-      const current = wordIndex === index
-      const paragraph = Array.from(word.display).length > 24 || word.display.includes("\n")
-      const classes = ["min-h-7 max-w-full border px-3 text-[13px] text-muted-foreground",
-        paragraph ? "block rounded-lg py-2 text-left leading-relaxed whitespace-pre-wrap [overflow-wrap:anywhere]" : "inline-flex items-center rounded-full break-all whitespace-pre-wrap",
-        done ? "border-transparent bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300" : "",
-        current ? "border-transparent bg-primary text-primary-foreground" : ""].join(" ")
-      const state = done ? m.upcomingDone : current ? m.upcomingCurrent : m.upcomingPending
-      return `<li class="max-w-full${paragraph ? " w-full" : ""}"><span class="${classes}"${current ? ' aria-current="step"' : ""}>${escapeHtml(word.display)}<span class="sr-only">${escapeHtml(state ?? "")}</span></span></li>`
-    }).join("")
+    const items = this.allWordsTarget.children
+    // Moving on in the same words changes only the words from the last one to this one; anything else draws them all.
+    if (!this.allWordsStale && from !== undefined && index > from && items.length === words.length) {
+      for (let wordIndex = from; wordIndex <= index; wordIndex++) items[wordIndex].outerHTML = this.allWordsItem(words[wordIndex], wordIndex, index)
+    } else {
+      this.allWordsTarget.innerHTML = words.map((word, wordIndex) => this.allWordsItem(word, wordIndex, index)).join("")
+      this.allWordsStale = false
+    }
     const currentItem = this.allWordsTarget.querySelector('[aria-current="step"]')
     if (currentItem) this.allWordsTarget.scrollTop = currentItem.offsetTop - 48
   }
+
+  // A word in the list of every word: typed (green), the current one or still to come.
+  allWordsItem(word, wordIndex, index) {
+    const m = this.messagesValue
+    const done = wordIndex < index
+    const current = wordIndex === index
+    const paragraph = Array.from(word.display).length > 24 || word.display.includes("\n")
+    const classes = ["min-h-7 max-w-full border px-3 text-[13px] text-muted-foreground",
+      paragraph ? "block rounded-lg py-2 text-left leading-relaxed whitespace-pre-wrap [overflow-wrap:anywhere]" : "inline-flex items-center rounded-full break-all whitespace-pre-wrap",
+      done ? "border-transparent bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300" : "",
+      current ? "border-transparent bg-primary text-primary-foreground" : ""].join(" ")
+    const state = done ? m.upcomingDone : current ? m.upcomingCurrent : m.upcomingPending
+    return `<li class="max-w-full${paragraph ? " w-full" : ""}"><span class="${classes}"${current ? ' aria-current="step"' : ""}>${escapeHtml(word.display)}<span class="sr-only">${escapeHtml(state ?? "")}</span></span></li>`
+  }
+
+  // The words change on a review of missed words and back: the list of every word is drawn again.
+  wordsValueChanged() { this.allWordsStale = true }
 
   renderStats() {
     const elapsed = this.elapsed()
