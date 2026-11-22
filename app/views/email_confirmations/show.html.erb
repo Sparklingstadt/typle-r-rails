@@ -1,9 +1,0 @@
-<%# typle-r's /verify-email: the outcome of the mailed link, then the way home. %>
-<% content_for :title, tt("auth.verifyEmail.title") %>
-<%= page_main(width: :narrow) do %>
-  <%= page_header tt("auth.verifyEmail.title"), tt("auth.verifyEmail.description") %>
-  <div class="max-w-sm space-y-4">
-    <%= @confirmed ? form_message(tt("auth.verifyEmail.done")) : form_message(tt("errors.invalidToken"), kind: :error) %>
-    <%= link_button tt("auth.verifyEmail.home"), home_path, variant: :outline %>
-  </div>
-<% end %>

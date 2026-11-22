@@ -11,9 +11,6 @@ ja:
     attributes:
       user:
         login_id: ID
-        email: メールアドレス
-        password: パスワード
-        password_confirmation: パスワード（確認）
       pack:
         name: パックの名前
       word_list:
@@ -42,11 +39,9 @@ ja:
       less_than_or_equal_to: は%{count}以下の値にしてください
       wrong_length: は%{count}文字で入力してください
       required: を入力してください
-      password_too_long: は72バイト以内にしてください
       login_id_format: は半角英数字と _ . - で入力してください
       taken_device: は「%{name}」と同じです
       device_limit: 端末は%{count}台まで登録できます
-      wrong_current_password: 今のパスワードが違います
       words_required: 単語を1つ以上入力してください
       word_fields_required: "%{line}行目: 表示と入力は空にできません"
   time:
@@ -452,57 +447,11 @@ ja:
   sessions:
     new:
       title: ログイン
-      password: パスワード
-      submit: ログイン
-      github: GitHub でログイン
-      forgot_id: ID を忘れた
-      forgot_password: パスワードを忘れた
-      no_account: アカウントがない方は
-      sign_up: 新しく登録
-      guest_note: ログインすると、アカウントのデータに切り替わります。このブラウザーのデータはそのまま残り、ログアウトすると戻ります。
-    create:
-      failed: ID またはパスワードが違います。
+      local_login: 開発用のデモアカウントでログイン
     destroy:
       signed_out: ログアウトしました。このブラウザーのデータに戻りました。
-  registrations:
-    new:
-      title: アカウントを作る
-      login_id: ID（半角英数字と _ . -、3〜32文字）
-      email: メールアドレス（任意。パスワードや ID を忘れたときに使います）
-      password: パスワード（8文字以上）
-      submit: 登録
-      have_account: 登録済みの方は
-      separate_note: このブラウザーのデータは新しいアカウントにコピーされません。
-    create:
-      created: アカウントを作成しました。
-  passwords:
-    invalid_link: リンクが無効か、期限が切れています。もう一度お試しください。
-    new:
-      title: パスワードを忘れたとき
-      lead: アカウントの確認済みメールアドレスに、パスワードを設定し直すリンクを送ります。
-      submit: リンクを送る
-    create:
-      sent: メールアドレスが登録されていれば、パスワードを設定し直すリンクを送りました。
-    edit:
-      title: 新しいパスワード
-      submit: パスワードを設定
-    update:
-      saved: パスワードを設定しました。ログインしてください。
-  login_id_reminders:
-    new:
-      title: ID を忘れたとき
-      lead: アカウントの確認済みメールアドレスに、ID を送ります。
-      submit: ID を送る
-    create:
-      sent: メールアドレスが登録されていれば、ID を送りました。
-  email_confirmations:
-    show:
-      confirmed: メールアドレスを確認しました。
-      invalid: リンクが無効か、期限が切れています。
   omniauth_callbacks:
     github:
       taken: この GitHub アカウントは別のアカウントと連携しています。
       linked: GitHub（%{login}）と連携しました。
       signed_in: GitHub（%{login}）でログインしました。
-    failure:
-      failed: GitHub でログインできませんでした。

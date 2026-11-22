@@ -14,9 +14,6 @@ fr:
         browser_p1: Enregistré sur le serveur, lié à ce navigateur
         browser_p2: Non synchronisé avec d’autres appareils ou navigateurs
         browser_p3: Perdu si les cookies de ce navigateur sont supprimés
-      auth:
-        password_hint: 10 à 72 caractères. Il ne peut pas être identique à votre identifiant.
   errors:
     messages:
-      same_as_login_id: ne peut pas être identique à votre identifiant
       too_many_words: Une liste peut contenir jusqu’à 1 000 mots.

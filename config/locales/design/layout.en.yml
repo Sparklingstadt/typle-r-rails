@@ -21,8 +21,6 @@ en:
       theme_save_failed: The setting cannot be saved, so it only applies to this page.
       account_menu: Account menu
       manage_devices: Manage devices
-      signed_in_with_github: Signed in with GitHub
-      signed_in_with_password: Signed in with an ID
       sign_in: Sign in
       sign_out: Sign out
       skip: Skip to content

@@ -12,7 +12,7 @@ zh-Hans:
           play: 开始练习
           create: 创建单词列表
           records: 查看记录
-        storage: 无需登录即可使用全部练习和编辑功能。单词列表、练习记录和设备会保存在此浏览器中。登录（GitHub 或 ID 与密码）后，将切换到另一个保存位置——账号，并可在设备之间同步。浏览器中的数据不会自动迁移。
+        storage: 无需登录即可使用全部练习和编辑功能。单词列表、练习记录和设备会保存在此浏览器中。登录（Sparklingstadt ID 或 GitHub）后，将切换到另一个保存位置——账号，并可在设备之间同步。浏览器中的数据不会自动迁移。
         storage_account: 你已登录，单词列表、练习记录和设备会保存到账户中，并与登录同一账户的其他设备和浏览器同步。它们与未登录时保存在此浏览器中的数据分开保存。
         links_guide: 使用方法
         links_about: 关于 Typle
@@ -141,7 +141,7 @@ zh-Hans:
             text: 每次都会记录速度、正确率和错误数，可以通过个人最佳和变化趋势回顾自己的进步。
         storage:
           title: 数据保存在哪里
-          text: 无需登录即可使用全部功能。数据保存在此浏览器中，登录（GitHub 或 ID 与密码）后可以在多台设备之间同步。
+          text: 无需登录即可使用全部功能。数据保存在此浏览器中，登录（Sparklingstadt ID 或 GitHub）后可以在多台设备之间同步。
           more_guide: 使用方法
           more_about: 关于 Typle
           more: "%{guide} ／ %{about}"

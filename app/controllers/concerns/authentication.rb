@@ -18,7 +18,7 @@ module Authentication
       skip_before_action :require_workspace, **options
     end
 
-    # Pages for an account only (email, password).
+    # Pages for an account only.
     def require_account(**options)
       before_action :require_signed_in, **options
     end
@@ -100,5 +100,12 @@ module Authentication
       Current.session = nil
       @current_user = nil
       cookies.delete(:session_id)
+    end
+
+    # After a sign-out that went through, the next Sparklingstadt ID login asks for the password again (prompt=login):
+    # the ID server keeps its own login, which would otherwise let this browser straight back in.
+    def remember_signed_out
+      cookies[SidLogin::RELOGIN_COOKIE] = { value: "1", httponly: true, same_site: :lax, secure: request.ssl?,
+                                            expires: SidLogin::RELOGIN_MAX_AGE.from_now }
     end
 end

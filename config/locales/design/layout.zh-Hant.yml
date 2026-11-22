@@ -19,8 +19,6 @@ zh-Hant:
       theme_save_failed: 無法儲存設定，僅在此頁面內切換。
       account_menu: 帳號選單
       manage_devices: 管理裝置
-      signed_in_with_github: 已透過 GitHub 登入
-      signed_in_with_password: 已使用 ID 登入
       sign_in: 登入
       sign_out: 登出
       skip: 跳至主要內容

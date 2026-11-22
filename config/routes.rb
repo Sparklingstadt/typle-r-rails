@@ -3,25 +3,17 @@ Rails.application.routes.draw do
   get "about" => "pages#about"
   get "guide" => "pages#guide"
 
-  # typle-r's addresses for signing in and the account pages around it; each keeps ?returnTo= (the page to come back to).
+  # typle-r's sign-in page (it keeps ?returnTo=, the page to come back to): Sparklingstadt ID and GitHub, the only logins
+  # since typle-r v2.59.0. /auth/sid and /auth/github start them (OmniAuth); their callbacks end here.
   get "signin" => "sessions#new", as: :new_session
-  resource :session, only: %i[create destroy]
-  get "signup" => "registrations#new", as: :new_registration
-  resource :registration, only: :create
-  get "forgot-password" => "passwords#new", as: :new_password
-  post "forgot-password" => "passwords#create", as: :passwords
-  get "reset-password" => "passwords#edit", as: :edit_password
-  put "reset-password" => "passwords#update", as: :password
-  get "forgot-id" => "login_id_reminders#new", as: :new_login_id_reminder
-  post "forgot-id" => "login_id_reminders#create", as: :login_id_reminder
-  get "email_confirmations/:token" => "email_confirmations#show", as: :email_confirmation
-  post "auth/github/callback" => "omniauth_callbacks#github"
-  get "auth/github/callback" => "omniauth_callbacks#github"
+  resource :session, only: :destroy
+  match "auth/sid/callback" => "omniauth_callbacks#sid", via: %i[get post]
+  match "auth/github/callback" => "omniauth_callbacks#github", via: %i[get post]
   get "auth/failure" => "omniauth_callbacks#failure"
+  # The made-up login of development on this machine (LOCAL_DEVELOPMENT_LOGIN=1), as typle-r's authorizeLocal.
+  post "auth/local" => "sessions#local", as: :local_session, constraints: ->(request) { SessionsController.local_login?(request) }
 
   resource :account, only: :show do
-    patch :password, action: :update_password
-    post :verification, action: :resend_verification
     delete :sessions, action: :sign_out_everywhere
   end
   # typle-r's URLs: /settings is 一般 (the language and the account), /input is 入力.
@@ -74,7 +66,6 @@ Rails.application.routes.draw do
   get "about/licenses" => "pages#licenses", as: :licenses
   get "shared/:id" => "pages#shared_pack", as: :shared_pack
   get "gallery", to: redirect("/catalog")
-  get "verify-email" => "email_confirmations#show", as: :verify_email
 
   get "up" => "rails/health#show", as: :rails_health_check
 

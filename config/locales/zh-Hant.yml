@@ -11,9 +11,6 @@ zh-Hant:
     attributes:
       user:
         login_id: ID
-        email: 電子郵件地址
-        password: 密碼
-        password_confirmation: 確認密碼
       pack:
         name: 單字包名稱
       word_list:
@@ -42,11 +39,9 @@ zh-Hant:
       less_than_or_equal_to: 必須小於或等於 %{count}
       wrong_length: 必須是 %{count} 個字元
       required: 為必填
-      password_too_long: 不能超過 72 位元組
       login_id_format: 只能使用半形英文字母、數字和 _ . -
       taken_device: 與「%{name}」相同
       device_limit: 最多可登錄 %{count} 台裝置。
-      wrong_current_password: 目前的密碼不正確。
       words_required: 請至少輸入一個單字。
       word_fields_required: "第 %{line} 行：顯示和輸入不能空白。"
   time:
@@ -452,57 +447,11 @@ zh-Hant:
   sessions:
     new:
       title: 登入
-      password: 密碼
-      submit: 登入
-      github: 使用 GitHub 登入
-      forgot_id: 忘記 ID
-      forgot_password: 忘記密碼
-      no_account: 還沒有帳號？
-      sign_up: 立即註冊
-      guest_note: 登入後會切換到帳號的資料。此瀏覽器的資料會保留，登出後即可恢復。
-    create:
-      failed: ID 或密碼不正確。
+      local_login: 登入開發用的示範帳號
     destroy:
       signed_out: 已登出，已切回此瀏覽器的資料。
-  registrations:
-    new:
-      title: 建立帳號
-      login_id: ID（半形英文字母、數字和 _ . -，3〜32 個字元）
-      email: 電子郵件地址（選填。忘記密碼或 ID 時使用）
-      password: 密碼（至少 8 個字元）
-      submit: 註冊
-      have_account: 已經有帳號？
-      separate_note: 此瀏覽器的資料不會複製到新帳號。
-    create:
-      created: 帳號已建立。
-  passwords:
-    invalid_link: 連結無效或已過期。請再試一次。
-    new:
-      title: 忘記密碼
-      lead: 我們會將重設密碼的連結寄到帳號已驗證的電子郵件地址。
-      submit: 寄送連結
-    create:
-      sent: 如果該電子郵件地址已註冊，我們已寄出重設密碼的連結。
-    edit:
-      title: 新密碼
-      submit: 設定密碼
-    update:
-      saved: 密碼已設定。請登入。
-  login_id_reminders:
-    new:
-      title: 忘記 ID
-      lead: 我們會將 ID 寄到帳號已驗證的電子郵件地址。
-      submit: 寄送 ID
-    create:
-      sent: 如果該電子郵件地址已註冊，我們已寄出 ID。
-  email_confirmations:
-    show:
-      confirmed: 電子郵件地址已驗證。
-      invalid: 連結無效或已過期。
   omniauth_callbacks:
     github:
       taken: 此 GitHub 帳號已與其他帳號連結。
       linked: 已連結 GitHub（%{login}）。
       signed_in: 已使用 GitHub（%{login}）登入。
-    failure:
-      failed: 無法使用 GitHub 登入。

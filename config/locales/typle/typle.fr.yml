@@ -41,9 +41,6 @@ fr:
       analytics:
         title: Statistiques de visite
         text: Pour savoir quelles pages sont consultées et à quelle fréquence, les affichages de pages sont comptés avec Vercel Web Analytics. Seuls l’adresse de la page (sans ce qui suit ?), le site d’origine, le navigateur, le système d’exploitation et le pays sont envoyés. Aucun cookie n’est utilisé, et vos listes de mots et vos résultats d’entraînement ne sont jamais envoyés.
-      email:
-        title: Utilisation de l’adresse e-mail
-        text: Quand vous créez un compte avec un identifiant et un mot de passe, nous conservons votre adresse e-mail. Elle sert uniquement à envoyer les e-mails de confirmation de l’adresse, de réinitialisation du mot de passe et de rappel de l’identifiant. Elle n’est jamais utilisée pour de la publicité ou des annonces ni transmise à d’autres. Les e-mails sont envoyés via Resend.
       version:
         title: Version et développement
         version: Version
@@ -71,13 +68,16 @@ fr:
     account:
       checking: Vérification de la connexion
       signIn: Se connecter
+      signInWithSid: Se connecter avec Sparklingstadt ID
       signInWithGitHub: Se connecter avec GitHub
       signInFailed: Connexion impossible. Veuillez réessayer.
       githubUser: Utilisateur GitHub
       ffpfUser: Utilisateur FFPF ID
+      sidUser: Utilisateur Sparklingstadt ID
       menu: Menu du compte
       signedInWithGitHub: Connecté avec GitHub
       signedInWithFfpf: Connecté avec FFPF ID
+      signedInWithSid: Connecté avec Sparklingstadt ID
       signedInWithPassword: Connecté avec un identifiant
       manageDevices: Gérer les appareils
       signOut: Se déconnecter
@@ -87,75 +87,6 @@ fr:
         description: Commencez à vous entraîner avec les noms de 193 pays. Les listes et les résultats sont enregistrés dans une base de données propre à ce Mac.
         start: Commencer l’entraînement
         failed: Connexion impossible. Veuillez réessayer.
-    auth:
-      fields:
-        loginId: Identifiant
-        email: Adresse e-mail
-        password: Mot de passe
-        currentPassword: Mot de passe actuel
-        newPassword: Nouveau mot de passe
-        loginIdHint: De 3 à 32 lettres, chiffres, « _ » ou « - ». Majuscules et minuscules sont identiques. Il ne peut pas être modifié ensuite.
-        emailHint: Sert à confirmer votre adresse et à vous aider si vous oubliez votre identifiant ou votre mot de passe.
-        passwordHint: De 10 à 128 caractères, différent de l’identifiant.
-      send: Envoyer
-      failed: Une erreur s’est produite. Veuillez réessayer.
-      backToSignIn: Aller à la connexion
-      signIn:
-        submit: Se connecter
-        refused: L’identifiant ou le mot de passe est incorrect, ou la connexion est suspendue pour un moment.
-        signUp: Créer un compte
-        forgotPassword: Mot de passe oublié
-        forgotId: Identifiant oublié
-        or: Vous pouvez aussi vous connecter avec un compte GitHub.
-      signUp:
-        title: Créer un compte
-        description: Créez un compte Typle qui se connecte avec un identifiant et un mot de passe.
-        submit: Créer le compte
-        submitting: Création du compte…
-        done: Votre compte a été créé et vous êtes connecté.
-        mailSent: Un e-mail de confirmation a été envoyé à %{email}. Ouvrez le lien qu’il contient pour confirmer votre adresse.
-        mailNotSent: L’e-mail de confirmation n’a pas pu être envoyé. Vous pouvez le renvoyer depuis « Compte » dans les paramètres.
-        continue: Continuer
-        failed: Le compte n’a pas pu être créé. Veuillez réessayer.
-        signInFailed: Votre compte a été créé, mais la connexion a échoué. Connectez-vous depuis la page de connexion.
-        haveAccount: Vous avez déjà un compte ? Connectez-vous
-      verifyEmail:
-        title: Confirmer l’adresse e-mail
-        description: Confirme votre adresse avec le lien de l’e-mail.
-        verifying: Confirmation…
-        done: Votre adresse e-mail est confirmée.
-        failed: L’adresse n’a pas pu être confirmée. Veuillez réessayer.
-        home: Aller à l’accueil
-      forgotPassword:
-        title: Mot de passe oublié
-        description: Saisissez votre identifiant. S’il a une adresse e-mail confirmée, nous enverrons un lien pour choisir un nouveau mot de passe.
-        sent: Si l’identifiant existe et que son adresse est confirmée, nous avons envoyé un lien pour choisir un nouveau mot de passe. Il est valable 30 minutes.
-      resetPassword:
-        title: Nouveau mot de passe
-        description: Choisissez un nouveau mot de passe. Cela déconnecte tous les appareils et vous reconnecte ici.
-        submit: Enregistrer
-        again: Renvoyer le lien
-        signInFailed: Le mot de passe a été enregistré, mais la connexion a échoué. Connectez-vous depuis la page de connexion.
-      forgotId:
-        title: Identifiant oublié
-        description: Saisissez l’adresse e-mail de votre inscription. Si des comptes l’ont confirmée, nous enverrons leurs identifiants par e-mail.
-        sent: Si des comptes ont confirmé cette adresse, nous avons envoyé leurs identifiants par e-mail.
-      settings:
-        heading: Compte
-        description: Ce compte se connecte avec un identifiant et un mot de passe.
-        verified: Confirmée
-        unverified: Non confirmée
-        resend: Renvoyer l’e-mail de confirmation
-        resent: L’e-mail de confirmation a été envoyé.
-        alreadyVerified: Cette adresse est déjà confirmée.
-        mailNotSent: L’e-mail de confirmation n’a pas pu être envoyé. Veuillez réessayer plus tard.
-        loadFailed: Le compte n’a pas pu être chargé.
-        changePassword: Changer de mot de passe
-        changePasswordDescription: Votre mot de passe actuel est nécessaire. Le changer déconnecte vos autres appareils.
-        change: Changer le mot de passe
-        changed: Votre mot de passe a été changé. Vos autres appareils ont été déconnectés.
-        failed: Le mot de passe n’a pas pu être changé. Veuillez réessayer.
-        signInAgain: Votre mot de passe a été changé, mais cet appareil doit se reconnecter. Connectez-vous avec le nouveau mot de passe.
     common:
       loading: Chargement…
       close: Fermer
@@ -417,15 +348,6 @@ fr:
       invalidPage: Le numéro de page n’est pas valide.
       importInputTypeInvalid: 'Ligne %{line} : input_type doit être command, code ou word.'
       invalidRequest: La requête n’est pas valide.
-      loginIdFormat: L’identifiant doit comporter de 3 à 32 lettres, chiffres, « _ » ou « - ».
-      passwordLength: Le mot de passe doit comporter de 10 à 128 caractères.
-      passwordSameAsId: Le mot de passe ne peut pas être identique à l’identifiant.
-      emailFormat: L’adresse e-mail n’est pas valide.
-      loginIdTaken: Cet identifiant est déjà utilisé. Choisissez-en un autre.
-      tooManyRequests: Trop de demandes. Réessayez plus tard.
-      invalidToken: 'Ce lien ne peut pas être utilisé : il a expiré ou a déjà servi.'
-      notPasswordAccount: Réservé aux comptes qui se connectent avec un identifiant et un mot de passe.
-      wrongPassword: Le mot de passe actuel est incorrect.
     format:
       today: Aujourd’hui
       yesterday: Hier
@@ -603,7 +525,7 @@ fr:
           p2: Les données sont enregistrées dans le LocalStorage de ce navigateur et ne sont pas synchronisées avec d’autres appareils ou navigateurs.
         account:
           title: Enregistré sur votre compte
-          when: Quand vous êtes connecté (avec GitHub ou un identifiant et un mot de passe)
+          when: Quand vous êtes connecté (avec Sparklingstadt ID ou GitHub)
           p1: 'Les données sont enregistrées sur un serveur dédié à votre compte : une fois connecté, vous retrouvez les mêmes données sur tous vos appareils.'
           p2: L’enregistrement nécessite une connexion Internet.
         warning:
@@ -645,7 +567,7 @@ fr:
         play: S’entraîner
         create: Créer une liste de mots
         records: Voir les résultats
-      storage: Toutes les fonctions d’entraînement et de modification sont disponibles sans vous connecter. Les listes de mots, l’historique et les appareils sont enregistrés dans ce navigateur. En vous connectant (avec GitHub ou un identifiant et un mot de passe), vous passez à un autre emplacement, votre compte, synchronisé entre vos appareils. Les données du navigateur ne sont pas transférées automatiquement.
+      storage: Toutes les fonctions d’entraînement et de modification sont disponibles sans vous connecter. Les listes de mots, l’historique et les appareils sont enregistrés dans ce navigateur. En vous connectant (avec Sparklingstadt ID ou GitHub), vous passez à un autre emplacement, votre compte, synchronisé entre vos appareils. Les données du navigateur ne sont pas transférées automatiquement.
       storageAccount: 'Vous êtes connecté : vos listes de mots, votre historique et vos appareils sont enregistrés dans votre compte et synchronisés avec les autres appareils et navigateurs connectés au même compte. Ils sont conservés séparément des données enregistrées dans ce navigateur sans connexion.'
       links: "<guide>Mode d’emploi</guide> / <about>À propos de Typle</about>"
     input:
@@ -762,7 +684,7 @@ fr:
           text: 'La vitesse, la précision et les erreurs sont enregistrées à chaque fois : vos records et leur évolution montrent vos progrès.'
       storage:
         title: Où sont gardées vos données
-        text: Toutes les fonctions marchent sans connexion. Vos données sont gardées dans ce navigateur, et une connexion (avec GitHub ou un identifiant et un mot de passe) les synchronise entre vos appareils.
+        text: Toutes les fonctions marchent sans connexion. Vos données sont gardées dans ce navigateur, et une connexion (avec Sparklingstadt ID ou GitHub) les synchronise entre vos appareils.
         more: "<guide>Mode d’emploi</guide> / <about>À propos de Typle</about>"
       try:
         badge: Essayez ici
@@ -774,35 +696,6 @@ fr:
           other: "%{count} mots tapés. Continuez avec l’entraînement de ce pack, où vos résultats sont enregistrés."
         continue: Continuer avec ce pack
         starting: Préparation…
-    mail:
-      verify:
-        subject: 'Typle : confirmez votre adresse e-mail'
-        body: |-
-          Merci de vous être inscrit sur Typle.
-
-          Ouvrez le lien ci-dessous pour confirmer votre adresse e-mail (valable 24 heures).
-
-          %{link}
-
-          Si vous n’attendiez pas cet e-mail, vous pouvez le supprimer.
-      reset:
-        subject: 'Typle : réinitialisez votre mot de passe'
-        body: |-
-          Nous avons reçu une demande de réinitialisation de votre mot de passe.
-
-          Ouvrez le lien ci-dessous pour choisir un nouveau mot de passe (valable 30 minutes, utilisable une seule fois).
-
-          %{link}
-
-          Si vous n’êtes pas à l’origine de cette demande, vous pouvez supprimer cet e-mail. Votre mot de passe n’a pas changé.
-      loginIds:
-        subject: 'Typle : vos identifiants de connexion'
-        body: |-
-          Les identifiants de connexion enregistrés avec cette adresse e-mail sont :
-
-          %{ids}
-
-          Si vous n’attendiez pas cet e-mail, vous pouvez le supprimer.
     metadata:
       title: Typle | Entraînez-vous à taper avec vos propres mots
       description: Une application de dactylographie avec vos propres listes de mots. Ajoutez les mots de votre choix, entraînez-vous et revoyez vos meilleurs résultats.

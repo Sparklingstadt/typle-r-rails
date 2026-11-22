@@ -3,8 +3,7 @@ require "test_helper"
 # Every page in every display language: a missing translation raises in tests.
 class LocalesTest < ActionDispatch::IntegrationTest
   PAGES = %w[/ /about /guide /home /play /records /rankings /rankings?mode=writing /packs /words /catalog
-             /catalog/pack-vim-beginner /settings /input /interests /devices /packs/new
-             /forgot-password /forgot-id /signin /signup].freeze
+             /catalog/pack-vim-beginner /settings /input /interests /devices /packs/new /signin /signin?error=1].freeze
 
   Localization::LOCALES.each do |locale|
     test "every page renders in #{locale}" do
@@ -25,12 +24,6 @@ class LocalesTest < ActionDispatch::IntegrationTest
         get path
         assert_response :success, "#{locale} #{path}"
         assert_select "html[lang=?]", locale
-      end
-      I18n.with_locale(locale) do
-        user.update!(email: "one@example.com")
-        AccountMailer.password_reset(user).deliver_now
-        AccountMailer.login_id_reminder(user).deliver_now
-        AccountMailer.email_confirmation(user).deliver_now
       end
     end
   end

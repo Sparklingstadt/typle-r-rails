@@ -17,12 +17,12 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-gem "bcrypt", "~> 3.1.7"
 gem "csv"
 
-# GitHub sign-in (configured by GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET)
+# Sparklingstadt ID (OpenID Connect, configured by SID_ISSUER, SID_CLIENT_ID and SID_CLIENT_SECRET) and GitHub sign-in
+# (configured by GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET)
 gem "omniauth"
+gem "omniauth_openid_connect"
 gem "omniauth-github"
 gem "omniauth-rails_csrf_protection"
 # omniauth-github's OAuth client; older versions leak the bearer token on a redirect (GHSA-fpw7-h52c-3w8x and later).
@@ -46,6 +46,11 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+end
+
+group :test do
+  # The Sparklingstadt ID server's discovery, keys and token endpoint, answered in the tests.
+  gem "webmock"
 end
 
 group :development do

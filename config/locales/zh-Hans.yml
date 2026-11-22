@@ -11,9 +11,6 @@ zh-Hans:
     attributes:
       user:
         login_id: ID
-        email: 邮箱地址
-        password: 密码
-        password_confirmation: 确认密码
       pack:
         name: 词包名称
       word_list:
@@ -42,11 +39,9 @@ zh-Hans:
       less_than_or_equal_to: 必须小于或等于 %{count}
       wrong_length: 必须是 %{count} 个字符
       required: 为必填项
-      password_too_long: 不能超过 72 字节
       login_id_format: 只能使用半角字母、数字和 _ . -
       taken_device: 与“%{name}”相同
       device_limit: 最多可登记 %{count} 台设备。
-      wrong_current_password: 当前密码不正确。
       words_required: 请至少输入一个单词。
       word_fields_required: "第 %{line} 行：显示和输入不能为空。"
   time:
@@ -452,57 +447,11 @@ zh-Hans:
   sessions:
     new:
       title: 登录
-      password: 密码
-      submit: 登录
-      github: 使用 GitHub 登录
-      forgot_id: 忘记 ID
-      forgot_password: 忘记密码
-      no_account: 还没有账号？
-      sign_up: 立即注册
-      guest_note: 登录后会切换到账号的数据。此浏览器的数据会保留，退出登录后即可恢复。
-    create:
-      failed: ID 或密码不正确。
+      local_login: 登录开发用的演示账号
     destroy:
       signed_out: 已退出登录，已切回此浏览器的数据。
-  registrations:
-    new:
-      title: 创建账号
-      login_id: ID（半角字母、数字和 _ . -，3〜32 个字符）
-      email: 邮箱地址（可选。忘记密码或 ID 时使用）
-      password: 密码（至少 8 个字符）
-      submit: 注册
-      have_account: 已有账号？
-      separate_note: 此浏览器的数据不会复制到新账号。
-    create:
-      created: 账号已创建。
-  passwords:
-    invalid_link: 链接无效或已过期。请重试。
-    new:
-      title: 忘记密码
-      lead: 我们会向账号已验证的邮箱地址发送重设密码的链接。
-      submit: 发送链接
-    create:
-      sent: 如果该邮箱地址已注册，我们已发送重设密码的链接。
-    edit:
-      title: 新密码
-      submit: 设置密码
-    update:
-      saved: 密码已设置。请登录。
-  login_id_reminders:
-    new:
-      title: 忘记 ID
-      lead: 我们会向账号已验证的邮箱地址发送 ID。
-      submit: 发送 ID
-    create:
-      sent: 如果该邮箱地址已注册，我们已发送 ID。
-  email_confirmations:
-    show:
-      confirmed: 邮箱地址已验证。
-      invalid: 链接无效或已过期。
   omniauth_callbacks:
     github:
       taken: 此 GitHub 账号已与其他账号关联。
       linked: 已关联 GitHub（%{login}）。
       signed_in: 已使用 GitHub（%{login}）登录。
-    failure:
-      failed: 无法使用 GitHub 登录。

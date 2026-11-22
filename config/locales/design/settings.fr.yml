@@ -151,39 +151,6 @@ fr:
           use: Utiliser cet appareil pour l’entraînement dans ce navigateur
           useHelp: Lorsque vous vous entraînez dans « S’entraîner », cet appareil est enregistré avec vos résultats.
         deleteCurrent: " L’appareil utilisé pour l’entraînement dans ce navigateur repassera à « Par défaut »."
-      auth:
-        fields:
-          loginId: Identifiant
-          email: Adresse e-mail
-          password: Mot de passe
-          currentPassword: Mot de passe actuel
-          newPassword: Nouveau mot de passe
-        backToSignIn: Aller à la connexion
-        signIn:
-          submit: Se connecter
-          signUp: Créer un compte
-          forgotPassword: Mot de passe oublié
-          forgotId: Identifiant oublié
-          or: Vous pouvez aussi vous connecter avec un compte GitHub.
-        signUp:
-          title: Créer un compte
-          description: Créez un compte Typle qui se connecte avec un identifiant et un mot de passe.
-          submit: Créer le compte
-          haveAccount: Vous avez déjà un compte ? Connectez-vous
-        forgotPassword:
-          title: Mot de passe oublié
-        forgotId:
-          title: Identifiant oublié
-        resetPassword:
-          title: Nouveau mot de passe
-          submit: Enregistrer
-        settings:
-          heading: Compte
-          verified: Confirmée
-          unverified: Non confirmée
-          changePassword: Changer de mot de passe
-          changePasswordDescription: Votre mot de passe actuel est nécessaire. Le changer déconnecte vos autres appareils.
-        signInWithGitHub: Se connecter avec GitHub
       about:
         title: À propos de Typle
         intro: Une application de dactylographie pour vous entraîner avec vos propres listes de mots. Ajoutez les mots de votre choix, entraînez-vous et suivez vos progrès grâce à vos meilleurs résultats.
@@ -203,9 +170,6 @@ fr:
           account:
             title: Compte
             condition: Quand vous êtes connecté
-        email:
-          title: Utilisation de l’adresse e-mail
-          text: "Quand vous créez un compte avec un identifiant et un mot de passe, nous conservons votre adresse e-mail. Elle sert uniquement à envoyer les e-mails de confirmation de l’adresse, de réinitialisation du mot de passe et de rappel de l’identifiant. Elle n’est jamais utilisée pour de la publicité ou des annonces ni transmise à d’autres."
         version:
           title: Version et développement
           tech: Technologies utilisées
@@ -250,7 +214,7 @@ fr:
             when: Quand vous n’êtes pas connecté
           account:
             title: Enregistré sur votre compte
-            when: Quand vous êtes connecté (avec GitHub ou un identifiant et un mot de passe)
+            when: Quand vous êtes connecté (avec Sparklingstadt ID ou GitHub)
         shortcuts:
           lead: Les touches utilisables sans la souris.
           screens:

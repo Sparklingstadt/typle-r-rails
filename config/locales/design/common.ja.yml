@@ -10,9 +10,6 @@ ja:
         browser_p1: このブラウザーに結び付けて、サーバーに保存します
         browser_p2: 別の端末やブラウザーとは同期しません
         browser_p3: ブラウザーの Cookie を削除すると使えなくなります
-      auth:
-        password_hint: 10〜72文字。ID と同じものは使えません。
   errors:
     messages:
-      same_as_login_id: は ID と同じものは使えません
       too_many_words: 単語は1リストにつき1,000件までです。

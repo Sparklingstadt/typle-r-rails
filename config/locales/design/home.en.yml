@@ -16,7 +16,7 @@ en:
           play: Practice
           create: Create a word list
           records: View records
-        storage: You can use every practice and editing feature without signing in. Word lists, practice history, and devices are saved in this browser. Signing in (with GitHub or an ID and password) switches to a separate storage location, your account, which syncs across devices. Data in the browser is not moved automatically.
+        storage: You can use every practice and editing feature without signing in. Word lists, practice history, and devices are saved in this browser. Signing in (with Sparklingstadt ID or GitHub) switches to a separate storage location, your account, which syncs across devices. Data in the browser is not moved automatically.
         storage_account: You are signed in, so your word lists, practice history, and devices are saved to your account and synced with other devices and browsers signed in to the same account. They are kept separately from data saved in this browser without signing in.
         links_guide: How to use
         links_about: About Typle
@@ -177,7 +177,7 @@ en:
             text: Speed, accuracy and mistakes are recorded every time, so your personal bests and trends show how far you have come.
         storage:
           title: Where your data is kept
-          text: Every feature works without logging in. Your data is kept in this browser, and logging in (with GitHub or an ID and password) syncs it across devices.
+          text: Every feature works without logging in. Your data is kept in this browser, and logging in (with Sparklingstadt ID or GitHub) syncs it across devices.
           more_guide: How to use
           more_about: About Typle
           more: "%{guide} / %{about}"

@@ -41,9 +41,6 @@ zh-Hans:
       analytics:
         title: 访问统计
         text: 为了了解哪些页面被浏览以及浏览次数，我们使用 Vercel Web Analytics 统计页面浏览量。只发送页面地址（不含 ? 之后的部分）、来源页面、浏览器、操作系统和国家。不使用 Cookie，也不会发送你的单词列表和练习记录。
-      email:
-        title: 电子邮件地址的使用
-        text: 使用 ID 和密码注册时，我们会保存你的电子邮件地址。它只用于发送确认地址、重置密码和告知 ID 的邮件，不用于广告或通知，也不会提供给其他方。邮件通过 Resend 发送。
       version:
         title: 版本与开发
         version: 版本
@@ -71,13 +68,16 @@ zh-Hans:
     account:
       checking: 正在确认登录状态
       signIn: 登录
+      signInWithSid: 使用 Sparklingstadt ID 登录
       signInWithGitHub: 使用 GitHub 登录
       signInFailed: 无法登录。请重试。
       githubUser: GitHub 用户
       ffpfUser: FFPF ID 用户
+      sidUser: Sparklingstadt ID 用户
       menu: 账号菜单
       signedInWithGitHub: 已通过 GitHub 登录
       signedInWithFfpf: 已通过 FFPF ID 登录
+      signedInWithSid: 已通过 Sparklingstadt ID 登录
       signedInWithPassword: 已使用 ID 登录
       manageDevices: 管理设备
       signOut: 退出登录
@@ -87,75 +87,6 @@ zh-Hans:
         description: 可以用 193 个国家的国名开始练习。列表和练习记录保存在这台 Mac 专用的数据库中。
         start: 开始练习
         failed: 无法登录。请重试。
-    auth:
-      fields:
-        loginId: ID
-        email: 电子邮件地址
-        password: 密码
-        currentPassword: 当前密码
-        newPassword: 新密码
-        loginIdHint: 3到32个半角字母、数字、“_”或“-”。不区分大小写，之后无法更改。
-        emailHint: 用于发送确认邮件，以及忘记 ID 或密码时的邮件。
-        passwordHint: 10到128个字符，不能与 ID 相同。
-      send: 发送
-      failed: 操作失败，请重试。
-      backToSignIn: 前往登录
-      signIn:
-        submit: 登录
-        refused: ID 或密码错误，或暂时无法登录。
-        signUp: 注册新账户
-        forgotPassword: 忘记密码
-        forgotId: 忘记 ID
-        or: 也可以使用 GitHub 账户登录。
-      signUp:
-        title: 注册
-        description: 创建使用 ID 和密码登录的 Typle 账户。
-        submit: 注册
-        submitting: 正在注册…
-        done: 已注册并登录。
-        mailSent: 确认邮件已发送至 %{email}。请打开邮件中的链接确认地址。
-        mailNotSent: 无法发送确认邮件。可以在设置的“账户”中重新发送。
-        continue: 继续
-        failed: 无法注册，请重试。
-        signInFailed: 已注册，但无法登录。请在登录页面登录。
-        haveAccount: 已有账户？在此登录
-      verifyEmail:
-        title: 确认电子邮件地址
-        description: 使用邮件中的链接确认地址。
-        verifying: 正在确认…
-        done: 已确认电子邮件地址。
-        failed: 无法确认，请重试。
-        home: 返回主页
-      forgotPassword:
-        title: 忘记密码
-        description: 请输入 ID。如果有已确认的电子邮件地址，我们会发送重设密码的链接。
-        sent: 如果该 ID 存在且电子邮件地址已确认，我们已发送重设链接。链接30分钟内有效。
-      resetPassword:
-        title: 重设密码
-        description: 请设置新密码。设置后，所有设备都会退出登录，并在此页面重新登录。
-        submit: 设置
-        again: 重新发送重设链接
-        signInFailed: 已设置密码，但无法登录。请在登录页面登录。
-      forgotId:
-        title: 忘记 ID
-        description: 请输入注册时的电子邮件地址。如果有账户已确认该地址，我们会通过邮件发送 ID。
-        sent: 如果有账户已确认该地址，我们已通过邮件发送 ID。
-      settings:
-        heading: 账户
-        description: 此账户使用 ID 和密码登录。
-        verified: 已确认
-        unverified: 未确认
-        resend: 重新发送确认邮件
-        resent: 已发送确认邮件。
-        alreadyVerified: 此地址已确认。
-        mailNotSent: 无法发送确认邮件，请稍后重试。
-        loadFailed: 无法读取账户信息。
-        changePassword: 更改密码
-        changePasswordDescription: 需要当前密码。更改后，其他设备将退出登录。
-        change: 更改密码
-        changed: 已更改密码。其他设备已退出登录。
-        failed: 无法更改密码，请重试。
-        signInAgain: 已更改密码，但此设备需要重新登录。请使用新密码登录。
     common:
       loading: 加载中…
       close: 关闭
@@ -382,15 +313,6 @@ zh-Hans:
       invalidPage: 页码无效。
       importInputTypeInvalid: 第 %{line} 行的 input_type 必须是 command、code 或 word。
       invalidRequest: 请求内容无效。
-      loginIdFormat: ID 请使用3到32个半角字母、数字、“_”或“-”。
-      passwordLength: 密码请使用10到128个字符。
-      passwordSameAsId: 密码不能与 ID 相同。
-      emailFormat: 电子邮件地址的格式不正确。
-      loginIdTaken: 此 ID 已被使用，请换一个。
-      tooManyRequests: 请求次数过多，请稍后再试。
-      invalidToken: 此链接无法使用，可能已过期或已被使用。
-      notPasswordAccount: 仅适用于使用 ID 和密码登录的账号。
-      wrongPassword: 当前密码不正确。
     format:
       today: 今天
       yesterday: 昨天
@@ -568,7 +490,7 @@ zh-Hans:
           p2: 数据保存在此浏览器的 LocalStorage 中，不会与其他设备或浏览器同步。
         account:
           title: 保存到账号
-          when: 登录后（GitHub 或 ID 与密码）
+          when: 登录后（Sparklingstadt ID 或 GitHub）
           p1: 数据保存在账号专用的服务器上，只要登录，在任何设备上都能使用相同的数据。
           p2: 保存需要联网。
         warning:
@@ -606,7 +528,7 @@ zh-Hans:
         play: 开始练习
         create: 创建单词列表
         records: 查看记录
-      storage: 无需登录即可使用全部练习和编辑功能。单词列表、练习记录和设备会保存在此浏览器中。登录（GitHub 或 ID 与密码）后，将切换到另一个保存位置——账号，并可在设备之间同步。浏览器中的数据不会自动迁移。
+      storage: 无需登录即可使用全部练习和编辑功能。单词列表、练习记录和设备会保存在此浏览器中。登录（Sparklingstadt ID 或 GitHub）后，将切换到另一个保存位置——账号，并可在设备之间同步。浏览器中的数据不会自动迁移。
       storageAccount: 你已登录，单词列表、练习记录和设备会保存到账户中，并与登录同一账户的其他设备和浏览器同步。它们与未登录时保存在此浏览器中的数据分开保存。
       links: "<guide>使用方法</guide> ／ <about>关于 Typle</about>"
     input:
@@ -717,7 +639,7 @@ zh-Hans:
           text: 每次都会记录速度、正确率和错误数，可以通过个人最佳和变化趋势回顾自己的进步。
       storage:
         title: 数据保存在哪里
-        text: 无需登录即可使用全部功能。数据保存在此浏览器中，登录（GitHub 或 ID 与密码）后可以在多台设备之间同步。
+        text: 无需登录即可使用全部功能。数据保存在此浏览器中，登录（Sparklingstadt ID 或 GitHub）后可以在多台设备之间同步。
         more: "<guide>使用方法</guide> ／ <about>关于 Typle</about>"
       try:
         badge: 在这里试打
@@ -727,35 +649,6 @@ zh-Hans:
         done: 已输入 %{count} 个词。继续用这个单词包练习，就会留下记录。
         continue: 继续用这个单词包练习
         starting: 正在准备…
-    mail:
-      verify:
-        subject: Typle：确认电子邮件地址
-        body: |-
-          感谢您注册 Typle。
-
-          请打开以下链接确认您的电子邮件地址（24小时内有效）。
-
-          %{link}
-
-          如果您没有进行此操作，请直接删除这封邮件。
-      reset:
-        subject: Typle：重置密码
-        body: |-
-          我们收到了重置密码的请求。
-
-          请打开以下链接设置新密码（30分钟内有效，只能使用一次）。
-
-          %{link}
-
-          如果您没有进行此操作，请直接删除这封邮件。您的密码不会改变。
-      loginIds:
-        subject: Typle：您的登录 ID
-        body: |-
-          使用此电子邮件地址注册的登录 ID 如下：
-
-          %{ids}
-
-          如果您没有进行此操作，请直接删除这封邮件。
     metadata:
       title: Typle | 用自己的词汇练习打字
       description: 一款可以用自己的单词列表练习的打字应用。添加喜欢的词汇，练习打字，并回顾最佳记录。

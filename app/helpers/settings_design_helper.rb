@@ -49,38 +49,10 @@ module SettingsDesignHelper
     end
   end
 
-  # FormField of typle-r's AccountForm: a label, the field (the block, given its id) and an optional hint.
-  # typle-r's FormField: the label, the field, its hint and its own problem under it.
-  def settings_field(label, id:, hint: nil, error: nil, &block)
-    tag.div(class: "space-y-1.5") do
-      safe_join([label_tag(id, label, class: label_classes), capture(id, &block),
-                 (tag.p(hint, id: "#{id}-hint", class: "text-xs text-muted-foreground") if hint),
-                 (tag.p(error, id: "#{id}-error", class: "text-sm text-destructive") if error)].compact)
-    end
-  end
-
-  # typle-r's fields.passwordHint, with this app's longest password (bcrypt reads 72 bytes, typle-r allows 128).
-  def password_hint = tt("auth.fields.passwordHint").sub("128", User::MAX_PASSWORD.to_s)
-
   # typle-r's FormMessage: what a form did, or why it could not.
   def form_message(text, kind: :done)
     kind == :error ? tag.p(text, role: "alert", class: "text-sm text-destructive") : tag.p(text, role: "status", class: "text-sm")
   end
-
-  # The sign-up's problem of a field, in typle-r's words (errors.loginIdFormat, loginIdTaken, passwordLength, …).
-  def signup_problem(user, field)
-    error = user.errors.where(field).first or return
-    case [field, error.type]
-    in [:login_id, :taken] then tt("errors.loginIdTaken")
-    in [:login_id, _] then tt("errors.loginIdFormat")
-    in [:password, :same_as_login_id] then tt("errors.passwordSameAsId")
-    in [:password, _] then tt("errors.passwordLength").sub("128", User::MAX_PASSWORD.to_s)
-    in [:email, :taken] then error.full_message
-    in [:email, _] then tt("errors.emailFormat")
-    end
-  end
-
-  def settings_input_classes = input_classes("h-10")
 
   # A record's problems, as an alert (typle-r's ErrorAlert).
   def settings_errors(record)
