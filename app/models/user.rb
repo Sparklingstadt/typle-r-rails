@@ -1,51 +1,55 @@
 class User < ApplicationRecord
-  has_secure_password validations: false
   has_many :sessions, dependent: :destroy
   has_many :packs, -> { order(:position, :id) }, dependent: :destroy
   has_many :word_lists, dependent: :destroy
   has_many :practice_records, dependent: :destroy
   has_many :devices, -> { order(:id) }, dependent: :destroy
 
-  MAX_PASSWORD = 72
-
   normalizes :login_id, with: ->(value) { value.strip.downcase }
-  normalizes :email, with: ->(value) { value.strip.downcase.presence }
 
-  with_options unless: :guest? do
-    validates :login_id, presence: true, uniqueness: true, length: { in: 3..32 },
-      format: { with: /\A[a-z0-9_-]+\z/, message: :login_id_format }
-    validates :password, presence: true, on: :create, if: -> { github_uid.blank? }
-    # typle-r's rules: 10 characters or more, and not the ID (72 is bcrypt's limit).
-    validates :password, length: { in: 10..MAX_PASSWORD }, confirmation: true, allow_nil: true
-    validate :password_is_not_the_id
-  end
-  validates :email, uniqueness: true, allow_nil: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  # typle-r's sign-up asks for an address (GitHub accounts come without one).
-  validates :email, presence: true, on: :registration
-
-  generates_token_for :password_reset, expires_in: 30.minutes do
-    password_salt&.last(10)
-  end
-  generates_token_for :email_confirmation, expires_in: 1.day do
-    email
-  end
+  # The login ID of GitHub accounts and of the accounts that signed in with an ID and a password before v2.59.0 (they
+  # are kept, but can no longer sign in, as in typle-r). An account made by Sparklingstadt ID has none.
+  validates :login_id, uniqueness: true, length: { in: 3..32 }, format: { with: /\A[a-z0-9_-]+\z/, message: :login_id_format },
+    allow_nil: true, unless: :guest?
+  validates :sid_sub, uniqueness: true, format: { with: SidLogin::SUB }, allow_nil: true
 
   scope :accounts, -> { where(guest: false) }
 
   def self.create_guest! = create!(guest: true)
 
+  # The account a Sparklingstadt ID login opens: the one its sub is linked to (bin/rails "sid:link[...]"), else the
+  # account made for that sub, made now on its first login (typle-r's sid:<sub>), named by the ID. A failure to read
+  # the link raises, so that the login fails rather than open an empty account.
+  def self.for_sid!(sub, name:)
+    user = find_by(sid_sub: sub)
+    return create!(sid_sub: sub, name:) unless user
+    user.update!(name:) if user.sid_only? && user.name != name
+    user
+  rescue ActiveRecord::RecordNotUnique
+    # Another login of the same ID made it first.
+    find_by!(sid_sub: sub)
+  end
+
   def typing_options
     { ignoreAccents: ignore_accents, ignoreCase: ignore_case }
   end
 
-  def email_confirmed? = email.present? && email_confirmed_at.present?
+  # An account that only Sparklingstadt ID opens (typle-r's sid:<sub>), not one of another login linked to an ID.
+  def sid_only? = sid_sub.present? && github_uid.blank? && password_digest.blank? && login_id.blank?
 
-  def display_name = guest? ? nil : login_id
+  # How the account signs in, as typle-r's account menu says it: :sid, :github or :password (an ID, before v2.59.0).
+  def login_kind
+    if sid_only? then :sid
+    elsif github_uid.present? && password_digest.blank? then :github
+    else :password
+    end
+  end
+
+  # Whether the account has saved anything (packs, lists, practice records or devices), which sid:link asks of the
+  # accounts it links.
+  def saved_data? = packs.exists? || word_lists.exists? || practice_records.exists? || devices.exists?
+
+  def display_name = guest? ? nil : (name.presence || github_login.presence || login_id)
 
   def interest_ids = Interests.decode(interests)
-
-  private
-    def password_is_not_the_id
-      errors.add(:password, :same_as_login_id) if password.present? && login_id.present? && password.casecmp?(login_id)
-    end
 end

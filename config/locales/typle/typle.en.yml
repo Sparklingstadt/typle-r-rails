@@ -41,9 +41,6 @@ en:
       analytics:
         title: Analytics
         text: To see which pages are viewed and how often, page views are counted with Vercel Web Analytics. Only the page address (without anything after ?), the referrer, the browser, the OS and the country are sent. No cookies are used, and your word lists and practice records are never sent.
-      email:
-        title: How we use email addresses
-        text: When you sign up with an ID and a password, we keep your email address. It is used only to send mail for confirming the address, resetting the password and telling you your ID. It is never used for ads or announcements and is not passed to anyone else. Mail is sent through Resend.
       version:
         title: Version and development
         version: Version
@@ -71,13 +68,16 @@ en:
     account:
       checking: Checking sign-in status
       signIn: Sign in
+      signInWithSid: Sign in with Sparklingstadt ID
       signInWithGitHub: Sign in with GitHub
       signInFailed: Could not sign in. Please try again.
       githubUser: GitHub user
       ffpfUser: FFPF ID user
+      sidUser: Sparklingstadt ID user
       menu: Account menu
       signedInWithGitHub: Signed in with GitHub
       signedInWithFfpf: Signed in with FFPF ID
+      signedInWithSid: Signed in with Sparklingstadt ID
       signedInWithPassword: Signed in with an ID
       manageDevices: Manage devices
       signOut: Sign out
@@ -87,75 +87,6 @@ en:
         description: Start practising with the names of 193 countries. Lists and practice records are saved in this Mac’s own database.
         start: Start practising
         failed: Could not sign in. Please try again.
-    auth:
-      fields:
-        loginId: ID
-        email: Email address
-        password: Password
-        currentPassword: Current password
-        newPassword: New password
-        loginIdHint: 3 to 32 letters, digits, "_" or "-". Upper and lower case are the same. It cannot be changed later.
-        emailHint: Used to confirm your address and to help when you forget your ID or password.
-        passwordHint: 10 to 128 characters, not the same as the ID.
-      send: Send
-      failed: Something went wrong. Please try again.
-      backToSignIn: Go to sign in
-      signIn:
-        submit: Sign in
-        refused: The ID or password is wrong, or signing in is paused for a while.
-        signUp: Create an account
-        forgotPassword: Forgot password
-        forgotId: Forgot ID
-        or: You can also sign in with a GitHub account.
-      signUp:
-        title: Create an account
-        description: Create a Typle account that signs in with an ID and a password.
-        submit: Create account
-        submitting: Creating account…
-        done: Your account was created and you are signed in.
-        mailSent: We sent a confirmation email to %{email}. Open the link in it to confirm your address.
-        mailNotSent: The confirmation email could not be sent. You can send it again from Account in the settings.
-        continue: Continue
-        failed: The account could not be created. Please try again.
-        signInFailed: Your account was created, but you could not be signed in. Please sign in from the sign-in page.
-        haveAccount: Already have an account? Sign in
-      verifyEmail:
-        title: Confirm email address
-        description: Confirms your address with the link from the email.
-        verifying: Confirming…
-        done: Your email address is confirmed.
-        failed: The address could not be confirmed. Please try again.
-        home: Go home
-      forgotPassword:
-        title: Forgot password
-        description: Enter your ID. If it has a confirmed email address, we will send a link to set a new password.
-        sent: If the ID exists and its email address is confirmed, we sent a link to set a new password. The link works for 30 minutes.
-      resetPassword:
-        title: Set a new password
-        description: Choose a new password. Setting it signs out every device and signs you in again here.
-        submit: Set password
-        again: Send the link again
-        signInFailed: Your password was set, but you could not be signed in. Please sign in from the sign-in page.
-      forgotId:
-        title: Forgot ID
-        description: Enter the email address you registered. If accounts have it as a confirmed address, we will email their IDs.
-        sent: If accounts have this confirmed address, we emailed their IDs.
-      settings:
-        heading: Account
-        description: This account signs in with an ID and a password.
-        verified: Confirmed
-        unverified: Not confirmed
-        resend: Resend confirmation email
-        resent: We sent the confirmation email.
-        alreadyVerified: This address is already confirmed.
-        mailNotSent: The confirmation email could not be sent. Please try again later.
-        loadFailed: The account could not be loaded.
-        changePassword: Change password
-        changePasswordDescription: Your current password is needed. Changing it signs out your other devices.
-        change: Change password
-        changed: Your password was changed. Your other devices were signed out.
-        failed: The password could not be changed. Please try again.
-        signInAgain: Your password was changed, but this device needs to sign in again. Please sign in with the new password.
     common:
       loading: Loading…
       close: Close
@@ -419,15 +350,6 @@ en:
       invalidPage: The page number is not valid.
       importInputTypeInvalid: 'Line %{line}: input_type must be command, code or word.'
       invalidRequest: The request is not valid.
-      loginIdFormat: Use 3 to 32 letters, digits, "_" or "-" for the ID.
-      passwordLength: Use 10 to 128 characters for the password.
-      passwordSameAsId: The password cannot be the same as the ID.
-      emailFormat: Enter a valid email address.
-      loginIdTaken: This ID is already taken. Choose another one.
-      tooManyRequests: Too many requests. Please try again later.
-      invalidToken: This link cannot be used. It has expired or has already been used.
-      notPasswordAccount: This is only for accounts that sign in with an ID and a password.
-      wrongPassword: The current password is wrong.
     format:
       today: Today
       yesterday: Yesterday
@@ -605,7 +527,7 @@ en:
           p2: Data is saved in this browser’s LocalStorage and is not synced with other devices or browsers.
         account:
           title: Saved to your account
-          when: When you sign in (with GitHub or an ID and password)
+          when: When you sign in (with Sparklingstadt ID or GitHub)
           p1: Data is saved on a server dedicated to your account, so you can use the same data on any device you sign in on.
           p2: Saving requires an internet connection.
         warning:
@@ -647,7 +569,7 @@ en:
         play: Practice
         create: Create a word list
         records: View records
-      storage: You can use every practice and editing feature without signing in. Word lists, practice history, and devices are saved in this browser. Signing in (with GitHub or an ID and password) switches to a separate storage location, your account, which syncs across devices. Data in the browser is not moved automatically.
+      storage: You can use every practice and editing feature without signing in. Word lists, practice history, and devices are saved in this browser. Signing in (with Sparklingstadt ID or GitHub) switches to a separate storage location, your account, which syncs across devices. Data in the browser is not moved automatically.
       storageAccount: You are signed in, so your word lists, practice history, and devices are saved to your account and synced with other devices and browsers signed in to the same account. They are kept separately from data saved in this browser without signing in.
       links: "<guide>How to use</guide> / <about>About Typle</about>"
     input:
@@ -762,7 +684,7 @@ en:
           text: Speed, accuracy and mistakes are recorded every time, so your personal bests and trends show how far you have come.
       storage:
         title: Where your data is kept
-        text: Every feature works without logging in. Your data is kept in this browser, and logging in (with GitHub or an ID and password) syncs it across devices.
+        text: Every feature works without logging in. Your data is kept in this browser, and logging in (with Sparklingstadt ID or GitHub) syncs it across devices.
         more: "<guide>How to use</guide> / <about>About Typle</about>"
       try:
         badge: Try it here
@@ -774,35 +696,6 @@ en:
           other: "%{count} words typed. Carry on with this pack's practice, where your records are kept."
         continue: Keep practicing this pack
         starting: Preparing…
-    mail:
-      verify:
-        subject: 'Typle: Confirm your email address'
-        body: |-
-          Thank you for signing up for Typle.
-
-          Open the link below to confirm your email address (valid for 24 hours).
-
-          %{link}
-
-          If you did not expect this email, you can safely delete it.
-      reset:
-        subject: 'Typle: Reset your password'
-        body: |-
-          We received a request to reset your password.
-
-          Open the link below to set a new password (valid for 30 minutes, usable once).
-
-          %{link}
-
-          If you did not request this, you can safely delete this email. Your password has not changed.
-      loginIds:
-        subject: 'Typle: Your login IDs'
-        body: |-
-          The login IDs registered with this email address are:
-
-          %{ids}
-
-          If you did not expect this email, you can safely delete it.
     metadata:
       title: Typle | Typing practice with your own words
       description: A typing app for practising with your own word lists. Add the words you like, practise typing them and look back on your best records.

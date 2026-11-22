@@ -22,8 +22,6 @@ ru:
         на этой странице.
       account_menu: Меню аккаунта
       manage_devices: Управление устройствами
-      signed_in_with_github: Вход выполнен через GitHub
-      signed_in_with_password: Вход по ID
       sign_in: Войти
       sign_out: Выйти
       skip: Перейти к содержимому

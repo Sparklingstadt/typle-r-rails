@@ -21,15 +21,11 @@ class KeptPagesTest < ActionDispatch::IntegrationTest
     assert_match "MIT", response.body
   end
 
-  test "an ended pack share, the gallery and the confirmation link" do
+  test "an ended pack share and the gallery" do
     get shared_pack_path("abc")
     assert_select "[role=status]", "この共有は終了しました。"
     get "/gallery"
     assert_redirected_to "/catalog"
-    user = users(:one)
-    user.update!(email: "one@example.com", email_confirmed_at: nil)
-    get verify_email_path(token: user.generate_token_for(:email_confirmation))
-    assert user.reload.email_confirmed?
   end
 
   test "the settings are at typle-r's addresses: /settings is 一般 and /input is 入力, open to anyone" do

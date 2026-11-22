@@ -1,41 +1,5 @@
-<%# typle-r's AccountSettings and SessionSettings: the account that signs in with an ID and a password (its ID, its address
-    and whether it is confirmed, mailing the confirmation again, changing the password), then signing out everywhere. %>
-<% if account.password_digest.present? %>
-  <%= settings_section(icon: "user-round", id: "account", title: tt("auth.settings.heading"), description: tt("auth.settings.description")) do %>
-    <div class="mt-4 space-y-6 sm:pl-14">
-      <dl class="grid grid-cols-[auto_minmax(0,1fr)] gap-x-4 gap-y-2 text-sm">
-        <dt class="text-muted-foreground"><%= tt("auth.fields.loginId") %></dt>
-        <dd class="break-all"><%= account.login_id %></dd>
-        <% if account.email %>
-          <dt class="text-muted-foreground"><%= tt("auth.fields.email") %></dt>
-          <dd class="flex flex-wrap items-center gap-2">
-            <span class="break-all"><%= account.email %></span>
-            <%= ui_badge account.email_confirmed? ? tt("auth.settings.verified") : tt("auth.settings.unverified"), variant: account.email_confirmed? ? :secondary : :outline %>
-          </dd>
-        <% end %>
-      </dl>
-      <% if account.email && !account.email_confirmed? %>
-        <div class="space-y-2">
-          <%= form_button tt("auth.settings.resend"), verification_account_path, method: :post, variant: :outline %>
-        </div>
-      <% end %>
-      <%= form_with url: password_account_path, method: :patch, class: "max-w-sm space-y-4", novalidate: true,
-            data: { controller: "filled", action: "input->filled#update change->filled#update" } do |f| %>
-        <div class="space-y-1">
-          <h3 class="text-sm font-bold"><%= tt("auth.settings.changePassword") %></h3>
-          <p class="text-sm text-muted-foreground"><%= tt("auth.settings.changePasswordDescription") %></p>
-        </div>
-        <%= settings_field tt("auth.fields.currentPassword"), id: "current-password" do |id| %>
-          <%= f.password_field :current_password, id:, required: true, autocomplete: "current-password", class: settings_input_classes %>
-        <% end %>
-        <%= settings_field tt("auth.fields.newPassword"), id: "new-password", hint: password_hint do |id| %>
-          <%= f.password_field :password, id:, required: true, autocomplete: "new-password", maxlength: 72, class: settings_input_classes, "aria-describedby": "#{id}-hint" %>
-        <% end %>
-        <%= f.button tt("auth.settings.change"), type: "submit", class: button_classes, data: { filled_target: "submit" } %>
-      <% end %>
-    </div>
-  <% end %>
-<% end %>
+<%# typle-r's SessionSettings: signing out of every device. (Its account section of the ID-and-password login was
+    removed with that login in v2.59.0.) %>
 <%= settings_section(icon: "monitor-smartphone", id: "sessions", title: tt("settings.sessions.heading"), description: tt("settings.sessions.description")) do %>
   <div class="mt-4 sm:pl-14">
     <%= form_button tt("settings.sessions.action"), sessions_account_path, method: :delete, variant: :outline,

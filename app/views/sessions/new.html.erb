@@ -1,30 +1,27 @@
+<%# typle-r's sign-in (signin-form.tsx): Sparklingstadt ID and GitHub, the only logins. A login that could not start, or
+    that came back failed (?error=), is one message. %>
 <% content_for :bare_title, tt("account.signIn") %>
 <%= page_main(width: :narrow) do %>
   <header class="mb-6 space-y-1">
     <h1 class="text-2xl font-bold"><%= t(".title") %></h1>
   </header>
-  <div class="max-w-sm space-y-6">
-    <%= form_with url: session_path, class: "space-y-4", data: { controller: "filled", action: "input->filled#update change->filled#update" } do |f| %>
-      <%= hidden_field_tag :returnTo, return_to, id: nil %>
-      <%= settings_field settings_t("auth.fields.loginId"), id: "login-id" do |id| %>
-        <%= f.text_field :login_id, id:, required: true, autofocus: !@refused, autocomplete: "username", autocapitalize: "none", spellcheck: false, value: params[:login_id], class: settings_input_classes %>
-      <% end %>
-      <%= settings_field settings_t("auth.fields.password"), id: "password" do |id| %>
-        <%= f.password_field :password, id:, required: true, autofocus: @refused, autocomplete: "current-password", maxlength: 72, class: settings_input_classes %>
-      <% end %>
-      <%= f.button settings_t("auth.signIn.submit"), type: "submit", class: button_classes(size: :lg), data: { filled_target: "submit" } %>
+  <div class="max-w-sm space-y-4">
+    <%# Sparklingstadt ID, the login shared by the Sparklingstadt services, comes first. %>
+    <% if SidLogin.enabled? %>
+      <%= form_button tt("account.signInWithSid"), "/auth/sid", method: :post, size: :lg, icon: "log-in", class: "w-full",
+            form_class: "block", params: { origin: return_to }, data: { turbo: false } %>
     <% end %>
-    <% if @refused %><%= form_message(tt("auth.signIn.refused"), kind: :error) %><% end %>
-    <ul class="space-y-1 text-sm">
-      <li><%= link_to settings_t("auth.signIn.signUp"), new_registration_path(keep_return_to), class: SettingsDesignHelper::SETTINGS_LINK %></li>
-      <li><%= link_to settings_t("auth.signIn.forgotPassword"), new_password_path(keep_return_to), class: SettingsDesignHelper::SETTINGS_LINK %></li>
-      <li><%= link_to settings_t("auth.signIn.forgotId"), new_login_id_reminder_path(keep_return_to), class: SettingsDesignHelper::SETTINGS_LINK %></li>
-    </ul>
     <% if GithubLogin.enabled? %>
-      <div class="space-y-3 border-t pt-6">
-        <p class="text-sm text-muted-foreground"><%= settings_t("auth.signIn.or") %></p>
-        <%= form_button settings_t("auth.signInWithGitHub"), "/auth/github", method: :post, size: :lg, variant: :outline, icon: "log-in", params: { origin: return_to }, data: { turbo: false } %>
-      </div>
+      <%= form_button tt("account.signInWithGitHub"), "/auth/github", method: :post, size: :lg, icon: "log-in", class: "w-full",
+            variant: SidLogin.enabled? ? :outline : :default, form_class: "block", params: { origin: return_to }, data: { turbo: false } %>
     <% end %>
+    <% if !SidLogin.enabled? && !GithubLogin.enabled? %>
+      <p class="text-sm text-muted-foreground"><%= tt("errors.authUnavailable") %></p>
+    <% end %>
+    <% if @local_login %>
+      <%= form_button t(".local_login"), local_session_path, method: :post, size: :lg, variant: :outline, class: "w-full",
+            form_class: "block", params: { returnTo: return_to } %>
+    <% end %>
+    <% if params[:error].present? %><%= form_message(tt("account.signInFailed"), kind: :error) %><% end %>
   </div>
 <% end %>

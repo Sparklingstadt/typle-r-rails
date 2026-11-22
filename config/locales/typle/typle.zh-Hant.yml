@@ -41,9 +41,6 @@ zh-Hant:
       analytics:
         title: 流量統計
         text: 為了了解哪些頁面被瀏覽以及瀏覽次數，我們使用 Vercel Web Analytics 統計頁面瀏覽量。只會傳送頁面網址（不含 ? 之後的部分）、來源頁面、瀏覽器、作業系統和國家。不使用 Cookie，也不會傳送你的單字清單和練習記錄。
-      email:
-        title: 電子郵件地址的使用
-        text: 使用 ID 和密碼註冊時，我們會保存你的電子郵件地址。它只用於寄送確認地址、重設密碼和告知 ID 的郵件，不用於廣告或通知，也不會提供給其他方。郵件透過 Resend 寄送。
       version:
         title: 版本與開發
         version: 版本
@@ -71,13 +68,16 @@ zh-Hant:
     account:
       checking: 正在確認登入狀態
       signIn: 登入
+      signInWithSid: 使用 Sparklingstadt ID 登入
       signInWithGitHub: 使用 GitHub 登入
       signInFailed: 無法登入。請再試一次。
       githubUser: GitHub 使用者
       ffpfUser: FFPF ID 使用者
+      sidUser: Sparklingstadt ID 使用者
       menu: 帳號選單
       signedInWithGitHub: 已透過 GitHub 登入
       signedInWithFfpf: 已透過 FFPF ID 登入
+      signedInWithSid: 已透過 Sparklingstadt ID 登入
       signedInWithPassword: 已使用 ID 登入
       manageDevices: 管理裝置
       signOut: 登出
@@ -87,75 +87,6 @@ zh-Hant:
         description: 可以用 193 個國家的國名開始練習。清單與練習紀錄會儲存在這台 Mac 專用的資料庫中。
         start: 開始練習
         failed: 無法登入。請再試一次。
-    auth:
-      fields:
-        loginId: ID
-        email: 電子郵件地址
-        password: 密碼
-        currentPassword: 目前的密碼
-        newPassword: 新密碼
-        loginIdHint: 3到32個半形英文字母、數字、「_」或「-」。不區分大小寫，之後無法變更。
-        emailHint: 用於寄送確認郵件，以及忘記 ID 或密碼時的郵件。
-        passwordHint: 10到128個字元，不能與 ID 相同。
-      send: 寄送
-      failed: 操作失敗，請再試一次。
-      backToSignIn: 前往登入
-      signIn:
-        submit: 登入
-        refused: ID 或密碼錯誤，或暫時無法登入。
-        signUp: 註冊新帳號
-        forgotPassword: 忘記密碼
-        forgotId: 忘記 ID
-        or: 也可以使用 GitHub 帳號登入。
-      signUp:
-        title: 註冊
-        description: 建立使用 ID 和密碼登入的 Typle 帳號。
-        submit: 註冊
-        submitting: 正在註冊…
-        done: 已註冊並登入。
-        mailSent: 確認郵件已寄至 %{email}。請開啟郵件中的連結確認地址。
-        mailNotSent: 無法寄送確認郵件。可以在設定的「帳號」中重新寄送。
-        continue: 繼續
-        failed: 無法註冊，請再試一次。
-        signInFailed: 已註冊，但無法登入。請在登入頁面登入。
-        haveAccount: 已有帳號？在此登入
-      verifyEmail:
-        title: 確認電子郵件地址
-        description: 使用郵件中的連結確認地址。
-        verifying: 正在確認…
-        done: 已確認電子郵件地址。
-        failed: 無法確認，請再試一次。
-        home: 回到首頁
-      forgotPassword:
-        title: 忘記密碼
-        description: 請輸入 ID。如果有已確認的電子郵件地址，我們會寄送重設密碼的連結。
-        sent: 如果該 ID 存在且電子郵件地址已確認，我們已寄送重設連結。連結30分鐘內有效。
-      resetPassword:
-        title: 重設密碼
-        description: 請設定新密碼。設定後，所有裝置都會登出，並在此頁面重新登入。
-        submit: 設定
-        again: 重新寄送重設連結
-        signInFailed: 已設定密碼，但無法登入。請在登入頁面登入。
-      forgotId:
-        title: 忘記 ID
-        description: 請輸入註冊時的電子郵件地址。如果有帳號已確認該地址，我們會以郵件寄送 ID。
-        sent: 如果有帳號已確認該地址，我們已以郵件寄送 ID。
-      settings:
-        heading: 帳號
-        description: 此帳號使用 ID 和密碼登入。
-        verified: 已確認
-        unverified: 未確認
-        resend: 重新寄送確認郵件
-        resent: 已寄送確認郵件。
-        alreadyVerified: 此地址已確認。
-        mailNotSent: 無法寄送確認郵件，請稍後再試。
-        loadFailed: 無法讀取帳號資訊。
-        changePassword: 變更密碼
-        changePasswordDescription: 需要目前的密碼。變更後，其他裝置將會登出。
-        change: 變更密碼
-        changed: 已變更密碼。其他裝置已登出。
-        failed: 無法變更密碼，請再試一次。
-        signInAgain: 已變更密碼，但此裝置需要重新登入。請使用新密碼登入。
     common:
       loading: 載入中…
       close: 關閉
@@ -382,15 +313,6 @@ zh-Hant:
       invalidPage: 頁碼無效。
       importInputTypeInvalid: 第 %{line} 行的 input_type 必須是 command、code 或 word。
       invalidRequest: 請求內容無效。
-      loginIdFormat: ID 請使用3到32個半形英文字母、數字、「_」或「-」。
-      passwordLength: 密碼請使用10到128個字元。
-      passwordSameAsId: 密碼不能與 ID 相同。
-      emailFormat: 電子郵件地址的格式不正確。
-      loginIdTaken: 此 ID 已被使用，請換一個。
-      tooManyRequests: 請求次數過多，請稍後再試。
-      invalidToken: 此連結無法使用，可能已過期或已被使用。
-      notPasswordAccount: 僅適用於使用 ID 和密碼登入的帳號。
-      wrongPassword: 目前的密碼不正確。
     format:
       today: 今天
       yesterday: 昨天
@@ -568,7 +490,7 @@ zh-Hant:
           p2: 資料儲存在此瀏覽器的 LocalStorage 中，不會與其他裝置或瀏覽器同步。
         account:
           title: 儲存至帳號
-          when: 登入後（GitHub 或 ID 與密碼）
+          when: 登入後（Sparklingstadt ID 或 GitHub）
           p1: 資料儲存在帳號專用的伺服器上，只要登入，在任何裝置上都能使用相同的資料。
           p2: 儲存時需要網路連線。
         warning:
@@ -606,7 +528,7 @@ zh-Hant:
         play: 開始練習
         create: 建立單字清單
         records: 查看紀錄
-      storage: 不必登入即可使用所有練習與編輯功能。單字清單、練習紀錄與裝置會儲存在此瀏覽器中。登入（GitHub 或 ID 與密碼）後，會切換到另一個儲存位置，也就是帳號，並可在裝置之間同步。瀏覽器中的資料不會自動移轉。
+      storage: 不必登入即可使用所有練習與編輯功能。單字清單、練習紀錄與裝置會儲存在此瀏覽器中。登入（Sparklingstadt ID 或 GitHub）後，會切換到另一個儲存位置，也就是帳號，並可在裝置之間同步。瀏覽器中的資料不會自動移轉。
       storageAccount: 您已登入，單字清單、練習紀錄與裝置會儲存在帳戶中，並與登入同一個帳戶的其他裝置和瀏覽器同步。這些資料與未登入時儲存在此瀏覽器中的資料分開保存。
       links: "<guide>使用說明</guide> ／ <about>關於 Typle</about>"
     input:
@@ -717,7 +639,7 @@ zh-Hant:
           text: 每次都會記錄速度、正確率和錯誤數，可以透過個人最佳和變化趨勢回顧自己的進步。
       storage:
         title: 資料儲存在哪裡
-        text: 無需登入即可使用全部功能。資料儲存在此瀏覽器中，登入（GitHub 或 ID 與密碼）後可以在多台裝置之間同步。
+        text: 無需登入即可使用全部功能。資料儲存在此瀏覽器中，登入（Sparklingstadt ID 或 GitHub）後可以在多台裝置之間同步。
         more: "<guide>使用方式</guide> ／ <about>關於 Typle</about>"
       try:
         badge: 在這裡試打
@@ -727,35 +649,6 @@ zh-Hant:
         done: 已輸入 %{count} 個詞。繼續用這個單字包練習，就會留下記錄。
         continue: 繼續用這個單字包練習
         starting: 正在準備…
-    mail:
-      verify:
-        subject: Typle：確認電子郵件地址
-        body: |-
-          感謝您註冊 Typle。
-
-          請開啟以下連結確認您的電子郵件地址（24小時內有效）。
-
-          %{link}
-
-          如果您沒有進行此操作，請直接刪除這封郵件。
-      reset:
-        subject: Typle：重設密碼
-        body: |-
-          我們收到了重設密碼的請求。
-
-          請開啟以下連結設定新密碼（30分鐘內有效，只能使用一次）。
-
-          %{link}
-
-          如果您沒有進行此操作，請直接刪除這封郵件。您的密碼不會改變。
-      loginIds:
-        subject: Typle：您的登入 ID
-        body: |-
-          使用此電子郵件地址註冊的登入 ID 如下：
-
-          %{ids}
-
-          如果您沒有進行此操作，請直接刪除這封郵件。
     metadata:
       title: Typle | 用自己的詞彙練習打字
       description: 一款可以用自己的單字清單練習的打字應用程式。新增喜歡的詞彙，練習打字，並回顧最佳紀錄。

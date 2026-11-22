@@ -11,9 +11,6 @@ fr:
     attributes:
       user:
         login_id: ID
-        email: Adresse e-mail
-        password: Mot de passe
-        password_confirmation: Confirmation du mot de passe
       pack:
         name: Nom du pack
       word_list:
@@ -48,13 +45,11 @@ fr:
         one: ne fait pas la bonne longueur (doit comporter %{count} caractère)
         other: ne fait pas la bonne longueur (doit comporter %{count} caractères)
       required: est obligatoire
-      password_too_long: ne doit pas dépasser 72 octets
       login_id_format: ne peut contenir que des lettres, des chiffres et _ . -
       taken_device: est identique à « %{name} »
       device_limit:
         one: Vous pouvez enregistrer jusqu'à %{count} appareil.
         other: Vous pouvez enregistrer jusqu'à %{count} appareils.
-      wrong_current_password: Le mot de passe actuel est incorrect.
       words_required: Saisissez au moins un mot.
       word_fields_required: "Ligne %{line} : l'affichage et la saisie ne peuvent pas être vides."
   time:
@@ -494,57 +489,11 @@ fr:
   sessions:
     new:
       title: Connexion
-      password: Mot de passe
-      submit: Se connecter
-      github: Se connecter avec GitHub
-      forgot_id: ID oublié
-      forgot_password: Mot de passe oublié
-      no_account: Pas encore de compte ?
-      sign_up: S'inscrire
-      guest_note: En vous connectant, vous passez aux données de votre compte. Les données de ce navigateur sont conservées et reviennent à la déconnexion.
-    create:
-      failed: ID ou mot de passe incorrect.
+      local_login: Se connecter au compte de démonstration de développement
     destroy:
       signed_out: Déconnecté. Vous retrouvez les données de ce navigateur.
-  registrations:
-    new:
-      title: Créer un compte
-      login_id: ID (lettres, chiffres, _ . - ; 3 à 32 caractères)
-      email: Adresse e-mail (facultative ; utilisée en cas d'oubli du mot de passe ou de l'ID)
-      password: Mot de passe (8 caractères minimum)
-      submit: S'inscrire
-      have_account: Déjà inscrit ?
-      separate_note: Les données de ce navigateur ne seront pas copiées dans le nouveau compte.
-    create:
-      created: Compte créé.
-  passwords:
-    invalid_link: Le lien est invalide ou a expiré. Veuillez réessayer.
-    new:
-      title: Mot de passe oublié
-      lead: Nous enverrons un lien de réinitialisation à l'adresse e-mail confirmée de votre compte.
-      submit: Envoyer le lien
-    create:
-      sent: Si cette adresse e-mail est enregistrée, un lien de réinitialisation a été envoyé.
-    edit:
-      title: Nouveau mot de passe
-      submit: Définir le mot de passe
-    update:
-      saved: Mot de passe défini. Veuillez vous connecter.
-  login_id_reminders:
-    new:
-      title: ID oublié
-      lead: Nous enverrons votre ID à l'adresse e-mail confirmée de votre compte.
-      submit: Envoyer l'ID
-    create:
-      sent: Si cette adresse e-mail est enregistrée, votre ID a été envoyé.
-  email_confirmations:
-    show:
-      confirmed: Adresse e-mail confirmée.
-      invalid: Le lien est invalide ou a expiré.
   omniauth_callbacks:
     github:
       taken: Ce compte GitHub est lié à un autre compte.
       linked: Lié à GitHub (%{login}).
       signed_in: Connecté avec GitHub (%{login}).
-    failure:
-      failed: Impossible de se connecter avec GitHub.

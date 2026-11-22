@@ -11,9 +11,6 @@ en:
     attributes:
       user:
         login_id: ID
-        email: Email
-        password: Password
-        password_confirmation: Password confirmation
       pack:
         name: Pack name
       word_list:
@@ -48,13 +45,11 @@ en:
         one: is the wrong length (should be %{count} character)
         other: is the wrong length (should be %{count} characters)
       required: is required
-      password_too_long: must be 72 bytes or fewer
       login_id_format: may only contain letters, numbers, _ . and -
       taken_device: is the same as "%{name}"
       device_limit:
         one: You can register up to %{count} device.
         other: You can register up to %{count} devices.
-      wrong_current_password: Your current password is incorrect.
       words_required: Enter at least one word.
       word_fields_required: "Line %{line}: display and input can't be blank."
   time:
@@ -494,57 +489,11 @@ en:
   sessions:
     new:
       title: Sign in
-      password: Password
-      submit: Sign in
-      github: Sign in with GitHub
-      forgot_id: Forgot your ID?
-      forgot_password: Forgot your password?
-      no_account: Don't have an account?
-      sign_up: Sign up
-      guest_note: Signing in switches to your account's data. This browser's data stays as it is and comes back when you sign out.
-    create:
-      failed: Incorrect ID or password.
+      local_login: Sign in to the development demo account
     destroy:
       signed_out: Signed out. You're back to this browser's data.
-  registrations:
-    new:
-      title: Create an account
-      login_id: ID (letters, numbers, _ . -; 3–32 characters)
-      email: Email (optional; used if you forget your password or ID)
-      password: Password (at least 8 characters)
-      submit: Sign up
-      have_account: Already have an account?
-      separate_note: This browser's data won't be copied to the new account.
-    create:
-      created: Account created.
-  passwords:
-    invalid_link: The link is invalid or has expired. Please try again.
-    new:
-      title: Forgot your password
-      lead: We'll send a link to reset your password to your account's confirmed email address.
-      submit: Send link
-    create:
-      sent: If that email address is registered, we've sent a link to reset your password.
-    edit:
-      title: New password
-      submit: Set password
-    update:
-      saved: Password set. Please sign in.
-  login_id_reminders:
-    new:
-      title: Forgot your ID
-      lead: We'll send your ID to your account's confirmed email address.
-      submit: Send ID
-    create:
-      sent: If that email address is registered, we've sent your ID.
-  email_confirmations:
-    show:
-      confirmed: Email address confirmed.
-      invalid: The link is invalid or has expired.
   omniauth_callbacks:
     github:
       taken: This GitHub account is linked to another account.
       linked: Linked to GitHub (%{login}).
       signed_in: Signed in with GitHub (%{login}).
-    failure:
-      failed: Couldn't sign in with GitHub.

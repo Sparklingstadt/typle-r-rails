@@ -10,9 +10,6 @@ zh-Hans:
         browser_p1: 与此浏览器关联，保存在服务器上
         browser_p2: 不会与其他设备或浏览器同步
         browser_p3: 删除此浏览器的 Cookie 后将无法使用
-      auth:
-        password_hint: 10～72 个字符。不能与 ID 相同。
   errors:
     messages:
-      same_as_login_id: 不能与 ID 相同
       too_many_words: 每个列表最多 1,000 个单词。

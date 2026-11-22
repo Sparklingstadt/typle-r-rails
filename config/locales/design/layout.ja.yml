@@ -19,8 +19,6 @@ ja:
       theme_save_failed: 設定を保存できないため、この画面内だけで切り替えます。
       account_menu: アカウントメニュー
       manage_devices: 端末を管理
-      signed_in_with_github: GitHubでログイン中
-      signed_in_with_password: IDでログイン中
       sign_in: ログイン
       sign_out: ログアウト
       skip: 本文へスキップ

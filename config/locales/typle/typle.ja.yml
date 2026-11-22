@@ -41,9 +41,6 @@ ja:
       analytics:
         title: アクセス解析
         text: どのページがどれくらい見られているかを知るため、Vercel Web Analytics でページの表示を数えています。送るのはページのアドレス（? 以降を除く）と、参照元・ブラウザー・OS・国です。Cookie は使わず、単語リストや練習記録は送りません。
-      email:
-        title: メールアドレスの扱い
-        text: ID とパスワードで登録するときに、メールアドレスをお預かりします。使うのは、アドレスの確認、パスワードの再設定、ID のお知らせのメールを送るときだけです。広告やお知らせには使わず、ほかへ渡すこともありません。メールは Resend で送ります。
       version:
         title: バージョンと開発
         version: バージョン
@@ -71,13 +68,16 @@ ja:
     account:
       checking: ログイン状態を確認中
       signIn: ログイン
+      signInWithSid: Sparklingstadt IDでログイン
       signInWithGitHub: GitHubでログイン
       signInFailed: ログインできませんでした。もう一度お試しください。
       githubUser: GitHubユーザー
       ffpfUser: FFPF IDユーザー
+      sidUser: Sparklingstadt IDユーザー
       menu: アカウントメニュー
       signedInWithGitHub: GitHubでログイン中
       signedInWithFfpf: FFPF IDでログイン中
+      signedInWithSid: Sparklingstadt IDでログイン中
       signedInWithPassword: IDでログイン中
       manageDevices: 端末を管理
       signOut: ログアウト
@@ -87,75 +87,6 @@ ja:
         description: 国名193か国の練習を始められます。リストと練習記録は、このMacの専用データベースに保存されます。
         start: 練習を始める
         failed: ログインできませんでした。もう一度お試しください。
-    auth:
-      fields:
-        loginId: ID
-        email: メールアドレス
-        password: パスワード
-        currentPassword: 今のパスワード
-        newPassword: 新しいパスワード
-        loginIdHint: 半角英数字・「_」・「-」で3〜32文字。大文字と小文字は区別しません。あとから変えられません。
-        emailHint: 確認のメールと、ID やパスワードを忘れたときのメールを送ります。
-        passwordHint: 10〜128文字。ID と同じものは使えません。
-      send: 送る
-      failed: うまくいきませんでした。もう一度お試しください。
-      backToSignIn: ログインの画面へ
-      signIn:
-        submit: ログイン
-        refused: ID かパスワードが違うか、しばらくログインできません。
-        signUp: 新しく登録する
-        forgotPassword: パスワードを忘れた
-        forgotId: ID を忘れた
-        or: GitHub のアカウントでもログインできます。
-      signUp:
-        title: 登録
-        description: ID とパスワードで Typle のアカウントを作ります。
-        submit: 登録する
-        submitting: 登録しています…
-        done: 登録して、ログインしました。
-        mailSent: 確認のメールを %{email} に送りました。メールのリンクを開いて、アドレスを確認してください。
-        mailNotSent: 確認のメールを送れませんでした。設定の「アカウント」から送り直せます。
-        continue: 続ける
-        failed: 登録できませんでした。もう一度お試しください。
-        signInFailed: 登録しましたが、ログインできませんでした。ログインの画面からログインしてください。
-        haveAccount: 登録済みの方は、こちらからログイン
-      verifyEmail:
-        title: メールアドレスの確認
-        description: メールで届いたリンクで、アドレスを確認します。
-        verifying: 確認しています…
-        done: メールアドレスを確認できました。
-        failed: 確認できませんでした。もう一度お試しください。
-        home: ホームへ
-      forgotPassword:
-        title: パスワードを忘れた
-        description: ID を入れてください。確認済みのメールアドレスがあれば、パスワードを再設定するリンクを送ります。
-        sent: ID があり、メールアドレスが確認済みなら、再設定のリンクを送りました。リンクは30分有効です。
-      resetPassword:
-        title: パスワードの再設定
-        description: 新しいパスワードを決めてください。設定すると、すべての端末からログアウトし、この画面でログインし直します。
-        submit: 設定する
-        again: 再設定のリンクをもう一度送る
-        signInFailed: パスワードを設定しましたが、ログインできませんでした。ログインの画面からログインしてください。
-      forgotId:
-        title: ID を忘れた
-        description: 登録したメールアドレスを入れてください。そのアドレスが確認済みのアカウントがあれば、ID をメールで送ります。
-        sent: そのアドレスが確認済みのアカウントがあれば、ID をメールで送りました。
-      settings:
-        heading: アカウント
-        description: ID とパスワードでログインするアカウントです。
-        verified: 確認済み
-        unverified: 未確認
-        resend: 確認のメールを送り直す
-        resent: 確認のメールを送りました。
-        alreadyVerified: このアドレスはすでに確認済みです。
-        mailNotSent: 確認のメールを送れませんでした。しばらくしてから再試行してください。
-        loadFailed: アカウントの情報を読み込めませんでした。
-        changePassword: パスワードの変更
-        changePasswordDescription: 今のパスワードが必要です。変えると、ほかの端末はログアウトします。
-        change: パスワードを変更する
-        changed: パスワードを変更しました。ほかの端末はログアウトしました。
-        failed: パスワードを変更できませんでした。もう一度お試しください。
-        signInAgain: パスワードを変更しましたが、この端末でもログインし直す必要があります。新しいパスワードでログインしてください。
     common:
       loading: 読み込み中…
       close: 閉じる
@@ -382,15 +313,6 @@ ja:
       invalidPage: ページの指定が正しくありません。
       importInputTypeInvalid: "%{line}行目の input_type は command、code、word のいずれかにしてください。"
       invalidRequest: リクエストの内容が正しくありません。
-      loginIdFormat: ID は3〜32文字の半角英数字・「_」・「-」で入力してください。
-      passwordLength: パスワードは10〜128文字で入力してください。
-      passwordSameAsId: ID と同じパスワードは使えません。
-      emailFormat: メールアドレスの形式が正しくありません。
-      loginIdTaken: この ID はすでに使われています。別の ID にしてください。
-      tooManyRequests: 回数の上限に達しました。しばらくしてから再試行してください。
-      invalidToken: このリンクは使えません。期限が切れたか、すでに使われています。
-      notPasswordAccount: ID とパスワードでログインしたアカウントでだけ使えます。
-      wrongPassword: 今のパスワードが違います。
     format:
       today: 今日
       yesterday: 昨日
@@ -568,7 +490,7 @@ ja:
           p2: このブラウザーの LocalStorage に保存します。別の端末やブラウザーとは同期しません。
         account:
           title: アカウントに保存
-          when: ログインしたとき（GitHub または ID とパスワード）
+          when: ログインしたとき（Sparklingstadt ID または GitHub）
           p1: アカウント専用のサーバーに保存し、ログインすればどの端末でも同じデータを使えます。
           p2: 保存にはインターネット接続が必要です。
         warning:
@@ -606,7 +528,7 @@ ja:
         play: 練習する
         create: 単語リストを作成
         records: 記録を見る
-      storage: ログインせずにすべての練習・編集機能を利用できます。単語リスト・練習記録・端末はこのブラウザーに保存されます。ログイン（GitHub または ID とパスワード）すると、別の保存先であるアカウントに切り替わり、端末間で同期できます。ブラウザーのデータは自動で移行されません。
+      storage: ログインせずにすべての練習・編集機能を利用できます。単語リスト・練習記録・端末はこのブラウザーに保存されます。ログイン（Sparklingstadt ID または GitHub）すると、別の保存先であるアカウントに切り替わり、端末間で同期できます。ブラウザーのデータは自動で移行されません。
       storageAccount: ログインしているため、単語リスト・練習記録・端末はアカウントに保存され、同じアカウントでログインした別の端末やブラウザーと同期されます。ログインせずにこのブラウザーへ保存したデータとは別に保存されます。
       links: "<guide>使い方</guide> ／ <about>Typleについて</about>"
     input:
@@ -717,7 +639,7 @@ ja:
           text: 速度・正確率・ミスを毎回記録し、自己ベストと推移で上達を振り返れます。
       storage:
         title: データの保存先
-        text: ログインしなくても、すべての機能を使えます。データはこのブラウザーに保存され、ログイン（GitHub または ID とパスワード）すると端末間で同期できます。
+        text: ログインしなくても、すべての機能を使えます。データはこのブラウザーに保存され、ログイン（Sparklingstadt ID または GitHub）すると端末間で同期できます。
         more: "<guide>使い方</guide> ／ <about>Typleについて</about>"
       try:
         badge: ここで打ってみる
@@ -727,35 +649,6 @@ ja:
         done: "%{count}語打ちました。続きはこのパックの練習で、記録も残ります。"
         continue: このパックで練習を続ける
         starting: 準備しています…
-    mail:
-      verify:
-        subject: 'Typle: メールアドレスの確認'
-        body: |-
-          Typle に登録していただきありがとうございます。
-
-          次のリンクを開いて、メールアドレスを確認してください（24時間有効です）。
-
-          %{link}
-
-          このメールに心当たりがない場合は、何もせずに削除してください。
-      reset:
-        subject: 'Typle: パスワードの再設定'
-        body: |-
-          パスワードの再設定を受け付けました。
-
-          次のリンクを開いて、新しいパスワードを設定してください（30分有効で、1回だけ使えます）。
-
-          %{link}
-
-          このメールに心当たりがない場合は、何もせずに削除してください。パスワードは変わりません。
-      loginIds:
-        subject: 'Typle: ログイン ID のお知らせ'
-        body: |-
-          このメールアドレスで登録されているログイン ID は次のとおりです。
-
-          %{ids}
-
-          このメールに心当たりがない場合は、何もせずに削除してください。
     metadata:
       title: Typle | 自分の言葉で、タイピング。
       description: 自分の単語リストで練習できるタイピングアプリ。好きな言葉を登録して、タイピングを練習し、ベスト記録を振り返れます。

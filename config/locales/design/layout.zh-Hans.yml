@@ -19,8 +19,6 @@ zh-Hans:
       theme_save_failed: 无法保存设置，仅在此页面内切换。
       account_menu: 账号菜单
       manage_devices: 管理设备
-      signed_in_with_github: 已通过 GitHub 登录
-      signed_in_with_password: 已使用 ID 登录
       sign_in: 登录
       sign_out: 退出登录
       skip: 跳到正文

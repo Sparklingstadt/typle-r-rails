@@ -139,39 +139,6 @@ ja:
           use: このブラウザーで練習に使う端末にする
           useHelp: "「練習する」で練習したとき、この端末が記録に残ります。"
         deleteCurrent: このブラウザーで練習に使う端末は「デフォルト」に戻ります。
-      auth:
-        fields:
-          loginId: ID
-          email: メールアドレス
-          password: パスワード
-          currentPassword: 今のパスワード
-          newPassword: 新しいパスワード
-        backToSignIn: ログインの画面へ
-        signIn:
-          submit: ログイン
-          signUp: 新しく登録する
-          forgotPassword: パスワードを忘れた
-          forgotId: ID を忘れた
-          or: GitHub のアカウントでもログインできます。
-        signUp:
-          title: 登録
-          description: ID とパスワードで Typle のアカウントを作ります。
-          submit: 登録する
-          haveAccount: 登録済みの方は、こちらからログイン
-        forgotPassword:
-          title: パスワードを忘れた
-        forgotId:
-          title: ID を忘れた
-        resetPassword:
-          title: パスワードの再設定
-          submit: 設定する
-        settings:
-          heading: アカウント
-          verified: 確認済み
-          unverified: 未確認
-          changePassword: パスワードの変更
-          changePasswordDescription: 今のパスワードが必要です。変えると、ほかの端末はログアウトします。
-        signInWithGitHub: GitHubでログイン
       about:
         title: Typleについて
         intro: 自分で作った単語リストで練習できるタイピングアプリです。好きな言葉を登録して練習し、ベスト記録で上達を振り返れます。
@@ -191,9 +158,6 @@ ja:
           account:
             title: アカウント
             condition: ログインしているとき
-        email:
-          title: メールアドレスの扱い
-          text: "ID とパスワードで登録するときに、メールアドレスをお預かりします。使うのは、アドレスの確認、パスワードの再設定、ID のお知らせのメールを送るときだけです。広告やお知らせには使わず、ほかへ渡すこともありません。"
         version:
           title: バージョンと開発
           tech: 使用している技術
@@ -238,7 +202,7 @@ ja:
             when: ログインしていないとき
           account:
             title: アカウントに保存
-            when: ログインしたとき（GitHub または ID とパスワード）
+            when: ログインしたとき（Sparklingstadt ID または GitHub）
         shortcuts:
           lead: マウスを使わずに操作できるキーの一覧です。
           screens:

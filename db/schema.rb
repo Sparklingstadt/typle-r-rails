@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_21_090000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_23_000000) do
   create_table "devices", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name", null: false
@@ -76,9 +76,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_21_090000) do
     t.string "github_uid"
     t.string "github_login"
     t.json "interests"
+    t.string "sid_sub"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["github_uid"], name: "index_users_on_github_uid", unique: true
     t.index ["login_id"], name: "index_users_on_login_id", unique: true
+    t.index ["sid_sub"], name: "index_users_on_sid_sub", unique: true
   end
 
   create_table "word_lists", force: :cascade do |t|

@@ -1,14 +1,6 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  # Mail goes out by SMTP when SMTP_ADDRESS is set (SMTP_PORT, SMTP_USERNAME, SMTP_PASSWORD).
-  if ENV["SMTP_ADDRESS"].present?
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      address: ENV["SMTP_ADDRESS"], port: ENV.fetch("SMTP_PORT", 587).to_i,
-      user_name: ENV["SMTP_USERNAME"], password: ENV["SMTP_PASSWORD"], authentication: :plain, enable_starttls_auto: true
-    }
-  end
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -56,24 +48,6 @@ Rails.application.configure do
 
   # Replace the default in-process and non-durable queuing backend for Active Job.
   # config.active_job.queue_adapter = :resque
-
-  # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
-
-  # The host of links in mail: APP_HOST, or the hostname Render gives the service. With neither there is no host, and
-  # a mail with a link fails (in the log) rather than sending its token to a site that is not this one.
-  mail_host = ENV["APP_HOST"].presence || ENV["RENDER_EXTERNAL_HOSTNAME"].presence
-  config.action_mailer.default_url_options = { host: mail_host, protocol: "https" } if mail_host
-
-  # Specify outgoing SMTP server. Remember to add smtp/* credentials via bin/rails credentials:edit.
-  # config.action_mailer.smtp_settings = {
-  #   user_name: Rails.application.credentials.dig(:smtp, :user_name),
-  #   password: Rails.application.credentials.dig(:smtp, :password),
-  #   address: "smtp.example.com",
-  #   port: 587,
-  #   authentication: :plain
-  # }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

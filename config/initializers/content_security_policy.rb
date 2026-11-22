@@ -16,8 +16,9 @@ Rails.application.configure do
     policy.connect_src :self
     policy.object_src  :none
     policy.base_uri    :self
-    # Forms post to the app; GitHub sign-in's form goes on to github.com.
-    policy.form_action :self, "https://github.com"
+    # Forms post to the app; the sign-in forms go on to the Sparklingstadt ID server (SID_ISSUER) and github.com.
+    sid_origin = (URI.parse(ENV["SID_ISSUER"].to_s).then { |uri| "#{uri.scheme}://#{uri.authority}" if uri.scheme && uri.host } rescue nil)
+    policy.form_action :self, *sid_origin, "https://github.com"
     policy.frame_ancestors :self
   end
 

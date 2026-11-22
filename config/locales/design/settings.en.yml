@@ -151,39 +151,6 @@ en:
           use: Use this device for practice in this browser
           useHelp: When you practise in “Practice”, this device is saved with your records.
         deleteCurrent: " The device this browser uses for practice will go back to “Default”."
-      auth:
-        fields:
-          loginId: ID
-          email: Email address
-          password: Password
-          currentPassword: Current password
-          newPassword: New password
-        backToSignIn: Go to sign in
-        signIn:
-          submit: Sign in
-          signUp: Create an account
-          forgotPassword: Forgot password
-          forgotId: Forgot ID
-          or: You can also sign in with a GitHub account.
-        signUp:
-          title: Create an account
-          description: Create a Typle account that signs in with an ID and a password.
-          submit: Create account
-          haveAccount: Already have an account? Sign in
-        forgotPassword:
-          title: Forgot password
-        forgotId:
-          title: Forgot ID
-        resetPassword:
-          title: Set a new password
-          submit: Set password
-        settings:
-          heading: Account
-          verified: Confirmed
-          unverified: Not confirmed
-          changePassword: Change password
-          changePasswordDescription: Your current password is needed. Changing it signs out your other devices.
-        signInWithGitHub: Sign in with GitHub
       about:
         title: About Typle
         intro: A typing app for practicing with word lists you create yourself. Add any words you like, practice them, and track your progress with your best records.
@@ -203,9 +170,6 @@ en:
           account:
             title: Account
             condition: When signed in
-        email:
-          title: How we use email addresses
-          text: "When you sign up with an ID and a password, we keep your email address. It is used only to send mail for confirming the address, resetting the password and telling you your ID. It is never used for ads or announcements and is not passed to anyone else."
         version:
           title: Version and development
           tech: Built with
@@ -250,7 +214,7 @@ en:
             when: When you are not signed in
           account:
             title: Saved to your account
-            when: When you sign in (with GitHub or an ID and password)
+            when: When you sign in (with Sparklingstadt ID or GitHub)
         shortcuts:
           lead: Keys you can use instead of the mouse.
           screens:

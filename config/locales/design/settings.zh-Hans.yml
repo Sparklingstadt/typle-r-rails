@@ -139,39 +139,6 @@ zh-Hans:
           use: 设为此浏览器练习时使用的设备
           useHelp: 在“开始练习”中练习时，记录中会保留此设备。
         deleteCurrent: 此浏览器练习时使用的设备将恢复为“默认”。
-      auth:
-        fields:
-          loginId: ID
-          email: 电子邮件地址
-          password: 密码
-          currentPassword: 当前密码
-          newPassword: 新密码
-        backToSignIn: 前往登录
-        signIn:
-          submit: 登录
-          signUp: 注册新账户
-          forgotPassword: 忘记密码
-          forgotId: 忘记 ID
-          or: 也可以使用 GitHub 账户登录。
-        signUp:
-          title: 注册
-          description: 创建使用 ID 和密码登录的 Typle 账户。
-          submit: 注册
-          haveAccount: 已有账户？在此登录
-        forgotPassword:
-          title: 忘记密码
-        forgotId:
-          title: 忘记 ID
-        resetPassword:
-          title: 重设密码
-          submit: 设置
-        settings:
-          heading: 账户
-          verified: 已确认
-          unverified: 未确认
-          changePassword: 更改密码
-          changePasswordDescription: 需要当前密码。更改后，其他设备将退出登录。
-        signInWithGitHub: 使用 GitHub 登录
       about:
         title: 关于 Typle
         intro: 一款可以用自己创建的单词列表进行练习的打字应用。添加喜欢的词语进行练习，并通过最佳记录回顾自己的进步。
@@ -191,9 +158,6 @@ zh-Hans:
           account:
             title: 账号
             condition: 登录时
-        email:
-          title: 电子邮件地址的使用
-          text: "使用 ID 和密码注册时，我们会保存你的电子邮件地址。它只用于发送确认地址、重置密码和告知 ID 的邮件，不用于广告或通知，也不会提供给其他方。"
         version:
           title: 版本与开发
           tech: 使用的技术
@@ -238,7 +202,7 @@ zh-Hans:
             when: 未登录时
           account:
             title: 保存到账号
-            when: 登录后（GitHub 或 ID 与密码）
+            when: 登录后（Sparklingstadt ID 或 GitHub）
         shortcuts:
           lead: 无需鼠标即可操作的按键一览。
           screens:

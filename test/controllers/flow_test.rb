@@ -27,7 +27,7 @@ class FlowTest < ActionDispatch::IntegrationTest
     assert_response :created
     assert_equal 1, guest.practice_records.count
 
-    post session_path, params: { login_id: "one", password: "password123" }
+    sign_in_with_sid(sub: "one1")
     get packs_path
     assert_select "[data-pack-id] h3", { text: "Vimコマンド（2）", count: 0 }, "the account does not see the guest's packs"
 
@@ -64,20 +64,6 @@ class FlowTest < ActionDispatch::IntegrationTest
     end
   ensure
     ActionController::Base.cache_store = store
-  end
-
-  test "registering signs in" do
-    post registration_path, params: { user: { login_id: "newbie", password: "password123" } }
-    assert_response :unprocessable_entity
-    assert_select "#signup-email-error", "メールアドレスの形式が正しくありません。"
-    post registration_path, params: { user: { login_id: "new.bie", email: "new@example.com", password: "short" } }
-    assert_select "#signup-login-id-error", /半角英数字/
-    assert_select "#signup-password-error", "パスワードは10〜72文字で入力してください。"
-    post registration_path, params: { user: { login_id: "newbie", email: "new@example.com", password: "password123" } }
-    assert_response :success
-    assert_select "[role=status]", "登録して、ログインしました。"
-    get home_path
-    assert_response :success
   end
 
   test "a signed-in user follows a pack, practises, saves a record and sees it" do
