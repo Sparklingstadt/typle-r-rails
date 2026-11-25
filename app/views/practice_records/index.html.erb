@@ -99,7 +99,7 @@
               </div>
               <ul class="<%= UiHelper::CARD_LIST %>">
                 <% day_records.each do |record| %>
-                  <%= render "practice_records/record_row", record:, show_list: @list.nil?, in_pack: @pack.present?, best: @bests.include?(record) %>
+                  <%= render PracticeRecords::RowComponent.new(record:, show_list: @list.nil?, in_pack: @pack.present?, best: @bests.include?(record)) %>
                 <% end %>
               </ul>
             </section>
