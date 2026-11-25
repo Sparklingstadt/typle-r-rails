@@ -86,4 +86,41 @@ class PracticeTest < ApplicationSystemTestCase
     type(word)
     assert_selector "[data-practice-target=progress]", text: "2"
   end
+
+  test "the words missed can be practised again on their own, and then the whole list" do
+    visit play_path(official: "vim-beginner")
+    words = practice_words
+    words.each_with_index do |word, index|
+      type(word["input"].start_with?("q") ? "w" : "q") if index == 2
+      type(word["input"])
+    end
+
+    find("[data-review-missed]").click
+    assert_selector "[data-review-status]", visible: true
+    assert_selector "[data-practice-target=letters]", text: words[2]["input"]
+    assert_selector "[data-practice-target=progress]", text: "1"
+    type(words[2]["input"])
+    assert_selector "[data-practice-target=result]"
+
+    find("[data-practice-target=result] [data-action~='practice#restart']", match: :first).click
+    assert_selector "[data-practice-target=letters]", text: words[0]["input"]
+    assert_no_selector "[data-review-status]", visible: true
+  end
+
+  test "the clock stands still while the input has lost the focus" do
+    visit play_path(official: "vim-beginner")
+    words = practice_words
+    type(words[0]["input"])
+    sleep 0.3
+    find("h1, header", match: :first).click
+    assert_selector "[data-controller~=practice].blurred"
+    stopped = find("[data-practice-target=time]").text
+    sleep 0.5
+    assert_equal stopped, find("[data-practice-target=time]").text
+
+    find("label[for=practice-field]").click
+    assert_no_selector "[data-controller~=practice].blurred"
+    type(words[1]["input"])
+    assert_selector "[data-practice-target=letters]", text: words[2]["input"]
+  end
 end

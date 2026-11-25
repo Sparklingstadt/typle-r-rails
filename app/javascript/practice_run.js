@@ -1,7 +1,9 @@
 // What both practice screens (typing and handwriting) do when a run is over, as typle-r's PracticeResult: save it,
 // and show the result in place (the tiles, how it compares with the best, the missed words and what to do next).
 
+import { Controller } from "@hotwired/stimulus"
 import { Turbo } from "@hotwired/turbo-rails"
+import { accuracyOf } from "typing"
 import { confirmDialog } from "confirm_dialog"
 
 const MAX_MISSED = 20
@@ -96,6 +98,88 @@ export function chooseList(controller) {
   const search = document.querySelector("#practice-aside input[type=search]")
   if (search && search.offsetParent !== null) return search.focus()
   controller.element.querySelector("[data-controller~=list-picker] [data-list-picker-target=trigger]")?.click()
+}
+
+// --- the run, as both screens keep it ---
+
+// The base of the two practice controllers (typing and handwriting): a run's counts and clock, starting again, the
+// review of missed words, the live stats and the end of a run. Each adds its own input and drawing (render, and its
+// own part of reset), and the targets these use: field, board, result, time, mistakes, accuracy and, on the play
+// screen, speed.
+export class RunController extends Controller {
+  // What a new run starts from.
+  resetRun() {
+    this.currentRun = null
+    this.index = 0
+    this.attempts = 0
+    this.mistakes = 0
+    this.startedAt = null
+    this.finishedAt = null
+    this.pausedAt = null
+    this.wordMistakes = new Map()
+    this.composing = false
+    if (this.hasResultTarget) this.resultTarget.hidden = true
+    this.boardTarget.hidden = false
+    this.fieldTarget.disabled = false
+  }
+
+  // もう一度: the whole list again (a review of missed words goes back to the list).
+  restart() {
+    endReview(this)
+    this.reset()
+  }
+
+  // 間違えた N 語だけ練習する: only the words missed in the run just finished, the same way. Not recorded.
+  reviewMissed() {
+    startReview(this)
+    this.reset()
+  }
+
+  chooseList() { chooseList(this) }
+
+  missedWords() { return missedWords(this.wordMistakes, this.wordsValue) }
+
+  // The clock stands still while the input has no focus.
+  pauseClock() {
+    if (this.startedAt !== null && !this.finishedAt && this.pausedAt === null) this.pausedAt = performance.now()
+  }
+
+  resumeClock(now = performance.now()) {
+    if (this.pausedAt === null) return
+    this.startedAt += now - this.pausedAt
+    this.pausedAt = null
+  }
+
+  elapsed() {
+    if (this.startedAt === null) return 0
+    return Math.max(0, (this.finishedAt ?? this.pausedAt ?? performance.now()) - this.startedAt)
+  }
+
+  // The time (m:ss.s with the speed beside it on the play screen, seconds elsewhere), mistakes and accuracy.
+  renderStats() {
+    const elapsed = this.elapsed()
+    this.timeTarget.textContent = this.hasSpeedTarget ? formatClock(elapsed) : `${(elapsed / 1000).toFixed(1)}${this.messagesValue.seconds ?? "s"}`
+    if (this.hasSpeedTarget) {
+      const speed = this.startedAt === null ? null : speedOf(this.attempts - this.mistakes, elapsed)
+      this.speedTarget.textContent = speed === null ? "—" : String(speed)
+    }
+    this.mistakesTarget.textContent = String(this.mistakes)
+    this.accuracyTarget.textContent = this.attempts || !this.hasSpeedTarget ? `${Math.round(accuracyOf(this.attempts, this.mistakes) * 10) / 10}%` : "—"
+  }
+
+  // The last word is done: the clock stops, and the run is saved and shown (finishRun).
+  finish(now = performance.now()) {
+    this.finishedAt = now
+    this.fieldTarget.disabled = true
+    this.render()
+    finishRun(this, {
+      time_ms: Math.max(1, Math.round(this.elapsed())),
+      mistakes: this.mistakes,
+      accuracy: accuracyOf(this.attempts, this.mistakes),
+      mode: this.modeValue || null,
+      missed: this.missedWords(),
+    })
+  }
 }
 
 // --- finishing a run ---

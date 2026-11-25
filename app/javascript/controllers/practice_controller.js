@@ -1,11 +1,10 @@
-import { Controller } from "@hotwired/stimulus"
-import { feedKey, accuracyOf, simpleInputKeys } from "typing"
+import { feedKey, simpleInputKeys } from "typing"
 import { recallPrompt, recallDisplayHint } from "recall"
-import { finishRun, missedWords, message, speedOf, formatClock, escapeHtml, noteMistake, startReview, endReview, chooseList, lockControl, guardSwitches } from "practice_run"
+import { RunController, message, escapeHtml, noteMistake, lockControl, guardSwitches } from "practice_run"
 
 // One run of typing practice over the words of a list. The clock starts at the first key, stands still while the
 // input has no focus, and stops at the last letter. A finished run is saved (signed in) or shown here (guest, weak review).
-export default class extends Controller {
+export default class extends RunController {
   static targets = ["display", "annotation", "letters", "field", "progress", "bar", "time", "mistakes", "accuracy",
                     "reveal", "board", "result", "resultBody", "resultMissed", "speed", "typeThis", "feedback", "upcoming", "allWords",
                     "showAll", "simpleKeys"]
@@ -42,23 +41,12 @@ export default class extends Controller {
   }
 
   reset() {
-    this.currentRun = null
-    this.index = 0
+    this.resetRun()
     this.position = 0
     this.pending = ""
     this.missed = false
     this.revealed = false
-    this.attempts = 0
-    this.mistakes = 0
-    this.startedAt = null
-    this.finishedAt = null
-    this.pausedAt = null
-    this.wordMistakes = new Map()
-    this.composing = false
     this.element.classList.remove("blurred")
-    if (this.hasResultTarget) this.resultTarget.hidden = true
-    this.boardTarget.hidden = false
-    this.fieldTarget.disabled = false
     this.render()
     this.fieldTarget.focus()
   }
@@ -175,56 +163,16 @@ export default class extends Controller {
   blur() {
     // The focus moves on after blur, so a dialog or menu opening now is seen a moment later.
     setTimeout(() => this.updateBlurred())
-    if (this.startedAt !== null && !this.finishedAt && this.pausedAt === null) this.pausedAt = performance.now()
+    this.pauseClock()
     this.render()
   }
 
   focus() {
     this.focusedOnce = true
     this.element.classList.remove("blurred")
-    if (this.pausedAt !== null) {
-      this.startedAt += performance.now() - this.pausedAt
-      this.pausedAt = null
-    }
+    this.resumeClock()
     this.render()
   }
-
-  elapsed() {
-    if (this.startedAt === null) return 0
-    return Math.max(0, (this.finishedAt ?? this.pausedAt ?? performance.now()) - this.startedAt)
-  }
-
-  // --- finish ---
-
-  async finish(now) {
-    this.finishedAt = now
-    this.fieldTarget.disabled = true
-    this.render()
-    const run = {
-      time_ms: Math.max(1, Math.round(this.elapsed())),
-      mistakes: this.mistakes,
-      accuracy: accuracyOf(this.attempts, this.mistakes),
-      mode: this.modeValue || null,
-      missed: this.missedWords(),
-    }
-    finishRun(this, run)
-  }
-
-  missedWords() { return missedWords(this.wordMistakes, this.wordsValue) }
-
-  // もう一度: the whole list again (a review of missed words goes back to the list).
-  restart() {
-    endReview(this)
-    this.reset()
-  }
-
-  // 間違えた N 語だけ練習する: only the words missed in the run just finished, the same way. Not recorded.
-  reviewMissed() {
-    startReview(this)
-    this.reset()
-  }
-
-  chooseList() { chooseList(this) }
 
   // --- view ---
 
@@ -380,17 +328,6 @@ export default class extends Controller {
 
   // The words change on a review of missed words and back: the list of every word is drawn again.
   wordsValueChanged() { this.allWordsStale = true }
-
-  renderStats() {
-    const elapsed = this.elapsed()
-    this.timeTarget.textContent = this.hasSpeedTarget ? formatClock(elapsed) : `${(elapsed / 1000).toFixed(1)}${this.messagesValue.seconds ?? "s"}`
-    if (this.hasSpeedTarget) {
-      const speed = this.startedAt === null ? null : speedOf(this.attempts - this.mistakes, elapsed)
-      this.speedTarget.textContent = speed === null ? "—" : String(speed)
-    }
-    this.mistakesTarget.textContent = String(this.mistakes)
-    this.accuracyTarget.textContent = this.attempts || !this.hasSpeedTarget ? `${Math.round(accuracyOf(this.attempts, this.mistakes) * 10) / 10}%` : "—"
-  }
 }
 
 // PracticeText's sizes, by the length of the text (and smaller for the letters under a display that differs).
