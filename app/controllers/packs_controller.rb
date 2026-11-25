@@ -9,10 +9,10 @@ class PacksController < ApplicationController
     packs = current_user.packs.includes(word_lists: %i[words practice_records]).to_a
     # typle-r's sortPacks: the newest first unless another order is chosen.
     @packs = case @order
-      when "name" then packs.sort_by { |pack| [Collation.key(pack.name), -pack.position] }
-      when "words" then packs.sort_by { |pack| [-pack.word_count, -pack.position] }
-      when "practiced" then packs.sort_by { |pack| [-(pack.last_practiced_at&.to_f || -Float::INFINITY), -pack.position] }
-      else packs.sort_by { |pack| -pack.position }
+    when "name" then packs.sort_by { |pack| [Collation.key(pack.name), -pack.position] }
+    when "words" then packs.sort_by { |pack| [-pack.word_count, -pack.position] }
+    when "practiced" then packs.sort_by { |pack| [-(pack.last_practiced_at&.to_f || -Float::INFINITY), -pack.position] }
+    else packs.sort_by { |pack| -pack.position }
     end
   end
 

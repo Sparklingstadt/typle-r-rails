@@ -1,0 +1,73 @@
+# The checks of config/ci.rb (bin/ci), as separate jobs so each reports on its own.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  scan_ruby:
+    name: Security (gems, Brakeman)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Gem audit
+        run: bin/bundler-audit
+      - name: Brakeman code analysis
+        run: bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error
+
+  scan_js:
+    name: Security (importmap)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Importmap vulnerability audit
+        run: bin/importmap audit
+
+  lint:
+    name: Style (RuboCop)
+    runs-on: ubuntu-latest
+    env:
+      RUBOCOP_CACHE_ROOT: tmp/rubocop
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - uses: actions/cache@v4
+        with:
+          path: ${{ env.RUBOCOP_CACHE_ROOT }}
+          key: rubocop-${{ runner.os }}-${{ hashFiles('.ruby-version', 'Gemfile.lock', '.rubocop.yml') }}-${{ github.sha }}
+          restore-keys: rubocop-${{ runner.os }}-${{ hashFiles('.ruby-version', 'Gemfile.lock', '.rubocop.yml') }}-
+      - name: RuboCop
+        run: bin/rubocop -f github
+
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      # The test database is SQLite (config/database.yml); `test` also builds the Tailwind CSS.
+      - name: Rails tests
+        run: bin/rails db:test:prepare test
+      - name: Seeds
+        run: bin/rails db:seed:replant
