@@ -1,9 +1,5 @@
-<%# typle-r's ListRow: one list of a pack, with 練習 and 編集 up front and everything else in the menu. %>
-<% records = list.practice_records %>
-<% count_text = t("design.lists.row.word_count", count: list.words.size) %>
-<% pointed = params[:list].to_s == list.id.to_s %>
-<li data-list-id="<%= list.id %>" class="<%= cn(ListsDesignHelper::LISTS_ROW, "transition-colors duration-700 motion-reduce:transition-none", pointed && "bg-green-50 duration-0 dark:bg-green-950/40") %>"
-    <%= tag.attributes(data: { controller: "row-highlight", "row-highlight-classes-value": "bg-green-50 duration-0 dark:bg-green-950/40" }) if pointed %>>
+<li data-list-id="<%= list.id %>" class="<%= cn(ListsDesignHelper::LISTS_ROW, "transition-colors duration-700 motion-reduce:transition-none", pointed? && "bg-green-50 duration-0 dark:bg-green-950/40") %>"
+    <%= tag.attributes(data: { controller: "row-highlight", "row-highlight-classes-value": "bg-green-50 duration-0 dark:bg-green-950/40" }) if pointed? %>>
   <div class="min-w-0 space-y-0.5">
     <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5">
       <h3 class="font-medium [overflow-wrap:anywhere]"><%= list.name %></h3>

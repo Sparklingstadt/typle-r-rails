@@ -14,6 +14,11 @@ class PacksController < ApplicationController
     when "practiced" then packs.sort_by { |pack| [-(pack.last_practiced_at&.to_f || -Float::INFINITY), -pack.position] }
     else packs.sort_by { |pack| -pack.position }
     end
+    # `?pack=<id>` (after a save, as typle-r's /edit?pack=) opens that pack and points at its row; `?open=<id>` opens it
+    # without pointing (after a list is saved or deleted, the list's row, `?list=<id>`, is pointed at instead).
+    @pointed_pack_id = params[:pack].presence&.to_i
+    @open_pack_id = params[:open].presence&.to_i
+    @pointed_list_id = params[:list].presence&.to_i
   end
 
   # typle-r has no screen of its own for a pack: its lists open in the word packs list.
