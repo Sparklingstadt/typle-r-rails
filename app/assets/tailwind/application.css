@@ -3,6 +3,7 @@
 /* typle-r's design tokens and base styles, copied from typle-r/src/app/globals.css (shadcn/ui on Tailwind v4). */
 @source "../../views";
 @source "../../helpers";
+@source "../../components";
 @source "../../javascript";
 @source "../../models";
 
