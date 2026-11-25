@@ -1,8 +1,6 @@
-import { Controller } from "@hotwired/stimulus"
-import { accuracyOf } from "typing"
 import { matchesWriting, normalizeWriting } from "writing"
 import { hasHandwritingModel, loadRecognizer } from "handwriting"
-import { finishRun, missedWords, message, speedOf, formatClock, noteMistake, startReview, endReview, chooseList, lockControl, guardSwitches } from "practice_run"
+import { RunController, message, noteMistake, lockControl, guardSwitches } from "practice_run"
 
 // Typle Handwriting: copying each word's display by hand. The words are written into the field with the OS's
 // handwriting input, or (for languages the app reads itself, Korean for now) drawn on the pad. A match moves on at
@@ -14,7 +12,7 @@ const LINE_WIDTH = 4
 const INPUT_KEY = "typle-r:writing-input"
 let penSeen = false
 
-export default class extends Controller {
+export default class extends RunController {
   static targets = ["display", "annotation", "field", "fieldArea", "padArea", "canvas", "padStatus", "reading", "feedback",
                     "progress", "bar", "time", "mistakes", "accuracy", "board", "result", "resultBody", "inputSwitch", "reload",
                     "resultMissed", "speed", "padStatusText", "padHint"]
@@ -44,18 +42,7 @@ export default class extends Controller {
   }
 
   reset() {
-    this.currentRun = null
-    this.index = 0
-    this.attempts = 0
-    this.mistakes = 0
-    this.startedAt = null
-    this.finishedAt = null
-    this.pausedAt = null
-    this.wordMistakes = new Map()
-    this.composing = false
-    this.resultTarget.hidden = true
-    this.boardTarget.hidden = false
-    this.fieldTarget.disabled = false
+    this.resetRun()
     this.fieldTarget.value = ""
     this.clearPad()
     this.feedbackTarget.textContent = ""
@@ -63,41 +50,21 @@ export default class extends Controller {
     this.focusInput()
   }
 
-  restart() {
-    endReview(this)
-    this.reset()
-  }
-
-  reviewMissed() {
-    startReview(this)
-    this.reset()
-  }
-
-  chooseList() { chooseList(this) }
-
   get word() { return this.wordsValue[this.index] }
 
   // --- the clock ---
 
   start() {
     const now = performance.now()
-    if (this.pausedAt !== null) { this.startedAt += now - this.pausedAt; this.pausedAt = null }
+    this.resumeClock(now)
     if (this.startedAt === null) this.startedAt = now
   }
 
-  elapsed() {
-    if (this.startedAt === null) return 0
-    return Math.max(0, (this.finishedAt ?? this.pausedAt ?? performance.now()) - this.startedAt)
-  }
-
   blur() {
-    if (this.usePad) return
-    if (this.startedAt !== null && !this.finishedAt && this.pausedAt === null) this.pausedAt = performance.now()
+    if (!this.usePad) this.pauseClock()
   }
 
-  focus() {
-    if (this.pausedAt !== null) { this.startedAt += performance.now() - this.pausedAt; this.pausedAt = null }
-  }
+  focus() { this.resumeClock() }
 
   // --- judging ---
 
@@ -137,19 +104,6 @@ export default class extends Controller {
     this.index += 1
     this.render()
     this.focusInput()
-  }
-
-  finish() {
-    this.finishedAt = performance.now()
-    this.fieldTarget.disabled = true
-    this.render()
-    finishRun(this, {
-      time_ms: Math.max(1, Math.round(this.elapsed())),
-      mistakes: this.mistakes,
-      accuracy: accuracyOf(this.attempts, this.mistakes),
-      mode: this.modeValue,
-      missed: missedWords(this.wordMistakes, this.wordsValue),
-    })
   }
 
   // --- the field (OS handwriting input) ---
@@ -360,16 +314,4 @@ export default class extends Controller {
   renderPadHint() {
     if (this.hasPadHintTarget) this.padHintTarget.hidden = this.padStatus !== "ready" || this.strokes.length > 0 || this.active !== null
   }
-
-  renderStats() {
-    const elapsed = this.elapsed()
-    this.timeTarget.textContent = this.hasSpeedTarget ? formatClock(elapsed) : `${(elapsed / 1000).toFixed(1)}${this.messagesValue.seconds}`
-    if (this.hasSpeedTarget) {
-      const speed = this.startedAt === null ? null : speedOf(this.attempts - this.mistakes, elapsed)
-      this.speedTarget.textContent = speed === null ? "—" : String(speed)
-    }
-    this.mistakesTarget.textContent = String(this.mistakes)
-    this.accuracyTarget.textContent = this.attempts || !this.hasSpeedTarget ? `${Math.round(accuracyOf(this.attempts, this.mistakes) * 10) / 10}%` : "—"
-  }
 }
-

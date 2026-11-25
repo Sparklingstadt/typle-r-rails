@@ -8,6 +8,9 @@ class DevicesController < ApplicationController
     @usage = records.count.to_h { |key, count| [key, { count:, last: last[key] }] }
     # Built apart from the user's devices, so the unsaved form is not one of the choices.
     @device = Device.new(user: current_user)
+    # The form's dialog is open on a device being edited (?edit=), or on a new one (?add=).
+    @editing = @devices.find { |device| device.id == params[:edit].to_i } if params[:edit].present?
+    @adding = params[:add].present?
   end
 
   def create
@@ -51,8 +54,12 @@ class DevicesController < ApplicationController
     def index_with_errors
       failed = @device
       index
-      @device = failed if failed.new_record?
-      @editing = failed unless failed.new_record?
+      if failed.new_record?
+        @device = failed
+        @adding = true
+      else
+        @editing = failed
+      end
       render :index, status: :unprocessable_entity
     end
 end

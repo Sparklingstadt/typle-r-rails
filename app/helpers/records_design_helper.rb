@@ -115,33 +115,6 @@ module RecordsDesignHelper
     end
   end
 
-  # FilterMenu: a pill that reads as the current filter and opens the choices, as links, with their record counts.
-  # `options` are [value, label, count]; `url` builds the link of a value (nil for all).
-  def records_filter_menu(name:, all_label:, value:, options:, url:)
-    current = options.find { |option| option[0] == value }
-    trigger = cn("inline-flex h-9 max-w-full min-w-0 items-center gap-1.5 rounded-full border bg-background px-3.5 text-sm outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 aria-expanded:bg-muted dark:bg-input/30",
-      current && "border-foreground/25 bg-secondary font-medium dark:bg-secondary")
-    choices = [[nil, all_label, options.sum { |option| option[2] }], *options]
-    tag.div(class: "relative max-w-full", data: { controller: "dropdown" }) do
-      safe_join([
-        tag.button(type: "button", class: trigger, data: { dropdown_target: "trigger" }, "aria-label": records_t("history.filter_menu.label", name:, current: current ? current[1] : all_label)) {
-          safe_join([tag.span(name, class: "shrink-0 text-muted-foreground"), tag.span(current ? current[1] : records_t("history.filter_menu.all"), class: "truncate"),
-                     icon("chevron-down", class: "size-3.5 shrink-0 text-muted-foreground")])
-        },
-        tag.div(role: "menu", class: cn(UiHelper::MENU_CONTENT, "absolute top-full left-0 mt-1.5 max-h-96 w-72 max-w-[calc(100vw-2rem)] overflow-y-auto")) {
-          safe_join(choices.map { |option_value, label, count|
-            chosen = option_value == value
-            link_to(url.(option_value), class: RECORDS_MENU_ITEM, role: "menuitemradio", "aria-checked": chosen.to_s) do
-              safe_join([(menu_check if chosen),
-                         tag.span(label, class: "min-w-0 flex-1 truncate"),
-                         tag.span(records_t("history.filter_menu.count", count:), class: "shrink-0 text-xs text-muted-foreground tabular-nums")].compact)
-            end
-          })
-        }
-      ])
-    end
-  end
-
   # The device choices, labelled as typle-r does: deleted devices are marked.
   def records_device_choices(device_options, mark_deleted: false)
     device_options.map { |option|
@@ -163,24 +136,5 @@ module RecordsDesignHelper
 
   def records_rank_badge(rank)
     tag.span(rank, class: cn("grid size-6 place-items-center rounded-full bg-muted text-xs font-bold text-muted-foreground", rank == 1 && "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300"))
-  end
-
-  # speedScale: three tidy ticks around the values.
-  def records_speed_scale(values)
-    tidy = ->(value) { value.round(6) }
-    nice = lambda do |value|
-      power = 10.0**Math.log10(value).floor
-      fraction = value / power
-      tidy.((fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 2.5 ? 2.5 : fraction <= 5 ? 5 : 10) * power)
-    end
-    min, max = values.minmax
-    step = nice.([max - min, max * 0.1, 0.01].max / 2)
-    low = tidy.((min / step).floor * step)
-    while tidy.(low + step * 2) < max
-      step = nice.(step * 1.001)
-      low = tidy.((min / step).floor * step)
-    end
-    decimals = step.to_s.sub(/\.0\z/, "").split(".")[1].to_s.size
-    { domain: [low, tidy.(low + step * 2)], ticks: [tidy.(low + step * 2), tidy.(low + step), low], decimals: }
   end
 end

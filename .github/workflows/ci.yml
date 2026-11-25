@@ -71,3 +71,24 @@ jobs:
         run: bin/rails db:test:prepare test
       - name: Seeds
         run: bin/rails db:seed:replant
+
+  system_test:
+    name: System tests
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      # The pages with their scripts in headless Chrome (Cuprite finds the runner's google-chrome).
+      - name: System tests
+        run: bin/rails db:test:prepare test:system
+      - name: Keep the screenshots of failures
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: tmp/screenshots
+          if-no-files-found: ignore

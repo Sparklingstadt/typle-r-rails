@@ -110,7 +110,9 @@
         <p aria-live="polite" class="ml-auto text-sm text-muted-foreground tabular-nums" data-packs-filter-target="count"><%= tt("wordLists.manager.count", total: @packs.size) %></p>
       </div>
       <ul class="<%= cn(UiHelper::CARD_LIST, "overflow-visible") %>" data-packs-filter-target="list">
-        <%= render partial: "packs/pack_row", collection: @packs, as: :pack %>
+        <% @packs.each do |pack| %>
+          <%= render Packs::PackRowComponent.new(pack:, pointed: pack.id == @pointed_pack_id, open: pack.id == @open_pack_id, pointed_list_id: @pointed_list_id) %>
+        <% end %>
       </ul>
       <div class="flex flex-col items-start gap-3 rounded-xl border border-dashed bg-card px-5 py-6" data-packs-filter-target="empty" hidden>
         <p class="text-sm text-muted-foreground [overflow-wrap:anywhere]"><%= tt("wordLists.filter.noMatch") %></p>
