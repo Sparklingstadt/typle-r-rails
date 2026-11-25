@@ -74,8 +74,9 @@ module Ui
     MENU_INSET_ITEM = "relative flex w-full cursor-pointer items-center gap-2 rounded-md py-2 pr-3 pl-8 text-left text-sm outline-none select-none hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground has-focus-visible:bg-accent has-focus-visible:text-accent-foreground"
 
 
-    # cn(): joins classes, the later winning over the earlier as tailwind-merge decides.
-    def cn(*classes) = MERGER.merge(classes.flatten.compact.join(" "))
+    # cn(): joins classes, the later winning over the earlier as tailwind-merge decides. Only non-empty strings are
+    # kept, so nil and false (from `condition && "class"`) and "" are left out, as clsx does.
+    def cn(*classes) = MERGER.merge(classes.flatten.select { |name| name.is_a?(String) && !name.empty? }.join(" "))
 
     def button_classes(variant: :default, size: :default, class: nil)
       cn(BUTTON_BASE, BUTTON_VARIANTS.fetch(variant.to_sym), BUTTON_SIZES.fetch(size.to_sym), binding.local_variable_get(:class))
