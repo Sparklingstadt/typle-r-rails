@@ -51,8 +51,10 @@ end
 group :test do
   # The Sparklingstadt ID server's discovery, keys and token endpoint, answered in the tests.
   gem "webmock"
-  # Matchers for the component tests (test/components).
+  # Matchers for the component tests (test/components) and the system tests (test/system).
   gem "capybara"
+  # The system tests' browser: headless Chrome driven over the DevTools protocol, with no driver to match.
+  gem "cuprite"
 end
 
 group :development do
