@@ -26,11 +26,11 @@
          .map { |list| [list.id, @pack ? records_level_name(list) : list.full_name, list.practice_records.size] } %>
     <div class="space-y-6">
       <div class="flex flex-wrap items-center gap-2">
-        <%= records_filter_menu(name: records_t("history.filter.pack"), all_label: records_t("history.filter.all_packs"), value: @pack&.id, options: pack_options,
+        <%= render PracticeRecords::FilterMenuComponent.new(name: records_t("history.filter.pack"), all_label: records_t("history.filter.all_packs"), value: @pack&.id, options: pack_options,
               url: ->(value) { records_url.({ pack: value, list: (@list if value && @list&.pack_id == value)&.id }) }) %>
-        <%= records_filter_menu(name: records_t("history.filter.list"), all_label: records_t("history.filter.all_lists"), value: @list&.id, options: list_options,
+        <%= render PracticeRecords::FilterMenuComponent.new(name: records_t("history.filter.list"), all_label: records_t("history.filter.all_lists"), value: @list&.id, options: list_options,
               url: ->(value) { records_url.({ list: value }) }) %>
-        <%= records_filter_menu(name: records_t("history.filter.device"), all_label: records_t("history.filter.all_devices"), value: @device, options: records_device_choices(@device_options),
+        <%= render PracticeRecords::FilterMenuComponent.new(name: records_t("history.filter.device"), all_label: records_t("history.filter.all_devices"), value: @device, options: records_device_choices(@device_options),
               url: ->(value) { records_url.({ device: value }) }) %>
         <% if filtered %>
           <%= link_button records_t("history.filter.clear"), practice_records_path, variant: :ghost, size: :lg, class: "text-muted-foreground" %>

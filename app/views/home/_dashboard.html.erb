@@ -32,7 +32,7 @@
   <%= render Home::SectionComponent.new(id: "trends-heading", title: home_t("dashboard.trends.title"), description: home_t("dashboard.trends.description")) do %>
     <div class="grid items-start gap-4 xl:grid-cols-2">
       <% dashboard.list_trends.each do |trend| %>
-        <%= render "home/trend", trend:, now: %>
+        <%= render Home::TrendComponent.new(trend:, now:) %>
       <% end %>
     </div>
   <% end %>

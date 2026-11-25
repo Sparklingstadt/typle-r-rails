@@ -2,7 +2,7 @@
     (design.guide.practice.*); a point about something it does not have (a confirmation when switching lists) is left out. %>
 <%= guide_section("practice", :keyboard, guide_t("contents.practice"), guide_rich(guide_t("practice.lead"))) do %>
   <%= guide_topic(guide_t("practice.colors.title")) do %>
-    <%= guide_color_legend %>
+    <%= render Guide::ColorLegendComponent.new %>
     <p class="mt-3"><%= guide_rich(guide_t("practice.colors.text")) %></p>
   <% end %>
   <%= guide_topic(guide_t("practice.flow.title")) do %>

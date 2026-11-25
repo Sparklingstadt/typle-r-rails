@@ -20,7 +20,7 @@
     <% opened = @requested.present? %>
     <div class="space-y-4">
       <div class="flex flex-wrap items-center gap-2">
-        <%= records_filter_menu(name: records_t("rankings.filter.device"), all_label: records_t("rankings.filter.all_devices"), value: @device&.value,
+        <%= render PracticeRecords::FilterMenuComponent.new(name: records_t("rankings.filter.device"), all_label: records_t("rankings.filter.all_devices"), value: @device&.value,
               options: records_device_choices(@device_options, mark_deleted: true), url: ->(value) { rankings_url.({ device: value }) }) %>
         <%= records_pill(label: records_t("rankings.mode.label"), items: PracticeRecord::MODES.map { |mode|
               [records_t("rankings.mode.#{mode || "normal"}"), rankings_url.({ mode: }), mode == @mode] }) %>

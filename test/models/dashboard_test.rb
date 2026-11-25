@@ -42,4 +42,9 @@ class DashboardTest < ActiveSupport::TestCase
     def practise(at:, missed: [])
       @list.practice_records.create!(user: @user, time_ms: 1000, accuracy: 100, word_count: 3, mistakes: 0, missed:, practiced_at: at)
     end
+
+  test "the speed scale keeps its decimals for small seconds per word, as typle-r's speedScale" do
+    assert_equal Dashboard::Scale.new(low: 0.0, high: 0.01, ticks: [0.01, 0.005, 0.0], decimals: 3), Dashboard.speed_scale([0.004, 0.006])
+    assert_equal 0, Dashboard.speed_scale([1.2, 3.4]).decimals
+  end
 end

@@ -111,37 +111,4 @@ module GuideDesignHelper
       [char, state]
     end
   end
-
-  # ColorLegend: the practice screen's letters as they look after a few keys, with what each colour means.
-  def guide_color_legend
-    tag.div(class: "grid gap-3 sm:grid-cols-2") do
-      safe_join(GUIDE_LEGEND.map { |example|
-        taken = example[:missed] ? example[:typed][0...-1] : example[:typed]
-        letters = guide_letter_states(example[:sample], taken, example[:missed])
-        tag.figure(class: "flex flex-col gap-4 rounded-xl border bg-card p-4") do
-          safe_join([
-            tag.div(class: "flex items-baseline justify-between gap-3") do
-              safe_join([
-                # PracticeText with TargetText's letters.
-                tag.p(class: "mx-auto my-0 w-4/5 max-h-[min(5lh,28dvh)] max-w-full overflow-y-auto overscroll-contain py-[0.25em] text-center font-medium whitespace-pre-wrap [overflow-wrap:anywhere] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden text-3xl leading-tight tracking-wide") do
-                  safe_join(letters.map { |char, state| tag.span(char, class: GUIDE_LETTER.fetch(state), "data-state": state.to_s.tr("_", "-")) })
-                end,
-                tag.span(guide_rich(guide_t("legend.typed", typed: example[:typed]), { mono: ->(inner) { tag.span(inner, class: "font-mono") } }), class: "shrink-0 text-xs text-muted-foreground")
-              ])
-            end,
-            tag.figcaption do
-              tag.ul(class: "flex flex-wrap gap-x-4 gap-y-1.5 text-sm") do
-                safe_join(example[:items].map { |state|
-                  tag.li(class: "inline-flex items-center gap-1.5") do
-                    safe_join([tag.span(guide_t("legend.swatch"), class: cn("font-medium", GUIDE_SWATCH.fetch(state)), "aria-hidden": "true"),
-                               guide_t("legend.#{state}.label"), tag.span(guide_t("legend.#{state}.note"), class: "text-muted-foreground")])
-                  end
-                })
-              end
-            end
-          ])
-        end
-      })
-    end
-  end
 end

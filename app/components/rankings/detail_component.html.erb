@@ -48,7 +48,7 @@
     <div class="space-y-2">
       <h3 class="text-sm font-bold"><%= records_t("rankings.detail.trend.title") %> <span class="font-normal text-muted-foreground"><%= records_t("rankings.detail.trend.recent", count: points.size) %></span></h3>
       <% if points.size > 1 %>
-        <%= render "rankings/trend_chart", points:, label: records_t("rankings.detail.trend.label", name: list.full_name) %>
+        <%= trend_chart(points) %>
       <% else %>
         <p class="rounded-lg bg-muted/50 px-3 py-4 text-sm text-muted-foreground"><%= records_t("rankings.detail.trend.need_two") %></p>
       <% end %>

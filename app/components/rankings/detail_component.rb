@@ -3,7 +3,7 @@
 # whether runs at other word counts are included; `rankings_url` makes the page's URL with some of them changed.
 class Rankings::DetailComponent < ApplicationComponent
   delegate :current_user, :practice_name, :link_button, :records_t, :records_rich, :records_day, :records_time, :records_accuracy,
-           :records_device_choices, to: :helpers
+           :records_device_choices, :records_time_text, :records_short_date, :records_clock, to: :helpers
 
   def initialize(ranking:, mode:, device:, order:, show_all:, include_others:, rankings_url:)
     @ranking = ranking
@@ -56,6 +56,17 @@ class Rankings::DetailComponent < ApplicationComponent
   end
 
   def top = show_all? ? ranked : ranked.first(ListRanking::TOP)
+
+  # The time of the latest runs.
+  def trend_chart(records)
+    date = ->(record) { "#{records_short_date(record.practiced_at)} #{records_clock(record.practiced_at)}" }
+    render TrendChartComponent.new(
+      label: records_t("rankings.detail.trend.label", name: list.full_name),
+      points: records.map { |record| TrendChartComponent::Point.new(value: record.seconds, value_text: records_time_text(record.seconds), date_text: date.(record)) },
+      scale: Dashboard.speed_scale(records.map(&:seconds)),
+      dates: [records_short_date(records.first.practiced_at), records_short_date(records.last.practiced_at)],
+      messages: "design.records.chart")
+  end
 
   # The word counts of the runs left out (or included), and how many runs each has.
   def others_detail
