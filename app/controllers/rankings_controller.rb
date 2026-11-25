@@ -37,10 +37,10 @@ class RankingsController < ApplicationController
     def sort_packs(packs)
       recent = ->(item) { -(item.last_practiced&.to_f || 0) }
       key = case @sort
-            when "name" then ->(item) { [item.pack.name.downcase] }
-            when "count" then ->(item) { [-item.practice_count, recent.(item)] }
-            else ->(item) { [recent.(item)] }
-            end
+      when "name" then ->(item) { [item.pack.name.downcase] }
+      when "count" then ->(item) { [-item.practice_count, recent.(item)] }
+      else ->(item) { [recent.(item)] }
+      end
       # Ties keep the saved order.
       packs.each_with_index.sort_by { |item, index| [*key.(item), index] }.map(&:first)
     end

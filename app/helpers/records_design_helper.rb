@@ -45,9 +45,9 @@ module RecordsDesignHelper
   def records_duration(seconds)
     total = seconds.round
     parts = if total < 60 then [[total, "seconds"]]
-            elsif total < 3600 then [[total / 60, "minutes"], [total % 60, "seconds"]]
-            else [[total / 3600, "hours"], [total % 3600 / 60, "minutes"]]
-            end
+    elsif total < 3600 then [[total / 60, "minutes"], [total % 60, "seconds"]]
+    else [[total / 3600, "hours"], [total % 3600 / 60, "minutes"]]
+    end
     space = records_unit_space
     parts.map { |value, unit| "#{value}#{space}#{records_t("format.units.#{unit}")}" }.join(space)
   end

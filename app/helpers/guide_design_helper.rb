@@ -105,9 +105,9 @@ module GuideDesignHelper
     error = actual.size if error.nil? && missed
     characters.each_with_index.map do |char, index|
       state = if index < actual.size then error.nil? || index < error ? :done : :error
-              elsif index == actual.size then error.nil? ? :current : :current_error
-              else :pending
-              end
+      elsif index == actual.size then error.nil? ? :current : :current_error
+      else :pending
+      end
       [char, state]
     end
   end
