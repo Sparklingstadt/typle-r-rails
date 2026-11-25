@@ -51,6 +51,8 @@ end
 group :test do
   # The Sparklingstadt ID server's discovery, keys and token endpoint, answered in the tests.
   gem "webmock"
+  # Matchers for the component tests (test/components).
+  gem "capybara"
 end
 
 group :development do
@@ -62,3 +64,5 @@ end
 gem "tailwindcss-rails", "~> 4.0"
 gem "lucide-rails"
 gem "tailwind_merge"
+# The UI's parts as components (app/components), with their own tests and previews.
+gem "view_component"

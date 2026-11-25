@@ -38,7 +38,7 @@
   <ul class="space-y-0.5 p-1.5">
     <% practised.each do |item, rows| %>
       <% if item.items.size == 1 %>
-        <%= render "rankings/list_row", ranking: rows.first, selected:, href: row_link.(rows.first.list), grouped: false, now: %>
+        <%= render Rankings::ListRowComponent.new(ranking: rows.first, selected:, href: row_link.(rows.first.list), grouped: false, now:) %>
       <% else %>
         <li data-pack-id="<%= item.pack.id %>" class="py-1">
           <% totals = [records_t("rankings.list.runs", count: item.practice_count), records_t("rankings.list.pack_practiced", practiced: item.practised_list_count, lists: item.items.size)]
@@ -50,7 +50,7 @@
           </div>
           <ul class="space-y-0.5">
             <% rows.each do |ranking| %>
-              <%= render "rankings/list_row", ranking:, selected:, href: row_link.(ranking.list), grouped: true, now: %>
+              <%= render Rankings::ListRowComponent.new(ranking:, selected:, href: row_link.(ranking.list), grouped: true, now:) %>
             <% end %>
           </ul>
         </li>
@@ -65,7 +65,7 @@
     <ul class="space-y-0.5">
       <% unpractised.each do |item, rows| %>
         <% if item.items.size == 1 %>
-          <%= render "rankings/list_row", ranking: rows.first, selected:, href: row_link.(rows.first.list), grouped: false, now: %>
+          <%= render Rankings::ListRowComponent.new(ranking: rows.first, selected:, href: row_link.(rows.first.list), grouped: false, now:) %>
         <% else %>
           <% current = item.items.any? { |ranking| ranking.list == selected } %>
           <% name = records_t("rankings.list.pack_lists", pack: item.pack.name, count: item.items.size) %>

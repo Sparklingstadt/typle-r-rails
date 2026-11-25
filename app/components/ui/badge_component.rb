@@ -1,0 +1,13 @@
+# typle-r's Badge (shadcn/ui).
+class Ui::BadgeComponent < ApplicationComponent
+  def initialize(text = nil, variant: :default, class: nil, **options)
+    @text = text
+    @variant = variant
+    @class = class_option(binding)
+    @options = options
+  end
+
+  def call
+    tag.span(content? ? content : @text, class: badge_classes(variant: @variant, class: @class), "data-slot": "badge", **@options)
+  end
+end
