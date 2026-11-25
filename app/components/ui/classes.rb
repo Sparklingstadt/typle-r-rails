@@ -73,10 +73,6 @@ module Ui
     MENU_CONTENT = "z-50 rounded-lg border bg-popover p-1 text-popover-foreground shadow-md"
     MENU_INSET_ITEM = "relative flex w-full cursor-pointer items-center gap-2 rounded-md py-2 pr-3 pl-8 text-left text-sm outline-none select-none hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground has-focus-visible:bg-accent has-focus-visible:text-accent-foreground"
 
-    CLEARABLE_SEARCH_SIZES = {
-      default: { icon: "left-3", input: "h-10 pr-9 pl-9", button: "right-2 size-7" },
-      sm: { icon: "left-2.5", input: "h-9 pr-8 pl-8", button: "right-1.5 size-6" }
-    }.freeze
 
     # cn(): joins classes, the later winning over the earlier as tailwind-merge decides.
     def cn(*classes) = MERGER.merge(classes.flatten.compact.join(" "))
