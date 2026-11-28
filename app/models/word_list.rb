@@ -26,6 +26,19 @@ class WordList < ApplicationRecord
 
   delegate :editable?, :followed?, to: :pack
 
+  # Gives each list's pack the loaded lists of that pack as its word_lists, so that a list's name, category and tags
+  # (which look at the pack's other lists) need no query per pack. `lists` are all of a user's lists, with their packs.
+  def self.share_packs(lists)
+    siblings = lists.group_by(&:pack_id).transform_values { |items| items.sort_by { |list| [list.position, list.id] } }
+    # A pack loaded with a join may be a different object for each of its lists, so each list's own pack gets them.
+    lists.each do |list|
+      association = list.pack.association(:word_lists)
+      association.target = siblings[list.pack_id]
+      association.loaded!
+    end
+    lists
+  end
+
   # typle-r's viewLists: a list is named with its pack (its group) when the pack has two or more lists or the list has a
   # level, and then by its level (levelName) when it has one.
   def grouped? = level.present? || pack.list_count >= 2

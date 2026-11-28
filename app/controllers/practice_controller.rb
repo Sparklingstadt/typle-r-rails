@@ -13,8 +13,8 @@ class PracticeController < ApplicationController
       @writing_language = official.writing_language
       @mode = nil if @mode == "writing" && !@writing_language
     else
-      @lists = current_user.word_lists.includes(:pack, :words, :practice_records).order("packs.position", :position).references(:pack).to_a
-      @list = params[:list].present? ? current_user.word_lists.find(params[:list]) : default_list
+      @lists = WordList.share_packs(current_user.word_lists.eager_load(:pack).preload(:words, :practice_records).order("packs.position", :position).to_a)
+      @list = params[:list].present? ? (@lists.find { |list| list.id.to_s == params[:list].to_s } || raise(ActiveRecord::RecordNotFound)) : default_list
       return render_starters unless @list
       @list_name = @list.full_name
       @words = @list.words.map(&:as_practice_json)

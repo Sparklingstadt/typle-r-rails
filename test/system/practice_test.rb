@@ -124,3 +124,27 @@ class PracticeTest < ApplicationSystemTestCase
     assert_selector "[data-practice-target=letters]", text: words[2]["input"]
   end
 end
+
+class PracticeListPanelTest < ApplicationSystemTestCase
+  # The list panel finds a list by one of its words, which the page carries once for both of its list choosers.
+  test "the list panel finds a pack by a word of its lists" do
+    visit catalog_path("pack-vim-beginner")
+    click_on I18n.t("design.lists.official.practice")
+    assert_selector "[data-practice-save-url-value]"
+    visit catalog_path("pack-english-basic-words")
+    click_on I18n.t("design.lists.official.practice")
+    assert_selector "[data-practice-save-url-value]"
+    vim, english = Pack.order(:id).to_a
+    vim_words = vim.word_lists.flat_map(&:words).flat_map { |word| [word.display, word.input] }.map(&:downcase)
+    word = english.word_lists.flat_map(&:words).map(&:input).find { |input| input.size > 3 && vim_words.none? { |text| text.include?(input.downcase) } }
+    assert_selector "script#list-search-words", visible: :all, count: 1
+
+    within("#practice-aside") do
+      find("input[type=search]").fill_in(with: word.upcase)
+      assert_selector "li[data-pack-id='#{english.id}']"
+      assert_no_selector "li[data-pack-id='#{vim.id}']"
+      find("input[type=search]").fill_in(with: "")
+      assert_selector "li[data-pack-id='#{vim.id}']"
+    end
+  end
+end
