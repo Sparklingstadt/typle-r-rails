@@ -19,12 +19,22 @@ class Dashboard
   Scale = Data.define(:low, :high, :ticks, :decimals)
 
   def initialize(user, now: Time.current)
-    @user = user
     @now = now
-    @records = user.practice_records.includes(word_list: [:words, :pack]).recent.to_a
+    # The user's lists and runs, each loaded once and joined in memory: a run's list, a list's runs (for its best) and
+    # a pack's lists (for a list's name) need no query per list or pack.
+    @lists = user.word_lists.includes(:words, pack: :word_lists).to_a
+    @records = user.practice_records.recent.to_a
+    lists_by_id = @lists.index_by(&:id)
+    @records.each { |record| record.association(:word_list).target = lists_by_id.fetch(record.word_list_id) }
+    records_by_list = @records.group_by(&:word_list_id)
+    @lists.each do |list|
+      association = list.association(:practice_records)
+      association.target = records_by_list.fetch(list.id, [])
+      association.loaded!
+    end
   end
 
-  attr_reader :records
+  attr_reader :records, :lists
 
   def any? = records.any?
 
@@ -33,7 +43,8 @@ class Dashboard
 
   def week
     this_week = records.select { |r| r.practiced_at >= week_start }
-    last_week = records.select { |r| r.practiced_at >= week_start - 1.week && r.practiced_at < @now - 1.week }
+    last_week_start, last_week_now = week_start - 1.week, @now - 1.week
+    last_week = records.select { |r| r.practiced_at >= last_week_start && r.practiced_at < last_week_now }
     recent = records.select { |r| r.mode.nil? }.first(10)
     {
       runs: this_week.size, runs_before: last_week.size,
@@ -46,7 +57,7 @@ class Dashboard
     }
   end
 
-  def week_start = @now.beginning_of_week(:monday)
+  def week_start = @week_start ||= @now.beginning_of_week(:monday)
 
   # Normal-mode runs, newest first (recall and handwriting are not compared with them).
   def normal_records = @normal_records ||= records.select { |r| r.mode.nil? && r.word_count.to_i.positive? }
@@ -119,8 +130,8 @@ class Dashboard
 
   # Per list, the words that went wrong in its last WEAK_RUNS runs after the last weak review, most runs first.
   def weak_lists
-    @user.word_lists.includes(:words).filter_map { |list|
-      words = self.class.weak_words(list, records.select { |r| r.word_list_id == list.id })
+    lists.filter_map { |list|
+      words = self.class.weak_words(list, list.practice_records)
       WeakList.new(list:, words: words.first(WEAK_WORDS_SHOWN), more: [words.size - WEAK_WORDS_SHOWN, 0].max) if words.any?
     }.sort_by { |item| -item.words.size }.first(WEAK_LISTS)
   end
@@ -144,10 +155,9 @@ class Dashboard
 
   # Lists to practise next: never practised, not practised for 3 days, or recent accuracy under 90%.
   def next_lists
-    lists = @user.word_lists.includes(:words, :pack).to_a
     by_list = records.select { |r| r.mode.nil? }.group_by(&:word_list_id)
     picks = []
-    lists.each { |l| picks << [l, [:never, {}]] unless records.any? { |r| r.word_list_id == l.id } }
+    lists.each { |l| picks << [l, [:never, {}]] if l.practice_records.empty? }
     lists.each do |l|
       last = by_list[l.id]&.first
       picks << [l, [:idle, { count: ((@now - last.practiced_at) / 1.day).floor }]] if last && last.practiced_at < @now - 3.days

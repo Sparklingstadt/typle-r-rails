@@ -1,0 +1,9 @@
+<%# The dashboard's trends (typle-r's TrendCard per list), loaded into the home page's frame. %>
+<% now = Time.current %>
+<%= turbo_frame_tag "home-trends", target: "_top" do %>
+  <div class="grid items-start gap-4 xl:grid-cols-2">
+    <% dashboard.list_trends.each do |trend| %>
+      <%= render Home::TrendComponent.new(trend:, now:) %>
+    <% end %>
+  </div>
+<% end %>
