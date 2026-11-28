@@ -35,8 +35,10 @@ class Pack < ApplicationRecord
 
   def last_practiced_at = word_lists.flat_map(&:practice_records).map(&:practiced_at).max
 
-  # The text the packs page searches: pack and list names, labels and words (typle-r searches words too).
-  def search_text = [name, category, *tags, *word_lists.flat_map { |list| [list.name, list.level, *list.words.map(&:display), *list.words.map(&:input)] }].compact.join("\n").downcase
+  # The text the packs page searches (typle-r searches words too): pack and list names and labels here, and the words in
+  # word_search_text, which the page carries once for all packs rather than on each row.
+  def search_text = [name, category, *tags, *word_lists.flat_map { |list| [list.name, list.level] }].compact.join("\n").downcase
+  def word_search_text = word_lists.flat_map { |list| list.words.flat_map { |word| [word.display, word.input] } }.uniq.join("\n").downcase
 
   private
     # packNameDuplicate: no two packs of a user share a name, case aside.

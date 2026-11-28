@@ -1,0 +1,4 @@
+<%# A closed pack's lists, loaded into its row's frame when the row is opened (Packs::PackRowComponent). %>
+<%= turbo_frame_tag "#{dom_id(@pack)}-lists", target: "_top" do %>
+  <%= with_icon_sprite do %><%= render Packs::ListsComponent.new(pack: @pack) %><% end %>
+<% end %>

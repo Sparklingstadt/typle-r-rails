@@ -21,6 +21,13 @@ class PacksController < ApplicationController
     @pointed_list_id = params[:list].presence&.to_i
   end
 
+  # A closed pack's lists, which its row on the packs page loads into its frame when it is opened.
+  def lists
+    @pack = current_user.packs.includes(word_lists: %i[words practice_records]).find(params[:id])
+    return redirect_to packs_path(open: @pack.id) unless turbo_frame_request?
+    render layout: false
+  end
+
   # typle-r has no screen of its own for a pack: its lists open in the word packs list.
   def show
     flash.keep

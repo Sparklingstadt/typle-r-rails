@@ -187,3 +187,9 @@ dialog.fixed[open]::backdrop { animation: confirm-backdrop-in 100ms ease-out; }
 /* lucide-react's icons take their size from the element around them (a button's [&_svg]:size-*); alone they are 1rem,
    which any class or rule outranks. */
 @layer base { :where(svg.lucide) { width: 1rem; height: 1rem; } }
+/* An icon drawn from a page's sprite (UiHelper#with_icon_sprite) has lucide's own attributes here instead, as weakly as
+   attributes are: any class wins, and a stroke-width attribute given to the icon is kept. */
+@layer base {
+  :where(svg.lucide-sprite) { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+  :where(svg.lucide-sprite:not([stroke-width])) { stroke-width: 2; }
+}

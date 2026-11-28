@@ -59,4 +59,20 @@ class PackFilesTest < ActionDispatch::IntegrationTest
       post copy_word_list_path(pack.word_lists.first)
     end
   end
+
+  test "a closed pack's lists come into its frame, and alone lead back to the packs page" do
+    sign_in_as users(:one)
+    pack = users(:one).packs.create!(name: "Git")
+    list = pack.word_lists.create!(user: users(:one), name: "基本", words_text: "git")
+    other = users(:two).packs.create!(name: "他人")
+
+    get lists_pack_path(pack), headers: { "Turbo-Frame" => "pack_#{pack.id}-lists" }
+    assert_response :success
+    assert_select "turbo-frame#pack_#{pack.id}-lists[target=_top] ul > li[data-list-id='#{list.id}']"
+    assert_select "svg symbol#icon-sprite-keyboard"
+    get lists_pack_path(pack)
+    assert_redirected_to packs_path(open: pack.id)
+    get lists_pack_path(other), headers: { "Turbo-Frame" => "pack_#{other.id}-lists" }
+    assert_response :not_found
+  end
 end

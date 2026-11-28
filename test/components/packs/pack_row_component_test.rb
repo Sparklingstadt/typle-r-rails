@@ -13,12 +13,20 @@ class Packs::PackRowComponentTest < ViewComponent::TestCase
     @pack.reload
   end
 
-  test "a pack is closed, with its lists inside" do
+  test "a pack is closed, its lists to load when it is opened" do
     render_inline(Packs::PackRowComponent.new(pack: @pack))
 
-    assert_selector "li[data-pack-id='#{@pack.id}'] button[aria-expanded=false]", text: "Git"
-    assert_selector "ul#pack-#{@pack.id}[hidden] > li[data-list-id]", count: 2, visible: :all
+    assert_selector "li[data-pack-id='#{@pack.id}'] button[aria-expanded=false][aria-controls='pack-#{@pack.id}']", text: "Git"
+    assert_selector "div#pack-#{@pack.id}[hidden] > turbo-frame#pack_#{@pack.id}-lists[loading=lazy][target=_top][src='/packs/#{@pack.id}/lists']", visible: :all
+    assert_no_selector "li[data-list-id]", visible: :all
     assert_no_selector "[data-controller=row-highlight]", visible: :all
+  end
+
+  test "an open pack has its lists in it" do
+    render_inline(Packs::PackRowComponent.new(pack: @pack, open: true))
+
+    assert_selector "div#pack-#{@pack.id}:not([hidden]) > ul > li[data-list-id]", count: 2
+    assert_no_selector "turbo-frame"
   end
 
   test "an open pack shows its lists; a pointed one is also highlighted" do

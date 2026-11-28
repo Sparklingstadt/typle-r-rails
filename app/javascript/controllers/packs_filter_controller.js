@@ -4,17 +4,18 @@ import { message } from "practice_run"
 // The packs page's toolbar (typle-r's ListToolbar): narrows the packs by text, by one category and by every chosen
 // tag, and says how many are shown.
 export default class extends Controller {
-  static targets = ["query", "category", "categoryText", "categoryTrigger", "tag", "tagsText", "tagsTrigger", "pack", "list", "empty", "count", "clear"]
+  static targets = ["words", "query", "category", "categoryText", "categoryTrigger", "tag", "tagsText", "tagsTrigger", "pack", "list", "empty", "count", "clear"]
   static values = { count: Object, filtered: Object, allCategories: String, noCategory: String, allTags: String, separator: String, categoryCurrent: String, tagsCurrent: String }
 
   apply() {
     const query = this.queryTarget.value.trim().toLowerCase()
     const category = this.categoryTargets.find(input => input.checked)?.value ?? ""
     const tags = this.tagTargets.filter(input => input.checked).map(input => input.value.toLowerCase())
+    const words = query ? this.words : {}
     let shown = 0
     for (const pack of this.packTargets) {
       const own = JSON.parse(pack.dataset.tags || "[]").map(tag => tag.toLowerCase())
-      const fits = (!query || pack.dataset.search.includes(query)) &&
+      const fits = (!query || pack.dataset.search.includes(query) || !!words[pack.dataset.packId]?.includes(query)) &&
         (!category || (category === "none" ? !pack.dataset.category : category === `category:${pack.dataset.category}`)) &&
         tags.every(tag => own.includes(tag))
       pack.hidden = !fits
@@ -39,6 +40,12 @@ export default class extends Controller {
       this.tagsTriggerTarget.setAttribute("aria-label", chosen.length ? message(this.tagsCurrentValue, { tags: chosen.join(this.separatorValue) }) : this.allTagsValue)
       this.tagsTriggerTarget.classList.toggle("border-primary/60", chosen.length > 0)
     }
+  }
+
+  // The words of each pack, lowercased, by pack id (packs/index carries them once).
+  get words() {
+    if (!this.wordsByPack) this.wordsByPack = this.hasWordsTarget ? JSON.parse(this.wordsTarget.textContent) : {}
+    return this.wordsByPack
   }
 
   clear() {
