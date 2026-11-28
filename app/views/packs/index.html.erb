@@ -109,11 +109,16 @@
         <button type="button" class="<%= button_classes(variant: :ghost, size: :lg, class: "text-muted-foreground") %>" data-packs-filter-target="clear" data-action="packs-filter#clear" hidden><%= tt("wordLists.filter.clear") %></button>
         <p aria-live="polite" class="ml-auto text-sm text-muted-foreground tabular-nums" data-packs-filter-target="count"><%= tt("wordLists.manager.count", total: @packs.size) %></p>
       </div>
-      <ul class="<%= cn(UiHelper::CARD_LIST, "overflow-visible") %>" data-packs-filter-target="list">
-        <% @packs.each do |pack| %>
-          <%= render Packs::PackRowComponent.new(pack:, pointed: pack.id == @pointed_pack_id, open: pack.id == @open_pack_id, pointed_list_id: @pointed_list_id) %>
-        <% end %>
-      </ul>
+      <%# The packs' words, which the search looks in too (packs-filter), by pack id. %>
+      <script type="application/json" data-packs-filter-target="words"><%= json_escape(@packs.to_h { |pack| [pack.id, pack.word_search_text] }.to_json).html_safe %></script>
+      <%# Every row repeats the same icons (in its menu and its lists' menus), so they are drawn once, after the list. %>
+      <%= with_icon_sprite do %>
+        <ul class="<%= cn(UiHelper::CARD_LIST, "overflow-visible") %>" data-packs-filter-target="list">
+          <% @packs.each do |pack| %>
+            <%= render Packs::PackRowComponent.new(pack:, pointed: pack.id == @pointed_pack_id, open: pack.id == @open_pack_id, pointed_list_id: @pointed_list_id) %>
+          <% end %>
+        </ul>
+      <% end %>
       <div class="flex flex-col items-start gap-3 rounded-xl border border-dashed bg-card px-5 py-6" data-packs-filter-target="empty" hidden>
         <p class="text-sm text-muted-foreground [overflow-wrap:anywhere]"><%= tt("wordLists.filter.noMatch") %></p>
         <button type="button" class="<%= button_classes(variant: :outline) %>" data-action="packs-filter#clear"><%= tt("wordLists.filter.clearAll") %></button>

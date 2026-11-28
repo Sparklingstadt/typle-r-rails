@@ -3,7 +3,7 @@
 # `open` opens it without pointing at it. `pointed_list_id` is the list pointed at in it, if any.
 class Packs::PackRowComponent < ApplicationComponent
   delegate :tt, :lists_labels, :lists_pack_category, :lists_pack_records, :lists_practice_text, :lists_practice_target, :lists_menu,
-           :lists_menu_separator, :ui_badge, :delete_confirm_data, :unfollow_confirm_data, to: :helpers
+           :lists_menu_separator, :ui_badge, :delete_confirm_data, :unfollow_confirm_data, :turbo_frame_tag, to: :helpers
 
   def initialize(pack:, pointed: false, open: false, pointed_list_id: nil)
     @pack = pack

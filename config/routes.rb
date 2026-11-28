@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     end
     member do
       get :export
+      get :lists
       post :copy
     end
     collection { post :import }

@@ -40,10 +40,17 @@
       <% end %>
     </div>
   </div>
-  <ul id="<%= panel_id %>" aria-label="<%= t("design.lists.pack.lists_of", name: pack.name) %>" class="ml-4 divide-y border-t border-l sm:ml-6"
-      data-lists--disclosure-target="panel"<%= " hidden" unless open? %>>
-    <% lists.each do |list| %>
-      <%= render Packs::ListRowComponent.new(list:, pointed: list.id == @pointed_list_id) %>
+  <div id="<%= panel_id %>" class="ml-4 border-t border-l sm:ml-6" data-lists--disclosure-target="panel"<%= " hidden" unless open? %>>
+    <% if open? %>
+      <%= render Packs::ListsComponent.new(pack:, pointed_list_id: @pointed_list_id) %>
+    <% else %>
+      <%# A closed pack's lists are most of the page, so they load when it is opened: a lazy frame in a hidden panel %>
+      <%# waits until the panel is shown. %>
+      <%= turbo_frame_tag "#{dom_id(pack)}-lists", src: lists_pack_path(pack), loading: :lazy, target: "_top" do %>
+        <div aria-hidden="true" class="divide-y">
+          <% lists.size.times do %><div class="h-[4.5rem] animate-pulse bg-muted/40 motion-reduce:animate-none"></div><% end %>
+        </div>
+      <% end %>
     <% end %>
-  </ul>
+  </div>
 </li>

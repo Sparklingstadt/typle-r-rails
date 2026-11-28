@@ -11,7 +11,26 @@ module UiHelper
   # A lucide icon (the set typle-r uses), hidden from screen readers unless it is given a label.
   # Without a size class it is 1rem (application.css), and a button's own size for icons wins, as with lucide-react.
   def icon(name, class: nil, **options)
-    lucide_icon(name.to_s, class: cn("lucide lucide-#{name}", binding.local_variable_get(:class)), "aria-hidden": "true", **options)
+    classes = cn("lucide lucide-#{name}", binding.local_variable_get(:class))
+    return lucide_icon(name.to_s, class: classes, "aria-hidden": "true", **options) unless @icon_sprite
+    # Inside with_icon_sprite: an <svg> drawing the icon from the block's sprite. lucide's stroke and fill come from
+    # svg.lucide-sprite (application.css), so that each icon is a few bytes; a stroke-width given here still wins.
+    @icon_sprite << name.to_s
+    content_tag(:svg, tag.use(href: "##{ICON_SPRITE_PREFIX}#{name}"), class: cn(classes, "lucide-sprite"), "aria-hidden": "true", **options)
+  end
+
+  ICON_SPRITE_PREFIX = "icon-sprite-"
+
+  # Renders the block with each icon in it drawn once, as a <symbol> after the block, and used by every <svg> that
+  # shows it: for pages that repeat the same few icons on every row (the packs page).
+  def with_icon_sprite(&block)
+    outer, @icon_sprite = @icon_sprite, Set.new
+    body = capture(&block)
+    names, @icon_sprite = @icon_sprite, outer
+    # A block inside another leaves its icons to the outer one's sprite.
+    return body if outer&.merge(names)
+    symbols = names.map { |name| tag.symbol(LucideRails::IconProvider.icon(name).html_safe, id: "#{ICON_SPRITE_PREFIX}#{name}", viewBox: "0 0 24 24") }
+    safe_join([body, content_tag(:svg, safe_join(symbols), "aria-hidden": "true", hidden: true)])
   end
 
   # TrendChart's tooltip: the value and date of the run being read, above it (the trend-chart controller fills it).
