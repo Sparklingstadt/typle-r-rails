@@ -24,8 +24,14 @@
   categories = packs.keys.map { |pack| pack.word_lists.first&.category }.compact.tally.sort_by { |name, _| Collation.key(name) }.to_h
   uncategorized = packs.keys.count { |pack| pack.word_lists.first&.category.blank? }
   # typle-r's matchesQuery: the pack and list names, the category and tags, and the words, so a list is found by a word.
-  search_text = ->(items) { items.flat_map { |list| [list.pack.name, list.name, list.level, list.category, *list.tags, *list.words.flat_map { |word| [word.display, word.input] }] }.compact.join("\n").downcase }
+  # The words are searched too; they come once a page (list-search-words, read by practice-aside), not in each item.
+  search_text = ->(items) { items.flat_map { |list| [list.pack.name, list.name, list.level, list.category, *list.tags] }.compact.join("\n").downcase }
+  list_ids = ->(items) { items.map(&:id).join(" ") }
 %>
+<% unless @list_search_words_shown %>
+  <% @list_search_words_shown = true %>
+  <script type="application/json" id="list-search-words"><%= json_escape(lists.to_h { |list| [list.id, list.words.flat_map { |word| [word.display, word.input] }.uniq.join("\n").downcase] }.to_json).html_safe %></script>
+<% end %>
 <% dialog = local_assigns[:dialog] %>
 <% body = capture do %>
     <label class="<%= cn(UiHelper::SEARCH_FIELD, dialog ? "h-10 shrink-0" : "mx-1 mt-1 mb-1 h-9 shrink-0") %>">
@@ -49,7 +55,7 @@
           <% if items.size >= 2 %>
             <% current = items.find { |list| list == selected } %>
             <% any_levels = items.any? { |list| list.level.present? } %>
-            <li data-pack-id="<%= pack.id %>" data-search="<%= search_text.(items) %>" data-category="<%= category %>" data-practice-aside-target="pack">
+            <li data-pack-id="<%= pack.id %>" data-search="<%= search_text.(items) %>" data-list-ids="<%= list_ids.(items) %>" data-category="<%= category %>" data-practice-aside-target="pack">
               <button type="button" aria-expanded="<%= current.present? %>" aria-controls="<%= aside_id %>-levels-<%= pack.id %>" data-action="practice-aside#toggle" class="<%= cn(option, current && "bg-muted hover:bg-muted") %>">
                 <%= radio.(current.present?) %>
                 <span class="grid min-w-0 flex-1">
@@ -63,7 +69,7 @@
                 <ul class="grid gap-0.5">
                   <% items.each do |list| %>
                     <% pressed = list == selected %>
-                    <li data-search="<%= search_text.([list]) %>">
+                    <li data-search="<%= search_text.([list]) %>" data-list-ids="<%= list.id %>">
                       <button type="button" aria-pressed="<%= pressed %>" aria-label="<%= list.level.presence || list.name %>" data-action="practice-aside#go" data-url="<%= url.(list) %>"
                         data-practice-switch="<%= pressed ? "current" : "list" %>" data-switch-name="<%= practice_name_text(list) %>"
                         class="<%= cn("flex min-h-9 w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-[13px] outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 data-match:not-aria-pressed:bg-primary/10 data-match:not-aria-pressed:font-medium data-match:not-aria-pressed:text-primary", pressed && "bg-primary text-primary-foreground hover:bg-primary/90") %>">
@@ -79,7 +85,7 @@
           <% else %>
             <% list = items.first %>
             <% pressed = list == selected %>
-            <li data-pack-id="<%= pack.id %>" data-search="<%= search_text.(items) %>" data-category="<%= category %>" data-practice-aside-target="pack">
+            <li data-pack-id="<%= pack.id %>" data-search="<%= search_text.(items) %>" data-list-ids="<%= list_ids.(items) %>" data-category="<%= category %>" data-practice-aside-target="pack">
               <button type="button" aria-pressed="<%= pressed %>" aria-label="<%= tt(pressed ? "practice.options.selected" : "practice.options.select", name: practice_name_text(list)) %>"
                 data-action="practice-aside#go" data-url="<%= url.(list) %>" data-practice-switch="<%= pressed ? "current" : "list" %>" data-switch-name="<%= practice_name_text(list) %>"
                 class="<%= cn(option, pressed && "bg-muted hover:bg-muted") %>">

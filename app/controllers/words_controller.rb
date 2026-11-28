@@ -2,7 +2,7 @@
 # without it the first list is shown, as on the practice screen.
 class WordsController < ApplicationController
   def index
-    @lists = current_user.word_lists.includes(:pack, :words, :practice_records).order("packs.position", :position).references(:pack).to_a
+    @lists = WordList.share_packs(current_user.word_lists.eager_load(:pack).preload(:words, :practice_records).order("packs.position", :position).to_a)
     @requested = params[:list].presence
     @list = @lists.find { |list| list.id.to_s == @requested } || @lists.first
   end
