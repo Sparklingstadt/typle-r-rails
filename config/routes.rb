@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   end
 
   get "home" => "home#show"
+  get "home/trends" => "home#trends", as: :home_trends
   get "play" => "practice#show"
 
   resources :practice_records, only: %i[index show create destroy], path: "records"

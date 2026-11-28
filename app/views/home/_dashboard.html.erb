@@ -30,10 +30,11 @@
   <% end %>
 
   <%= render Home::SectionComponent.new(id: "trends-heading", title: home_t("dashboard.trends.title"), description: home_t("dashboard.trends.description")) do %>
-    <div class="grid items-start gap-4 xl:grid-cols-2">
-      <% dashboard.list_trends.each do |trend| %>
-        <%= render Home::TrendComponent.new(trend:, now:) %>
-      <% end %>
-    </div>
+    <%# Two charts a list make most of the page, so they come after it, when the section scrolls near (HomeController#trends). %>
+    <%= turbo_frame_tag "home-trends", src: home_trends_path, loading: :lazy, target: "_top" do %>
+      <div aria-hidden="true" class="grid items-start gap-4 xl:grid-cols-2">
+        <% [dashboard.normal_records.map(&:word_list_id).uniq.size, 4].min.times do %><div class="h-72 animate-pulse rounded-xl bg-muted motion-reduce:animate-none"></div><% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>

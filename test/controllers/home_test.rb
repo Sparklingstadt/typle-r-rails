@@ -25,8 +25,15 @@ class HomeTest < ActionDispatch::IntegrationTest
       get home_path
       assert_response :success
       assert_select "h2", other.full_name
-      assert_select "article h3", list.full_name
+      # The trends come into their frame after the page.
+      assert_select "turbo-frame#home-trends[loading=lazy][src=?]", home_trends_path
+      assert_select "article", 0
+      get home_trends_path, headers: { "Turbo-Frame" => "home-trends" }
+      assert_response :success
+      assert_select "turbo-frame#home-trends article h3", list.full_name
       assert_select "article svg path.stroke-trend", 2
+      get home_trends_path
+      assert_redirected_to home_path
       get root_path
       assert_response :success
       assert_select "[data-controller=try-word] [data-try-word-target=letters]"
